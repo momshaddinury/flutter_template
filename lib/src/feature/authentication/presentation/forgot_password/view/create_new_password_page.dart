@@ -24,13 +24,13 @@ class CreateNewPasswordPage extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   'Create New password',
-                  style: context.textStyle.forgotPassword.title,
+                  style: context.textStyle.headlineSmall.size(24),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   'Your new password must be different from previous used passwords.',
-                  style: context.textStyle.forgotPassword.body1.copyWith(
-                    color: context.color.text.secondary,
+                  style: context.textStyle.bodyMedium.medium.withColor(
+                    context.color.text.secondary,
                   ),
                 ),
                 const SizedBox(height: 32),

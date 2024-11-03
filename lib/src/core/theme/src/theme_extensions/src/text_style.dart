@@ -1,82 +1,87 @@
 import 'package:flutter/material.dart';
 
-class _AppBarText {
-  const _AppBarText();
-
-  TextStyle get title => const TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-      );
-}
-
-class _OnboardingText {
-  const _OnboardingText();
-
-  TextStyle get title => const TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.w500,
-      );
-
-  TextStyle get body => const TextStyle(
-        fontSize: 14,
-        height: 20 / 14,
-        fontWeight: FontWeight.w400,
-      );
-}
-
-class _LinkText {
-  const _LinkText();
-
-  TextStyle get text => const TextStyle(
-        fontSize: 14,
-        height: 24 / 14,
-      );
-}
-
-class _SeafarerRoleText {
-  const _SeafarerRoleText();
-
-  TextStyle get title => const TextStyle(
-        fontSize: 16,
-        height: 24 / 16,
-        fontWeight: FontWeight.w600,
-      );
-
-  TextStyle get description => const TextStyle(
-        fontSize: 14,
-        height: 24 / 14,
-      );
-}
-
-class _ForgotPasswordText {
-  const _ForgotPasswordText();
-
-  TextStyle get title => const TextStyle(
-        fontSize: 24,
-        height: 36 / 24,
-        fontWeight: FontWeight.w600,
-      );
-
-  TextStyle get body1 => const TextStyle(
-        fontSize: 14,
-        height: 24 / 14,
-      );
-}
-
 class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
   const TextStyleExtension();
 
-  TextStyle get fieldLabel => const TextStyle(
-        fontSize: 14,
-        height: 24 / 14,
-        fontWeight: FontWeight.w500,
-      );
+  /// Ideal for page titles, section headings, or content that needs emphasis.
+  ///
+  /// Headline:
+  /// - Large: 30.0–33.0
+  /// - Medium: 26.0–29.0
+  /// - Small: 22.0–25.0
+  TextStyle get headlineLarge {
+    return const TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  }
 
-  final appBar = const _AppBarText();
-  final linkText = const _LinkText();
-  final onboarding = const _OnboardingText();
-  final seafarerRole = const _SeafarerRoleText();
-  final forgotPassword = const _ForgotPasswordText();
+  TextStyle get headlineMedium {
+    return const TextStyle(fontSize: 26, fontWeight: FontWeight.w600);
+  }
+
+  TextStyle get headlineSmall {
+    return const TextStyle(fontSize: 22, fontWeight: FontWeight.w600);
+  }
+
+  /// Used for medium-emphasis text that separates content sections.
+  ///
+  /// Title:
+  /// - Large: 20.0–21.0
+  /// - Medium: 18.0–19.0
+  /// - Small: 16.0–17.0
+  TextStyle get titleLarge {
+    return const TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
+  }
+
+  TextStyle get titleMedium {
+    return const TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+  }
+
+  TextStyle get titleSmall {
+    return const TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
+  }
+
+  /// Primary style for most of the readable content.
+  ///
+  /// Body:
+  /// - Large: 16.0–17.0
+  /// - Medium: 14.0–15.0
+  /// - Small: 12.0–13.0
+  TextStyle get bodyLarge {
+    return const TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get bodyMedium {
+    return const TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
+  }
+
+  TextStyle get bodySmall {
+    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w400);
+  }
+
+  /// For text on buttons, labels, and other interactive elements.
+  ///
+  /// Label:
+  /// - Large: 14.0–15.0
+  /// - Medium: 12.0–13.0
+  /// - Small: 10.0–11.0
+  TextStyle get labelLarge {
+    return const TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+  }
+
+  TextStyle get labelMedium {
+    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
+  }
+
+  TextStyle get labelSmall {
+    return const TextStyle(fontSize: 10, fontWeight: FontWeight.w500);
+  }
+
+  /// Used for supplementary text like captions, overlines, or hints.
+  ///
+  /// Caption:
+  /// - 12.0
+  TextStyle get caption {
+    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w400);
+  }
 
   @override
   ThemeExtension<TextStyleExtension> copyWith() => const TextStyleExtension();

@@ -59,7 +59,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                               Text(
                                 item.title,
                                 textAlign: TextAlign.center,
-                                style: context.textStyle.onboarding.title,
+                                style: context.textStyle.headlineSmall.medium,
                               ),
                               const SizedBox(height: 24),
                               item.image,
@@ -132,10 +132,7 @@ class _OnboardingListItem extends StatelessWidget {
             child: Baseline(
               baseline: 8,
               baselineType: TextBaseline.alphabetic,
-              child: Text(
-                title,
-                style: context.textStyle.onboarding.body,
-              ),
+              child: Text(title, style: context.textStyle.bodyMedium),
             ),
           ),
         ],

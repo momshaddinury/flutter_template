@@ -28,15 +28,14 @@ class EmailVerificationPage extends StatelessWidget {
                       const SizedBox(height: 24),
                       Text(
                         'Check your mail',
-                        style: context.textStyle.forgotPassword.title,
+                        style: context.textStyle.headlineSmall.size(24),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         'Please enter 4 digit code sent to your mail hello**@gmail.com.',
                         textAlign: TextAlign.center,
-                        style: context.textStyle.forgotPassword.body1.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: context.color.text.secondary,
+                        style: context.textStyle.bodyMedium.medium.withColor(
+                          context.color.text.secondary,
                         ),
                       ),
                       const SizedBox(height: 32),

@@ -24,19 +24,19 @@ class ResetPasswordPage extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   'Reset password',
-                  style: context.textStyle.forgotPassword.title,
+                  style: context.textStyle.headlineSmall.semibold.size(24),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   'Enter the email associated with your account and we’ll send an email with instructions to reset your password.',
-                  style: context.textStyle.forgotPassword.body1.copyWith(
-                    color: context.color.text.secondary,
+                  style: context.textStyle.bodyMedium.withColor(
+                    context.color.text.secondary,
                   ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 16),
                 Text(
                   'Email Address',
-                  style: context.textStyle.fieldLabel,
+                  style: context.textStyle.bodyMedium,
                 ),
                 const SizedBox(height: 8),
                 TextFormField(

@@ -23,14 +23,14 @@ class LinkText extends StatelessWidget {
           textAlign: TextAlign.center,
           text: TextSpan(
             text: text,
-            style: context.textStyle.linkText.text.copyWith(
-              color: context.color.text.secondary,
+            style: context.textStyle.labelLarge.withColor(
+              context.color.text.secondary,
             ),
             children: [
               TextSpan(
                 text: linkText,
-                style: context.textStyle.linkText.text.copyWith(
-                  color: context.color.text.primary,
+                style: context.textStyle.labelLarge.withColor(
+                  context.color.text.primary,
                 ),
               ),
             ],

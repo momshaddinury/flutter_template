@@ -5,6 +5,7 @@ class _InputDecorationTheme with ThemeExtensions {
 
   InputDecorationTheme call() {
     return InputDecorationTheme(
+      hintStyle: textStyle.bodyLarge.copyWith(color: color.text.secondary),
       contentPadding: const EdgeInsets.symmetric(
         vertical: 12,
         horizontal: 16,
