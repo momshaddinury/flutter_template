@@ -79,6 +79,19 @@ class TokenManager extends Interceptor {
     handler.next(response);
   }
 
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    if (err.response?.statusCode == 401) {
+      // Clear the access token
+      await SharedPreferences.getInstance().then((prefs) {
+        prefs.remove(_accessTokenKey);
+      });
+    }
+
+    //TODO: Implement refresh token logic
+    super.onError(err, handler);
+  }
+
   Future<void> saveToken(String key, String value) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(key, value);
