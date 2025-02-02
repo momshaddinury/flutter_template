@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_template/src/feature/authentication/presentation/login/riverpod/login_provider.dart';
+import 'package:flutter_template/src/core/service/navigation/navigation_service.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/service/router/routes.dart';
@@ -43,12 +43,20 @@ class LoginPage extends ConsumerWidget {
                   const SizedBox(height: 32),
                   FilledButton(
                     onPressed: () {
-                      //TODO: Move this inside listener
-                      // ref
-                      //     .read(cacheServiceProvider)
-                      //     .save<bool>(CacheKey.isLoggedIn, true);
+                      /// Navigation Approach 1
+                      /* Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const BottomNavBarExample(),
+                        ),
+                      ); */
 
-                      ref.read(loginProvider.notifier).login();
+                      /// Navigation Approach 2
+                      /* Navigator.of(context).pushReplacementNamed(
+                        RoutesV2.bottomNavBar,
+                      ); */
+
+                      /// Navigation Approach 3
+                      _navigateToHome(context);
                     },
                     child: const Text('Login'),
                   ),
@@ -66,5 +74,9 @@ class LoginPage extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void _navigateToHome(BuildContext context) {
+    Navigator.of(context).pushReplacementNamed(RoutesV2.bottomNavBar);
   }
 }
