@@ -7,24 +7,35 @@ part 'login_provider.g.dart';
 
 @riverpod
 class Login extends _$Login {
-  late LoginUseCase useCase;
+  late LoginUseCase _useCase;
 
   @override
   AsyncValue<LoginResponseEntity>? build() {
-    useCase = LoginUseCase(ref.read(authenticationRepositoryProvider));
+    _useCase = LoginUseCase(ref.read(authenticationRepositoryProvider));
     return null;
   }
 
-  void login() async {
+  bool _shouldRemember = false;
+
+  void shouldRemember(bool value) {
+    _shouldRemember = value;
+  }
+
+  void login({
+    required String email,
+    required String password,
+    bool? shouldRemember,
+  }) async {
     state = const AsyncLoading();
 
     state = await AsyncValue.guard(() async {
       LoginRequestEntity request = LoginRequestEntity(
-        email: 'example@email.com',
-        password: '123456',
+        username: email,
+        password: password,
+        shouldRemeber: _shouldRemember,
       );
 
-      return await useCase.call(request);
+      return await _useCase.call(request);
     });
   }
 }

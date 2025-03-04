@@ -40,7 +40,7 @@ final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
 
 typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
 String _$authenticationRepositoryHash() =>
-    r'ac07f99a61edda0cf053d945df0a3e042cd847ad';
+    r'33a34e38aeb3126481e2129c0da85cb57085b458';
 
 /// See also [authenticationRepository].
 @ProviderFor(authenticationRepository)

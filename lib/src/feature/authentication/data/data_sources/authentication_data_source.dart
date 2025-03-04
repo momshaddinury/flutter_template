@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:rest_client_kit/rest_client_kit.dart';
 
 import '../../../../core/service/network/src/endpoints.dart';
@@ -8,6 +10,8 @@ abstract interface class AuthenticationDataSource {
   Future<Response> register(Map<String, dynamic> data);
 
   Future<Response> login(Map<String, dynamic> data);
+
+  Future saveCredentials(Map<String, dynamic> data);
 
   Future<Response> forgotPassword(Map<String, dynamic> data);
 

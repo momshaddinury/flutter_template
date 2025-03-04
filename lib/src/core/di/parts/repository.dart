@@ -5,6 +5,6 @@ AuthenticationRepositoryImpl authenticationRepository(
   AuthenticationRepositoryRef ref,
 ) {
   return AuthenticationRepositoryImpl(
-    remote: ref.read(authenticationDataSourceProvider),
+    dataSource: ref.read(authenticationDataSourceProvider),
   );
 }
