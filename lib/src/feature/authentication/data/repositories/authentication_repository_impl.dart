@@ -27,7 +27,7 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
       if (data.shouldRemeber ?? false) {
         dataSource.saveCredentials(data.toJson());
       }
-      return LoginResponseModel.fromJson(response.data);
+      return LoginResponseMapper.fromMap(response.data);
     } catch (e, stackTrace) {
       log(e.toString());
       log(stackTrace.toString());
