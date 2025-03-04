@@ -34,4 +34,11 @@ class AuthenticationDataSourceImpl implements AuthenticationDataSource {
   Future<Response> resendOTP(Map<String, dynamic> data) async {
     return remote.post(Endpoints.resendOtp, data: data);
   }
+
+  @override
+  Future saveCredentials(Map<String, dynamic> data) {
+    log(data.toString(), name: 'AuthenticationDataSourceImpl');
+    // TODO: implement saveCredentials
+    throw UnimplementedError();
+  }
 }

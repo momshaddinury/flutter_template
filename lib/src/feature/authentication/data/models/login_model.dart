@@ -3,7 +3,7 @@ import '../../domain/entities/login_entity.dart';
 extension LoginRequestModel on LoginRequestEntity {
   Map<String, dynamic> toJson() {
     return {
-      "email": email,
+      "username": username,
       "password": password,
     };
   }
@@ -16,7 +16,7 @@ class LoginResponseModel extends LoginResponseEntity {
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
     return LoginResponseModel(
-      accessToken: json["access_token"],
+      accessToken: json["accessToken"],
     );
   }
 }

@@ -6,7 +6,7 @@ List<GoRoute> _onboardingRoutes(ref) {
       path: Routes.splash,
       name: Routes.splash,
       pageBuilder: (context, state) {
-        return const MaterialPage(child: SplashPage());
+        return const NoTransitionPage(child: SplashPage());
       },
     ),
     GoRoute(

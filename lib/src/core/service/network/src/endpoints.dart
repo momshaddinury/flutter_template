@@ -1,9 +1,9 @@
 class Endpoints {
-  static const base = "https://dev.hello-world.com/api/v1";
+  static const base = "https://dummyjson.com";
 
   /// Authentication
   static const String register = '/auth/register/';
-  static const String login = '/auth/login/';
+  static const String login = '/user/login';
   static const String forgotPassword = '/auth/forgot_password/';
   static const String resetPassword = '/auth/reset_password/';
 

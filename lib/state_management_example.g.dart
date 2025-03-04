@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_provider.dart';
+part of 'state_management_example.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginHash() => r'52eca8765623b8096f8ba766f315f77a57128318';
+String _$counterHash() => r'4083aefb73ad816e5b81251f11467306121530bd';
 
-/// See also [Login].
-@ProviderFor(Login)
-final loginProvider = AutoDisposeNotifierProvider<Login,
-    AsyncValue<LoginResponseEntity>?>.internal(
-  Login.new,
-  name: r'loginProvider',
+/// See also [Counter].
+@ProviderFor(Counter)
+final counterProvider =
+    AutoDisposeNotifierProvider<Counter, CounterModel>.internal(
+  Counter.new,
+  name: r'counterProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$loginHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$counterHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Login = AutoDisposeNotifier<AsyncValue<LoginResponseEntity>?>;
+typedef _$Counter = AutoDisposeNotifier<CounterModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
