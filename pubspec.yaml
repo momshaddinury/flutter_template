@@ -47,6 +47,8 @@ dependencies:
   # Custom Packages
   rest_client_kit:
     path: ./packages/rest_client_kit
+  # Mappable
+  dart_mappable:
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +60,7 @@ dev_dependencies:
   riverpod_generator:
   riverpod_lint:
   flutter_gen_runner:
+  dart_mappable_builder:
 
 
 flutter:

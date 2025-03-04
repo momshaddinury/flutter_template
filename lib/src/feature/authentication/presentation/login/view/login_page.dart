@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template/src/feature/authentication/presentation/login/riverpod/login_provider.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/service/router/routes.dart';
 import '../../shared/widgets/link_text.dart';
-import '../riverpod/login_provider.dart';
 
 part '../widgets/login_form.dart';
 part '../widgets/login_form_footer.dart';
