@@ -1,33 +1,36 @@
 import 'dart:developer';
 
+import 'package:flutter_template/src/core/service/network/rest_client.dart';
+
 import '../../domain/entities/login_entity.dart';
 import '../../domain/entities/sign_up_entity.dart';
 import '../../domain/repositories/authentication_repository.dart';
-import '../data_sources/authentication_data_source.dart';
 import '../models/login_model.dart';
-import '../models/sign_up_model.dart';
 
 final class AuthenticationRepositoryImpl extends AuthenticationRepository {
-  final AuthenticationDataSource dataSource;
+  AuthenticationRepositoryImpl({
+    required this.restClient,
+  });
 
-  AuthenticationRepositoryImpl({required this.dataSource});
+  final RestClient restClient;
 
   @override
   Future<SignUpResponseEntity> register(SignUpRequestEntity data) async {
-    return await request(() async {
-      final response = await dataSource.register(data.toJson());
-      return SignUpResponseModel.fromJson(response.data);
-    });
+    // TODO: implement resetPassword
+    throw UnimplementedError();
   }
 
   @override
   Future<LoginResponseEntity> login(LoginRequestEntity data) async {
     try {
-      final response = await dataSource.login(data.toJson());
-      if (data.shouldRemeber ?? false) {
-        dataSource.saveCredentials(data.toJson());
-      }
-      return LoginResponseMapper.fromMap(response.data);
+      final response = await restClient.login(
+        LoginRequest(
+          username: data.username,
+          password: data.password,
+        ),
+      );
+
+      return LoginResponseMapper.fromJson(response.data);
     } catch (e, stackTrace) {
       log(e.toString());
       log(stackTrace.toString());

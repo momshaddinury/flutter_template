@@ -6,24 +6,6 @@ part of 'dependency_injection.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authenticationDataSourceHash() =>
-    r'4e5faf0f9fa90b13b86cfc60102407a115fbce7d';
-
-/// See also [authenticationDataSource].
-@ProviderFor(authenticationDataSource)
-final authenticationDataSourceProvider =
-    AutoDisposeProvider<AuthenticationDataSourceImpl>.internal(
-  authenticationDataSource,
-  name: r'authenticationDataSourceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$authenticationDataSourceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef AuthenticationDataSourceRef
-    = AutoDisposeProviderRef<AuthenticationDataSourceImpl>;
 String _$sharedPreferencesHash() => r'25eceea0052302f519f44a896409ba30ede45562';
 
 /// See also [sharedPreferences].
@@ -38,9 +20,27 @@ final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
+String _$dioHash() => r'ffa64eeb391ef2e05946d2fd5d1089489b04a5c7';
+
+/// See also [dio].
+@ProviderFor(dio)
+final dioProvider = AutoDisposeProvider<Dio>.internal(
+  dio,
+  name: r'dioProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dioHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef DioRef = AutoDisposeProviderRef<Dio>;
 String _$authenticationRepositoryHash() =>
-    r'33a34e38aeb3126481e2129c0da85cb57085b458';
+    r'c357dc04275953e71c35c12433ef31b7948cb6e9';
 
 /// See also [authenticationRepository].
 @ProviderFor(authenticationRepository)
@@ -55,6 +55,8 @@ final authenticationRepositoryProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef AuthenticationRepositoryRef
     = AutoDisposeProviderRef<AuthenticationRepositoryImpl>;
 String _$cacheServiceHash() => r'cff8f03861be49680df786612f5086460a7286e2';
@@ -70,6 +72,24 @@ final cacheServiceProvider = Provider<CacheService>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef CacheServiceRef = ProviderRef<CacheService>;
+String _$restClientHash() => r'f19842a9c8fd5cb39b71025dd195b11148a27628';
+
+/// See also [restClient].
+@ProviderFor(restClient)
+final restClientProvider = AutoDisposeProvider<RestClient>.internal(
+  restClient,
+  name: r'restClientProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$restClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RestClientRef = AutoDisposeProviderRef<RestClient>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

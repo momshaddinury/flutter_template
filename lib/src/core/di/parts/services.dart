@@ -6,3 +6,8 @@ CacheService cacheService(CacheServiceRef ref) {
     ref.read(sharedPreferencesProvider).requireValue,
   );
 }
+
+@riverpod
+RestClient restClient(RestClientRef ref) {
+  return RestClient(ref.read(dioProvider));
+}

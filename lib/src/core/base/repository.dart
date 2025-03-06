@@ -1,6 +1,5 @@
-import 'package:rest_client_kit/rest_client_kit.dart';
-
 import '../logger/log.dart';
+import '../service/network/interceptor/failures.dart';
 import 'response_modal.dart';
 
 abstract base class Repository<T> {

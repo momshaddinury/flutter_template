@@ -5,6 +5,6 @@ AuthenticationRepositoryImpl authenticationRepository(
   AuthenticationRepositoryRef ref,
 ) {
   return AuthenticationRepositoryImpl(
-    dataSource: ref.read(authenticationDataSourceProvider),
+    restClient: ref.read(restClientProvider),
   );
 }
