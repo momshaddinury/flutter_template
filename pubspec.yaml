@@ -44,12 +44,12 @@ dependencies:
   flutter_svg: ^2.0.10+1
   # Logging
   logger: ^2.4.0
-  # Mappable
-  dart_mappable:
-  #Retrofit
-  retrofit: ^4.4.0
-  #Logger
   pretty_dio_logger: ^1.4.0
+  # Serialization & Deserialization
+  dart_mappable:
+  #Networking
+  retrofit: ^4.4.0
+
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +62,6 @@ dev_dependencies:
   riverpod_lint:
   flutter_gen_runner:
   dart_mappable_builder:
-
   retrofit_generator: '>=8.0.0 <10.0.0'
 
 

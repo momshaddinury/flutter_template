@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_template/src/core/service/network/endpoints.dart';
-import 'package:flutter_template/src/feature/authentication/data/models/login_model.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../../feature/authentication/data/models/login_model.dart';
+import 'endpoints.dart';
 
 part 'rest_client.g.dart';
 
@@ -10,5 +11,5 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String? baseUrl}) = _RestClient;
 
   @POST(Endpoints.login)
-  Future<HttpResponse> login(@Body() LoginRequest request);
+  Future<HttpResponse> login(@Body() LoginRequestModel request);
 }

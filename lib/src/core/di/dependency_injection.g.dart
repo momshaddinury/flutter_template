@@ -40,7 +40,7 @@ final dioProvider = AutoDisposeProvider<Dio>.internal(
 // ignore: unused_element
 typedef DioRef = AutoDisposeProviderRef<Dio>;
 String _$authenticationRepositoryHash() =>
-    r'c357dc04275953e71c35c12433ef31b7948cb6e9';
+    r'46d9fe2af7dcb586729f5c79eb66e9ffeccbc6dc';
 
 /// See also [authenticationRepository].
 @ProviderFor(authenticationRepository)
