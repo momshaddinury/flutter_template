@@ -47,9 +47,8 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   # Serialization & Deserialization
   dart_mappable:
-  #Networking
+  # Networking
   retrofit: ^4.4.0
-
 
 dev_dependencies:
   flutter_test:
