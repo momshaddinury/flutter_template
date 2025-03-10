@@ -1,7 +1,4 @@
-import 'dart:developer';
-
-import 'package:flutter_template/src/core/service/network/rest_client.dart';
-
+import '../../../../core/service/network/rest_client.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/entities/sign_up_entity.dart';
 import '../../domain/repositories/authentication_repository.dart';
@@ -9,10 +6,10 @@ import '../models/login_model.dart';
 
 final class AuthenticationRepositoryImpl extends AuthenticationRepository {
   AuthenticationRepositoryImpl({
-    required this.restClient,
+    required this.remote,
   });
 
-  final RestClient restClient;
+  final RestClient remote;
 
   @override
   Future<SignUpResponseEntity> register(SignUpRequestEntity data) async {
@@ -22,20 +19,11 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
 
   @override
   Future<LoginResponseEntity> login(LoginRequestEntity data) async {
-    try {
-      final response = await restClient.login(
-        LoginRequest(
-          username: data.username,
-          password: data.password,
-        ),
-      );
-
-      return LoginResponseMapper.fromJson(response.data);
-    } catch (e, stackTrace) {
-      log(e.toString());
-      log(stackTrace.toString());
-      rethrow;
-    }
+    return await request(() async {
+      final model = LoginRequestModel.fromEntity(data);
+      final response = await remote.login(model);
+      return LoginResponseModelMapper.fromJson(response.data);
+    });
   }
 
   @override
