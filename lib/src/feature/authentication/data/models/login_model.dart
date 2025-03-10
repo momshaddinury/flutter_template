@@ -4,9 +4,7 @@ import '../../domain/entities/login_entity.dart';
 
 part 'login_model.mapper.dart';
 
-@MappableClass(
-  generateMethods: GenerateMethods.decode,
-)
+@MappableClass(generateMethods: GenerateMethods.decode)
 class LoginResponseModel extends LoginResponseEntity
     with LoginResponseModelMappable {
   LoginResponseModel({
@@ -31,9 +29,7 @@ class LoginResponseModel extends LoginResponseEntity
   final String refreshToken;
 }
 
-@MappableClass(
-  generateMethods: GenerateMethods.copy | GenerateMethods.encode,
-)
+@MappableClass(generateMethods: GenerateMethods.copy | GenerateMethods.encode)
 class LoginRequestModel extends LoginRequestEntity
     with LoginRequestModelMappable {
   LoginRequestModel({
