@@ -7,8 +7,26 @@ class _BottomNavigationBarThemeData with ThemeExtensions {
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: color.bottomNavbar.selectedItem,
-      unselectedItemColor: color.bottomNavbar.unselectedItem,
+      selectedItemColor: color.bottomNavBar.selectedItem,
+      unselectedItemColor: color.bottomNavBar.unselectedItem,
+      selectedLabelStyle: const TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+      ),
+      unselectedLabelStyle: const TextStyle(fontSize: 12),
+    );
+  }
+}
+
+class _DarkBottomNavigationBarThemeData with ThemeExtensions {
+  BottomNavigationBarThemeData call() {
+    return BottomNavigationBarThemeData(
+      elevation: .5,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: darkColor.bottomNavBar.selectedItem,
+      unselectedItemColor: darkColor.bottomNavBar.unselectedItem,
       selectedLabelStyle: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,

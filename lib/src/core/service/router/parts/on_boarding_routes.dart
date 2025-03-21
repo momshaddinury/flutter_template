@@ -13,11 +13,6 @@ List<GoRoute> _onboardingRoutes(ref) {
       path: Routes.onboarding,
       name: Routes.onboarding,
       pageBuilder: (context, state) {
-        // Mark onboarding as completed
-        ref
-            .read(cacheServiceProvider)
-            .save<bool>(CacheKey.isOnBoardingCompleted, true);
-        // Return the onboarding page
         return const MaterialPage(child: OnboardingPage());
       },
     ),

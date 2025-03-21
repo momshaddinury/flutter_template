@@ -15,3 +15,19 @@ class _AppBarTheme with ThemeExtensions {
     );
   }
 }
+
+class _DarkAppBarTheme with ThemeExtensions {
+  AppBarTheme call() {
+    return AppBarTheme(
+      elevation: 1,
+      centerTitle: false,
+      backgroundColor: darkColor.appBar.background,
+      surfaceTintColor: darkColor.appBar.surfaceTint,
+      titleTextStyle: textStyle.titleMedium.copyWith(
+        color: darkColor.appBar.title,
+        fontWeight: FontWeight.w600,
+      ),
+      iconTheme: IconThemeData(color: darkColor.appBar.icon),
+    );
+  }
+}

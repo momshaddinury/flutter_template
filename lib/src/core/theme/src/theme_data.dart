@@ -8,14 +8,11 @@ part 'part/button_theme_data.dart';
 part 'part/dropdown_menu_theme_data.dart';
 part 'part/input_decoration_theme.dart';
 
-class $ThemeData with ThemeExtensions {
+class $LightThemeData with ThemeExtensions {
   ThemeData call() {
     return ThemeData(
-      useMaterial3: true,
-      extensions: <ThemeExtension<dynamic>>[
-        textStyle,
-        color,
-      ],
+      brightness: Brightness.light,
+      extensions: <ThemeExtension<dynamic>>[color, darkColor, textStyle],
       colorScheme: ColorScheme.light(
         primary: color.primary,
       ),
@@ -28,6 +25,31 @@ class $ThemeData with ThemeExtensions {
       iconTheme: IconThemeData(color: color.border),
       inputDecorationTheme: _InputDecorationTheme()(),
       scaffoldBackgroundColor: color.scaffoldBackground,
+    );
+  }
+}
+
+class $DarkThemeData with ThemeExtensions {
+  ThemeData call() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      extensions: <ThemeExtension<dynamic>>[
+        color,
+        darkColor,
+        textStyle,
+      ],
+      colorScheme: ColorScheme.dark(
+        primary: darkColor.primary,
+      ),
+      appBarTheme: _DarkAppBarTheme()(),
+      bottomNavigationBarTheme: _DarkBottomNavigationBarThemeData()(),
+      dropdownMenuTheme: _DarkDropdownMenuThemeData()(),
+      elevatedButtonTheme: _DarkElevatedButtonThemeData()(),
+      filledButtonTheme: _DarkFilledButtonThemeData()(),
+      textButtonTheme: _DarkTextButtonThemeData()(),
+      iconTheme: IconThemeData(color: darkColor.border),
+      inputDecorationTheme: _DarkInputDecorationTheme()(),
+      scaffoldBackgroundColor: darkColor.scaffoldBackground,
     );
   }
 }

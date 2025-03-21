@@ -7,3 +7,11 @@ class _DropdownMenuThemeData with ThemeExtensions {
     );
   }
 }
+
+class _DarkDropdownMenuThemeData with ThemeExtensions {
+  DropdownMenuThemeData call() {
+    return DropdownMenuThemeData(
+      inputDecorationTheme: _InputDecorationTheme()(),
+    );
+  }
+}
