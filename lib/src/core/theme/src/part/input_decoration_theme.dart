@@ -23,3 +23,27 @@ class _InputDecorationTheme with ThemeExtensions {
     );
   }
 }
+
+class _DarkInputDecorationTheme with ThemeExtensions {
+  final BorderRadius _borderRadius = BorderRadius.circular(6);
+
+  InputDecorationTheme call() {
+    return InputDecorationTheme(
+      hintStyle: textStyle.bodyLarge.copyWith(color: darkColor.text.secondary),
+      contentPadding: const EdgeInsets.symmetric(
+        vertical: 12,
+        horizontal: 16,
+      ),
+      border: OutlineInputBorder(borderRadius: _borderRadius),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: _borderRadius,
+        borderSide: BorderSide(
+          color: darkColor.border,
+          width: 1,
+        ),
+      ),
+      suffixIconColor: darkColor.icon,
+      disabledBorder: OutlineInputBorder(borderRadius: _borderRadius),
+    );
+  }
+}
