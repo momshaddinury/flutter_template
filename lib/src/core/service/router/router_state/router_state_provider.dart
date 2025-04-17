@@ -38,7 +38,6 @@ class RouterState extends _$RouterState {
       state = Routes.onboarding;
       // Mark onboarding as completed
       local?.save(CacheKey.isOnBoardingCompleted, true);
-      // Return the onboarding page
       return;
     }
 
