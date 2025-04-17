@@ -1,6 +1,6 @@
 import 'extensions.dart';
 
-export 'src/colors.dart';
+export 'src/colors/colors.dart';
 export 'src/text_style.dart';
 
 mixin ThemeExtensions {
