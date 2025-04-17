@@ -1,22 +1,22 @@
 part of '../theme_data.dart';
 
-class _AppBarTheme with ThemeExtensions {
+class _AppBarLightTheme with ThemeExtensions {
   AppBarTheme call() {
     return AppBarTheme(
       elevation: 1,
       centerTitle: false,
-      backgroundColor: color.appBar.background,
-      surfaceTintColor: color.appBar.surfaceTint,
+      backgroundColor: lightColor.appBar.background,
+      surfaceTintColor: lightColor.appBar.surfaceTint,
       titleTextStyle: textStyle.titleMedium.copyWith(
-        color: color.appBar.title,
+        color: lightColor.appBar.title,
         fontWeight: FontWeight.w600,
       ),
-      iconTheme: IconThemeData(color: color.appBar.icon),
+      iconTheme: IconThemeData(color: lightColor.appBar.icon),
     );
   }
 }
 
-class _DarkAppBarTheme with ThemeExtensions {
+class _AppBarDarkTheme with ThemeExtensions {
   AppBarTheme call() {
     return AppBarTheme(
       elevation: 1,

@@ -12,19 +12,22 @@ class $LightThemeData with ThemeExtensions {
   ThemeData call() {
     return ThemeData(
       brightness: Brightness.light,
-      extensions: <ThemeExtension<dynamic>>[color, darkColor, textStyle],
+      extensions: <ThemeExtension<dynamic>>[
+        lightColor,
+        textStyle,
+      ],
       colorScheme: ColorScheme.light(
-        primary: color.primary,
+        primary: lightColor.primary,
       ),
-      appBarTheme: _AppBarTheme()(),
-      bottomNavigationBarTheme: _BottomNavigationBarThemeData()(),
-      dropdownMenuTheme: _DropdownMenuThemeData()(),
-      elevatedButtonTheme: _ElevatedButtonThemeData()(),
-      filledButtonTheme: _FilledButtonThemeData()(),
-      textButtonTheme: _TextButtonThemeData()(),
-      iconTheme: IconThemeData(color: color.border),
-      inputDecorationTheme: _InputDecorationTheme()(),
-      scaffoldBackgroundColor: color.scaffoldBackground,
+      appBarTheme: _AppBarLightTheme()(),
+      bottomNavigationBarTheme: _BottomNavigationBarLightThemeData()(),
+      dropdownMenuTheme: _DropdownMenuLightThemeData()(),
+      elevatedButtonTheme: _ElevatedButtonLightThemeData()(),
+      filledButtonTheme: _FilledButtonLightThemeData()(),
+      textButtonTheme: _TextButtonLightThemeData()(),
+      iconTheme: IconThemeData(color: lightColor.border),
+      inputDecorationTheme: _InputDecorationLightTheme()(),
+      scaffoldBackgroundColor: lightColor.scaffoldBackground,
     );
   }
 }
@@ -34,21 +37,20 @@ class $DarkThemeData with ThemeExtensions {
     return ThemeData(
       brightness: Brightness.dark,
       extensions: <ThemeExtension<dynamic>>[
-        color,
         darkColor,
         textStyle,
       ],
       colorScheme: ColorScheme.dark(
         primary: darkColor.primary,
       ),
-      appBarTheme: _DarkAppBarTheme()(),
-      bottomNavigationBarTheme: _DarkBottomNavigationBarThemeData()(),
-      dropdownMenuTheme: _DarkDropdownMenuThemeData()(),
-      elevatedButtonTheme: _DarkElevatedButtonThemeData()(),
-      filledButtonTheme: _DarkFilledButtonThemeData()(),
-      textButtonTheme: _DarkTextButtonThemeData()(),
+      appBarTheme: _AppBarDarkTheme()(),
+      bottomNavigationBarTheme: _BottomNavigationBarDarkThemeData()(),
+      dropdownMenuTheme: _DropdownMenuDarkThemeData()(),
+      elevatedButtonTheme: _ElevatedButtonDarkThemeData()(),
+      filledButtonTheme: _FilledButtonDarkThemeData()(),
+      textButtonTheme: _TextButtonDarkThemeData()(),
       iconTheme: IconThemeData(color: darkColor.border),
-      inputDecorationTheme: _DarkInputDecorationTheme()(),
+      inputDecorationTheme: _InputDecorationDarkTheme()(),
       scaffoldBackgroundColor: darkColor.scaffoldBackground,
     );
   }

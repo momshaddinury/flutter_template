@@ -1,11 +1,11 @@
 part of '../theme_data.dart';
 
-class _FilledButtonThemeData with ThemeExtensions {
+class _FilledButtonLightThemeData with ThemeExtensions {
   FilledButtonThemeData call() {
     return FilledButtonThemeData(
       style: ButtonStyle(
         shape: WidgetStateProperty.all(
-          StadiumBorder(side: BorderSide(color: color.primary, width: 2)),
+          StadiumBorder(side: BorderSide(color: lightColor.primary, width: 2)),
         ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 24),
@@ -24,13 +24,13 @@ class _FilledButtonThemeData with ThemeExtensions {
   }
 }
 
-class _ElevatedButtonThemeData with ThemeExtensions {
+class _ElevatedButtonLightThemeData with ThemeExtensions {
   ElevatedButtonThemeData call() {
     return ElevatedButtonThemeData(
       style: ButtonStyle(
         elevation: WidgetStateProperty.all(0),
         shape: WidgetStateProperty.all(
-          StadiumBorder(side: BorderSide(color: color.primary, width: 2)),
+          StadiumBorder(side: BorderSide(color: lightColor.primary, width: 2)),
         ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 24),
@@ -49,11 +49,11 @@ class _ElevatedButtonThemeData with ThemeExtensions {
   }
 }
 
-class _TextButtonThemeData with ThemeExtensions {
+class _TextButtonLightThemeData with ThemeExtensions {
   TextButtonThemeData call() {
     return TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: WidgetStatePropertyAll(color.text.secondary),
+        foregroundColor: WidgetStatePropertyAll(lightColor.text.secondary),
         textStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
         ),
@@ -62,7 +62,7 @@ class _TextButtonThemeData with ThemeExtensions {
   }
 }
 
-class _DarkFilledButtonThemeData with ThemeExtensions {
+class _FilledButtonDarkThemeData with ThemeExtensions {
   FilledButtonThemeData call() {
     return FilledButtonThemeData(
       style: ButtonStyle(
@@ -86,7 +86,7 @@ class _DarkFilledButtonThemeData with ThemeExtensions {
   }
 }
 
-class _DarkElevatedButtonThemeData with ThemeExtensions {
+class _ElevatedButtonDarkThemeData with ThemeExtensions {
   ElevatedButtonThemeData call() {
     return ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -111,7 +111,7 @@ class _DarkElevatedButtonThemeData with ThemeExtensions {
   }
 }
 
-class _DarkTextButtonThemeData with ThemeExtensions {
+class _TextButtonDarkThemeData with ThemeExtensions {
   TextButtonThemeData call() {
     return TextButtonThemeData(
       style: ButtonStyle(

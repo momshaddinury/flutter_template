@@ -1,11 +1,11 @@
 part of '../theme_data.dart';
 
-class _InputDecorationTheme with ThemeExtensions {
+class _InputDecorationLightTheme with ThemeExtensions {
   final BorderRadius _borderRadius = BorderRadius.circular(6);
 
   InputDecorationTheme call() {
     return InputDecorationTheme(
-      hintStyle: textStyle.bodyLarge.copyWith(color: color.text.secondary),
+      hintStyle: textStyle.bodyLarge.copyWith(color: lightColor.text.secondary),
       contentPadding: const EdgeInsets.symmetric(
         vertical: 12,
         horizontal: 16,
@@ -14,17 +14,17 @@ class _InputDecorationTheme with ThemeExtensions {
       enabledBorder: OutlineInputBorder(
         borderRadius: _borderRadius,
         borderSide: BorderSide(
-          color: color.border,
+          color: lightColor.border,
           width: 1,
         ),
       ),
-      suffixIconColor: color.icon,
+      suffixIconColor: lightColor.icon,
       disabledBorder: OutlineInputBorder(borderRadius: _borderRadius),
     );
   }
 }
 
-class _DarkInputDecorationTheme with ThemeExtensions {
+class _InputDecorationDarkTheme with ThemeExtensions {
   final BorderRadius _borderRadius = BorderRadius.circular(6);
 
   InputDecorationTheme call() {

@@ -1,14 +1,14 @@
 part of '../theme_data.dart';
 
-class _BottomNavigationBarThemeData with ThemeExtensions {
+class _BottomNavigationBarLightThemeData with ThemeExtensions {
   BottomNavigationBarThemeData call() {
     return BottomNavigationBarThemeData(
       elevation: .5,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: color.bottomNavBar.selectedItem,
-      unselectedItemColor: color.bottomNavBar.unselectedItem,
+      selectedItemColor: lightColor.bottomNavBar.selectedItem,
+      unselectedItemColor: lightColor.bottomNavBar.unselectedItem,
       selectedLabelStyle: const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
@@ -18,7 +18,7 @@ class _BottomNavigationBarThemeData with ThemeExtensions {
   }
 }
 
-class _DarkBottomNavigationBarThemeData with ThemeExtensions {
+class _BottomNavigationBarDarkThemeData with ThemeExtensions {
   BottomNavigationBarThemeData call() {
     return BottomNavigationBarThemeData(
       elevation: .5,
