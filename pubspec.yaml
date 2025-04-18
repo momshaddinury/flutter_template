@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=3.6.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -49,13 +49,23 @@ dependencies:
   dart_mappable:
   # Networking
   retrofit: ^4.4.0
+  # Packages
+  core:
+    path: packages/core
+  domain:
+    path: packages/domain
+
+workspace:
+  - packages/core
+  - packages/data
+  - packages/domain
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^4.0.0
-  build_runner:
+  build_runner: ^2.4.15
   custom_lint:
   riverpod_generator:
   riverpod_lint:
@@ -69,7 +79,7 @@ flutter:
 
 
 flutter_gen:
-  output: lib/src/core/gen
+  output: lib/presentation/core/gen
   line_length: 80
 
   integrations:
