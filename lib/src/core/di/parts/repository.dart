@@ -2,9 +2,19 @@ part of '../dependency_injection.dart';
 
 @riverpod
 AuthenticationRepositoryImpl authenticationRepository(
-  AuthenticationRepositoryRef ref,
+  Ref ref,
 ) {
   return AuthenticationRepositoryImpl(
     remote: ref.read(restClientProvider),
+  );
+}
+
+
+@riverpod
+RouterRepository routerRepository(
+  Ref ref,
+) {
+  return RouterRepositoryImpl(
+    cacheService: ref.read(cacheServiceProvider),
   );
 }

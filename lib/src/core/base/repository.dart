@@ -1,5 +1,5 @@
 import '../logger/log.dart';
-import '../service/network/interceptor/failures.dart';
+import '../../data/services/network/interceptor/failures.dart';
 import 'response_modal.dart';
 
 abstract base class Repository<T> {

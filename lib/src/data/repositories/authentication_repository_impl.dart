@@ -1,7 +1,7 @@
 import '../services/network/rest_client.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/entities/sign_up_entity.dart';
-import '../../domain/interfaces/authentication_repository.dart';
+import '../../domain/repositories/authentication_repository.dart';
 import '../models/login_model.dart';
 
 final class AuthenticationRepositoryImpl extends AuthenticationRepository {

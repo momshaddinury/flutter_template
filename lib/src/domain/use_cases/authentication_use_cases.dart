@@ -1,27 +1,22 @@
-import '../../core/base/use_case.dart';
 import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
-import '../interfaces/authentication_repository.dart';
+import '../repositories/authentication_repository.dart';
 
-final class RegisterUseCase
-    extends UseCase<SignUpResponseEntity, SignUpRequestEntity> {
-  final AuthenticationRepository repository;
-
+final class RegisterUseCase {
   RegisterUseCase(this.repository);
 
-  @override
+  final AuthenticationRepository repository;
+
   Future<SignUpResponseEntity> call(SignUpRequestEntity request) async {
     return repository.register(request);
   }
 }
 
-final class LoginUseCase
-    extends UseCase<LoginResponseEntity, LoginRequestEntity> {
-  final AuthenticationRepository repository;
-
+final class LoginUseCase {
   LoginUseCase(this.repository);
 
-  @override
+  final AuthenticationRepository repository;
+
   Future<LoginResponseEntity> call(LoginRequestEntity request) async {
     return repository.login(request);
   }

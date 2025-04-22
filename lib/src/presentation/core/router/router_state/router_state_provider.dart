@@ -2,22 +2,22 @@ import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../di/dependency_injection.dart';
-import '../../../riverpod/startup/app_startup_provider.dart';
-import '../../cache/cache_service.dart';
+import '../../../../core/di/dependency_injection.dart';
+import '../../../../domain/repositories/router_repository.dart';
+import '../../application_state/app_startup_provider.dart';
 import '../routes.dart';
 
 part 'router_state_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 class RouterState extends _$RouterState {
-  CacheService? local;
+  RouterRepository? _routerRepository;
 
   @override
   String? build() {
     ref.listen(appStartupProvider, (_, state) {
       if (!(state.isLoading || state.hasError)) {
-        local = ref.read(cacheServiceProvider);
+        _routerRepository = ref.read(routerRepositoryProvider);
         decideNextRoute();
       }
     });
@@ -25,8 +25,8 @@ class RouterState extends _$RouterState {
   }
 
   void decideNextRoute() {
-    final isOnboarded = local?.get(CacheKey.isOnBoardingCompleted) ?? false;
-    final isLoggedIn = local?.get(CacheKey.isLoggedIn) ?? false;
+    final isOnboarded = _routerRepository?.isOnboardingCompleted() ?? false;
+    final isLoggedIn = _routerRepository?.isUserLoggedIn() ?? false;
 
     if (state == Routes.initial) {
       state = Routes.splash;
@@ -37,7 +37,7 @@ class RouterState extends _$RouterState {
     if (!isOnboarded) {
       state = Routes.onboarding;
       // Mark onboarding as completed
-      local?.save(CacheKey.isOnBoardingCompleted, true);
+      _routerRepository?.saveOnboardingAsCompleted();
       return;
     }
 

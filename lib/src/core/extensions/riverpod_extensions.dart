@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Works for sync providers only
 /// Usage: ValueListenable myListenable = ref.asListenable(provider);
 extension RefAsListenable on Ref {
-  ValueListenable<T> asListenable<T>(AlwaysAliveProviderBase<T> provider) {
+  ValueListenable<T> asListenable<T>(ProviderBase<T> provider) {
     final valueNotifier = ValueNotifier(read(provider));
 
     final providerSubscription = listen<T>(provider, (_, next) {

@@ -6,7 +6,7 @@ part of 'dependency_injection.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sharedPreferencesHash() => r'25eceea0052302f519f44a896409ba30ede45562';
+String _$sharedPreferencesHash() => r'ad13470fe866595ad0f58a3e26f11048d94ef22e';
 
 /// See also [sharedPreferences].
 @ProviderFor(sharedPreferences)
@@ -23,7 +23,7 @@ final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
-String _$dioHash() => r'ffa64eeb391ef2e05946d2fd5d1089489b04a5c7';
+String _$dioHash() => r'eec3c05057965d03b05f1c911d23290608dce9e5';
 
 /// See also [dio].
 @ProviderFor(dio)
@@ -40,7 +40,7 @@ final dioProvider = AutoDisposeProvider<Dio>.internal(
 // ignore: unused_element
 typedef DioRef = AutoDisposeProviderRef<Dio>;
 String _$authenticationRepositoryHash() =>
-    r'46d9fe2af7dcb586729f5c79eb66e9ffeccbc6dc';
+    r'4cb0cd4bae311e2eb1dd0990a0cb0b371d972799';
 
 /// See also [authenticationRepository].
 @ProviderFor(authenticationRepository)
@@ -59,6 +59,23 @@ final authenticationRepositoryProvider =
 // ignore: unused_element
 typedef AuthenticationRepositoryRef
     = AutoDisposeProviderRef<AuthenticationRepositoryImpl>;
+String _$routerRepositoryHash() => r'12f1dcad3a0b77200fe914a90df64485804a0504';
+
+/// See also [routerRepository].
+@ProviderFor(routerRepository)
+final routerRepositoryProvider = AutoDisposeProvider<RouterRepository>.internal(
+  routerRepository,
+  name: r'routerRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$routerRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef RouterRepositoryRef = AutoDisposeProviderRef<RouterRepository>;
 String _$cacheServiceHash() => r'cff8f03861be49680df786612f5086460a7286e2';
 
 /// See also [cacheService].
