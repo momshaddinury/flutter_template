@@ -36,8 +36,6 @@ dependencies:
   flutter_riverpod: ^2.5.1
   # Navigation
   go_router: ^14.2.8
-  # Cache & Database
-  shared_preferences: ^2.3.1
   # Generator and Annotations
   riverpod_annotation: ^2.3.5
   # Media
@@ -45,10 +43,6 @@ dependencies:
   # Logging
   logger: ^2.4.0
   pretty_dio_logger: ^1.4.0
-  # Serialization & Deserialization
-  dart_mappable:
-  # Networking
-  retrofit: ^4.4.0
   # Packages
   core:
     path: packages/core
@@ -70,8 +64,6 @@ dev_dependencies:
   riverpod_generator:
   riverpod_lint:
   flutter_gen_runner:
-  dart_mappable_builder:
-  retrofit_generator: '>=8.0.0 <10.0.0'
 
 
 flutter:

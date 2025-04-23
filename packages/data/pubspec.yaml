@@ -15,12 +15,12 @@ dependencies:
   flutter:
     sdk: flutter
   # Cache & Database
-  shared_preferences: 
+  shared_preferences: ^2.3.1
   # Serialization & Deserialization
   dart_mappable:
   # Networking
-  dio: 
-  retrofit:   
+  dio: ^5.8.0+1
+  retrofit: ^4.4.2
   # Packages
   core:
     path: ../core
@@ -34,6 +34,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   build_runner: 
   dart_mappable_builder:
+  retrofit_generator: '>=8.0.0 <10.0.0'
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

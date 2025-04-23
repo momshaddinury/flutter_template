@@ -15,19 +15,18 @@ dependencies:
   flutter:
     sdk: flutter
   # State management
-  flutter_riverpod: 
+  flutter_riverpod: ^2.5.1
   # Navigation
-  go_router: 
+  go_router: ^14.2.8
   # Logging
-  logger: 
-  pretty_dio_logger: 
+  logger: ^2.4.0
+  pretty_dio_logger: ^1.4.0
   # Generator and Annotations
-  riverpod_annotation: 
+  riverpod_annotation: ^2.3.5
   # Cache & Database
-  shared_preferences: 
+  shared_preferences: ^2.3.1
   # Networking
-  dio: 
-  retrofit: 
+  dio: ^5.8.0+1
   # Packages
   data:
     path: ../data
