@@ -23,7 +23,7 @@ final sharedPreferencesProvider = FutureProvider<SharedPreferences>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SharedPreferencesRef = FutureProviderRef<SharedPreferences>;
-String _$dioHash() => r'eec3c05057965d03b05f1c911d23290608dce9e5';
+String _$dioHash() => r'89629007628f2ec004a480568bf8dcd8e160dfe8';
 
 /// See also [dio].
 @ProviderFor(dio)
@@ -76,7 +76,7 @@ final routerRepositoryProvider = AutoDisposeProvider<RouterRepository>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef RouterRepositoryRef = AutoDisposeProviderRef<RouterRepository>;
-String _$cacheServiceHash() => r'cff8f03861be49680df786612f5086460a7286e2';
+String _$cacheServiceHash() => r'21a7ce6ef1eab778d1b25d2ff1b8fcc3ca26aac5';
 
 /// See also [cacheService].
 @ProviderFor(cacheService)
@@ -92,7 +92,7 @@ final cacheServiceProvider = Provider<CacheService>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef CacheServiceRef = ProviderRef<CacheService>;
-String _$restClientHash() => r'f19842a9c8fd5cb39b71025dd195b11148a27628';
+String _$restClientHash() => r'53a98cb9524e30c0a6bd05594c57185613bfc720';
 
 /// See also [restClient].
 @ProviderFor(restClient)

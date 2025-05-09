@@ -76,11 +76,11 @@ class LoginResponseModelMapper extends ClassMapperBase<LoginResponseModel> {
   @override
   final Function instantiate = _instantiate;
 
-  static LoginResponseModel fromMap(Map<String, dynamic> map) {
+  static LoginResponseModel fromJson(Map<String, dynamic> map) {
     return ensureInitialized().decodeMap<LoginResponseModel>(map);
   }
 
-  static LoginResponseModel fromJson(String json) {
+  static LoginResponseModel fromJsonString(String json) {
     return ensureInitialized().decodeJson<LoginResponseModel>(json);
   }
 }
@@ -124,27 +124,28 @@ class LoginRequestModelMapper extends ClassMapperBase<LoginRequestModel> {
 }
 
 mixin LoginRequestModelMappable {
-  String toJson() {
+  String toJsonString() {
     return LoginRequestModelMapper.ensureInitialized()
         .encodeJson<LoginRequestModel>(this as LoginRequestModel);
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return LoginRequestModelMapper.ensureInitialized()
         .encodeMap<LoginRequestModel>(this as LoginRequestModel);
   }
 
   LoginRequestModelCopyWith<LoginRequestModel, LoginRequestModel,
           LoginRequestModel>
-      get copyWith => _LoginRequestModelCopyWithImpl(
-          this as LoginRequestModel, $identity, $identity);
+      get copyWith =>
+          _LoginRequestModelCopyWithImpl<LoginRequestModel, LoginRequestModel>(
+              this as LoginRequestModel, $identity, $identity);
 }
 
 extension LoginRequestModelValueCopy<$R, $Out>
     on ObjectCopyWith<$R, LoginRequestModel, $Out> {
   LoginRequestModelCopyWith<$R, LoginRequestModel, $Out>
-      get $asLoginRequestModel =>
-          $base.as((v, t, t2) => _LoginRequestModelCopyWithImpl(v, t, t2));
+      get $asLoginRequestModel => $base
+          .as((v, t, t2) => _LoginRequestModelCopyWithImpl<$R, $Out>(v, t, t2));
 }
 
 abstract class LoginRequestModelCopyWith<$R, $In extends LoginRequestModel,
@@ -175,5 +176,5 @@ class _LoginRequestModelCopyWithImpl<$R, $Out>
   @override
   LoginRequestModelCopyWith<$R2, LoginRequestModel, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
-      _LoginRequestModelCopyWithImpl($value, $cast, t);
+      _LoginRequestModelCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

@@ -24,6 +24,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   void initState() {
     super.initState();
+    ref.listenManual(loginProvider, (previous, next) {
+      if (next?.value != null) {
+        context.pushNamed(Routes.homeTab);
+      }
+    });
   }
 
   @override
