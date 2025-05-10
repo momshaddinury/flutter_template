@@ -1,5 +1,4 @@
 import 'package:flutter_template/src/core/di/dependency_injection.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../domain/entities/login_entity.dart';
@@ -13,14 +12,8 @@ class Login extends _$Login {
 
   @override
   AsyncValue<LoginResponseEntity>? build() {
-    _useCase = LoginUseCase(ref.read(authenticationRepositoryProvider));
+    _useCase = ref.read(loginUseCaseProvider);
     return null;
-  }
-
-  bool _shouldRemember = false;
-
-  void shouldRemember(bool value) {
-    _shouldRemember = value;
   }
 
   void login({
@@ -34,7 +27,7 @@ class Login extends _$Login {
       LoginRequestEntity request = LoginRequestEntity(
         username: email,
         password: password,
-        shouldRemeber: _shouldRemember,
+        shouldRemeber: shouldRemember,
       );
 
       return await _useCase.call(request);
