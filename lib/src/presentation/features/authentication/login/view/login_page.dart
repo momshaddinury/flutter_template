@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/router/routes.dart';
 import '../../../../core/widgets/link_text.dart';
+import '../../../../core/widgets/loading_indicator.dart';
 
 part '../widgets/login_form.dart';
 part '../widgets/login_form_footer.dart';
@@ -33,6 +34,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(loginProvider);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -61,7 +64,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             shouldRemember: shouldRemember.value,
                           );
                     },
-                    child: const Text('Login'),
+                    child: (state?.isLoading ?? false)
+                        ? const LoadingIndicator()
+                        : const Text('Login'),
                   ),
                   LinkText(
                     text: 'Don\'t have an account? ',

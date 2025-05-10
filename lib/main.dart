@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'src/core/logger/riverpod_log.dart';
 import 'src/presentation/core/router/router.dart';
 import 'src/presentation/core/theme/theme.dart';
-
 
 void main() {
   runApp(
@@ -22,9 +22,9 @@ class MyApp extends ConsumerWidget {
     return MediaQuery.withClampedTextScaling(
       maxScaleFactor: 1.5,
       child: MaterialApp.router(
-        theme: context.themeData,
+        theme: context.lightTheme,
+        darkTheme: context.darkTheme,
         themeMode: ThemeMode.system,
-        darkTheme: context.darkThemeData,
         routerConfig: ref.read(goRouterProvider),
       ),
     );

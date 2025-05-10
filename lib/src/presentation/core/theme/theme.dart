@@ -6,9 +6,9 @@ import 'src/theme_extensions/extensions.dart';
 export 'src/theme_data.dart';
 
 extension ThemeHelpers on BuildContext {
-  ThemeData get themeData => $LightThemeData()();
+  ThemeData get lightTheme => $LightThemeData()();
 
-  ThemeData get darkThemeData => $DarkThemeData()();
+  ThemeData get darkTheme => $DarkThemeData()();
 
   ThemeData get _theme => Theme.of(this);
 

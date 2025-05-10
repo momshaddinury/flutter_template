@@ -27,6 +27,9 @@ class $LightThemeData with ThemeExtensions {
       textButtonTheme: _TextButtonLightThemeData()(),
       iconTheme: IconThemeData(color: lightColor.border),
       inputDecorationTheme: _InputDecorationLightTheme()(),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: lightColor.primary,
+      ),
       scaffoldBackgroundColor: lightColor.scaffoldBackground,
     );
   }
@@ -51,6 +54,9 @@ class $DarkThemeData with ThemeExtensions {
       textButtonTheme: _TextButtonDarkThemeData()(),
       iconTheme: IconThemeData(color: darkColor.border),
       inputDecorationTheme: _InputDecorationDarkTheme()(),
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: darkColor.onPrimary,
+      ),
       scaffoldBackgroundColor: darkColor.scaffoldBackground,
     );
   }
