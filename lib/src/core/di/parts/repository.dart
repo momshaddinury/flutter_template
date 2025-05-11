@@ -6,9 +6,9 @@ AuthenticationRepositoryImpl authenticationRepository(
 ) {
   return AuthenticationRepositoryImpl(
     remote: ref.read(restClientProvider),
+    local: ref.read(cacheServiceProvider),
   );
 }
-
 
 @riverpod
 RouterRepository routerRepository(

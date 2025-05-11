@@ -17,7 +17,27 @@ final class LoginUseCase {
 
   final AuthenticationRepository repository;
 
-  Future<LoginResponseEntity> call(LoginRequestEntity request) async {
-    return repository.login(request);
+  Future<void> call(LoginRequestEntity request) async {
+    await repository.login(request);
+  }
+}
+
+final class CheckRememberMeUseCase {
+  CheckRememberMeUseCase(this.repository);
+
+  final AuthenticationRepository repository;
+
+  Future<bool> call() async {
+    return repository.rememberMe();
+  }
+}
+
+final class SaveRememberMeUseCase {
+  SaveRememberMeUseCase(this.repository);
+
+  final AuthenticationRepository repository;
+
+  Future<bool> call(bool rememberMe) async {
+    return repository.rememberMe(rememberMe: rememberMe);
   }
 }

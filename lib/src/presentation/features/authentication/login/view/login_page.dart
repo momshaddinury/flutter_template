@@ -25,9 +25,24 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   void initState() {
     super.initState();
+
+    final notifier = ref.read(loginProvider.notifier);
+    notifier.checkRememberMe();
+
+    shouldRemember.addListener(() {
+      notifier.updateRememberMe(shouldRemember.value);
+    });
+
     ref.listenManual(loginProvider, (previous, next) {
-      if (next?.value != null) {
+      if (next.isSuccess) {
+        notifier.saveRememberMe(shouldRemember.value);
         context.pushNamed(Routes.homeTab);
+      } else if (next.isError) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(next.error.toString())),
+        );
+      } else {
+        shouldRemember.value = next.rememberMe;
       }
     });
   }
@@ -64,7 +79,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             shouldRemember: shouldRemember.value,
                           );
                     },
-                    child: (state?.isLoading ?? false)
+                    child: state.isLoading
                         ? const LoadingIndicator()
                         : const Text('Login'),
                   ),

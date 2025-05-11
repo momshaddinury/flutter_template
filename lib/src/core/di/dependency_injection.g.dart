@@ -40,7 +40,7 @@ final dioProvider = AutoDisposeProvider<Dio>.internal(
 // ignore: unused_element
 typedef DioRef = AutoDisposeProviderRef<Dio>;
 String _$authenticationRepositoryHash() =>
-    r'4cb0cd4bae311e2eb1dd0990a0cb0b371d972799';
+    r'06be20903323d90cc68f3de9259377e9e2b35014';
 
 /// See also [authenticationRepository].
 @ProviderFor(authenticationRepository)
@@ -124,5 +124,45 @@ final loginUseCaseProvider = AutoDisposeProvider<LoginUseCase>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef LoginUseCaseRef = AutoDisposeProviderRef<LoginUseCase>;
+String _$checkRememberMeUseCaseHash() =>
+    r'6ef4926497ddf99900ed33b5509452cb91d0aff9';
+
+/// See also [checkRememberMeUseCase].
+@ProviderFor(checkRememberMeUseCase)
+final checkRememberMeUseCaseProvider =
+    AutoDisposeProvider<CheckRememberMeUseCase>.internal(
+  checkRememberMeUseCase,
+  name: r'checkRememberMeUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$checkRememberMeUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef CheckRememberMeUseCaseRef
+    = AutoDisposeProviderRef<CheckRememberMeUseCase>;
+String _$saveRememberMeUseCaseHash() =>
+    r'b6effc4112efd25bd22a60f6befbfea35ccb9cf8';
+
+/// See also [saveRememberMeUseCase].
+@ProviderFor(saveRememberMeUseCase)
+final saveRememberMeUseCaseProvider =
+    AutoDisposeProvider<SaveRememberMeUseCase>.internal(
+  saveRememberMeUseCase,
+  name: r'saveRememberMeUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$saveRememberMeUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SaveRememberMeUseCaseRef
+    = AutoDisposeProviderRef<SaveRememberMeUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

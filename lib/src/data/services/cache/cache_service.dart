@@ -5,6 +5,7 @@ part 'shared_preference_service.dart';
 enum CacheKey {
   isOnBoardingCompleted,
   isLoggedIn,
+  rememberMe,
 }
 
 abstract class CacheService {
