@@ -15,7 +15,6 @@ import '../../data/services/network/rest_client.dart';
 import '../../domain/repositories/router_repository.dart';
 
 part 'dependency_injection.g.dart';
-part 'parts/data_source.dart';
 part 'parts/externals.dart';
 part 'parts/repository.dart';
 part 'parts/services.dart';
