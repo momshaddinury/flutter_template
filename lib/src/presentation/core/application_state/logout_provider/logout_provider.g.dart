@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_provider.dart';
+part of 'logout_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginHash() => r'58ec092500921f4f5345a77fc8809a664b05d1a4';
+String _$logoutHash() => r'32bd0ca0d4d47afc6a53d352351006027facf956';
 
-/// See also [Login].
-@ProviderFor(Login)
-final loginProvider = AutoDisposeNotifierProvider<Login, LoginState>.internal(
-  Login.new,
-  name: r'loginProvider',
+/// See also [Logout].
+@ProviderFor(Logout)
+final logoutProvider = NotifierProvider<Logout, LogoutState>.internal(
+  Logout.new,
+  name: r'logoutProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$loginHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$logoutHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Login = AutoDisposeNotifier<LoginState>;
+typedef _$Logout = Notifier<LogoutState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

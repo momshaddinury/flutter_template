@@ -164,5 +164,22 @@ final saveRememberMeUseCaseProvider =
 // ignore: unused_element
 typedef SaveRememberMeUseCaseRef
     = AutoDisposeProviderRef<SaveRememberMeUseCase>;
+String _$logoutUseCaseHash() => r'e46d735224033bf72b7b42db70e6bd22a4d070a2';
+
+/// See also [logoutUseCase].
+@ProviderFor(logoutUseCase)
+final logoutUseCaseProvider = AutoDisposeProvider<LogoutUseCase>.internal(
+  logoutUseCase,
+  name: r'logoutUseCaseProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$logoutUseCaseHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LogoutUseCaseRef = AutoDisposeProviderRef<LogoutUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -16,4 +16,6 @@ abstract base class AuthenticationRepository extends Repository {
   Future<String> verifyOTP(Map<String, dynamic> data);
 
   Future<String> resendOTP(Map<String, dynamic> data);
+
+  Future<void> logout();
 }

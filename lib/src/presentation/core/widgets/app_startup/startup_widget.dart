@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../application_state/app_startup_provider.dart';
+import '../../application_state/startup_provider/app_startup_provider.dart';
 import 'startup_error_widget.dart';
 
 class AppStartupWidget extends ConsumerWidget {

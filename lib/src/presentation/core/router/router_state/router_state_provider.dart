@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../domain/repositories/router_repository.dart';
-import '../../application_state/app_startup_provider.dart';
+import '../../application_state/startup_provider/app_startup_provider.dart';
 import '../routes.dart';
 
 part 'router_state_provider.g.dart';

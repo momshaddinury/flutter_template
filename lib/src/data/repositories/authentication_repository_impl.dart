@@ -81,4 +81,9 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
     // TODO: implement resendOTP
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> logout() async {
+    await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
+  }
 }

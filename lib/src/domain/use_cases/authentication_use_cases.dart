@@ -41,3 +41,13 @@ final class SaveRememberMeUseCase {
     return repository.rememberMe(rememberMe: rememberMe);
   }
 }
+
+final class LogoutUseCase {
+  LogoutUseCase(this.repository);
+
+  final AuthenticationRepository repository;
+
+  Future<void> call() async {
+    return repository.logout();
+  }
+}
