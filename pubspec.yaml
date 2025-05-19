@@ -71,7 +71,7 @@ flutter:
 
 
 flutter_gen:
-  output: lib/src/core/gen
+  output: lib/src/presentation/core/gen
   line_length: 80
 
   integrations:
