@@ -5,6 +5,7 @@ import 'theme_extensions/extensions.dart';
 part 'part/app_bar_theme.dart';
 part 'part/bottom_navigation_bar_theme_data.dart';
 part 'part/button_theme_data.dart';
+part 'part/checkbox_theme.dart';
 part 'part/dropdown_menu_theme_data.dart';
 part 'part/input_decoration_theme.dart';
 
@@ -27,6 +28,7 @@ class $LightThemeData with ThemeExtensions {
       textButtonTheme: _TextButtonLightThemeData()(),
       iconTheme: IconThemeData(color: lightColor.border),
       inputDecorationTheme: _InputDecorationLightTheme()(),
+      checkboxTheme: _CheckboxTheme()(),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: lightColor.primary,
       ),
@@ -54,6 +56,7 @@ class $DarkThemeData with ThemeExtensions {
       textButtonTheme: _TextButtonDarkThemeData()(),
       iconTheme: IconThemeData(color: darkColor.border),
       inputDecorationTheme: _InputDecorationDarkTheme()(),
+      checkboxTheme: _CheckboxTheme()(),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         color: darkColor.onPrimary,
       ),
