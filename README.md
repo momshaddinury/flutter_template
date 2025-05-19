@@ -1,121 +1,101 @@
-# flutter_template
+# Flutter Template
 
-A starter Flutter template to help developers with the initial steps needed in every project. This template includes essential features such as network service, routing, redirection logic, theming, dependency injection, and a well-structured architecture to streamline the development process.
+A production-ready Flutter template that provides a solid foundation for building scalable and maintainable applications. This template comes with pre-configured architecture, navigation, theming, and other essential features to help you kickstart your Flutter project.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- **Clean Architecture**: Well-organized project structure following clean architecture principles
+- **State Management**: Riverpod for efficient state management
+- **Navigation**: Go Router for type-safe routing
+- **Dependency Injection**: Built-in dependency injection setup
+- **Local Storage**: Shared Preferences integration
+- **Network Layer**: Retrofit and Dio for API communication
+- **Code Generation**: Build runner integration for code generation
+- **Logging**: Comprehensive logging setup with pretty_dio_logger
+- **Asset Management**: Flutter SVG support with code generation
+- **Serialization**: Dart Mappable for JSON serialization/deserialization
 
-### Prerequisites
+## 📋 Prerequisites
 
-- [Flutter SDK](https://flutter.dev/docs/get-started/install)
-- [Dart SDK](https://dart.dev/get-dart)
-- [Android Studio](https://developer.android.com/studio) or [Xcode](https://developer.apple.com/xcode/) for iOS development
+- Flutter SDK (>=3.29.0)
+- Dart SDK (>=3.4.0)
+- Android Studio / VS Code with Flutter extensions
+- Git
 
-### Installation
+## 🛠️ Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/yourusername/flutter_template.git
-    cd flutter_template
-    ```
+```bash
+git clone https://github.com/yourusername/flutter_template.git
+cd flutter_template
+```
 
 2. Install dependencies:
-    ```sh
-    flutter pub get
-    ```
+```bash
+flutter pub get
+```
 
-3. Run the app:
-    ```sh
-    flutter run
-    ```
+3. Run code generation:
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 
-### Project Structure
+## 🏗️ Project Structure
 
-- `lib/`: Contains the main Dart code for the Flutter application.
-- `assets/`: Contains the assets like images, fonts, etc.
-- `android/`: Contains the Android-specific code and configuration.
-- `ios/`: Contains the iOS-specific code and configuration.
-- `test/`: Contains the unit and widget tests.
+```
+lib/
+├── src/
+│   ├── core/         # Core functionality, utilities, and constants
+│   ├── data/         # Data layer (repositories, data sources)
+│   ├── domain/       # Business logic and entities
+│   └── presentation/ # UI layer (screens, widgets)
+└── main.dart         # Application entry point
 
-### Configuration
+docs/
+├── architecture.md           # Architecture documentation
+└── dependency_injection.md   # Dependency injection documentation
+```
 
-#### Android
+## 📚 Documentation
 
-The Android configuration is managed in the `android/app/build.gradle` file. Key configurations include:
+The project includes detailed documentation in the `docs` folder:
+- [Architecture Overview](docs/architecture.md)
+- [Dependency Injection](docs/dependency_injection.md)
 
-- `applicationId`: The unique application ID.
-- `minSdkVersion`: Minimum SDK version.
-- `targetSdkVersion`: Target SDK version.
+## 🛠️ Development
 
-#### iOS
+### Code Generation
 
-The iOS configuration is managed in the `ios/Podfile` file. Key configurations include:
+This project uses several code generators. After making changes to files with annotations, run:
 
-- `use_frameworks!`: Enables the use of frameworks.
-- `use_modular_headers!`: Enables the use of modular headers.
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+```
 
-### Architecture
+For continuous code generation during development:
 
-#### Core Folder
+```bash
+flutter pub run build_runner watch --delete-conflicting-outputs
+```
 
-The `core` folder contains the foundational elements and utilities that support the entire application. It includes:
+### Key Dependencies
 
-- **base**: Contains base classes for repository and use case patterns, such as `repository.dart`, `response_modal.dart`, and `use_case.dart`.
-- **di**: Manages dependency injection with files like `dependency_injection.dart` and `dependency_injection.g.dart`. The `parts` subfolder contains specific DI configurations for data sources, externals, repositories, and services.
-- **extensions**: Provides extensions to enhance functionality, including `go_router_extension.dart` and `riverpod_extensions.dart`.
-- **gen**: Typically used for generated code.
-- **logger**: Contains logging utilities, such as `log.dart` and `riverpod_log.dart`.
-- **riverpod**: Manages state using Riverpod, with providers like `app_startup_provider.dart` and `app_startup_provider.g.dart`.
-- **service**: Contains various services, including:
-  - **cache**: For caching mechanisms (`cache_service.dart`, `shared_preference_service.dart`).
-  - **network**: For network-related functionalities (`network.dart`, `network_provider.dart`).
-  - **router**: For routing configurations (`router.dart`, `routes.dart`).
-- **theme**: Manages theming and styling, with subfolders for specific theme parts and extensions.
-- **widgets**: Contains reusable widgets, such as those in the `app_startup` subfolder.
+- **State Management**: `flutter_riverpod`
+- **Navigation**: `go_router`
+- **Network**: `retrofit`, `dio`
+- **Local Storage**: `shared_preferences`
+- **Serialization**: `dart_mappable`
+- **Code Generation**: `build_runner`, `riverpod_generator`, `retrofit_generator`
 
-#### Feature Folder
+## 🤝 Contributing
 
-The `feature` folder is organized based on the Clean Architecture principles, utilizing the repository pattern. Each feature is divided into:
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- **authentication**: A comprehensive example of Clean Architecture with the following structure:
-  - **data**: Contains data sources, models, and repository implementations.
-    - **data_sources**: Defines and implements data sources (`authentication_data_source.dart`, `authentication_data_source_impl.dart`).
-    - **models**: Data models like `login_model.dart` and `sign_up_model.dart`.
-    - **repositories**: Implements repositories (`authentication_repository_impl.dart`).
-  - **domain**: Contains entities, repository interfaces, and use cases.
-    - **entities**: Defines core entities (`login_entity.dart`, `sign_up_entity.dart`).
-    - **repositories**: Repository interfaces (`authentication_repository.dart`).
-    - **use_cases**: Use case implementations (`authentication_use_cases.dart`).
-  - **presentation**: Manages the UI and state.
-    - **forgot_password**: Views for password reset.
-    - **login**: Login views and widgets.
-    - **registration**: Registration views.
-    - **shared**: Shared widgets like `link_text.dart`.
+## 📝 License
 
-- **onboarding**: Manages the onboarding process with presentation layers.
-  - **presentation**: Contains models and views for onboarding.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- **splash**: Manages the splash screen.
-  - **presentation**: Contains views for the splash screen.
+## 🙏 Acknowledgments
 
-This structure ensures a clear separation of concerns, making the codebase maintainable and scalable.
-### Useful Resources
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-- [Flutter Documentation](https://docs.flutter.dev/)
-
-### License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests.
-
-### Authors
-
-- **Momshad Dinury** - *Initial work* - [momshaddinury](https://github.com/momshaddinury)
-
-See also the list of [contributors](https://github.com/momshaddinury/flutter_template/contributors) who participated in this project.
+- Flutter team for the amazing framework
+- All the package authors that made this template possible
