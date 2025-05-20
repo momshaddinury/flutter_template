@@ -37,7 +37,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     ref.listenManual(loginProvider, (previous, next) {
       if (next.isSuccess) {
         notifier.saveRememberMe(shouldRemember.value);
-        context.pushNamed(Routes.homeTab);
+        context.pushNamed(Routes.home);
       } else if (next.isError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(next.error.toString())),

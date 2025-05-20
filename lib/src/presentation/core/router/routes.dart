@@ -10,5 +10,6 @@ class Routes {
   static const String resetPasswordSuccess = 'reset-password-success';
   static const String registration = 'registration';
 
-  static const String homeTab = '/home-tab';
+  static const String home = '/home';
+  static const String profile = '/profile';
 }
