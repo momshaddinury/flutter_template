@@ -27,6 +27,12 @@ class _LoginFormState extends State<_LoginForm> {
           decoration: const InputDecoration(
             hintText: 'Email',
           ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Email is required';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 16),
         TextFormField(
@@ -47,6 +53,12 @@ class _LoginFormState extends State<_LoginForm> {
               ),
             ),
           ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Password is required';
+            }
+            return null;
+          },
         ),
         _FormFooter(shouldRemember: widget.shouldRemember),
       ],

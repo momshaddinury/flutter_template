@@ -19,6 +19,7 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final shouldRemember = ValueNotifier<bool>(false);
@@ -37,7 +38,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     ref.listenManual(loginProvider, (previous, next) {
       if (next.isSuccess) {
         notifier.saveRememberMe(shouldRemember.value);
-        context.pushNamed(Routes.home);
+        context.pushReplacementNamed(Routes.home);
       } else if (next.isError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(next.error.toString())),
@@ -66,20 +67,27 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 children: [
                   const FlutterLogo(size: 200),
                   const SizedBox(height: 80),
-                  _LoginForm(
-                    emailController: emailController,
-                    passwordController: passwordController,
-                    shouldRemember: shouldRemember,
+                  Form(
+                    key: _formKey,
+                    child: _LoginForm(
+                      emailController: emailController,
+                      passwordController: passwordController,
+                      shouldRemember: shouldRemember,
+                    ),
                   ),
                   const SizedBox(height: 32),
                   FilledButton(
-                    onPressed: () {
-                      ref.read(loginProvider.notifier).login(
-                            email: emailController.text,
-                            password: passwordController.text,
-                            shouldRemember: shouldRemember.value,
-                          );
-                    },
+                    onPressed: state.isLoading
+                        ? null
+                        : () {
+                            if (_formKey.currentState!.validate()) {
+                              ref.read(loginProvider.notifier).login(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                    shouldRemember: shouldRemember.value,
+                                  );
+                            }
+                          },
                     child: state.isLoading
                         ? const LoadingIndicator()
                         : const Text('Login'),

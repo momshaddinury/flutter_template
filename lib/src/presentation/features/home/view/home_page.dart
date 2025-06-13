@@ -18,7 +18,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   void initState() {
     super.initState();
     ref.listenManual(logoutProvider, (previous, next) {
-      if (next.isSuccess) context.go(Routes.login);
+      if (next.isSuccess) context.pushReplacementNamed(Routes.login);
     });
   }
 
