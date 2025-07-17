@@ -22,6 +22,8 @@ class MyApp extends ConsumerWidget {
       maxScaleFactor: 1.5,
       child: MaterialApp.router(
         theme: context.themeData,
+        themeMode: ThemeMode.system,
+        darkTheme: context.darkThemeData,
         routerConfig: ref.read(goRouterProvider),
       ),
     );

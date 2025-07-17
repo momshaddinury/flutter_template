@@ -10,11 +10,9 @@ import '../../../feature/authentication/presentation/login/view/login_page.dart'
 import '../../../feature/authentication/presentation/registration/view/registration_page.dart';
 import '../../../feature/onboarding/presentation/view/onboarding_page.dart';
 import '../../../feature/splash/presentation/view/splash_page.dart';
-import '../../di/dependency_injection.dart';
 import '../../extensions/riverpod_extensions.dart';
 import '../../logger/log.dart';
 import '../../widgets/app_startup/startup_widget.dart';
-import '../cache/cache_service.dart';
 import 'router_state/router_state_provider.dart';
 import 'routes.dart';
 
@@ -40,7 +38,6 @@ GoRouter goRouter(GoRouterRef ref) {
       ].contains(state.uri.path)) {
         return ref.asListenable(routerStateProvider).value;
       }
-
       return null;
     },
     routes: [

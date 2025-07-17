@@ -1,9 +1,17 @@
 part of '../theme_data.dart';
 
-class _DropdownMenuThemeData with ThemeExtensions {
+class _DropdownMenuLightThemeData with ThemeExtensions {
   DropdownMenuThemeData call() {
     return DropdownMenuThemeData(
-      inputDecorationTheme: _InputDecorationTheme()(),
+      inputDecorationTheme: _InputDecorationLightTheme()(),
+    );
+  }
+}
+
+class _DropdownMenuDarkThemeData with ThemeExtensions {
+  DropdownMenuThemeData call() {
+    return DropdownMenuThemeData(
+      inputDecorationTheme: _InputDecorationDarkTheme()(),
     );
   }
 }
