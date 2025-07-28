@@ -8,6 +8,6 @@ CacheService cacheService(Ref ref) {
 }
 
 @riverpod
-RestClient restClient(Ref ref) {
+RestClient restClientService(Ref ref) {
   return RestClient(ref.read(dioProvider));
 }
