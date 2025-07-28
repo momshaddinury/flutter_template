@@ -11,18 +11,18 @@ class _LightPageViewColors extends PageViewColors {
   const _LightPageViewColors();
 
   @override
-  Color get active => _LightThemeColors.active;
+  Color get active => _Primitive.brand;
 
   @override
-  Color get inactive => _LightThemeColors.inactive;
+  Color get inactive => _Primitive.neutral20;
 }
 
 class _DarkPageViewColors extends PageViewColors {
   const _DarkPageViewColors();
 
   @override
-  Color get active => _DarkThemeColors.active;
+  Color get active => _Primitive.brand;
 
   @override
-  Color get inactive => _DarkThemeColors.inactive;
+  Color get inactive => _Primitive.neutral20;
 }

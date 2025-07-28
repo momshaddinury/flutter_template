@@ -12,24 +12,24 @@ class _LightTextColors extends TextColors {
   const _LightTextColors();
 
   @override
-  Color get primary => _LightThemeColors.textPrimary;
+  Color get primary => _Primitive.neutral50;
 
   @override
-  Color get secondary => _LightThemeColors.textSecondary;
+  Color get secondary => _Primitive.neutral20;
 
   @override
-  Color get tertiary => _LightThemeColors.textTertiary;
+  Color get tertiary => _Primitive.neutral20;
 }
 
 class _DarkTextColors extends TextColors {
   const _DarkTextColors();
 
   @override
-  Color get primary => _DarkThemeColors.textPrimary;
+  Color get primary => _Primitive.neutral0;
 
   @override
-  Color get secondary => _DarkThemeColors.textSecondary;
+  Color get secondary => _Primitive.neutral20;
 
   @override
-  Color get tertiary => _DarkThemeColors.textTertiary;
+  Color get tertiary => _Primitive.neutral20;
 }

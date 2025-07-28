@@ -5,4 +5,4 @@ part 'part/app_bar_colors.dart';
 part 'part/bottom_nav_bar_colors.dart';
 part 'part/page_view_colors.dart';
 part 'part/text_colors.dart';
-part 'semantic.dart';
+part 'primitive.dart';
