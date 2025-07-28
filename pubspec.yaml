@@ -60,6 +60,8 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   build_runner:
   custom_lint:
+  flutter_guardian:
+   path: packages/flutter_guardian/
   riverpod_generator:
   riverpod_lint:
   flutter_gen_runner:
