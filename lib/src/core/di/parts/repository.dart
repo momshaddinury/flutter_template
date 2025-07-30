@@ -18,3 +18,8 @@ RouterRepository routerRepository(
     cacheService: ref.read(cacheServiceProvider),
   );
 }
+
+@riverpod
+LocaleRepository localeRepository(Ref ref) {
+  return LocaleRepositoryImpl(ref.read(cacheServiceProvider));
+}

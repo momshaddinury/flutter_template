@@ -19,3 +19,13 @@ SaveRememberMeUseCase saveRememberMeUseCase(Ref ref) {
 LogoutUseCase logoutUseCase(Ref ref) {
   return LogoutUseCase(ref.read(authenticationRepositoryProvider));
 }
+
+@riverpod
+GetCurrentLocaleUseCase getCurrentLocaleUseCase(Ref ref) {
+  return GetCurrentLocaleUseCase(ref.read(localRepositoryProvider));
+}
+
+@riverpod
+SetCurrentLocaleUseCase setCurrentLocaleUseCase(Ref ref) {
+  return SetCurrentLocaleUseCase(ref.read(localRepositoryProvider));
+}
