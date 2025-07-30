@@ -52,6 +52,10 @@ dependencies:
   # Networking
   retrofit: ^4.4.0
   dio: ^5.8.0+1
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +75,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
 
 flutter_gen:
