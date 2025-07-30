@@ -16,13 +16,12 @@ enum FailureType {
   illegalOperation,
   notFound,
   unauthorized,
+  typeError,
   unknown,
 }
 
 @freezed
 abstract class Failure with _$Failure {
-  const Failure._();
-
   const factory Failure({
     required FailureType type,
     required String message,
@@ -30,93 +29,131 @@ abstract class Failure with _$Failure {
     StackTrace? stackTrace,
   }) = _Failure;
 
-  factory Failure.mapExceptionToFailure(Exception exception) {
-    if (exception is DioException) {
-      ({String message, String code})? error = _parseError(exception.response);
+  const Failure._();
 
-      return switch (exception.type) {
-        DioExceptionType.connectionTimeout ||
+  factory Failure.mapExceptionToFailure(Object e) {
+    if (e is DioException) {
+      ({String message, String? code})? error = _parseError(e.response);
+
+      return switch (e.type) {
+        DioExceptionType.connectionTimeout => Failure(
+          type: FailureType.timeout,
+          message:
+              error?.message ??
+              'Unable to connect.'
+                  'Please check your internet connection and try again.',
+          code: error?.code,
+          stackTrace: e.stackTrace,
+        ),
         DioExceptionType.receiveTimeout ||
-        DioExceptionType.sendTimeout =>
-          Failure(
-            type: FailureType.timeout,
-            message: error?.message ?? exception.toString(),
-            code: error?.code,
-            stackTrace: exception.stackTrace,
-          ),
+        DioExceptionType.sendTimeout => Failure(
+          type: FailureType.timeout,
+          message:
+              error?.message ??
+              'The request took too long to complete.'
+                  'Please try again or check your network connection.',
+          code: error?.code,
+          stackTrace: e.stackTrace,
+        ),
         DioExceptionType.badResponse => Failure(
-            type: FailureType.badResponse,
-            message: error?.message ?? exception.toString(),
-            code: error?.code,
-            stackTrace: exception.stackTrace,
-          ),
+          type: FailureType.badResponse,
+          message: error?.message ?? e.toString(),
+          code: error?.code,
+          stackTrace: e.stackTrace,
+        ),
         DioExceptionType.badCertificate => Failure(
-            type: FailureType.badCertificate,
-            message: error?.message ?? exception.toString(),
-            code: error?.code,
-            stackTrace: exception.stackTrace,
-          ),
+          type: FailureType.badCertificate,
+          message: error?.message ?? e.toString(),
+          code: error?.code,
+          stackTrace: e.stackTrace,
+        ),
         DioExceptionType.connectionError => Failure(
-            type: FailureType.network,
-            message: error?.message ?? exception.toString(),
-            code: error?.code,
-            stackTrace: exception.stackTrace,
-          ),
+          type: FailureType.network,
+          message:
+              error?.message ??
+              'Unable to connect to the server.'
+                  'Please check your internet connection or try again later.',
+          code: error?.code,
+          stackTrace: e.stackTrace,
+        ),
         _ => Failure(
-            type: FailureType.unknown,
-            message: error?.message ?? exception.toString(),
-            code: error?.code,
-            stackTrace: exception.stackTrace,
-          ),
+          type: FailureType.unknown,
+          message: error?.message ?? 'Something went wrong.',
+          code: error?.code,
+          stackTrace: e.stackTrace,
+        ),
       };
     }
 
-    if (exception is CustomException) {
-      final e = exception as CustomException;
-
+    if (e is CustomException) {
       return switch (e) {
         ParsingException() => Failure(
-            type: FailureType.parsing,
-            message: e.message,
-            stackTrace: e.stackTrace,
-          ),
+          type: FailureType.parsing,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ),
         ValidationException() => Failure(
-            type: FailureType.validation,
-            message: e.message,
-            stackTrace: e.stackTrace,
-          ),
+          type: FailureType.validation,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ),
         IllegalOperationException() => Failure(
-            type: FailureType.illegalOperation,
-            message: e.message,
-            stackTrace: e.stackTrace,
-          ),
+          type: FailureType.illegalOperation,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ),
         NotFoundException() => Failure(
-            type: FailureType.notFound,
-            message: e.message,
-            stackTrace: e.stackTrace,
-          ),
+          type: FailureType.notFound,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ),
         UnauthorizedException() => Failure(
-            type: FailureType.unauthorized,
-            message: e.message,
-            stackTrace: e.stackTrace,
-          ),
-        _ => Failure(type: FailureType.unknown, message: e.toString()),
+          type: FailureType.unauthorized,
+          message: e.message,
+          stackTrace: e.stackTrace,
+        ),
+        _ => Failure(
+          type: FailureType.unknown,
+          message: e.toString(),
+          stackTrace: e.stackTrace,
+        ),
       };
     }
 
-    return Failure(type: FailureType.unknown, message: exception.toString());
+    if (e is Error) {
+      return switch (e) {
+        TypeError() => Failure(
+          type: FailureType.typeError,
+          message: 'Type mismatch: ${e.toString()}',
+          stackTrace: e.stackTrace,
+        ),
+        _ => Failure(
+          type: FailureType.unknown,
+          message: e.toString(),
+          stackTrace: e.stackTrace,
+        ),
+      };
+    }
+
+    return Failure(type: FailureType.unknown, message: e.toString());
   }
 
-  static ({String message, String code})? _parseError(Response? response) {
+  static ({String message, String? code})? _parseError(Response? response) {
     if (response == null) return null;
 
     try {
       if (response.data is Map<String, dynamic>) {
-        final errorMap = (response.data as Map<String, dynamic>);
-        return (
-          message: errorMap['message'],
-          code: response.statusCode.toString(),
-        );
+        String message;
+        final errorMap = response.data;
+
+        if (errorMap['message'] is Map<String, dynamic>) {
+          final messageMap = errorMap['message'] as Map<String, dynamic>;
+          message = messageMap.values.join(' ');
+        } else {
+          message = errorMap['message']?.toString() ?? 'Something went wrong';
+        }
+
+        return (message: message, code: errorMap['statusCode']?.toString());
       }
     } catch (e, stackTrace) {
       Log.error(e.toString());
