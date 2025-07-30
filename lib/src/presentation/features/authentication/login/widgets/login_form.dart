@@ -24,12 +24,12 @@ class _LoginFormState extends State<_LoginForm> {
       children: [
         TextFormField(
           controller: widget.emailController,
-          decoration: const InputDecoration(
-            hintText: 'Email',
+          decoration: InputDecoration(
+            hintText: context.locale.email,
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Email is required';
+              return context.locale.emailRequired;
             }
             return null;
           },
@@ -39,7 +39,7 @@ class _LoginFormState extends State<_LoginForm> {
           controller: widget.passwordController,
           obscureText: !_isPasswordVisible,
           decoration: InputDecoration(
-            hintText: 'Password',
+            hintText: context.locale.password,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
@@ -55,7 +55,7 @@ class _LoginFormState extends State<_LoginForm> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Password is required';
+              return context.locale.passwordRequired;
             }
             return null;
           },

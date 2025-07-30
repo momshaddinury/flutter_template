@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 import '../../../../core/widgets/link_text.dart';
@@ -27,12 +28,12 @@ class EmailVerificationPage extends StatelessWidget {
                       const FlutterLogo(size: 300),
                       const SizedBox(height: 24),
                       Text(
-                        'Check your mail',
+                        context.locale.checkYourMail,
                         style: context.textStyle.headlineSmall.size(24),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Please enter 4 digit code sent to your mail hello**@gmail.com.',
+                        context.locale.enterVerificationCode,
                         textAlign: TextAlign.center,
                         style: context.textStyle.bodyMedium.medium.withColor(
                           context.color.text.secondary,
@@ -41,8 +42,8 @@ class EmailVerificationPage extends StatelessWidget {
                       const SizedBox(height: 32),
                       const _OTPField(),
                       LinkText(
-                        text: 'Didn\'t get a code? ',
-                        linkText: 'Click to resend',
+                        text: context.locale.didntGetCode,
+                        linkText: context.locale.clickToResend,
                         onTap: () {
                           //TODO: Implement this
                         },
@@ -51,9 +52,8 @@ class EmailVerificationPage extends StatelessWidget {
                   ),
                 ),
                 LinkText(
-                  text:
-                      'Did not receive the email? Check your spam filter. or ',
-                  linkText: 'try another email address',
+                  text: context.locale.didNotReceiveEmail,
+                  linkText: context.locale.tryAnotherEmail,
                   onTap: () {
                     context.pushReplacementNamed(Routes.resetPassword);
                   },

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/extensions/app_localization.dart';
+
 class NavigationShell extends StatefulWidget {
   const NavigationShell({
     super.key,
@@ -26,9 +28,15 @@ class _NavigationShellState extends State<NavigationShell> {
         onTap: (index) {
           widget.statefulNavigationShell.goBranch(index);
         },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        items: [
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.home),
+            label: context.locale.home,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.person),
+            label: context.locale.profile,
+          ),
         ],
       ),
     );

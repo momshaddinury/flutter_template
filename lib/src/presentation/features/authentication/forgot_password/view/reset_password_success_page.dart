@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/theme/theme.dart';
 
 class ResetPasswordSuccessPage extends StatelessWidget {
@@ -36,13 +37,13 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'Password Changed Successfully',
+                        context.locale.passwordChangeSuccess,
                         textAlign: TextAlign.center,
                         style: context.textStyle.headlineSmall.size(24),
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Your password has been changed successfully.',
+                        context.locale.yourPasswordChanged,
                         textAlign: TextAlign.center,
                         style: context.textStyle.bodyMedium.medium.withColor(
                           context.color.text.secondary,
@@ -53,7 +54,7 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                         onPressed: () {
                           context.pop();
                         },
-                        child: const Text('Back to login'),
+                        child: Text(context.locale.backToLogin),
                       ),
                     ],
                   ),

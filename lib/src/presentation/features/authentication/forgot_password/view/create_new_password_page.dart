@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 
@@ -23,12 +24,12 @@ class CreateNewPasswordPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 24),
                 Text(
-                  'Create New password',
+                  context.locale.createNewPassword,
                   style: context.textStyle.headlineSmall.size(24),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Your new password must be different from previous used passwords.',
+                  context.locale.createNewPasswordHint,
                   style: context.textStyle.bodyMedium.medium.withColor(
                     context.color.text.secondary,
                   ),
@@ -40,7 +41,7 @@ class CreateNewPasswordPage extends StatelessWidget {
                   onPressed: () {
                     context.pushReplacementNamed(Routes.resetPasswordSuccess);
                   },
-                  child: const Text('Reset Password'),
+                  child: Text(context.locale.resetPassword),
                 ),
               ],
             ),
@@ -68,7 +69,7 @@ class _FormState extends State<_Form> {
         TextFormField(
           obscureText: _isObscure,
           decoration: InputDecoration(
-            hintText: 'New Password',
+            hintText: context.locale.newPassword,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
@@ -84,7 +85,7 @@ class _FormState extends State<_Form> {
         const SizedBox(height: 16),
         TextFormField(
           decoration: InputDecoration(
-            hintText: 'Confirm Password',
+            hintText: context.locale.confirmPassword,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {

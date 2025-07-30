@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/extensions/go_router_extension.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/widgets/link_text.dart';
@@ -15,7 +16,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign up')),
+      appBar: AppBar(title: Text(context.locale.signUp)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -25,32 +26,32 @@ class _RegistrationPageState extends State<RegistrationPage> {
             const FlutterLogo(size: 100),
             const SizedBox(height: 80),
             TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'First Name',
+              decoration: InputDecoration(
+                hintText: context.locale.firstName,
               ),
             ),
             const SizedBox(height: 16),
             TextFormField(
-              decoration: const InputDecoration(hintText: 'Last Name'),
+              decoration: InputDecoration(hintText: context.locale.lastName),
             ),
             const SizedBox(height: 16),
             TextFormField(
-              decoration: const InputDecoration(hintText: 'Email'),
+              decoration: InputDecoration(hintText: context.locale.email),
             ),
             const SizedBox(height: 16),
             TextFormField(
-              decoration: const InputDecoration(hintText: 'Password'),
+              decoration: InputDecoration(hintText: context.locale.password),
             ),
             const SizedBox(height: 32),
             FilledButton(
               onPressed: () {
                 throw UnimplementedError();
               },
-              child: const Text('Continue'),
+              child: Text(context.locale.continueAction),
             ),
             LinkText(
-              text: 'Already have an account? ',
-              linkText: 'Sign in',
+              text: context.locale.alreadyHaveAccount,
+              linkText: context.locale.signIn,
               onTap: () {
                 context.pushNamedAndRemoveUntil(Routes.login);
               },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 
@@ -23,25 +24,25 @@ class ResetPasswordPage extends StatelessWidget {
               children: [
                 const SizedBox(height: 24),
                 Text(
-                  'Reset password',
+                  context.locale.resetPassword,
                   style: context.textStyle.headlineSmall.semibold.size(24),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Enter the email associated with your account and we’ll send an email with instructions to reset your password.',
+                  context.locale.enterAssociatedEmail,
                   style: context.textStyle.bodyMedium.withColor(
                     context.color.text.secondary,
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Email Address',
+                  context.locale.emailAddress,
                   style: context.textStyle.bodyMedium,
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Email',
+                  decoration: InputDecoration(
+                    hintText: context.locale.email,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -49,7 +50,7 @@ class ResetPasswordPage extends StatelessWidget {
                   onPressed: () {
                     context.pushReplacementNamed(Routes.emailVerification);
                   },
-                  child: const Text('Continue'),
+                  child: Text(context.locale.continueAction),
                 ),
               ],
             ),

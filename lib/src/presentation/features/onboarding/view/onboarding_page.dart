@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/extensions/app_localization.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/theme/theme.dart';
 
@@ -50,7 +51,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                       onPageChanged: (int page) {
                         setState(() => _currentPage = page);
                       },
-                      children: _onboardingItems.map((item) {
+                      children: _getOnboardingItems(context).map((item) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: Column(
@@ -77,7 +78,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: _onboardingItems.map((item) {
+                  children: _getOnboardingItems(context).map((item) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Icon(Icons.circle,
@@ -95,7 +96,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     onPressed: () {
                       context.goNamed(Routes.login);
                     },
-                    child: const Text('Get Started'),
+                    child: Text(context.locale.getStarted),
                   ),
                 ),
               ],

@@ -33,7 +33,7 @@ class _FormFooter extends ConsumerWidget {
                     );
                   },
                 ),
-                const Text('Remember me'),
+                Text(context.locale.rememberMe),
               ],
             ),
           ),
@@ -45,7 +45,7 @@ class _FormFooter extends ConsumerWidget {
                 onPressed: () {
                   context.pushNamed(Routes.resetPassword);
                 },
-                child: const Text('Forgot password'),
+                child: Text(context.locale.forgotPassword),
               ),
             ),
           ),
