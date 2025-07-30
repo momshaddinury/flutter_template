@@ -6,6 +6,7 @@ class Endpoints {
   static const String login = '/auth/login';
   static const String forgotPassword = '/auth/forgot_password/';
   static const String resetPassword = '/auth/reset_password/';
+  static const String refreshToken = '/auth/refresh_token/';
 
   /// OTP
   static const String verifyOtp = '/otp/verify_otp/';

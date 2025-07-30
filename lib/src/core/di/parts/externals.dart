@@ -11,8 +11,17 @@ Dio dio(Ref ref) {
   dio.interceptors.addAll(
     [
       TokenManager(
-        refreshTokenEndpoint: 'refreshToken',
-        accessTokenKey: 'accessToken',
+        baseUrl: Endpoints.base,
+        refreshTokenEndpoint: Endpoints.refreshToken,
+        cacheService: ref.read(cacheServiceProvider),
+        navigatorKey: ref.read(goRouterProvider).routerDelegate.navigatorKey,
+        dio: Dio(
+          BaseOptions(
+            baseUrl: Endpoints.base,
+            connectTimeout: const Duration(seconds: 5),
+            receiveTimeout: const Duration(seconds: 3),
+          ),
+        ),
       ),
       if (kDebugMode)
         PrettyDioLogger(
