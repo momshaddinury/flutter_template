@@ -27,12 +27,10 @@ class _LoginFormState extends State<_LoginForm> {
           decoration: InputDecoration(
             hintText: context.locale.email,
           ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return context.locale.emailRequired;
-            }
-            return null;
-          },
+          validator: context.validator.apply([
+            RequiredValidation(),
+            EmailValidation(),
+          ]),
         ),
         const SizedBox(height: 16),
         TextFormField(
@@ -53,12 +51,10 @@ class _LoginFormState extends State<_LoginForm> {
               ),
             ),
           ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return context.locale.passwordRequired;
-            }
-            return null;
-          },
+          validator: context.validator.apply([
+            RequiredValidation(),
+            PasswordValidation(minLength: 6),
+          ]),
         ),
         _FormFooter(shouldRemember: widget.shouldRemember),
       ],
