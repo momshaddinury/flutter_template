@@ -20,7 +20,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
         children: [
           Icon(
             Icons.language,
-            color: context.color.icon,
+            color: context.color.primary,
           ),
           const SizedBox(width: 4),
           Text(
