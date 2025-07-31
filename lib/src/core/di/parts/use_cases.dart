@@ -22,10 +22,10 @@ LogoutUseCase logoutUseCase(Ref ref) {
 
 @riverpod
 GetCurrentLocaleUseCase getCurrentLocaleUseCase(Ref ref) {
-  return GetCurrentLocaleUseCase(ref.read(localRepositoryProvider));
+  return GetCurrentLocaleUseCase(ref.read(localeRepositoryProvider));
 }
 
 @riverpod
 SetCurrentLocaleUseCase setCurrentLocaleUseCase(Ref ref) {
-  return SetCurrentLocaleUseCase(ref.read(localRepositoryProvider));
+  return SetCurrentLocaleUseCase(ref.read(localeRepositoryProvider));
 }

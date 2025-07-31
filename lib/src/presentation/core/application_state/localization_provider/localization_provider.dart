@@ -14,14 +14,14 @@ class Localization extends _$Localization {
   }
 
   Future<void> changeLocale(Locale locale) async {
-    final useCase = ref.read(setCurrentLocalUseCaseProvider);
+    final useCase = ref.read(setCurrentLocaleUseCaseProvider);
     await useCase(locale.languageCode);
 
     state = locale;
   }
 
   Future<void> setCurrentLocal() async {
-    final useCase = ref.read(getCurrentLocalUseCaseProvider);
+    final useCase = ref.read(getCurrentLocaleUseCaseProvider);
     final language = await useCase();
 
     state = Locale(language);
