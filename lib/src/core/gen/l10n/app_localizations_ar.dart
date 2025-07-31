@@ -40,8 +40,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordRequired => 'كلمة المرور مطلوبة';
 
   @override
+  String get isRequired => 'هذا الحقل مطلوب';
+
+  @override
+  String get validEmail => 'يرجى إدخال عنوان بريد إلكتروني صحيح';
+
+  @override
   String get enterAssociatedEmail =>
       'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك بريداً إلكترونياً مع تعليمات لإعادة تعيين كلمة المرور.';
+
+  @override
+  String minLengthValidation(int min) {
+    return 'يجب أن يحتوي هذا الحقل على $min أحرف على الأقل';
+  }
+
+  @override
+  String maxLengthValidation(int max) {
+    return 'يجب أن يحتوي هذا الحقل على $max أحرف كحد أقصى';
+  }
 
   @override
   String get yourPasswordChanged => 'تم تغيير كلمة المرور بنجاح.';
@@ -150,4 +166,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get arabic => 'العربية';
+
+  @override
+  String passwordMinLengthValidation(String minLength) {
+    return 'يجب أن تحتوي كلمة المرور على $minLength أحرف على الأقل';
+  }
+
+  @override
+  String get passwordNumberValidation =>
+      'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل';
+
+  @override
+  String get passwordLowerCaseValidation =>
+      'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل';
+
+  @override
+  String get passwordUpperCaseValidation =>
+      'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل';
+
+  @override
+  String get passwordSpecialCharValidation =>
+      'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل';
 }

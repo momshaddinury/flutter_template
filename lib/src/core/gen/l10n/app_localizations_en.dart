@@ -40,8 +40,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordRequired => 'Password is required';
 
   @override
+  String get isRequired => 'This field is required';
+
+  @override
+  String get validEmail => 'Please enter valid email address';
+
+  @override
   String get enterAssociatedEmail =>
       'Enter the email associated with your account and we’ll send an email with instructions to reset your password.';
+
+  @override
+  String minLengthValidation(int min) {
+    return 'This field must be at least $min characters long';
+  }
+
+  @override
+  String maxLengthValidation(int max) {
+    return 'This field must be at most $max characters long';
+  }
 
   @override
   String get yourPasswordChanged =>
@@ -155,4 +171,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arabic => 'Arabic';
+
+  @override
+  String passwordMinLengthValidation(String minLength) {
+    return 'Password must be at least $minLength characters';
+  }
+
+  @override
+  String get passwordNumberValidation =>
+      'Password must contain at least one number';
+
+  @override
+  String get passwordLowerCaseValidation =>
+      'Password must contain at least one lowercase letter';
+
+  @override
+  String get passwordUpperCaseValidation =>
+      'Password must contain at least one uppercase letter';
+
+  @override
+  String get passwordSpecialCharValidation =>
+      'Password must contain at least one special character';
 }

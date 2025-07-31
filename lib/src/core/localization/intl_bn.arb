@@ -9,7 +9,29 @@
     "passwordChangeSuccess": "পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে",
     "emailRequired": "ইমেইল প্রয়োজন",
     "passwordRequired": "পাসওয়ার্ড প্রয়োজন",
+    "isRequired": "এই ক্ষেত্রটি প্রয়োজন",
+    "validEmail": "অনুগ্রহ করে একটি বৈধ ইমেইল ঠিকানা দিন",
     "enterAssociatedEmail": "আপনার অ্যাকাউন্টের সাথে যুক্ত ইমেইল দিন এবং আমরা আপনার পাসওয়ার্ড রিসেট করার নির্দেশনা সহ একটি ইমেইল পাঠাব।",
+    "minLengthValidation": "এই ক্ষেত্রটি কমপক্ষে {min} অক্ষর দীর্ঘ হতে হবে",
+    "@minLengthValidation": {
+        "description": "ন্যূনতম দৈর্ঘ্য যাচাইকরণের জন্য ত্রুটি বার্তা",
+        "placeholders": {
+            "min": {
+                "type": "int",
+                "example": "৩"
+            }
+        }
+    },
+    "maxLengthValidation": "এই ক্ষেত্রটি সর্বাধিক {max} অক্ষর দীর্ঘ হতে হবে",
+    "@maxLengthValidation": {
+        "description": "সর্বোচ্চ দৈর্ঘ্য যাচাইকরণের জন্য ত্রুটি বার্তা",
+        "placeholders": {
+            "max": {
+                "type": "int",
+                "example": "২০"
+            }
+        }
+    },
     "yourPasswordChanged": "আপনার পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে।",
     "confirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",
     "logout": "লগআউট",
@@ -44,5 +66,18 @@
     "buildDeployDescription": "সহজে একাধিক প্ল্যাটফর্মে আপনার অ্যাপ ডেপ্লয় করুন।",
     "english": "ইংরেজি",
     "bangla": "বাংলা",
-    "arabic": "আরবি"
+    "arabic": "আরবি",
+    "passwordMinLengthValidation": "পাসওয়ার্ড কমপক্ষে {minLength} অক্ষর দীর্ঘ হতে হবে",
+    "@passwordMinLengthValidation": {
+        "description": "পাসওয়ার্ডের ন্যূনতম দৈর্ঘ্য যাচাইকরণের জন্য ত্রুটি বার্তা",
+        "placeholders": {
+            "minLength": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordNumberValidation": "পাসওয়ার্ডে কমপক্ষে একটি সংখ্যা থাকতে হবে",
+    "passwordLowerCaseValidation": "পাসওয়ার্ডে কমপক্ষে একটি ছোট হাতের অক্ষর থাকতে হবে",
+    "passwordUpperCaseValidation": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে",
+    "passwordSpecialCharValidation": "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে"
 }

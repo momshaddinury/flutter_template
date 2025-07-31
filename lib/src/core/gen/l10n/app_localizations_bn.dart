@@ -40,8 +40,24 @@ class AppLocalizationsBn extends AppLocalizations {
   String get passwordRequired => 'পাসওয়ার্ড প্রয়োজন';
 
   @override
+  String get isRequired => 'এই ক্ষেত্রটি প্রয়োজন';
+
+  @override
+  String get validEmail => 'অনুগ্রহ করে একটি বৈধ ইমেইল ঠিকানা দিন';
+
+  @override
   String get enterAssociatedEmail =>
       'আপনার অ্যাকাউন্টের সাথে যুক্ত ইমেইল দিন এবং আমরা আপনার পাসওয়ার্ড রিসেট করার নির্দেশনা সহ একটি ইমেইল পাঠাব।';
+
+  @override
+  String minLengthValidation(int min) {
+    return 'এই ক্ষেত্রটি কমপক্ষে $min অক্ষর দীর্ঘ হতে হবে';
+  }
+
+  @override
+  String maxLengthValidation(int max) {
+    return 'এই ক্ষেত্রটি সর্বাধিক $max অক্ষর দীর্ঘ হতে হবে';
+  }
 
   @override
   String get yourPasswordChanged =>
@@ -156,4 +172,25 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get arabic => 'আরবি';
+
+  @override
+  String passwordMinLengthValidation(String minLength) {
+    return 'পাসওয়ার্ড কমপক্ষে $minLength অক্ষর দীর্ঘ হতে হবে';
+  }
+
+  @override
+  String get passwordNumberValidation =>
+      'পাসওয়ার্ডে কমপক্ষে একটি সংখ্যা থাকতে হবে';
+
+  @override
+  String get passwordLowerCaseValidation =>
+      'পাসওয়ার্ডে কমপক্ষে একটি ছোট হাতের অক্ষর থাকতে হবে';
+
+  @override
+  String get passwordUpperCaseValidation =>
+      'পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে';
+
+  @override
+  String get passwordSpecialCharValidation =>
+      'পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে';
 }

@@ -160,11 +160,35 @@ abstract class AppLocalizations {
   /// **'Password is required'**
   String get passwordRequired;
 
+  /// No description provided for @isRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get isRequired;
+
+  /// No description provided for @validEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter valid email address'**
+  String get validEmail;
+
   /// No description provided for @enterAssociatedEmail.
   ///
   /// In en, this message translates to:
   /// **'Enter the email associated with your account and we’ll send an email with instructions to reset your password.'**
   String get enterAssociatedEmail;
+
+  /// Error message for minimum length validation
+  ///
+  /// In en, this message translates to:
+  /// **'This field must be at least {min} characters long'**
+  String minLengthValidation(int min);
+
+  /// Error message for maximum length validation
+  ///
+  /// In en, this message translates to:
+  /// **'This field must be at most {max} characters long'**
+  String maxLengthValidation(int max);
 
   /// No description provided for @yourPasswordChanged.
   ///
@@ -375,6 +399,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arabic'**
   String get arabic;
+
+  /// Error message for password minimum length validation
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least {minLength} characters'**
+  String passwordMinLengthValidation(String minLength);
+
+  /// No description provided for @passwordNumberValidation.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one number'**
+  String get passwordNumberValidation;
+
+  /// No description provided for @passwordLowerCaseValidation.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one lowercase letter'**
+  String get passwordLowerCaseValidation;
+
+  /// No description provided for @passwordUpperCaseValidation.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one uppercase letter'**
+  String get passwordUpperCaseValidation;
+
+  /// No description provided for @passwordSpecialCharValidation.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain at least one special character'**
+  String get passwordSpecialCharValidation;
 }
 
 class _AppLocalizationsDelegate

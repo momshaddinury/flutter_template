@@ -9,7 +9,29 @@
     "passwordChangeSuccess": "تم تغيير كلمة المرور بنجاح",
     "emailRequired": "البريد الإلكتروني مطلوب",
     "passwordRequired": "كلمة المرور مطلوبة",
+    "isRequired": "هذا الحقل مطلوب",
+    "validEmail": "يرجى إدخال عنوان بريد إلكتروني صحيح",
     "enterAssociatedEmail": "أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك بريداً إلكترونياً مع تعليمات لإعادة تعيين كلمة المرور.",
+    "minLengthValidation": "يجب أن يحتوي هذا الحقل على {min} أحرف على الأقل",
+    "@minLengthValidation": {
+        "description": "رسالة خطأ للتحقق من الحد الأدنى للطول",
+        "placeholders": {
+            "min": {
+                "type": "int",
+                "example": "٣"
+            }
+        }
+    },
+    "maxLengthValidation": "يجب أن يحتوي هذا الحقل على {max} أحرف كحد أقصى",
+    "@maxLengthValidation": {
+        "description": "رسالة خطأ للتحقق من الحد الأقصى للطول",
+        "placeholders": {
+            "max": {
+                "type": "int",
+                "example": "٢٠"
+            }
+        }
+    },
     "yourPasswordChanged": "تم تغيير كلمة المرور بنجاح.",
     "confirmPassword": "تأكيد كلمة المرور",
     "logout": "تسجيل الخروج",
@@ -44,5 +66,18 @@
     "buildDeployDescription": "انشر تطبيقاتك على منصات متعددة بسهولة.",
     "english": "الإنجليزية",
     "bangla": "البنغالية",
-    "arabic": "العربية"
+    "arabic": "العربية",
+    "passwordMinLengthValidation": "يجب أن تحتوي كلمة المرور على {minLength} أحرف على الأقل",
+    "@passwordMinLengthValidation": {
+        "description": "رسالة خطأ للتحقق من الحد الأدنى لطول كلمة المرور",
+        "placeholders": {
+            "minLength": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordNumberValidation": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+    "passwordLowerCaseValidation": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+    "passwordUpperCaseValidation": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+    "passwordSpecialCharValidation": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"
 }

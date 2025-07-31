@@ -9,7 +9,29 @@
     "passwordChangeSuccess":"Password Changed Successfully",
     "emailRequired": "Email is required",
     "passwordRequired": "Password is required",
+    "isRequired": "This field is required",
+    "validEmail": "Please enter valid email address",
     "enterAssociatedEmail": "Enter the email associated with your account and we’ll send an email with instructions to reset your password.",
+    "minLengthValidation": "This field must be at least {min} characters long",
+    "@minLengthValidation": {
+        "description": "Error message for minimum length validation",
+        "placeholders": {
+            "min": {
+                "type": "int",
+                "example": "3"
+            }
+        }
+    },
+    "maxLengthValidation": "This field must be at most {max} characters long",
+    "@maxLengthValidation": {
+        "description": "Error message for maximum length validation",
+        "placeholders": {
+            "max": {
+                "type": "int",
+                "example": "20"
+            }
+        }
+    },
     "yourPasswordChanged": "Your password has been changed successfully.",
     "confirmPassword": "Confirm Password",
     "logout": "Logout",
@@ -44,5 +66,18 @@
     "buildDeployDescription": "Deploy your apps to multiple platforms with ease.",
     "english": "English",
     "bangla": "Bangla",
-    "arabic": "Arabic"
+    "arabic": "Arabic",
+    "passwordMinLengthValidation": "Password must be at least {minLength} characters",
+    "@passwordMinLengthValidation": {
+        "description": "Error message for password minimum length validation",
+        "placeholders": {
+            "minLength": {
+                "type": "String"
+            }
+        }
+    },
+    "passwordNumberValidation": "Password must contain at least one number",
+    "passwordLowerCaseValidation": "Password must contain at least one lowercase letter",
+    "passwordUpperCaseValidation": "Password must contain at least one uppercase letter",
+    "passwordSpecialCharValidation": "Password must contain at least one special character"
 }
