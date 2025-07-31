@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template/src/presentation/core/theme/theme.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/gen/l10n/app_localizations.dart';
@@ -10,8 +11,8 @@ class LanguageSwitcherWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentLocale = ref.watch(localizationProvider);
-    final localNotifier = ref.read(localizationProvider.notifier);
+    final state = ref.watch(localizationProvider);
+    final notifier = ref.read(localizationProvider.notifier);
 
     return PopupMenuButton<Locale>(
       icon: Row(
@@ -19,17 +20,17 @@ class LanguageSwitcherWidget extends ConsumerWidget {
         children: [
           Icon(
             Icons.language,
-            color: Theme.of(context).colorScheme.onSurface,
+            color: context.color.icon,
           ),
           const SizedBox(width: 4),
           Text(
-            context.locale.getLanguageName(currentLocale.languageCode),
-            style: Theme.of(context).textTheme.bodyMedium,
+            context.locale.getLanguageName(state.languageCode),
+            style: context.textStyle.bodyMedium,
           ),
           const Icon(Icons.arrow_drop_down),
         ],
       ),
-      onSelected: (Locale locale) => localNotifier.changeLocale(locale),
+      onSelected: (Locale locale) => notifier.changeLocale(locale),
       itemBuilder: (BuildContext context) {
         return AppLocalizations.supportedLocales.map((Locale locale) {
           return PopupMenuItem<Locale>(
@@ -37,7 +38,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
             child: Row(
               children: [
                 Text(context.locale.getLanguageName(locale.languageCode)),
-                if (locale == currentLocale) ...[
+                if (locale == state) ...[
                   const Spacer(),
                   Icon(
                     Icons.check,
