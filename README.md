@@ -76,6 +76,11 @@ lib/src/
 - **Base Classes**: Common interfaces and abstract classes
 - **Extensions**: Utility extensions for enhanced functionality
 - **Logging**: Centralized logging configuration
+- **Localization**:
+   * Multi-language support (English, Bangla, Arabic)
+   * Runtime language switching with persisted preferences
+   * Localized validation and error messages
+- **Validation Contracts**: Centralized validators for form fields (email, password, required fields, length constraints) — fully localized
 
 #### Domain Layer
 - **Entities**: Core business objects (User, Login, SignUp)
@@ -93,6 +98,16 @@ lib/src/
 - **Routing**: go_router configuration with nested routes
 - **State Management**: Riverpod providers and notifiers
 - **Theming**: Comprehensive theme system with extensions
+- **Color System**:
+* `primitive.dart` for base color values
+* Semantic color classes like `TextColors` and `ButtonBorderColors`
+* Integrated into LightColorExtension and DarkColorExtension for design consistency
+
+#### Development Tooling
+- *  Custom Linter — flutter_guardian
+- *  A standalone custom linter package to enforce naming conventions and structure for dependency injection layers:
+* Validates naming for repositories, services, and use cases
+* Helps maintain consistency and SRP across the app
 
 ## Project Structure
 
@@ -249,7 +264,7 @@ UserRepository userRepository(UserRepositoryRef ref) {
 class UserState extends _$UserState {
   @override
   User? build() => null;
-  
+
   void setUser(User user) => state = user;
 }
 ```
