@@ -107,7 +107,6 @@ lib/src/
 - *  Custom Linter — flutter_guardian
 - *  A standalone custom linter package to enforce naming conventions and structure for dependency injection layers:
 * Validates naming for repositories, services, and use cases
-* Helps maintain consistency and SRP across the app
 
 ## Project Structure
 
