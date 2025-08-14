@@ -99,14 +99,14 @@ lib/src/
 - **State Management**: Riverpod providers and notifiers
 - **Theming**: Comprehensive theme system with extensions
 - **Color System**:
-* `primitive.dart` for base color values
-* Semantic color classes like `TextColors` and `ButtonBorderColors`
-* Integrated into LightColorExtension and DarkColorExtension for design consistency
+   - `primitive.dart` for base color values
+   - integrates Figma semantic tokens into `ThemeExtension`
+
 
 #### Development Tooling
-- *  Custom Linter — flutter_guardian
-- *  A standalone custom linter package to enforce naming conventions and structure for dependency injection layers:
-* Validates naming for repositories, services, and use cases
+*  Custom Linter — flutter_guardian
+*  A standalone custom linter package to enforce naming conventions and structure for dependency injection layers:
+*  Validates naming for repositories, services, and use cases
 
 ## Project Structure
 
