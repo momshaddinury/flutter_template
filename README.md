@@ -22,8 +22,8 @@ A comprehensive, scalable foundation for building maintainable Flutter applicati
 
 ### Prerequisites
 
-- **Flutter SDK**: >=3.29.0
-- **Dart SDK**: >=3.4.0  
+- **Flutter SDK**: >=3.32.8
+- **Dart SDK**: >=3.8.0  
 - **Android Studio** or **VS Code** with Flutter extensions
 - **Git** for version control
 
@@ -105,7 +105,7 @@ lib/src/
 
 #### Development Tooling
 *  Custom Linter — flutter_guardian
-*  A standalone custom linter package to enforce naming conventions and structure for dependency injection layers:
+*  A standalone custom linter package to enforce naming conventions and structure for dependency injection layers
 *  Validates naming for repositories, services, and use cases
 
 ## Project Structure
@@ -153,12 +153,12 @@ flutter_template/
 ## Technology Stack
 
 ### Core Technologies
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Flutter** | >=3.29.0 | UI framework |
-| **Dart** | >=3.4.0 | Programming language |
-| **Riverpod** | ^2.5.1 | State management & DI |
-| **go_router** | ^14.2.8 | Navigation and routing |
+| Technology | Version  | Purpose |
+|------------|----------|---------|
+| **Flutter** | >=3.32.8 | UI framework |
+| **Dart** | >=3.8.0  | Programming language |
+| **Riverpod** | ^2.5.1   | State management & DI |
+| **go_router** | ^14.2.8  | Navigation and routing |
 
 ### Network & Data
 | Technology | Version | Purpose |
