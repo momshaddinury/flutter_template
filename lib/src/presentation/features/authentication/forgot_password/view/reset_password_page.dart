@@ -25,13 +25,16 @@ class ResetPasswordPage extends StatelessWidget {
                 const SizedBox(height: 24),
                 Text(
                   context.locale.resetPassword,
-                  style: context.textStyle.headlineSmall.semibold.size(24),
+                  style: context.textStyle.headlineSmall.copyWith(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   context.locale.enterAssociatedEmail,
-                  style: context.textStyle.bodyMedium.withColor(
-                    context.color.text.secondary,
+                  style: context.textStyle.bodyMedium.copyWith(
+                    color: context.color.text.secondary,
                   ),
                 ),
                 const SizedBox(height: 16),

@@ -60,7 +60,9 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                             Text(
                               item.title,
                               textAlign: TextAlign.center,
-                              style: context.textStyle.headlineSmall.medium,
+                              style: context.textStyle.headlineSmall.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                             const SizedBox(height: 24),
                             item.image,

@@ -39,14 +39,17 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                       Text(
                         context.locale.passwordChangeSuccess,
                         textAlign: TextAlign.center,
-                        style: context.textStyle.headlineSmall.size(24),
+                        style: context.textStyle.headlineSmall.copyWith(
+                          fontSize: 24,
+                        ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         context.locale.yourPasswordChanged,
                         textAlign: TextAlign.center,
-                        style: context.textStyle.bodyMedium.medium.withColor(
-                          context.color.text.secondary,
+                        style: context.textStyle.bodyMedium.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: context.color.text.secondary,
                         ),
                       ),
                       const SizedBox(height: 32),
