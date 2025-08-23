@@ -1,6 +1,6 @@
 part of '../dependency_injection.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 AuthenticationRepositoryImpl authenticationRepository(Ref ref) {
   return AuthenticationRepositoryImpl(
     remote: ref.read(restClientServiceProvider),
@@ -8,12 +8,12 @@ AuthenticationRepositoryImpl authenticationRepository(Ref ref) {
   );
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 RouterRepository routerRepository(Ref ref) {
   return RouterRepositoryImpl(cacheService: ref.read(cacheServiceProvider));
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 LocaleRepository localeRepository(Ref ref) {
   return LocaleRepositoryImpl(ref.read(cacheServiceProvider));
 }
