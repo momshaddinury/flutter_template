@@ -159,10 +159,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get buildDeployDescription => 'انشر تطبيقاتك على منصات متعددة بسهولة.';
 
   @override
-  String get english => 'الإنجليزية';
+  String get english => 'English';
 
   @override
-  String get bangla => 'البنغالية';
+  String get bangla => 'বাংলা';
 
   @override
   String get arabic => 'العربية';

@@ -391,13 +391,13 @@ abstract class AppLocalizations {
   /// No description provided for @bangla.
   ///
   /// In en, this message translates to:
-  /// **'Bangla'**
+  /// **'বাংলা'**
   String get bangla;
 
   /// No description provided for @arabic.
   ///
   /// In en, this message translates to:
-  /// **'Arabic'**
+  /// **'العربية'**
   String get arabic;
 
   /// Error message for password minimum length validation

@@ -13,7 +13,11 @@ class $LightThemeData with ThemeExtensions {
   ThemeData call() {
     return ThemeData(
       brightness: Brightness.light,
-      extensions: <ThemeExtension<dynamic>>[lightColor, textStyle],
+      extensions: <ThemeExtension<dynamic>>[
+        lightColor,
+        textStyle,
+        textStyleScaled,
+      ],
       colorScheme: ColorScheme.light(primary: lightColor.primary),
       appBarTheme: _AppBarLightTheme()(),
       bottomNavigationBarTheme: _BottomNavigationBarLightThemeData()(),
@@ -36,7 +40,11 @@ class $DarkThemeData with ThemeExtensions {
   ThemeData call() {
     return ThemeData(
       brightness: Brightness.dark,
-      extensions: <ThemeExtension<dynamic>>[darkColor, textStyle],
+      extensions: <ThemeExtension<dynamic>>[
+        darkColor,
+        textStyle,
+        textStyleScaled,
+      ],
       colorScheme: ColorScheme.dark(primary: darkColor.primary),
       appBarTheme: _AppBarDarkTheme()(),
       bottomNavigationBarTheme: _BottomNavigationBarDarkThemeData()(),

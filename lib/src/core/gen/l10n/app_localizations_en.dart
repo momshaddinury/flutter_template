@@ -167,10 +167,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get english => 'English';
 
   @override
-  String get bangla => 'Bangla';
+  String get bangla => 'বাংলা';
 
   @override
-  String get arabic => 'Arabic';
+  String get arabic => 'العربية';
 
   @override
   String passwordMinLengthValidation(String minLength) {

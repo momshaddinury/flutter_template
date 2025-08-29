@@ -103,6 +103,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const FlutterLogo(size: 200),
+                        Text(
+                          'Welcome Back',
+                          style: context.textStyle.headlineLarge,
+                        ),
                         const SizedBox(height: 80),
                         Form(
                           key: _formKey,

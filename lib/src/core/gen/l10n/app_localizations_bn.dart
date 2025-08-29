@@ -165,13 +165,13 @@ class AppLocalizationsBn extends AppLocalizations {
       'সহজে একাধিক প্ল্যাটফর্মে আপনার অ্যাপ ডেপ্লয় করুন।';
 
   @override
-  String get english => 'ইংরেজি';
+  String get english => 'English';
 
   @override
   String get bangla => 'বাংলা';
 
   @override
-  String get arabic => 'আরবি';
+  String get arabic => 'العربية';
 
   @override
   String passwordMinLengthValidation(String minLength) {

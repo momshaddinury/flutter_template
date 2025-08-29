@@ -64,8 +64,8 @@
     "buildDeployTitle": "ابن ونشر تطبيقات Flutter بسهولة.",
     "buildDeploySubtitle": "احصل على أدوات وموارد لتطوير التطبيقات.",
     "buildDeployDescription": "انشر تطبيقاتك على منصات متعددة بسهولة.",
-    "english": "الإنجليزية",
-    "bangla": "البنغالية",
+    "english": "English",
+    "bangla": "বাংলা",
     "arabic": "العربية",
     "passwordMinLengthValidation": "يجب أن تحتوي كلمة المرور على {minLength} أحرف على الأقل",
     "@passwordMinLengthValidation": {

@@ -64,7 +64,11 @@ extension BuildContextExtension on BuildContext {
   /// In debug mode, an assertion explains the missing registration.
   /// In release mode, a null-check error will be thrown if not registered.
   TextStyleExtension get textStyle {
-    final ext = _theme.extension<TextStyleExtension>();
+    final bool isScaled = MediaQuery.of(this).textScaler.scale(1) > 1.0;
+
+    final ext = isScaled
+        ? _theme.extension<TextStyleScaledExtension>()
+        : _theme.extension<TextStyleNoScalingExtension>();
 
     assert(
       ext != null,

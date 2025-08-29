@@ -65,8 +65,8 @@
     "buildDeploySubtitle": "Access tools and resources for app development.",
     "buildDeployDescription": "Deploy your apps to multiple platforms with ease.",
     "english": "English",
-    "bangla": "Bangla",
-    "arabic": "Arabic",
+    "bangla": "বাংলা",
+    "arabic": "العربية",
     "passwordMinLengthValidation": "Password must be at least {minLength} characters",
     "@passwordMinLengthValidation": {
         "description": "Error message for password minimum length validation",
