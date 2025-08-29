@@ -1,3 +1,4 @@
+import '../logger/log.dart';
 import 'failure.dart';
 import 'result.dart';
 
@@ -34,7 +35,10 @@ abstract base class Repository<T> {
     try {
       final result = await operation();
       return Success(result);
-    } on Exception catch (e) {
+    } on Exception catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+
       return Error(Failure.mapExceptionToFailure(e));
     }
   }
