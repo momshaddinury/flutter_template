@@ -64,9 +64,9 @@
     "buildDeployTitle": "সহজে Flutter অ্যাপ তৈরি এবং ডেপ্লয় করুন।",
     "buildDeploySubtitle": "অ্যাপ ডেভেলপমেন্টের জন্য টুল এবং সম্পদ অ্যাক্সেস করুন।",
     "buildDeployDescription": "সহজে একাধিক প্ল্যাটফর্মে আপনার অ্যাপ ডেপ্লয় করুন।",
-    "english": "ইংরেজি",
+    "english": "English",
     "bangla": "বাংলা",
-    "arabic": "আরবি",
+    "arabic": "العربية",
     "passwordMinLengthValidation": "পাসওয়ার্ড কমপক্ষে {minLength} অক্ষর দীর্ঘ হতে হবে",
     "@passwordMinLengthValidation": {
         "description": "পাসওয়ার্ডের ন্যূনতম দৈর্ঘ্য যাচাইকরণের জন্য ত্রুটি বার্তা",
