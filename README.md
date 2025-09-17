@@ -43,7 +43,7 @@ A comprehensive, scalable foundation for building maintainable Flutter applicati
 
 3. **Generate code**
    ```bash
-   flutter pub run build_runner build --delete-conflicting-outputs
+   dart run build_runner build --delete-conflicting-outputs
    ```
 
 4. **Run the application**
@@ -55,7 +55,7 @@ A comprehensive, scalable foundation for building maintainable Flutter applicati
 
 For continuous code generation during development:
 ```bash
-flutter pub run build_runner watch --delete-conflicting-outputs
+dart run build_runner watch --delete-conflicting-outputs
 ```
 
 ## Architecture Overview
@@ -214,10 +214,10 @@ flutter_template/
 Run code generation after making changes to annotated files:
 ```bash
 # One-time generation
-flutter pub run build_runner build --delete-conflicting-outputs
+dart run build_runner build --delete-conflicting-outputs
 
 # Watch mode for development
-flutter pub run build_runner watch --delete-conflicting-outputs
+dart run build_runner watch --delete-conflicting-outputs
 ```
 
 ### Adding New Features
