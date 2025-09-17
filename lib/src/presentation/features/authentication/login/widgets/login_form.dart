@@ -25,10 +25,7 @@ class _LoginFormState extends State<_LoginForm> {
         TextFormField(
           controller: widget.emailController,
           decoration: InputDecoration(hintText: context.locale.email),
-          validator: context.validator.apply([
-            RequiredValidation(),
-            EmailValidation(),
-          ]),
+          validator: context.validator.apply([RequiredValidation()]),
         ),
         const SizedBox(height: 16),
         TextFormField(
