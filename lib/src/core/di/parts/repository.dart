@@ -17,3 +17,8 @@ RouterRepository routerRepository(Ref ref) {
 LocaleRepository localeRepository(Ref ref) {
   return LocaleRepositoryImpl(ref.read(cacheServiceProvider));
 }
+
+@Riverpod(keepAlive: true)
+UserRepository userRepository(Ref ref) {
+  return UserRepositoryImpl(remote: ref.read(restClientServiceProvider));
+}

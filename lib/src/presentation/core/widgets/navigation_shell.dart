@@ -16,7 +16,11 @@ class _NavigationShellState extends State<NavigationShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Template')),
+      appBar: AppBar(
+        title: const Text('Flutter Template'),
+        elevation: 1,
+        surfaceTintColor: Colors.grey.shade500,
+      ),
       body: widget.statefulNavigationShell,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: widget.statefulNavigationShell.currentIndex,

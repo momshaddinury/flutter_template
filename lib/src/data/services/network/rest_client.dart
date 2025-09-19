@@ -13,4 +13,7 @@ abstract class RestClient {
 
   @POST(Endpoints.login)
   Future<HttpResponse> login(@Body() LoginRequestModel request);
+
+  @GET(Endpoints.users)
+  Future<HttpResponse> getUsers();
 }
