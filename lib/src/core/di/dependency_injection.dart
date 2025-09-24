@@ -17,6 +17,7 @@ import '../../domain/repositories/locale_repository.dart';
 import '../../domain/repositories/router_repository.dart';
 import '../../domain/use_cases/authentication_use_case.dart';
 import '../../domain/use_cases/locale_use_case.dart';
+import '../../domain/use_cases/reset_repository_use_case.dart';
 import '../../presentation/core/router/router.dart';
 
 part 'dependency_injection.g.dart';

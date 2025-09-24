@@ -29,3 +29,8 @@ GetCurrentLocaleUseCase getCurrentLocaleUseCase(Ref ref) {
 SetCurrentLocaleUseCase setCurrentLocaleUseCase(Ref ref) {
   return SetCurrentLocaleUseCase(ref.read(localeRepositoryProvider));
 }
+
+@riverpod
+ResetRepositoryUseCase resetRepositoryUseCase(Ref ref) {
+  return const ResetRepositoryUseCase();
+}

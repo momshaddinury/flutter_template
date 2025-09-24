@@ -20,6 +20,9 @@ class Logout extends _$Logout {
 
     try {
       await ref.read(logoutUseCaseProvider).call();
+      // Invalidate all repository providers to remove cached data
+      ref.read(resetRepositoryUseCaseProvider).call(ref);
+
       state = const LogoutState(type: Status.success);
     } catch (e) {
       state = LogoutState(type: Status.error, error: e.toString());
