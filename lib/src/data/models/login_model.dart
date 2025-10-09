@@ -28,9 +28,7 @@ class LoginResponseModel extends LoginResponseEntity
   final String image;
   final String refreshToken;
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
-    return LoginResponseModelMapper.fromJson(json);
-  }
+  static const fromJson = LoginResponseModelMapper.fromJson;
 }
 
 @MappableClass(generateMethods: GenerateMethods.copy | GenerateMethods.encode)
