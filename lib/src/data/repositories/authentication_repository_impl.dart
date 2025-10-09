@@ -30,7 +30,7 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
       // Save the session if the user has selected the "Remember Me" option
       if (data.shouldRemeber ?? false) await _saveSession();
 
-      return LoginResponseModelMapper.fromJson(response.data);
+      return LoginResponseModel.fromJson(response.data);
     });
   }
 
