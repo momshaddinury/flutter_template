@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/extensions/go_router_extension.dart';
@@ -22,25 +23,25 @@ class _RegistrationPageState extends State<RegistrationPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 80),
+            const Gap(80),
             const FlutterLogo(size: 100),
-            const SizedBox(height: 80),
+            const Gap(80),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.firstName),
             ),
-            const SizedBox(height: 16),
+            const Gap(16),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.lastName),
             ),
-            const SizedBox(height: 16),
+            const Gap(16),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.email),
             ),
-            const SizedBox(height: 16),
+            const Gap(16),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.password),
             ),
-            const SizedBox(height: 32),
+            const Gap(32),
             FilledButton(
               onPressed: () {
                 throw UnimplementedError();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
@@ -19,14 +20,14 @@ class EmailVerificationPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                const SizedBox(height: 24),
+                const Gap(24),
                 const FlutterLogo(size: 200),
-                const SizedBox(height: 24),
+                const Gap(24),
                 Text(
                   context.locale.checkYourMail,
                   style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
                 ),
-                const SizedBox(height: 8),
+                const Gap(8),
                 Text(
                   context.locale.enterVerificationCode,
                   textAlign: TextAlign.center,
@@ -35,7 +36,7 @@ class EmailVerificationPage extends StatelessWidget {
                     color: context.color.text.secondary,
                   ),
                 ),
-                const SizedBox(height: 32),
+                const Gap(32),
                 const _OTPField(),
                 LinkText(
                   text: context.locale.didntGetCode,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/app_localization.dart';
@@ -64,9 +65,9 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            const SizedBox(height: 24),
+                            const Gap(24),
                             item.image,
-                            const SizedBox(height: 24),
+                            const Gap(24),
                             Column(
                               children: item.features.map((feature) {
                                 return _OnboardingListItem(title: feature);
@@ -78,7 +79,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     }).toList(),
                   ),
                 ),
-                const SizedBox(height: 24),
+                const Gap(24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: _getOnboardingItems(context).map((item) {
@@ -94,7 +95,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     );
                   }).toList(),
                 ),
-                const SizedBox(height: 44),
+                const Gap(44),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: FilledButton(
@@ -127,7 +128,7 @@ class _OnboardingListItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Icon(Icons.circle, size: 6, color: context.color.text.tertiary),
-          const SizedBox(width: 8),
+          const Gap(8),
           Expanded(
             child: Baseline(
               baseline: 8,

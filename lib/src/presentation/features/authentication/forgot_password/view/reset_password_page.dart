@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
@@ -18,7 +19,7 @@ class ResetPasswordPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 24),
+              const Gap(24),
               Text(
                 context.locale.resetPassword,
                 style: context.textStyle.headlineSmall.copyWith(
@@ -26,23 +27,23 @@ class ResetPasswordPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 4),
+              const Gap(4),
               Text(
                 context.locale.enterAssociatedEmail,
                 style: context.textStyle.bodyMedium.copyWith(
                   color: context.color.text.secondary,
                 ),
               ),
-              const SizedBox(height: 16),
+              const Gap(16),
               Text(
                 context.locale.emailAddress,
                 style: context.textStyle.bodyMedium,
               ),
-              const SizedBox(height: 8),
+              const Gap(8),
               TextFormField(
                 decoration: InputDecoration(hintText: context.locale.email),
               ),
-              const SizedBox(height: 16),
+              const Gap(16),
               FilledButton(
                 onPressed: () {
                   context.pushReplacementNamed(Routes.emailVerification);

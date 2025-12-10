@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
@@ -31,13 +32,13 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                     color: context.color.primary,
                   ),
                 ),
-                const SizedBox(height: 24),
+                const Gap(24),
                 Text(
                   context.locale.passwordChangeSuccess,
                   textAlign: TextAlign.center,
                   style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
                 ),
-                const SizedBox(height: 8),
+                const Gap(8),
                 Text(
                   context.locale.yourPasswordChanged,
                   textAlign: TextAlign.center,
@@ -46,7 +47,7 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                     color: context.color.text.secondary,
                   ),
                 ),
-                const SizedBox(height: 32),
+                const Gap(32),
                 FilledButton(
                   onPressed: () {
                     context.pop();

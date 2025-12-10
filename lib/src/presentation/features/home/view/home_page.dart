@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/app_localization.dart';
@@ -41,7 +42,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(context.locale.home),
-            const SizedBox(height: 16),
+            const Gap(16),
             FilledButton(
               onPressed: () {
                 ref.read(logoutProvider.notifier).call();

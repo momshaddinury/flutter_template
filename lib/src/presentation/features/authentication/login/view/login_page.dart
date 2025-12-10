@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
@@ -79,9 +80,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     : Alignment.topLeft,
                 child: const LanguageSwitcherWidget(),
               ),
-              const SizedBox(height: 16),
+              const Gap(16),
               const FlutterLogo(size: 200),
-              const SizedBox(height: 80),
+              const Gap(80),
               Form(
                 key: _formKey,
                 child: _LoginForm(
@@ -90,7 +91,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   shouldRemember: shouldRemember,
                 ),
               ),
-              const SizedBox(height: 32),
+              const Gap(32),
               FilledButton(
                 onPressed: _onLogin,
                 child: state.isLoading

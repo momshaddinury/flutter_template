@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
@@ -18,12 +19,12 @@ class CreateNewPasswordPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 16),
+              const Gap(16),
               Text(
                 context.locale.createNewPassword,
                 style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
               ),
-              const SizedBox(height: 4),
+              const Gap(4),
               Text(
                 context.locale.createNewPasswordHint,
                 style: context.textStyle.bodyMedium.copyWith(
@@ -31,9 +32,9 @@ class CreateNewPasswordPage extends StatelessWidget {
                   color: context.color.text.secondary,
                 ),
               ),
-              const SizedBox(height: 32),
+              const Gap(32),
               const _Form(),
-              const SizedBox(height: 32),
+              const Gap(32),
               FilledButton(
                 onPressed: () {
                   context.pushReplacementNamed(Routes.resetPasswordSuccess);
@@ -76,7 +77,7 @@ class _FormState extends State<_Form> {
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        const Gap(16),
         TextFormField(
           decoration: InputDecoration(
             hintText: context.locale.confirmPassword,

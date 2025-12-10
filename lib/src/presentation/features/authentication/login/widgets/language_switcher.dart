@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/gen/l10n/app_localizations.dart';
@@ -19,7 +20,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.language, color: context.color.primary),
-          const SizedBox(width: 4),
+          const Gap(4),
           Text(
             context.locale.getLanguageName(state.languageCode),
             style: context.textStyle.bodyMedium,

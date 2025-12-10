@@ -31,8 +31,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  # UI
   cupertino_icons: ^1.0.6
+  gap: ^3.0.1
   # State management
   flutter_riverpod: ^2.5.1
   # Navigation
