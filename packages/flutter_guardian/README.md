@@ -2,6 +2,11 @@
 
 A collection of custom lint rules to help enforce best practices and code consistency in your Flutter and Dart projects.
 
+## Requirements
+
+- **Flutter**: >=3.38.4
+- **Dart**: ^3.10.3
+
 ## Features
 
 - Enforce repository naming conventions
