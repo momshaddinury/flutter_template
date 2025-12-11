@@ -14,8 +14,8 @@ A comprehensive, scalable foundation for building maintainable Flutter applicati
 - **Robust Network Layer**: Retrofit + Dio with interceptors and error handling
 - **Production Ready**: Optimized for scalability and maintainability
 
-![Flutter](https://img.shields.io/badge/Flutter->=3.29.0-blue.svg)
-![Dart](https://img.shields.io/badge/Dart->=3.4.0-blue.svg)
+![Flutter](https://img.shields.io/badge/Flutter->=3.38.4-blue.svg)
+![Dart](https://img.shields.io/badge/Dart->=3.10.3-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/momshaddinury/flutter_template?utm_source=oss&utm_medium=github&utm_campaign=momshaddinury%2Fflutter_template&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
@@ -23,8 +23,8 @@ A comprehensive, scalable foundation for building maintainable Flutter applicati
 
 ### Prerequisites
 
-- **Flutter SDK**: >=3.32.8
-- **Dart SDK**: >=3.8.0  
+- **Flutter SDK**: >=3.38.4
+- **Dart SDK**: >=3.10.3  
 - **Android Studio** or **VS Code** with Flutter extensions
 - **Git** for version control
 
@@ -156,8 +156,8 @@ flutter_template/
 ### Core Technologies
 | Technology | Version  | Purpose |
 |------------|----------|---------|
-| **Flutter** | >=3.32.8 | UI framework |
-| **Dart** | >=3.8.0  | Programming language |
+| **Flutter** | >=3.38.4 | UI framework |
+| **Dart** | >=3.10.3 | Programming language |
 | **Riverpod** | ^2.5.1   | State management & DI |
 | **go_router** | ^14.2.8  | Navigation and routing |
 
@@ -308,8 +308,8 @@ name: flutter_template
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
-  flutter: '>=3.29.0'
+  sdk: ^3.10.3
+  flutter: '>=3.38.4'
 
 # Code generation configuration
 flutter_gen:
