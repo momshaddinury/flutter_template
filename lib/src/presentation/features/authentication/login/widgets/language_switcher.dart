@@ -20,7 +20,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(Icons.language, color: context.color.primary),
-          const Gap(4),
+          Gap(context.spacing.s4),
           Text(
             context.locale.getLanguageName(state.languageCode),
             style: context.textStyle.bodyMedium,
@@ -41,7 +41,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
                   Icon(
                     Icons.check,
                     color: Theme.of(context).colorScheme.primary,
-                    size: 16,
+                    size: context.spacing.s16,
                   ),
                 ],
               ],

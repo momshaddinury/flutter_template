@@ -8,12 +8,19 @@ class _FilledButtonLightThemeData with ThemeExtensions {
     return FilledButtonThemeData(
       style: ButtonStyle(
         shape: WidgetStateProperty.all(
-          StadiumBorder(side: BorderSide(color: lightColor.primary, width: 2)),
+          StadiumBorder(
+            side: BorderSide(
+              color: lightColor.primary,
+              width: dimensions.spacing.s2,
+            ),
+          ),
         ),
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 24),
+          EdgeInsets.symmetric(horizontal: dimensions.spacing.s24),
         ),
-        minimumSize: WidgetStateProperty.all(const Size(double.infinity, 48)),
+        minimumSize: WidgetStateProperty.all(
+          Size(double.infinity, dimensions.spacing.s48),
+        ),
         textStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
@@ -28,12 +35,19 @@ class _FilledButtonDarkThemeData with ThemeExtensions {
     return FilledButtonThemeData(
       style: ButtonStyle(
         shape: WidgetStateProperty.all(
-          StadiumBorder(side: BorderSide(color: darkColor.primary, width: 2)),
+          StadiumBorder(
+            side: BorderSide(
+              color: darkColor.primary,
+              width: dimensions.spacing.s2,
+            ),
+          ),
         ),
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 24),
+          EdgeInsets.symmetric(horizontal: dimensions.spacing.s24),
         ),
-        minimumSize: WidgetStateProperty.all(const Size(double.infinity, 48)),
+        minimumSize: WidgetStateProperty.all(
+          Size(double.infinity, dimensions.spacing.s48),
+        ),
         textStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
@@ -51,12 +65,19 @@ class _ElevatedButtonLightThemeData with ThemeExtensions {
       style: ButtonStyle(
         elevation: WidgetStateProperty.all(0),
         shape: WidgetStateProperty.all(
-          StadiumBorder(side: BorderSide(color: lightColor.primary, width: 2)),
+          StadiumBorder(
+            side: BorderSide(
+              color: lightColor.primary,
+              width: dimensions.spacing.s2,
+            ),
+          ),
         ),
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 24),
+          EdgeInsets.symmetric(horizontal: dimensions.spacing.s24),
         ),
-        minimumSize: WidgetStateProperty.all(const Size(double.infinity, 48)),
+        minimumSize: WidgetStateProperty.all(
+          Size(double.infinity, dimensions.spacing.s48),
+        ),
         textStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
@@ -72,12 +93,19 @@ class _ElevatedButtonDarkThemeData with ThemeExtensions {
       style: ButtonStyle(
         elevation: WidgetStateProperty.all(0),
         shape: WidgetStateProperty.all(
-          StadiumBorder(side: BorderSide(color: darkColor.primary, width: 2)),
+          StadiumBorder(
+            side: BorderSide(
+              color: darkColor.primary,
+              width: dimensions.spacing.s2,
+            ),
+          ),
         ),
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 24),
+          EdgeInsets.symmetric(horizontal: dimensions.spacing.s24),
         ),
-        minimumSize: WidgetStateProperty.all(const Size(double.infinity, 48)),
+        minimumSize: WidgetStateProperty.all(
+          Size(double.infinity, dimensions.spacing.s48),
+        ),
         textStyle: WidgetStateProperty.all(
           const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),

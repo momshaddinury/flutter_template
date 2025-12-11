@@ -54,7 +54,9 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     },
                     children: _getOnboardingItems(context).map((item) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: context.padding.p24,
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -65,9 +67,9 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            const Gap(24),
+                            Gap(context.spacing.s24),
                             item.image,
-                            const Gap(24),
+                            Gap(context.spacing.s24),
                             Column(
                               children: item.features.map((feature) {
                                 return _OnboardingListItem(title: feature);
@@ -79,15 +81,17 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     }).toList(),
                   ),
                 ),
-                const Gap(24),
+                Gap(context.spacing.s24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: _getOnboardingItems(context).map((item) {
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.padding.p4,
+                      ),
                       child: Icon(
                         Icons.circle,
-                        size: 8,
+                        size: context.spacing.s8,
                         color: _currentPage == item.index
                             ? context.color.pageView.active
                             : context.color.pageView.inactive,
@@ -95,9 +99,11 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     );
                   }).toList(),
                 ),
-                const Gap(44),
+                Gap(context.spacing.s44),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.padding.p24,
+                  ),
                   child: FilledButton(
                     onPressed: () {
                       context.goNamed(Routes.login);
@@ -122,16 +128,20 @@ class _OnboardingListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: EdgeInsets.only(bottom: context.padding.p16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Icon(Icons.circle, size: 6, color: context.color.text.tertiary),
-          const Gap(8),
+          Icon(
+            Icons.circle,
+            size: context.spacing.s6,
+            color: context.color.text.tertiary,
+          ),
+          Gap(context.spacing.s8),
           Expanded(
             child: Baseline(
-              baseline: 8,
+              baseline: context.spacing.s8,
               baselineType: TextBaseline.alphabetic,
               child: Text(title, style: context.textStyle.bodyMedium),
             ),

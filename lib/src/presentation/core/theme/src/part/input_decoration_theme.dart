@@ -1,37 +1,53 @@
 part of '../theme_data.dart';
 
 class _InputDecorationLightTheme with ThemeExtensions {
-  final BorderRadius _borderRadius = BorderRadius.circular(6);
-
   InputDecorationTheme call() {
+    final BorderRadius borderRadius = BorderRadius.circular(
+      dimensions.radius.r6,
+    );
+
     return InputDecorationTheme(
       hintStyle: textStyle.bodyLarge.copyWith(color: lightColor.text.secondary),
-      contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      border: OutlineInputBorder(borderRadius: _borderRadius),
+      contentPadding: EdgeInsets.symmetric(
+        vertical: dimensions.spacing.s12,
+        horizontal: dimensions.spacing.s16,
+      ),
+      border: OutlineInputBorder(borderRadius: borderRadius),
       enabledBorder: OutlineInputBorder(
-        borderRadius: _borderRadius,
-        borderSide: BorderSide(color: lightColor.border, width: 1),
+        borderRadius: borderRadius,
+        borderSide: BorderSide(
+          color: lightColor.border,
+          width: dimensions.spacing.s1,
+        ),
       ),
       suffixIconColor: lightColor.icon,
-      disabledBorder: OutlineInputBorder(borderRadius: _borderRadius),
+      disabledBorder: OutlineInputBorder(borderRadius: borderRadius),
     );
   }
 }
 
 class _InputDecorationDarkTheme with ThemeExtensions {
-  final BorderRadius _borderRadius = BorderRadius.circular(6);
-
   InputDecorationTheme call() {
+    final BorderRadius borderRadius = BorderRadius.circular(
+      dimensions.radius.r6,
+    );
+
     return InputDecorationTheme(
       hintStyle: textStyle.bodyLarge.copyWith(color: darkColor.text.secondary),
-      contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-      border: OutlineInputBorder(borderRadius: _borderRadius),
+      contentPadding: EdgeInsets.symmetric(
+        vertical: dimensions.spacing.s12,
+        horizontal: dimensions.spacing.s16,
+      ),
+      border: OutlineInputBorder(borderRadius: borderRadius),
       enabledBorder: OutlineInputBorder(
-        borderRadius: _borderRadius,
-        borderSide: BorderSide(color: darkColor.border, width: 1),
+        borderRadius: borderRadius,
+        borderSide: BorderSide(
+          color: darkColor.border,
+          width: dimensions.spacing.s1,
+        ),
       ),
       suffixIconColor: darkColor.icon,
-      disabledBorder: OutlineInputBorder(borderRadius: _borderRadius),
+      disabledBorder: OutlineInputBorder(borderRadius: borderRadius),
     );
   }
 }

@@ -71,7 +71,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
           child: Column(
             children: [
               Align(
@@ -80,9 +80,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     : Alignment.topLeft,
                 child: const LanguageSwitcherWidget(),
               ),
-              const Gap(16),
+              Gap(context.spacing.s16),
               const FlutterLogo(size: 200),
-              const Gap(80),
+              Gap(context.spacing.s80),
               Form(
                 key: _formKey,
                 child: _LoginForm(
@@ -91,7 +91,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   shouldRemember: shouldRemember,
                 ),
               ),
-              const Gap(32),
+              Gap(context.spacing.s32),
               FilledButton(
                 onPressed: _onLogin,
                 child: state.isLoading

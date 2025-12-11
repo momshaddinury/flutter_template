@@ -12,7 +12,7 @@ class ResetPasswordSuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -21,24 +21,24 @@ class ResetPasswordSuccessPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(context.padding.p20),
                   decoration: BoxDecoration(
                     color: context.color.primary.withValues(alpha: .25),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.check,
-                    size: 100,
+                    size: context.spacing.s100,
                     color: context.color.primary,
                   ),
                 ),
-                const Gap(24),
+                Gap(context.spacing.s24),
                 Text(
                   context.locale.passwordChangeSuccess,
                   textAlign: TextAlign.center,
                   style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
                 ),
-                const Gap(8),
+                Gap(context.spacing.s8),
                 Text(
                   context.locale.yourPasswordChanged,
                   textAlign: TextAlign.center,
@@ -47,7 +47,7 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                     color: context.color.text.secondary,
                   ),
                 ),
-                const Gap(32),
+                Gap(context.spacing.s32),
                 FilledButton(
                   onPressed: () {
                     context.pop();

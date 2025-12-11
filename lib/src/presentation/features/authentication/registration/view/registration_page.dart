@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/extensions/go_router_extension.dart';
 import '../../../../core/router/routes.dart';
+import '../../../../core/theme/theme.dart';
 import '../../../../core/widgets/link_text.dart';
 
 class RegistrationPage extends StatefulWidget {
@@ -19,29 +20,29 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       appBar: AppBar(title: Text(context.locale.signUp)),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Gap(80),
-            const FlutterLogo(size: 100),
-            const Gap(80),
+            Gap(context.spacing.s80),
+            FlutterLogo(size: context.spacing.s100),
+            Gap(context.spacing.s80),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.firstName),
             ),
-            const Gap(16),
+            Gap(context.spacing.s16),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.lastName),
             ),
-            const Gap(16),
+            Gap(context.spacing.s16),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.email),
             ),
-            const Gap(16),
+            Gap(context.spacing.s16),
             TextFormField(
               decoration: InputDecoration(hintText: context.locale.password),
             ),
-            const Gap(32),
+            Gap(context.spacing.s32),
             FilledButton(
               onPressed: () {
                 throw UnimplementedError();

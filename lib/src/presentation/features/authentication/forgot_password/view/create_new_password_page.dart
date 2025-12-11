@@ -15,16 +15,16 @@ class CreateNewPasswordPage extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Gap(16),
+              Gap(context.spacing.s16),
               Text(
                 context.locale.createNewPassword,
                 style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
               ),
-              const Gap(4),
+              Gap(context.spacing.s4),
               Text(
                 context.locale.createNewPasswordHint,
                 style: context.textStyle.bodyMedium.copyWith(
@@ -32,9 +32,9 @@ class CreateNewPasswordPage extends StatelessWidget {
                   color: context.color.text.secondary,
                 ),
               ),
-              const Gap(32),
+              Gap(context.spacing.s32),
               const _Form(),
-              const Gap(32),
+              Gap(context.spacing.s32),
               FilledButton(
                 onPressed: () {
                   context.pushReplacementNamed(Routes.resetPasswordSuccess);
@@ -77,7 +77,7 @@ class _FormState extends State<_Form> {
             ),
           ),
         ),
-        const Gap(16),
+        Gap(context.spacing.s16),
         TextFormField(
           decoration: InputDecoration(
             hintText: context.locale.confirmPassword,

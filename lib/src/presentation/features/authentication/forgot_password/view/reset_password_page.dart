@@ -15,11 +15,11 @@ class ResetPasswordPage extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Gap(24),
+              Gap(context.spacing.s24),
               Text(
                 context.locale.resetPassword,
                 style: context.textStyle.headlineSmall.copyWith(
@@ -27,23 +27,23 @@ class ResetPasswordPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const Gap(4),
+              Gap(context.spacing.s4),
               Text(
                 context.locale.enterAssociatedEmail,
                 style: context.textStyle.bodyMedium.copyWith(
                   color: context.color.text.secondary,
                 ),
               ),
-              const Gap(16),
+              Gap(context.spacing.s16),
               Text(
                 context.locale.emailAddress,
                 style: context.textStyle.bodyMedium,
               ),
-              const Gap(8),
+              Gap(context.spacing.s8),
               TextFormField(
                 decoration: InputDecoration(hintText: context.locale.email),
               ),
-              const Gap(16),
+              Gap(context.spacing.s16),
               FilledButton(
                 onPressed: () {
                   context.pushReplacementNamed(Routes.emailVerification);

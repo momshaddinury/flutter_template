@@ -13,7 +13,7 @@ class $LightThemeData with ThemeExtensions {
   ThemeData call() {
     return ThemeData(
       brightness: Brightness.light,
-      extensions: <ThemeExtension<dynamic>>[lightColor, textStyle],
+      extensions: <ThemeExtension<dynamic>>[lightColor, textStyle, dimensions],
       colorScheme: ColorScheme.light(primary: lightColor.primary),
       appBarTheme: _AppBarLightTheme()(),
       scaffoldBackgroundColor: lightColor.scaffoldBackground,
@@ -36,7 +36,7 @@ class $DarkThemeData with ThemeExtensions {
   ThemeData call() {
     return ThemeData(
       brightness: Brightness.dark,
-      extensions: <ThemeExtension<dynamic>>[darkColor, textStyle],
+      extensions: <ThemeExtension<dynamic>>[darkColor, textStyle, dimensions],
       colorScheme: ColorScheme.dark(primary: darkColor.primary),
       appBarTheme: _AppBarDarkTheme()(),
       scaffoldBackgroundColor: darkColor.scaffoldBackground,

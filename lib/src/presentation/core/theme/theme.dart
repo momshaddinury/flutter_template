@@ -74,6 +74,37 @@ extension BuildContextExtension on BuildContext {
     return ext!;
   }
 
+  /// Gets the dimensions extension from the current theme.
+  ///
+  /// Provides access to all custom dimensions defined in the theme,
+  /// such as spacing, padding, margin, and border radius.
+  ///
+  /// Throws if the dimensions extension is not found.
+  /// In debug mode, an assertion explains the missing registration.
+  /// In release mode, a null-check error will be thrown if not registered.
+  Dimensions get dimensions {
+    final ext = _theme.extension<Dimensions>();
+
+    assert(
+      ext != null,
+      'Ensure Dimensions is added to ThemeData.extensions in src/theme_data.dart.',
+    );
+
+    return ext!;
+  }
+
+  /// Gets the spacing dimensions from the current theme.
+  get spacing => dimensions.spacing;
+
+  /// Gets the padding dimensions from the current theme.
+  get padding => dimensions.padding;
+
+  /// Gets the margin dimensions from the current theme.
+  get margin => dimensions.margin;
+
+  /// Gets the border radius dimensions from the current theme.
+  get radius => dimensions.radius;
+
   /// Gets the light theme data configuration.
   ///
   /// Returns a [ThemeData] object configured for light mode appearance.
