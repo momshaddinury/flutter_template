@@ -36,7 +36,7 @@ dependencies:
   # State management
   flutter_riverpod: ^2.5.1
   # Navigation
-  go_router: ^14.2.8
+  go_router: ^17.0.1
   # Cache & Database
   shared_preferences: ^2.3.1
   # Generator and Annotations
@@ -61,7 +61,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
   build_runner:
   custom_lint:
   flutter_guardian:
