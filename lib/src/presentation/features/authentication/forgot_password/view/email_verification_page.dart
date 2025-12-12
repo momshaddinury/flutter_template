@@ -14,7 +14,7 @@ class EmailVerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(context.locale.checkYourMail)),
+      appBar: AppBar(title: HeadingSmallText(context.locale.checkYourMail)),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
