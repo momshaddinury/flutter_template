@@ -30,24 +30,6 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
     );
   }
 
-  /// Used for medium-emphasis text that separates content sections.
-  ///
-  /// Title:
-  /// - Large: 20.0–21.0
-  /// - Medium: 18.0–19.0
-  /// - Small: 16.0–17.0
-  /* TextStyle get titleLarge {
-    return const TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
-  } */
-
-  TextStyle get titleMedium {
-    return const TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
-  }
-
-  /* TextStyle get titleSmall {
-    return const TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
-  } */
-
   /// Primary style for most of the readable content.
   ///
   /// Body:
@@ -62,10 +44,6 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
     return const TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
   }
 
-  /* TextStyle get bodySmall {
-    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w400);
-  } */
-
   /// For text on buttons, labels, and other interactive elements.
   ///
   /// Label:
@@ -75,22 +53,6 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
   TextStyle get labelLarge {
     return const TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
   }
-
-  /* TextStyle get labelMedium {
-    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
-  } */
-
-  /* TextStyle get labelSmall {
-    return const TextStyle(fontSize: 10, fontWeight: FontWeight.w500);
-  } */
-
-  /// Used for supplementary text like captions, overlines, or hints.
-  ///
-  /// Caption:
-  /// - 12.0
-  /* TextStyle get caption {
-    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w400);
-  } */
 
   @override
   ThemeExtension<TextStyleExtension> copyWith() => const TextStyleExtension();

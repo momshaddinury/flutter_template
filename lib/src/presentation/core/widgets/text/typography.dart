@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../theme/theme.dart';
 
-class HeadingLarge extends StatelessWidget {
-  const HeadingLarge(this.text, {super.key, this.textAlign});
+abstract class _Typography extends StatelessWidget {
+  const _Typography(this.text, {super.key, this.textAlign});
 
   final String text;
   final TextAlign? textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    throw UnimplementedError();
+  }
+}
+
+class HeadingLarge extends _Typography {
+  const HeadingLarge(super.text, {super.key, super.textAlign});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +29,8 @@ class HeadingLarge extends StatelessWidget {
   }
 }
 
-class HeadingSmall extends StatelessWidget {
-  const HeadingSmall(this.text, {super.key, this.textAlign});
-
-  final String text;
-  final TextAlign? textAlign;
+class HeadingSmall extends _Typography {
+  const HeadingSmall(super.text, {super.key, super.textAlign});
 
   @override
   Widget build(BuildContext context) {
