@@ -26,7 +26,7 @@ class EmailVerificationPage extends StatelessWidget {
                 Gap(context.spacing.s24),
                 HeadingLargeText(context.locale.checkYourMail),
                 Gap(context.spacing.s8),
-                SecondaryBodyMediumText(
+                BodyMediumText.secondary(
                   context.locale.enterVerificationCode,
                   textAlign: TextAlign.center,
                 ),

@@ -21,7 +21,7 @@ class ResetPasswordPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap(context.spacing.s16),
-              SecondaryBodyMediumText(context.locale.enterAssociatedEmail),
+              BodyMediumText.secondary(context.locale.enterAssociatedEmail),
               Gap(context.spacing.s16),
               BodyMediumText(context.locale.emailAddress),
               Gap(context.spacing.s8),
