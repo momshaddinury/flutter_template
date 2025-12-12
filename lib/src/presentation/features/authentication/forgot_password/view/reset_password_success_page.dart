@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/theme/theme.dart';
+import '../../../../core/widgets/text/typography.dart';
 
 class ResetPasswordSuccessPage extends StatelessWidget {
   const ResetPasswordSuccessPage({super.key});
@@ -33,10 +34,9 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                   ),
                 ),
                 Gap(context.spacing.s24),
-                Text(
+                HeadingLarge(
                   context.locale.passwordChangeSuccess,
                   textAlign: TextAlign.center,
-                  style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
                 ),
                 Gap(context.spacing.s8),
                 Text(

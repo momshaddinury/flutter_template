@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/extensions/app_localization.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/theme/theme.dart';
+import '../../../core/widgets/text/typography.dart';
 
 part '../model/onboarding_model.dart';
 
@@ -60,12 +61,9 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            HeadingLarge(
                               item.title,
                               textAlign: TextAlign.center,
-                              style: context.textStyle.headlineSmall.copyWith(
-                                fontWeight: FontWeight.w500,
-                              ),
                             ),
                             Gap(context.spacing.s24),
                             item.image,
