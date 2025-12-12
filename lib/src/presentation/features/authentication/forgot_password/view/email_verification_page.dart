@@ -6,6 +6,7 @@ import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 import '../../../../core/widgets/link_text.dart';
+import '../../../../core/widgets/text/typography.dart';
 
 class EmailVerificationPage extends StatelessWidget {
   const EmailVerificationPage({super.key});
@@ -23,10 +24,7 @@ class EmailVerificationPage extends StatelessWidget {
                 Gap(context.spacing.s24),
                 FlutterLogo(size: context.spacing.s200),
                 Gap(context.spacing.s24),
-                Text(
-                  context.locale.checkYourMail,
-                  style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
-                ),
+                HeadingLarge(context.locale.checkYourMail),
                 Gap(context.spacing.s8),
                 Text(
                   context.locale.enterVerificationCode,

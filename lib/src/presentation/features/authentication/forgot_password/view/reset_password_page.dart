@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
+import '../../../../core/widgets/text/typography.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({super.key});
@@ -20,13 +21,7 @@ class ResetPasswordPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap(context.spacing.s24),
-              Text(
-                context.locale.resetPassword,
-                style: context.textStyle.headlineSmall.copyWith(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              HeadingLarge(context.locale.resetPassword),
               Gap(context.spacing.s4),
               Text(
                 context.locale.enterAssociatedEmail,

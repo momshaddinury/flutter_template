@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
+import '../../../../core/widgets/text/typography.dart';
 
 class CreateNewPasswordPage extends StatelessWidget {
   const CreateNewPasswordPage({super.key});
@@ -20,10 +21,7 @@ class CreateNewPasswordPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap(context.spacing.s16),
-              Text(
-                context.locale.createNewPassword,
-                style: context.textStyle.headlineSmall.copyWith(fontSize: 24),
-              ),
+              HeadingLarge(context.locale.createNewPassword),
               Gap(context.spacing.s4),
               Text(
                 context.locale.createNewPasswordHint,
