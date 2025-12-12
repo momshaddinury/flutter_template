@@ -6,6 +6,7 @@ import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/gen/l10n/app_localizations.dart';
 import '../../../../core/application_state/localization_provider/localization_provider.dart';
 import '../../../../core/theme/theme.dart';
+import '../../../../core/widgets/text/typography.dart';
 
 class LanguageSwitcherWidget extends ConsumerWidget {
   const LanguageSwitcherWidget({super.key});
@@ -21,10 +22,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
         children: [
           Icon(Icons.language, color: context.color.primary),
           Gap(context.spacing.s4),
-          Text(
-            context.locale.getLanguageName(state.languageCode),
-            style: context.textStyle.bodyMedium,
-          ),
+          BodyMediumText(context.locale.getLanguageName(state.languageCode)),
           const Icon(Icons.arrow_drop_down),
         ],
       ),

@@ -24,15 +24,11 @@ class EmailVerificationPage extends StatelessWidget {
                 Gap(context.spacing.s24),
                 FlutterLogo(size: context.spacing.s200),
                 Gap(context.spacing.s24),
-                HeadingLarge(context.locale.checkYourMail),
+                HeadingLargeText(context.locale.checkYourMail),
                 Gap(context.spacing.s8),
-                Text(
+                SecondaryBodyMediumText(
                   context.locale.enterVerificationCode,
                   textAlign: TextAlign.center,
-                  style: context.textStyle.bodyMedium.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: context.color.text.secondary,
-                  ),
                 ),
                 Gap(context.spacing.s32),
                 const _OTPField(),

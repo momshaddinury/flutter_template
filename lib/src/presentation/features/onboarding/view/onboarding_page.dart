@@ -61,7 +61,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            HeadingLarge(
+                            HeadingLargeText(
                               item.title,
                               textAlign: TextAlign.center,
                             ),
@@ -141,7 +141,7 @@ class _OnboardingListItem extends StatelessWidget {
             child: Baseline(
               baseline: context.spacing.s8,
               baselineType: TextBaseline.alphabetic,
-              child: Text(title, style: context.textStyle.bodyMedium),
+              child: BodyMediumText(title),
             ),
           ),
         ],
