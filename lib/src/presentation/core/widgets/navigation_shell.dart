@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/extensions/app_localization.dart';
 import '../theme/theme.dart';
+import 'text/typography.dart';
 
 class NavigationShell extends StatefulWidget {
   const NavigationShell({super.key, required this.statefulNavigationShell});
@@ -18,7 +19,7 @@ class _NavigationShellState extends State<NavigationShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Template'),
+        title: const HeadingSmallText('Flutter Template'),
         titleSpacing: context.spacing.s16,
       ),
       body: widget.statefulNavigationShell,

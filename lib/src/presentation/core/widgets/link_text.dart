@@ -20,17 +20,16 @@ class LinkText extends StatelessWidget {
       alignment: Alignment.center,
       child: TextButton(
         onPressed: onTap,
-        child: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
+        child: Text.rich(
+          TextSpan(
             text: text,
-            style: context.textStyle.labelLarge.copyWith(
+            style: context.textStyle.labelMedium.copyWith(
               color: context.color.text.secondary,
             ),
             children: [
               TextSpan(
                 text: linkText,
-                style: context.textStyle.labelLarge.copyWith(
+                style: context.textStyle.labelMedium.copyWith(
                   color: context.color.text.primary,
                 ),
               ),

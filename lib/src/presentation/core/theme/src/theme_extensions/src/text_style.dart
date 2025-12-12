@@ -48,14 +48,13 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
     );
   }
 
-  /// For text on buttons, labels, and other interactive elements.
-  ///
-  /// Label:
-  /// - Large: 14.0–15.0
-  /// - Medium: 12.0–13.0
-  /// - Small: 10.0–11.0
-  TextStyle get labelLarge {
-    return const TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+  TextStyle get labelMedium {
+    return const TextStyle(
+      height: 1.15,
+      fontSize: 14,
+      letterSpacing: 1,
+      fontWeight: FontWeight.w500,
+    );
   }
 
   @override
