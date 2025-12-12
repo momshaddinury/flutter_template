@@ -21,7 +21,7 @@ class CreateNewPasswordPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap(context.spacing.s16),
-              SecondaryBodyMediumText(context.locale.createNewPasswordHint),
+              BodyMediumText.secondary(context.locale.createNewPasswordHint),
               Gap(context.spacing.s16),
               const _Form(),
               Gap(context.spacing.s32),

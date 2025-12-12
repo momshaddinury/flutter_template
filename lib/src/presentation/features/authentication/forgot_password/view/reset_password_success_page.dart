@@ -39,7 +39,7 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 Gap(context.spacing.s8),
-                SecondaryBodyMediumText(
+                BodyMediumText.secondary(
                   context.locale.yourPasswordChanged,
                   textAlign: TextAlign.center,
                 ),

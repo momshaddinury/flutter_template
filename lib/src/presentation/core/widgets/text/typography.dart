@@ -44,31 +44,35 @@ class HeadingSmallText extends _Typography {
   }
 }
 
+enum _BodyMediumTextVariant { primary, secondary }
+
 class BodyMediumText extends _Typography {
-  const BodyMediumText(super.text, {super.key, super.textAlign});
+  const BodyMediumText(super.text, {super.key, super.textAlign})
+    : _variant = _BodyMediumTextVariant.primary;
+
+  const BodyMediumText.secondary(super.text, {super.key, super.textAlign})
+    : _variant = _BodyMediumTextVariant.secondary;
+
+  final _BodyMediumTextVariant _variant;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: textAlign,
-      style: context.textStyle.bodyMedium,
+    final defaultStyle = context.textStyle.bodyMedium.copyWith(
+      color: context.color.text.primary,
     );
-  }
-}
 
-class SecondaryBodyMediumText extends _Typography {
-  const SecondaryBodyMediumText(super.text, {super.key, super.textAlign});
+    final secondaryStyle = context.textStyle.bodyMedium.copyWith(
+      color: context.color.text.secondary,
+      fontWeight: .w500,
+    );
 
-  @override
-  Widget build(BuildContext context) {
     return Text(
       text,
       textAlign: textAlign,
-      style: context.textStyle.bodyMedium.copyWith(
-        color: context.color.text.secondary,
-        fontWeight: FontWeight.w500,
-      ),
+      style: switch (_variant) {
+        _BodyMediumTextVariant.primary => defaultStyle,
+        _BodyMediumTextVariant.secondary => secondaryStyle,
+      },
     );
   }
 }
