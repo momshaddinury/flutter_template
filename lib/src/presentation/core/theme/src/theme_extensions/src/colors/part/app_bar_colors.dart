@@ -13,13 +13,13 @@ class _LightAppBarColors extends AppBarColors {
   const _LightAppBarColors();
 
   @override
-  Color get background => _Primitive.neutral0;
+  Color get background => _Primitive.neutral10;
 
   @override
   Color get icon => _Primitive.neutral60;
 
   @override
-  Color get surfaceTint => _Primitive.neutral0;
+  Color get surfaceTint => _Primitive.neutral10;
 
   @override
   Color get title => _Primitive.neutral50;

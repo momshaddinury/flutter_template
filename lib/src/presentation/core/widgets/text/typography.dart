@@ -19,3 +19,21 @@ class HeadingLarge extends StatelessWidget {
     );
   }
 }
+
+class HeadingSmall extends StatelessWidget {
+  const HeadingSmall(this.text, {super.key, this.textAlign});
+
+  final String text;
+  final TextAlign? textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: context.textStyle.headingSmall.copyWith(
+        color: context.color.text.primary,
+      ),
+    );
+  }
+}

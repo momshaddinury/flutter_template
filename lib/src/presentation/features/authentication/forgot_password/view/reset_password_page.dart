@@ -13,16 +13,14 @@ class ResetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: HeadingSmall(context.locale.resetPassword)),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(context.spacing.s24),
-              HeadingLarge(context.locale.resetPassword),
-              Gap(context.spacing.s4),
+              Gap(context.spacing.s16),
               Text(
                 context.locale.enterAssociatedEmail,
                 style: context.textStyle.bodyMedium.copyWith(
