@@ -13,7 +13,7 @@ class CreateNewPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: HeadingSmall(context.locale.createNewPassword)),
+      appBar: AppBar(title: HeadingSmallText(context.locale.createNewPassword)),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
@@ -21,13 +21,7 @@ class CreateNewPasswordPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap(context.spacing.s16),
-              Text(
-                context.locale.createNewPasswordHint,
-                style: context.textStyle.bodyMedium.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: context.color.text.secondary,
-                ),
-              ),
+              SecondaryBodyMediumText(context.locale.createNewPasswordHint),
               Gap(context.spacing.s16),
               const _Form(),
               Gap(context.spacing.s32),

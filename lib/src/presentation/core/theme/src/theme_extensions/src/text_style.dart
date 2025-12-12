@@ -5,8 +5,8 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
 
   TextStyle get headingLarge {
     return const TextStyle(
-      fontSize: 24,
       height: 1.33,
+      fontSize: 24,
       letterSpacing: 0,
       fontWeight: FontWeight.w600,
     );
@@ -14,8 +14,8 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
 
   TextStyle get headingMedium {
     return const TextStyle(
-      fontSize: 20,
       height: 1.40,
+      fontSize: 20,
       letterSpacing: 0,
       fontWeight: FontWeight.w600,
     );
@@ -30,18 +30,22 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
     );
   }
 
-  /// Primary style for most of the readable content.
-  ///
-  /// Body:
-  /// - Large: 16.0–17.0
-  /// - Medium: 14.0–15.0
-  /// - Small: 12.0–13.0
   TextStyle get bodyLarge {
-    return const TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
+    return const TextStyle(
+      height: 1.50,
+      fontSize: 16,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   TextStyle get bodyMedium {
-    return const TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
+    return const TextStyle(
+      height: 1.42,
+      fontSize: 14,
+      letterSpacing: 0,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   /// For text on buttons, labels, and other interactive elements.

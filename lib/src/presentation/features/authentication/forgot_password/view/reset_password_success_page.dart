@@ -34,18 +34,14 @@ class ResetPasswordSuccessPage extends StatelessWidget {
                   ),
                 ),
                 Gap(context.spacing.s24),
-                HeadingLarge(
+                HeadingLargeText(
                   context.locale.passwordChangeSuccess,
                   textAlign: TextAlign.center,
                 ),
                 Gap(context.spacing.s8),
-                Text(
+                SecondaryBodyMediumText(
                   context.locale.yourPasswordChanged,
                   textAlign: TextAlign.center,
-                  style: context.textStyle.bodyMedium.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: context.color.text.secondary,
-                  ),
                 ),
                 Gap(context.spacing.s32),
                 FilledButton(

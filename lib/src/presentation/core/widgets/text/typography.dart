@@ -14,8 +14,8 @@ abstract class _Typography extends StatelessWidget {
   }
 }
 
-class HeadingLarge extends _Typography {
-  const HeadingLarge(super.text, {super.key, super.textAlign});
+class HeadingLargeText extends _Typography {
+  const HeadingLargeText(super.text, {super.key, super.textAlign});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class HeadingLarge extends _Typography {
   }
 }
 
-class HeadingSmall extends _Typography {
-  const HeadingSmall(super.text, {super.key, super.textAlign});
+class HeadingSmallText extends _Typography {
+  const HeadingSmallText(super.text, {super.key, super.textAlign});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,35 @@ class HeadingSmall extends _Typography {
       textAlign: textAlign,
       style: context.textStyle.headingSmall.copyWith(
         color: context.color.text.primary,
+      ),
+    );
+  }
+}
+
+class BodyMediumText extends _Typography {
+  const BodyMediumText(super.text, {super.key, super.textAlign});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: context.textStyle.bodyMedium,
+    );
+  }
+}
+
+class SecondaryBodyMediumText extends _Typography {
+  const SecondaryBodyMediumText(super.text, {super.key, super.textAlign});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: context.textStyle.bodyMedium.copyWith(
+        color: context.color.text.secondary,
+        fontWeight: FontWeight.w500,
       ),
     );
   }
