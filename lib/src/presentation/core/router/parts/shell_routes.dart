@@ -1,6 +1,6 @@
 part of '../router.dart';
 
-StatefulShellRoute _shellRoutes(ref) {
+StatefulShellRoute _shellRoutes(Ref ref) {
   return StatefulShellRoute.indexedStack(
     builder: (context, state, navigationShell) {
       return NavigationShell(statefulNavigationShell: navigationShell);

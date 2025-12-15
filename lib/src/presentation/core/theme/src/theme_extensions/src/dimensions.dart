@@ -19,6 +19,7 @@ class Dimensions extends ThemeExtension<Dimensions> {
   static const double _v16 = 16;
   static const double _v20 = 20;
   static const double _v24 = 24;
+  static const double _v30 = 30;
   static const double _v32 = 32;
   static const double _v44 = 44;
   static const double _v48 = 48;
@@ -27,7 +28,6 @@ class Dimensions extends ThemeExtension<Dimensions> {
   static const double _v100 = 100;
   static const double _v200 = 200;
   static const double _v210 = 210;
-  static const double _v30 = 30;
 
   @override
   ThemeExtension<Dimensions> lerp(
@@ -38,8 +38,8 @@ class Dimensions extends ThemeExtension<Dimensions> {
       return this;
     }
     // Constants don't really lerp, but we return 'this' (or other if t >= 0.5)
-    // as per previous behavior. If we wanted to lerp, we'd need to lerp the fields,
-    // but these are just buckets of constants.
+    // as per previous behavior. If we wanted to lerp, we'd need to lerp the
+    // fields, but these are just buckets of constants.
     return t < 0.5 ? this : other;
   }
 
@@ -61,6 +61,7 @@ class _Spacing {
   final double s12 = Dimensions._v12;
   final double s16 = Dimensions._v16;
   final double s24 = Dimensions._v24;
+  final double s30 = Dimensions._v30;
   final double s32 = Dimensions._v32;
   final double s44 = Dimensions._v44;
   final double s48 = Dimensions._v48;
@@ -69,7 +70,6 @@ class _Spacing {
   final double s100 = Dimensions._v100;
   final double s200 = Dimensions._v200;
   final double s210 = Dimensions._v210;
-  final double s30 = Dimensions._v30;
 }
 
 class _Padding {

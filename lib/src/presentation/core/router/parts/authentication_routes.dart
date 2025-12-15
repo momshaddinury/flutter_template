@@ -1,6 +1,6 @@
 part of '../router.dart';
 
-List<GoRoute> _authenticationRoutes(ref) {
+List<GoRoute> _authenticationRoutes(Ref ref) {
   return [
     GoRoute(
       path: Routes.login,

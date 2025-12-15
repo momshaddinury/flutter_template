@@ -1,6 +1,6 @@
 part of '../router.dart';
 
-List<GoRoute> _onboardingRoutes(ref) {
+List<GoRoute> _onboardingRoutes(Ref ref) {
   return [
     GoRoute(
       path: Routes.splash,
