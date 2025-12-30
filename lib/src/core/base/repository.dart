@@ -34,7 +34,7 @@ abstract base class Repository<T> {
   ) async {
     try {
       final result = await operation();
-      return Success(result);
+      return Success(data: result);
     } on Exception catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
@@ -70,7 +70,7 @@ abstract base class Repository<T> {
   Result<T, Failure> guard(T Function() operation) {
     try {
       final result = operation();
-      return Success(result);
+      return Success(data: result);
     } on Exception catch (e) {
       return Error(Failure.mapExceptionToFailure(e));
     }

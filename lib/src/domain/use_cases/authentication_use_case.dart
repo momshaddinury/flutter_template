@@ -32,7 +32,7 @@ final class LoginUseCase {
     final result = await repository.login(request);
 
     return switch (result) {
-      Success(:final data) => Success(data),
+      Success(:final data) => Success(data: data),
       Error(:final error) => Error(error.message),
       _ => const Error('Something went wrong'),
     };
