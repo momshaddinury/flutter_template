@@ -50,7 +50,7 @@ dependencies:
   # Serialization & Deserialization
   dart_mappable:
   # Networking
-  retrofit: ^4.4.0
+  retrofit: '>=4.4.0 <4.8.0'
   dio: ^5.8.0+1
   # Localization
   flutter_localizations:

@@ -8,7 +8,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
       height: 1.33,
       fontSize: 24,
       letterSpacing: 0,
-      fontWeight: .w600,
+      fontWeight: FontWeight.w600,
     );
   }
 
@@ -17,7 +17,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
       height: 1.40,
       fontSize: 20,
       letterSpacing: 0,
-      fontWeight: .w600,
+      fontWeight: FontWeight.w600,
     );
   }
 
@@ -26,7 +26,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
       height: 1.33,
       fontSize: 18,
       letterSpacing: 0,
-      fontWeight: .w500,
+      fontWeight: FontWeight.w500,
     );
   }
 
@@ -35,7 +35,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
       height: 1.50,
       fontSize: 16,
       letterSpacing: 0,
-      fontWeight: .w400,
+      fontWeight: FontWeight.w400,
     );
   }
 
@@ -44,7 +44,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
       height: 1.42,
       fontSize: 14,
       letterSpacing: 0,
-      fontWeight: .w400,
+      fontWeight: FontWeight.w400,
     );
   }
 
@@ -53,7 +53,7 @@ class TextStyleExtension extends ThemeExtension<TextStyleExtension> {
       height: 1.15,
       fontSize: 14,
       letterSpacing: 1,
-      fontWeight: .w500,
+      fontWeight: FontWeight.w500,
     );
   }
 

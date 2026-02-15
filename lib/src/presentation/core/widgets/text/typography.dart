@@ -114,10 +114,10 @@ class BodyMediumText extends _Typography {
   @override
   Widget build(BuildContext context) {
     final style = switch (_variant) {
-      .primary => context.textStyle.bodyMedium,
-      .secondary => context.textStyle.bodyMedium.copyWith(
+      _BodyMediumTextVariant.primary => context.textStyle.bodyMedium,
+      _BodyMediumTextVariant.secondary => context.textStyle.bodyMedium.copyWith(
         color: context.color.text.secondary,
-        fontWeight: .w500,
+        fontWeight: FontWeight.w500,
       ),
     };
 
