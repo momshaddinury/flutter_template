@@ -4,6 +4,7 @@ export 'email_validation.dart';
 export 'length_validation.dart';
 export 'password_validation.dart';
 export 'required_validation.dart';
+export 'confirm_password_validation.dart';
 export 'validation_impl.dart';
 
 abstract class Validation<T> {

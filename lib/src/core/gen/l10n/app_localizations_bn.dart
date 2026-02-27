@@ -193,4 +193,7 @@ class AppLocalizationsBn extends AppLocalizations {
   @override
   String get passwordSpecialCharValidation =>
       'পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে';
+
+  @override
+  String get passwordMismatchValidation => 'পাসওয়ার্ড মিলছে না';
 }

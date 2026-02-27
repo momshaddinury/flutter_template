@@ -7,6 +7,8 @@ import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 import '../../../../core/widgets/link_text.dart';
 import '../../../../core/widgets/text/typography.dart';
+import '../../../../../core/extensions/validation.dart';
+import '../../../../../core/utiliity/validation/validation.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -16,48 +18,115 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
+  void _toggleConfirmPasswordVisibility() {
+    setState(() {
+      _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+    });
+  }
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: HeadingSmallText(context.locale.signUp)),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Gap(context.spacing.s80),
-            FlutterLogo(size: context.spacing.s100),
-            Gap(context.spacing.s80),
-            TextFormField(
-              decoration: InputDecoration(hintText: context.locale.firstName),
-            ),
-            Gap(context.spacing.s16),
-            TextFormField(
-              decoration: InputDecoration(hintText: context.locale.lastName),
-            ),
-            Gap(context.spacing.s16),
-            TextFormField(
-              decoration: InputDecoration(hintText: context.locale.email),
-            ),
-            Gap(context.spacing.s16),
-            TextFormField(
-              decoration: InputDecoration(hintText: context.locale.password),
-            ),
-            Gap(context.spacing.s32),
-            FilledButton(
-              onPressed: () {
-                throw UnimplementedError();
-              },
-              child: Text(context.locale.continueAction),
-            ),
-            LinkText(
-              text: context.locale.alreadyHaveAccount,
-              linkText: context.locale.signIn,
-              onTap: () {
-                context.pushNamedAndRemoveUntil(Routes.login);
-              },
-            ),
-          ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Gap(context.spacing.s80),
+              FlutterLogo(size: context.spacing.s100),
+              Gap(context.spacing.s80),
+              TextFormField(
+                decoration: InputDecoration(hintText: context.locale.firstName),
+              ),
+              Gap(context.spacing.s16),
+              TextFormField(
+                decoration: InputDecoration(hintText: context.locale.lastName),
+              ),
+              Gap(context.spacing.s16),
+              TextFormField(
+                decoration: InputDecoration(hintText: context.locale.email),
+              ),
+              Gap(context.spacing.s16),
+              TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: _passwordController,
+                obscureText: !_isPasswordVisible,
+                decoration: InputDecoration(
+                  hintText: context.locale.password,
+                  suffixIcon: GestureDetector(
+                    onTap: _togglePasswordVisibility,
+                    child: Icon(
+                      _isPasswordVisible
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                    ),
+                  ),
+                ),
+                validator: context.validator.apply([RequiredValidation()]),
+              ),
+              Gap(context.spacing.s16),
+              TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: _confirmPasswordController,
+                obscureText: !_isConfirmPasswordVisible,
+                decoration: InputDecoration(
+                  hintText: context.locale.confirmPassword,
+                  suffixIcon: GestureDetector(
+                    onTap: _toggleConfirmPasswordVisibility,
+                    child: Icon(
+                      _isConfirmPasswordVisible
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                    ),
+                  ),
+                ),
+                validator: context.validator.apply([
+                  RequiredValidation(),
+                  ConfirmPasswordValidation(
+                    passwordProvider: () => _passwordController.text,
+                  ),
+                ]),
+              ),
+              Gap(context.spacing.s32),
+              FilledButton(
+                onPressed: () {
+                  _formKey.currentState?.validate();
+                },
+                child: Text(context.locale.continueAction),
+              ),
+              LinkText(
+                text: context.locale.alreadyHaveAccount,
+                linkText: context.locale.signIn,
+                onTap: () {
+                  context.pushNamedAndRemoveUntil(Routes.login);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

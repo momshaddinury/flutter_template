@@ -79,5 +79,6 @@
     "passwordNumberValidation": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
     "passwordLowerCaseValidation": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
     "passwordUpperCaseValidation": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
-    "passwordSpecialCharValidation": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل"
+    "passwordSpecialCharValidation": "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل",
+    "passwordMismatchValidation": "كلمات المرور غير متطابقة"
 }
