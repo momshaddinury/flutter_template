@@ -79,5 +79,6 @@
     "passwordNumberValidation": "Password must contain at least one number",
     "passwordLowerCaseValidation": "Password must contain at least one lowercase letter",
     "passwordUpperCaseValidation": "Password must contain at least one uppercase letter",
-    "passwordSpecialCharValidation": "Password must contain at least one special character"
+    "passwordSpecialCharValidation": "Password must contain at least one special character",
+    "passwordMismatchValidation": "Passwords do not match"
 }

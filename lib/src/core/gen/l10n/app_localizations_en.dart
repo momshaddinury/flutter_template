@@ -192,4 +192,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passwordSpecialCharValidation =>
       'Password must contain at least one special character';
+
+  @override
+  String get passwordMismatchValidation => 'Passwords do not match';
 }

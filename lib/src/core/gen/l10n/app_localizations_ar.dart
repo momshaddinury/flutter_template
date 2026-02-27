@@ -187,4 +187,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get passwordSpecialCharValidation =>
       'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل';
+
+  @override
+  String get passwordMismatchValidation => 'كلمات المرور غير متطابقة';
 }
