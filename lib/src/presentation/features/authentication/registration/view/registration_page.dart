@@ -60,14 +60,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
               FlutterLogo(size: context.spacing.s100),
               Gap(context.spacing.s80),
               TextFormField(
+                validator: context.validator.apply([RequiredValidation()]),
                 decoration: InputDecoration(hintText: context.locale.firstName),
               ),
               Gap(context.spacing.s16),
               TextFormField(
+                validator: context.validator.apply([RequiredValidation()]),
                 decoration: InputDecoration(hintText: context.locale.lastName),
               ),
               Gap(context.spacing.s16),
               TextFormField(
+                validator: context.validator.apply([RequiredValidation()]),
                 decoration: InputDecoration(hintText: context.locale.email),
               ),
               Gap(context.spacing.s16),
@@ -86,7 +89,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                   ),
                 ),
-                validator: context.validator.apply([RequiredValidation()]),
+                validator: context.validator.apply([
+                  RequiredValidation(),
+                  PasswordValidation(minLength: 6),
+                ]),
               ),
               Gap(context.spacing.s16),
               TextFormField(
@@ -114,7 +120,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               Gap(context.spacing.s32),
               FilledButton(
                 onPressed: () {
-                  _formKey.currentState?.validate();
+                  if (!_formKey.currentState!.validate()) return;
                 },
                 child: Text(context.locale.continueAction),
               ),
