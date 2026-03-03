@@ -24,11 +24,8 @@ class TokenManager extends Interceptor {
   final List<_QueuedRequest> _queue = [];
 
   @override
-  void onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    final accessToken = await getAccessToken();
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    final accessToken = getAccessToken();
     if (accessToken != null) {
       options.headers['Authorization'] = 'Bearer $accessToken';
     }
@@ -76,7 +73,7 @@ class TokenManager extends Interceptor {
   }
 
   Future<String> _refreshAccessToken() async {
-    final refreshToken = await getRefreshToken();
+    final refreshToken = getRefreshToken();
     if (refreshToken == null) {
       throw DioException(
         requestOptions: RequestOptions(),
@@ -157,11 +154,11 @@ class TokenManager extends Interceptor {
     await cacheService.save(key, value);
   }
 
-  Future<String?> getAccessToken() async {
+  String? getAccessToken() {
     return cacheService.get(CacheKey.accessToken);
   }
 
-  Future<String?> getRefreshToken() async {
+  String? getRefreshToken() {
     return cacheService.get(CacheKey.refreshToken);
   }
 }

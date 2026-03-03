@@ -31,7 +31,7 @@ abstract class Failure with _$Failure {
 
   const Failure._();
 
-  factory Failure.mapExceptionToFailure(Object e) {
+  factory Failure.mapExceptionToFailure(Object e, {StackTrace? stackTrace}) {
     if (e is DioException) {
       ({String message, String? code})? error = _parseError(e.response);
 
@@ -135,7 +135,11 @@ abstract class Failure with _$Failure {
       };
     }
 
-    return Failure(type: FailureType.unknown, message: e.toString());
+    return Failure(
+      type: FailureType.unknown,
+      message: e.toString(),
+      stackTrace: stackTrace,
+    );
   }
 
   static ({String message, String? code})? _parseError(Response? response) {

@@ -72,6 +72,7 @@ dev_dependencies:
   dart_mappable_builder:
   retrofit_generator: '>=8.0.0 <10.0.0'
   freezed: ^3.0.6
+  mockito: ^5.4.6
 
 flutter:
   uses-material-design: true

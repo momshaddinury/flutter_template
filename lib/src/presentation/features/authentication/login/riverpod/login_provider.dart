@@ -12,7 +12,7 @@ class Login extends _$Login {
     return const AsyncValue.data(null);
   }
 
-  void login({
+  Future<void> login({
     required String email,
     required String password,
     bool? shouldRemember,

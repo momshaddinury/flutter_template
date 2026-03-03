@@ -2,7 +2,7 @@ import '../logger/log.dart';
 import 'failure.dart';
 import 'result.dart';
 
-abstract base class Repository<T> {
+abstract class Repository<T> {
   /// Executes an asynchronous operation and wraps the result in a [Result]
   /// type.
   ///
@@ -39,7 +39,7 @@ abstract base class Repository<T> {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
 
-      return Error(Failure.mapExceptionToFailure(e));
+      return Error(Failure.mapExceptionToFailure(e, stackTrace: stackTrace));
     }
   }
 
@@ -71,8 +71,8 @@ abstract base class Repository<T> {
     try {
       final result = operation();
       return Success(data: result);
-    } on Exception catch (e) {
-      return Error(Failure.mapExceptionToFailure(e));
+    } on Exception catch (e, stackTrace) {
+      return Error(Failure.mapExceptionToFailure(e, stackTrace: stackTrace));
     }
   }
 }

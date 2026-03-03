@@ -146,3 +146,5 @@ app.*.symbols
 .fvm/
 .fvmrc
 
+# Generated Test Files
+test/**/*.mocks.dart
