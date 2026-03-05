@@ -3,7 +3,7 @@ import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
 import '../repositories/authentication_repository.dart';
 
-final class RegisterUseCase {
+class RegisterUseCase {
   RegisterUseCase(this.repository);
 
   final AuthenticationRepository repository;
@@ -13,7 +13,7 @@ final class RegisterUseCase {
   }
 }
 
-final class LoginUseCase {
+class LoginUseCase {
   LoginUseCase(this.repository);
 
   final AuthenticationRepository repository;
@@ -39,7 +39,7 @@ final class LoginUseCase {
   }
 }
 
-final class LogoutUseCase {
+class LogoutUseCase {
   LogoutUseCase(this.repository);
 
   final AuthenticationRepository repository;

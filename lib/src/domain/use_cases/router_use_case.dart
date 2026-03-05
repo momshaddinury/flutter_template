@@ -1,6 +1,6 @@
 import '../repositories/router_repository.dart';
 
-final class GetOnboardingStatusUseCase {
+class GetOnboardingStatusUseCase {
   GetOnboardingStatusUseCase(this.repository);
 
   final RouterRepository repository;
@@ -10,7 +10,7 @@ final class GetOnboardingStatusUseCase {
   }
 }
 
-final class GetUserLoginStatusUseCase {
+class GetUserLoginStatusUseCase {
   GetUserLoginStatusUseCase(this.repository);
 
   final RouterRepository repository;
@@ -20,7 +20,7 @@ final class GetUserLoginStatusUseCase {
   }
 }
 
-final class MarkOnboardingCompletedUseCase {
+class MarkOnboardingCompletedUseCase {
   MarkOnboardingCompletedUseCase(this.repository);
 
   final RouterRepository repository;

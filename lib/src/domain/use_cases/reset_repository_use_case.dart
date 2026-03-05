@@ -20,7 +20,7 @@ class ResetRepositoryUseCase {
   void call(Ref ref) {
     // Invalidate all repository providers
     ref.container.getAllProviderElements().forEach((element) {
-      if (element.provider.name!.contains('Repository')) {
+      if (element.provider.name?.contains('Repository') ?? false) {
         ref.invalidate(element.provider);
       }
     });
