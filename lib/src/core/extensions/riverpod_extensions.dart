@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/misc.dart';
 
 /// Works for sync providers only
 /// Usage: ValueListenable myListenable = ref.asListenable(provider);

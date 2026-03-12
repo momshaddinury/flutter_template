@@ -1,4 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// ignore: implementation_imports, depend_on_referenced_packages
+import 'package:riverpod/src/framework.dart';
 
 class ResetRepositoryUseCase {
   const ResetRepositoryUseCase();
