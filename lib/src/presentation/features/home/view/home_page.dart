@@ -28,6 +28,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(error.toString())));
+        default:
       }
     });
   }

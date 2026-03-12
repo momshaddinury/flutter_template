@@ -41,6 +41,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(error.toString())));
+        default:
       }
     });
   }
