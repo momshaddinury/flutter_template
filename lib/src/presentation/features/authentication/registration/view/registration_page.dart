@@ -3,12 +3,12 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/extensions/go_router_extension.dart';
+import '../../../../../core/extensions/validation.dart';
+import '../../../../../core/utiliity/validation/validation.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
 import '../../../../core/widgets/link_text.dart';
 import '../../../../core/widgets/text/typography.dart';
-import '../../../../../core/extensions/validation.dart';
-import '../../../../../core/utiliity/validation/validation.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -18,10 +18,9 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
@@ -113,7 +112,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 validator: context.validator.apply([
                   RequiredValidation(),
                   ConfirmPasswordValidation(
-                    passwordProvider: () => _passwordController.text,
+                    password: () => _passwordController.text,
                   ),
                 ]),
               ),
