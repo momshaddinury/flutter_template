@@ -146,3 +146,10 @@ app.*.symbols
 .fvm/
 .fvmrc
 
+# Localization Generated Files
+
+
+/lib/src/core/gen/l10n/app_localizations.dart
+/lib/src/core/gen/l10n/app_localizations_ar.dart
+/lib/src/core/gen/l10n/app_localizations_bn.dart
+/lib/src/core/gen/l10n/app_localizations_en.dart
