@@ -11,6 +11,11 @@ LogoutUseCase logoutUseCase(Ref ref) {
 }
 
 @riverpod
+GetCachedUserUseCase getCachedUserUseCase(Ref ref) {
+  return GetCachedUserUseCase(ref.read(authenticationRepositoryProvider));
+}
+
+@riverpod
 GetCurrentLocaleUseCase getCurrentLocaleUseCase(Ref ref) {
   return GetCurrentLocaleUseCase(ref.read(localeRepositoryProvider));
 }
@@ -38,4 +43,9 @@ GetUserLoginStatusUseCase getUserLoginStatusUseCase(Ref ref) {
 @riverpod
 MarkOnboardingCompletedUseCase markOnboardingCompletedUseCase(Ref ref) {
   return MarkOnboardingCompletedUseCase(ref.read(routerRepositoryProvider));
+}
+
+@riverpod
+GetUsersUseCase getUsersUseCase(Ref ref) {
+  return GetUsersUseCase(repository: ref.read(userRepositoryProvider));
 }

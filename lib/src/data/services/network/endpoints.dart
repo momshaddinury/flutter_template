@@ -11,4 +11,7 @@ class Endpoints {
   /// OTP
   static const String verifyOtp = '/otp/verify_otp/';
   static const String resendOtp = '/otp/resend_otp/';
+
+  /// Users
+  static const String users = '/users';
 }

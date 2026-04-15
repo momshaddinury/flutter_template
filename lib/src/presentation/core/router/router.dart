@@ -13,6 +13,7 @@ import '../../features/authentication/registration/view/registration_page.dart';
 import '../../features/home/view/home_page.dart';
 import '../../features/onboarding/view/onboarding_page.dart';
 import '../../features/profile/view/profile_page.dart';
+import '../../features/profile/view/users_page.dart';
 import '../../features/splash/view/splash_page.dart';
 import '../widgets/app_startup/startup_widget.dart';
 import '../widgets/navigation_shell.dart';
@@ -59,6 +60,13 @@ GoRouter goRouter(Ref ref) {
       ),
       ..._onboardingRoutes(ref),
       ..._authenticationRoutes(ref),
+      GoRoute(
+        path: Routes.users,
+        name: Routes.users,
+        pageBuilder: (context, state) {
+          return const MaterialPage(child: UsersPage());
+        },
+      ),
       _shellRoutes(ref),
     ],
   );

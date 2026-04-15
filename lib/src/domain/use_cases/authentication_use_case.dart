@@ -48,3 +48,11 @@ final class LogoutUseCase {
     return repository.logout();
   }
 }
+
+final class GetCachedUserUseCase {
+  GetCachedUserUseCase(this.repository);
+
+  final AuthenticationRepository repository;
+
+  CachedUserEntity? call() => repository.getCachedUser();
+}

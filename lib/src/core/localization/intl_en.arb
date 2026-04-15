@@ -37,6 +37,7 @@
     },
     "yourPasswordChanged": "Your password has been changed successfully.",
     "confirmPassword": "Confirm Password",
+    "users": "Users",
     "logout": "Logout",
     "getStarted": "Get Started",
     "rememberMe": "Remember me",
