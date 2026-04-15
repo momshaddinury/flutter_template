@@ -17,3 +17,19 @@ class LoginResponseEntity extends LoginEntity {
 
   final String accessToken;
 }
+
+class CachedUserEntity {
+  const CachedUserEntity({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.image,
+  });
+
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String image;
+
+  String get fullName => '$firstName $lastName'.trim();
+}

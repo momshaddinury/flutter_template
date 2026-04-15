@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../core/base/failure.dart';
 import '../../core/base/result.dart';
 import '../../domain/entities/login_entity.dart';
@@ -30,8 +32,25 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
       // Save the session if the user has selected the "Remember Me" option
       if (data.shouldRemeber ?? false) await _saveSession();
 
-      return LoginResponseModel.fromJson(response.data);
+      final loginResponse = LoginResponseModel.fromJson(response.data);
+
+      // Save user profile data to cache if not already saved
+      if (local.get<String>(CacheKey.currentUser) == null) {
+        await _saveUserData(loginResponse);
+      }
+
+      return loginResponse;
     });
+  }
+
+  Future<void> _saveUserData(LoginResponseModel user) async {
+    final json = jsonEncode({
+      'firstName': user.firstName,
+      'lastName': user.lastName,
+      'email': user.email,
+      'image': user.image,
+    });
+    await local.save(CacheKey.currentUser, json);
   }
 
   Future<void> _saveSession() async {
@@ -84,6 +103,23 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
 
   @override
   Future<void> logout() async {
-    await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
+    await local.remove([
+      CacheKey.isLoggedIn,
+      CacheKey.rememberMe,
+      CacheKey.currentUser,
+    ]);
+  }
+
+  @override
+  CachedUserEntity? getCachedUser() {
+    final json = local.get<String>(CacheKey.currentUser);
+    if (json == null) return null;
+    final map = jsonDecode(json) as Map<String, dynamic>;
+    return CachedUserEntity(
+      firstName: map['firstName'] as String? ?? '',
+      lastName: map['lastName'] as String? ?? '',
+      email: map['email'] as String? ?? '',
+      image: map['image'] as String? ?? '',
+    );
   }
 }

@@ -37,6 +37,7 @@
     },
     "yourPasswordChanged": "تم تغيير كلمة المرور بنجاح.",
     "confirmPassword": "تأكيد كلمة المرور",
+    "users": "المستخدمون",
     "logout": "تسجيل الخروج",
     "getStarted": "ابدأ",
     "rememberMe": "تذكرني",
