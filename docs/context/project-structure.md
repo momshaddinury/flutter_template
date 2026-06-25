@@ -1,6 +1,6 @@
 # Project Structure
 
-```
+```text
 lib/
 ├── main.dart                         # ProviderScope + MaterialApp.router
 └── src/

@@ -29,9 +29,18 @@ Future<Result<LoginResponseEntity, Failure>> login(
 
 ## Handle results exhaustively
 
+Repository methods return `Result<T, Failure>`. Use cases that prepare data for
+the UI project domain failures to user-facing strings in the same
+`Success` / `Error` path — the `Result` union is unchanged; only the error
+type narrows from `Failure` to `String`:
+
 ```dart
+// LoginUseCase.call — UI-facing conversion (authentication_use_case.dart)
+final Result<LoginResponseEntity, Failure> result = await repository.login(request);
+
 return switch (result) {
   Success(:final data) => Success(data: data),
+  // Failure → user-facing String (not a repository contract change)
   Error(:final error) => Error(error.message),
   _ => const Error('Something went wrong'),
 };

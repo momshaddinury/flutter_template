@@ -21,8 +21,8 @@ flutter gen-l10n
 
 ## Generated files
 
-Generated files end in `*.g.dart`, `*.freezed.dart`, `*.mapper.dart` and are
-**gitignored**.
+Generated files end in `*.g.dart`, `*.freezed.dart`, `*.mapper.dart`,
+`*.gen.dart` and are **gitignored**.
 
 - ❌ Never hand-edit a generated file.
 - ❌ Never commit a generated file.

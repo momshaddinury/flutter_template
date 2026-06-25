@@ -3,12 +3,19 @@
 Clean Architecture with four layers under `lib/src/`. Dependencies always point
 **inward**.
 
+```text
+Presentation ──────────────► Domain ◄────────────── Data
+  (Riverpod, GoRouter,         (use cases,              (repo impls,
+   widgets)                     entities,                models,
+                                interfaces)               services)
+                                                          │
+                                                          ▼
+                                                   External (Dio, SharedPreferences)
 ```
-Presentation ──► Domain ──► Data ──► External (Dio, SharedPreferences)
-  (Riverpod,     (use cases,  (repo impls,
-   GoRouter,      entities,    models,
-   widgets)       interfaces)  services)
-```
+
+Arrows show **who depends on whom**: Presentation and Data both point inward to
+Domain; Data alone reaches outward to External. Domain has no dependencies on
+outer layers.
 
 ## Layer rules
 
@@ -21,7 +28,7 @@ Presentation ──► Domain ──► Data ──► External (Dio, SharedPref
 
 Use this same chain when adding any feature:
 
-```
+```text
 Page ─► Provider(notifier) ─► UseCase ─► Repository(interface) ─► RepositoryImpl ─► RestClient
 (presentation)              (domain)                            (data)
 ```

@@ -51,8 +51,13 @@ ref.listenManual(loginProvider, (previous, next) {
     case AsyncData(:final value) when value != null:
       context.pushReplacementNamed(Routes.home);
     case AsyncError(:final error):
+      final message = switch (error) {
+        Failure(:final message) => message,
+        String msg => msg,
+        _ => 'Something went wrong',
+      };
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(error.toString())));
+          .showSnackBar(SnackBar(content: Text(message)));
     default:
   }
 });
