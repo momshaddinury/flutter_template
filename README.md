@@ -116,10 +116,9 @@ flutter_template/
 ├── android/                 # Android-specific configuration
 ├── ios/                     # iOS-specific configuration
 ├── assets/                  # Images, icons, and other assets
+├── AGENTS.md                # Context index for contributors / AI agents
 ├── docs/                    # Project documentation
-│   ├── architecture.md         # Architecture documentation
-│   ├── dependency_injection.md # DI system documentation
-│   └── authentication_feature.md # Authentication feature docs
+│   └── context/                # Focused, single-topic context docs
 ├── lib/
 │   ├── src/
 │   │   ├── core/               # Core utilities
@@ -343,7 +342,7 @@ flutter_gen:
 ## Documentation
 
 ### Available Documentation
-- **[Dependency Injection](docs/dependency_injection.md)**: DI system documentation
+- **[AGENTS.md](AGENTS.md)**: Context index — start here. Maps to focused topic docs in [`docs/context/`](docs/context/) (architecture, state management, DI, routing, theming, error handling, and more).
 
 ### Code Documentation
 - **Inline Comments**: Comprehensive code documentation
