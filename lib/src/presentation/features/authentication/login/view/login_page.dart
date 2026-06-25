@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/base/failure.dart';
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../../core/extensions/validation.dart';
 import '../../../../../core/utiliity/validation/validation.dart';
@@ -38,9 +39,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         case AsyncData(:final value) when value != null:
           context.pushReplacementNamed(Routes.home);
         case AsyncError(:final error):
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(error.toString())));
+          final message = switch (error) {
+            Failure(:final message) => message,
+            String msg => msg,
+            _ => 'Something went wrong',
+          };
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(message)));
         default:
       }
     });
