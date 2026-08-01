@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/app_localization.dart';
+import '../../../../domain/failures/business_failure.dart';
 import '../../../core/application_state/logout_provider/logout_provider.dart';
 import '../../../core/router/routes.dart';
 import '../../../core/theme/theme.dart';
@@ -24,10 +25,10 @@ class _HomePageState extends ConsumerState<HomePage> {
       switch (next) {
         case AsyncData(:final value) when value == true:
           context.pushReplacementNamed(Routes.login);
-        case AsyncError(:final error):
+        case AsyncError(error: final BusinessFailure failure):
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(SnackBar(content: Text(error.toString())));
+          ).showSnackBar(SnackBar(content: Text(failure.userMessage)));
         default:
       }
     });

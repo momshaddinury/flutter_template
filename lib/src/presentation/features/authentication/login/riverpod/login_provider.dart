@@ -28,7 +28,6 @@ class Login extends _$Login {
     state = switch (result) {
       Success() => AsyncValue.data(result),
       Error(:final error) => AsyncValue.error(error, StackTrace.current),
-      _ => AsyncValue.error('Something went wrong', StackTrace.current),
     };
   }
 }

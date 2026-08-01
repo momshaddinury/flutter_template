@@ -1,36 +1,51 @@
-import '../../core/base/failure.dart';
 import '../../core/base/result.dart';
+import '../../core/base/unit.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/entities/sign_up_entity.dart';
+import '../../domain/failures/business_failure.dart';
 import '../../domain/repositories/authentication_repository.dart';
+import '../base/base_repository.dart';
 import '../models/login_model.dart';
 import '../services/cache/cache_service.dart';
+import '../services/network/auth/token_manager.dart';
 import '../services/network/rest_client.dart';
 
-final class AuthenticationRepositoryImpl extends AuthenticationRepository {
-  AuthenticationRepositoryImpl({required this.remote, required this.local});
+final class AuthenticationRepositoryImpl extends BaseRepository
+    implements AuthenticationRepository {
+  AuthenticationRepositoryImpl({
+    required this.remote,
+    required this.local,
+    required this.tokens,
+  });
 
   final RestClient remote;
   final CacheService local;
+  final TokenManager tokens;
 
   @override
   Future<SignUpResponseEntity> register(SignUpRequestEntity data) async {
-    // TODO: implement resetPassword
+    // TODO: implement register
     throw UnimplementedError();
   }
 
   @override
-  Future<Result<LoginResponseEntity, Failure>> login(
+  Future<Result<LoginResponseEntity, BusinessFailure>> login(
     LoginRequestEntity data,
   ) async {
     return asyncGuard(() async {
-      final model = LoginRequestModel.fromEntity(data);
-      final response = await remote.login(model.toJson());
+      final request = LoginRequestModel.fromEntity(data);
+      final response = await remote.login(request.toJson());
 
-      // Save the session if the user has selected the "Remember Me" option
+      final model = LoginResponseModel.fromJson(response.data);
+
+      await tokens.persist(
+        access: model.accessToken,
+        refresh: model.refreshToken,
+      );
+
       if (data.shouldRemeber ?? false) await _saveSession();
 
-      return LoginResponseModel.fromJson(response.data);
+      return model;
     });
   }
 
@@ -83,7 +98,11 @@ final class AuthenticationRepositoryImpl extends AuthenticationRepository {
   }
 
   @override
-  Future<void> logout() async {
-    await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
+  Future<Result<Unit, BusinessFailure>> logout() async {
+    return asyncGuard(() async {
+      await tokens.clear();
+      await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
+      return unit;
+    });
   }
 }

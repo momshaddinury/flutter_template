@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/base/result.dart';
 import '../../../../core/di/dependency_injection.dart';
 
 part 'logout_provider.g.dart';
@@ -19,14 +20,14 @@ class Logout extends _$Logout {
     // Intentional simulated delay to show loading indicator
     await Future.delayed(const Duration(seconds: 1));
 
-    try {
-      await ref.read(logoutUseCaseProvider).call();
-      // Invalidate all repository providers to remove cached data
-      ref.read(resetRepositoryUseCaseProvider).call(ref);
+    final result = await ref.read(logoutUseCaseProvider).call();
 
-      state = const AsyncValue.data(true);
-    } catch (e) {
-      state = AsyncValue.error(e, StackTrace.current);
+    switch (result) {
+      case Success():
+        ref.read(resetRepositoryUseCaseProvider).call(ref);
+        state = const AsyncValue.data(true);
+      case Error(:final error):
+        state = AsyncValue.error(error, StackTrace.current);
     }
   }
 }
