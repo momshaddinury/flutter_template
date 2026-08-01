@@ -9,7 +9,7 @@
     "createNewPasswordHint": "Your new password must be different from previous used passwords.",
     "resetPassword": "Reset Password",
     "newPassword": "New Password",
-    "passwordChangeSuccess":"Password Changed Successfully",
+    "passwordChangeSuccess": "Password Changed Successfully",
     "emailRequired": "Email is required",
     "passwordRequired": "Password is required",
     "isRequired": "This field is required",
@@ -80,5 +80,14 @@
     "passwordLowerCaseValidation": "Password must contain at least one lowercase letter",
     "passwordUpperCaseValidation": "Password must contain at least one uppercase letter",
     "passwordSpecialCharValidation": "Password must contain at least one special character",
-    "passwordMismatchValidation": "Passwords do not match"
+    "passwordMismatchValidation": "Passwords do not match",
+    "goHome": "Go home",
+    "noRouteFor": "No route found for '{uri}'",
+    "@noRouteFor": {
+        "placeholders": {
+            "uri": {
+                "type": "String"
+            }
+        }
+    }
 }

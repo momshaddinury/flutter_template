@@ -63,11 +63,12 @@ final class AuthenticationRepositoryImpl extends BaseRepository
     await local.save(CacheKey.isLoggedIn, true);
   }
 
-  /// Manages the "Remember Me" functionality.
+  /// Reads or writes the persisted "Remember Me" checkbox preference.
   ///
-  /// When [rememberMe] is null, retrieves the current setting from cache.
-  /// When [rememberMe] has a value, updates the setting in cache.
-  /// Returns the current or newly saved value, defaulting to false on errors.
+  /// When [rememberMe] is null, retrieves the current setting from cache;
+  /// otherwise updates it. Returns the current or newly saved value,
+  /// defaulting to false on errors. This is the UI preference only —
+  /// whether a session survives a restart is decided by [restoreSession].
   @override
   Future<bool> rememberMe({bool? rememberMe}) async {
     try {
@@ -108,12 +109,23 @@ final class AuthenticationRepositoryImpl extends BaseRepository
   }
 
   @override
+  Future<Result<Unit, BusinessFailure>> restoreSession() async {
+    return asyncGuard(() async {
+      final remembered = local.get<bool>(CacheKey.isLoggedIn) ?? false;
+      if (!remembered) await tokens.clear();
+
+      return Unit.value;
+    });
+  }
+
+  @override
   Future<Result<Unit, BusinessFailure>> logout() async {
     return asyncGuard(() async {
-      // WHY: flag first, tokens second — if the second step fails, a
-      // cleared flag with orphaned tokens sends the user to the login
-      // screen (harmless); the reverse leaves a "signed in" flag with no
-      // tokens behind it.
+      // WHY: flag first, tokens second — the session derives from the
+      // stored tokens, so the token clear is the step that actually ends
+      // it. In this order a failed token clear leaves the user signed in
+      // with a surfaced error prompting a retry, instead of a cleared
+      // flag masking tokens that still authenticate.
       await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
       await tokens.clear();
       return Unit.value;

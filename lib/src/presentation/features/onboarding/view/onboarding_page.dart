@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/extensions/app_localization.dart';
-import '../../../core/router/routes.dart';
+import '../../../core/application_state/onboarding_status_provider/onboarding_status_provider.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/widgets/text/typography.dart';
 
@@ -26,6 +26,13 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
   void initState() {
     super.initState();
     _pageController = PageController();
+  }
+
+  void _onGetStarted() {
+    ref.read(markOnboardingCompletedUseCaseProvider).call();
+    // WHY: the gate navigates, not the page — refreshing the onboarding
+    // status flips routerState past onboarding to login or home.
+    ref.invalidate(onboardingStatusProvider);
   }
 
   @override
@@ -103,9 +110,7 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     horizontal: context.padding.p24,
                   ),
                   child: FilledButton(
-                    onPressed: () {
-                      context.goNamed(Routes.login);
-                    },
+                    onPressed: _onGetStarted,
                     child: Text(context.locale.getStarted),
                   ),
                 ),

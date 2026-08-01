@@ -80,5 +80,14 @@
     "passwordLowerCaseValidation": "পাসওয়ার্ডে কমপক্ষে একটি ছোট হাতের অক্ষর থাকতে হবে",
     "passwordUpperCaseValidation": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে",
     "passwordSpecialCharValidation": "পাসওয়ার্ডে কমপক্ষে একটি বিশেষ অক্ষর থাকতে হবে",
-    "passwordMismatchValidation": "পাসওয়ার্ড মিলছে না"
+    "passwordMismatchValidation": "পাসওয়ার্ড মিলছে না",
+    "goHome": "হোমে ফিরে যান",
+    "noRouteFor": "'{uri}' এর জন্য কোনো রুট পাওয়া যায়নি",
+    "@noRouteFor": {
+        "placeholders": {
+            "uri": {
+                "type": "String"
+            }
+        }
+    }
 }

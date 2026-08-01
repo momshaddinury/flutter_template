@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/app_localization.dart';
 import '../../../../domain/failures/business_failure.dart';
 import '../../../core/application_state/logout_provider/logout_provider.dart';
-import '../../../core/router/routes.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/widgets/loading_indicator.dart';
 
@@ -21,10 +19,10 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
     super.initState();
+    // WHY: no navigation here — logout refreshes the session status and
+    // the router's gate moves the user to login.
     ref.listenManual(logoutProvider, (previous, next) {
       switch (next) {
-        case AsyncData(:final value) when value == true:
-          context.pushReplacementNamed(Routes.login);
         case AsyncError(error: final BusinessFailure failure):
           ScaffoldMessenger.of(
             context,

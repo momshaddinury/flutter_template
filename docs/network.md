@@ -58,7 +58,7 @@ On a 401 whose request went out carrying a token, `RefreshRetryInterceptor` refr
 
 The wire contract is the one backend-specific piece: a `POST` to `Endpoints.refreshToken` (`/auth/refresh`) with `{"refreshToken": …}` in the body, response parsed for `accessToken` (required) and `refreshToken` (optional rotation). All of it lives in `TokenManager._performRefresh` — the single method to adapt when your backend differs.
 
-Session lifecycle from the app side: `tokens.persist(...)` after login, `tokens.clear()` on logout (see `AuthenticationRepositoryImpl`).
+Session lifecycle from the app side: `tokens.persist(...)` after login, `tokens.clear()` on logout, and `restoreSession()` at startup, which clears a previous run's tokens unless the user asked to be remembered (see `AuthenticationRepositoryImpl`). The router's session gate reads the stored refresh token — the tokens, not a cached flag, decide whether the user is signed in.
 
 ## Logging and redaction
 

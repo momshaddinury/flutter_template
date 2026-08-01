@@ -10,13 +10,13 @@ final class GetOnboardingStatusUseCase {
   }
 }
 
-final class GetUserLoginStatusUseCase {
-  GetUserLoginStatusUseCase(this.repository);
+final class GetSessionStatusUseCase {
+  GetSessionStatusUseCase(this.repository);
 
   final RouterRepository repository;
 
-  bool call() {
-    return repository.isUserLoggedIn();
+  Future<bool> call() {
+    return repository.hasSession();
   }
 }
 

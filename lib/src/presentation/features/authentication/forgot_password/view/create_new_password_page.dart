@@ -27,7 +27,9 @@ class CreateNewPasswordPage extends StatelessWidget {
               Gap(context.spacing.s32),
               FilledButton(
                 onPressed: () {
-                  context.pushReplacementNamed(Routes.resetPasswordSuccess);
+                  context.pushReplacementNamed(
+                    Routes.resetPasswordSuccess.name,
+                  );
                 },
                 child: Text(context.locale.resetPassword),
               ),

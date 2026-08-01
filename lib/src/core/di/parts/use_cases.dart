@@ -31,8 +31,13 @@ GetOnboardingStatusUseCase getOnboardingStatusUseCase(Ref ref) {
 }
 
 @riverpod
-GetUserLoginStatusUseCase getUserLoginStatusUseCase(Ref ref) {
-  return GetUserLoginStatusUseCase(ref.read(routerRepositoryProvider));
+GetSessionStatusUseCase getSessionStatusUseCase(Ref ref) {
+  return GetSessionStatusUseCase(ref.read(routerRepositoryProvider));
+}
+
+@riverpod
+RestoreSessionUseCase restoreSessionUseCase(Ref ref) {
+  return RestoreSessionUseCase(ref.read(authenticationRepositoryProvider));
 }
 
 @riverpod

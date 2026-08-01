@@ -34,10 +34,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   void initState() {
     super.initState();
 
+    // WHY: no navigation here — a successful login refreshes the session
+    // status and the router's gate moves the user to home.
     ref.listenManual(loginProvider, (previous, next) {
       switch (next) {
-        case AsyncData(:final value) when value != null:
-          context.pushReplacementNamed(Routes.home);
         case AsyncError(error: final BusinessFailure failure):
           ScaffoldMessenger.of(
             context,
@@ -110,7 +110,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 text: context.locale.dontHaveAccount,
                 linkText: context.locale.signUp,
                 onTap: () {
-                  context.pushNamed(Routes.registration);
+                  context.pushNamed(Routes.registration.name);
                 },
               ),
             ],

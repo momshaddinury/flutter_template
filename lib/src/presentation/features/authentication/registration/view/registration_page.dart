@@ -127,7 +127,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 text: context.locale.alreadyHaveAccount,
                 linkText: context.locale.signIn,
                 onTap: () {
-                  context.pushNamedAndRemoveUntil(Routes.login);
+                  context.pushNamedAndRemoveUntil(Routes.login.name);
                 },
               ),
             ],

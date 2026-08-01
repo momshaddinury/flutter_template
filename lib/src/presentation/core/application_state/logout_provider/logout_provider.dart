@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/base/result.dart';
 import '../../../../core/di/dependency_injection.dart';
+import '../session_status_provider/session_status_provider.dart';
 
 part 'logout_provider.g.dart';
 
@@ -25,6 +26,9 @@ class Logout extends _$Logout {
     switch (result) {
       case Success():
         ref.read(resetRepositoryUseCaseProvider).call(ref);
+        // WHY: the session gate navigates, not the page. Refreshing the
+        // session status flips routerState to login.
+        ref.invalidate(sessionStatusProvider);
         state = const AsyncValue.data(true);
       case Error(:final error):
         state = AsyncValue.error(error, StackTrace.current);

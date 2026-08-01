@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../../core/base/result.dart';
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../core/application_state/session_status_provider/session_status_provider.dart';
 
 part 'login_provider.g.dart';
 
@@ -29,5 +30,11 @@ class Login extends _$Login {
       Success() => AsyncValue.data(result),
       Error(:final error) => AsyncValue.error(error, StackTrace.current),
     };
+
+    // WHY: the session gate navigates, not the page. Refreshing the
+    // session status flips routerState to home, and the router redirects.
+    if (state.hasValue && state.value != null) {
+      ref.invalidate(sessionStatusProvider);
+    }
   }
 }

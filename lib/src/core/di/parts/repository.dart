@@ -12,7 +12,10 @@ AuthenticationRepository authenticationRepository(Ref ref) {
 
 @Riverpod(keepAlive: true)
 RouterRepository routerRepository(Ref ref) {
-  return RouterRepositoryImpl(cacheService: ref.watch(cacheServiceProvider));
+  return RouterRepositoryImpl(
+    cacheService: ref.watch(cacheServiceProvider),
+    tokens: ref.watch(tokenManagerProvider),
+  );
 }
 
 @Riverpod(keepAlive: true)
