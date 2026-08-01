@@ -1,13 +1,15 @@
-import '../../core/base/failure.dart';
-import '../../core/base/repository.dart';
 import '../../core/base/result.dart';
+import '../../core/base/unit.dart';
 import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
+import '../failures/business_failure.dart';
 
-abstract base class AuthenticationRepository extends Repository {
+abstract interface class AuthenticationRepository {
   Future<SignUpResponseEntity> register(SignUpRequestEntity data);
 
-  Future<Result<LoginResponseEntity, Failure>> login(LoginRequestEntity data);
+  Future<Result<LoginResponseEntity, BusinessFailure>> login(
+    LoginRequestEntity data,
+  );
 
   Future<bool> rememberMe({bool? rememberMe});
 
@@ -19,5 +21,5 @@ abstract base class AuthenticationRepository extends Repository {
 
   Future<String> resendOTP(Map<String, dynamic> data);
 
-  Future<void> logout();
+  Future<Result<Unit, BusinessFailure>> logout();
 }

@@ -3,11 +3,11 @@ part of '../dependency_injection.dart';
 @Riverpod(keepAlive: true)
 CacheService cacheService(Ref ref) {
   return SharedPreferencesService(
-    ref.read(sharedPreferencesProvider).requireValue,
+    ref.watch(sharedPreferencesProvider).requireValue,
   );
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 RestClient restClientService(Ref ref) {
-  return RestClient(ref.read(dioProvider));
+  return RestClient(ref.watch(networkStackProvider).transport);
 }

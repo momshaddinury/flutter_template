@@ -1,6 +1,8 @@
 import '../../core/base/result.dart';
+import '../../core/base/unit.dart';
 import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
+import '../failures/business_failure.dart';
 import '../repositories/authentication_repository.dart';
 
 final class RegisterUseCase {
@@ -18,7 +20,7 @@ final class LoginUseCase {
 
   final AuthenticationRepository repository;
 
-  Future<Result<LoginResponseEntity, String>> call({
+  Future<Result<LoginResponseEntity, BusinessFailure>> call({
     required String email,
     required String password,
     bool? shouldRemember,
@@ -29,13 +31,7 @@ final class LoginUseCase {
       shouldRemeber: shouldRemember,
     );
 
-    final result = await repository.login(request);
-
-    return switch (result) {
-      Success(:final data) => Success(data: data),
-      Error(:final error) => Error(error.message),
-      _ => const Error('Something went wrong'),
-    };
+    return repository.login(request);
   }
 }
 
@@ -44,7 +40,7 @@ final class LogoutUseCase {
 
   final AuthenticationRepository repository;
 
-  Future<void> call() async {
+  Future<Result<Unit, BusinessFailure>> call() async {
     return repository.logout();
   }
 }
