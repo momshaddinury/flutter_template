@@ -43,7 +43,16 @@ final class AuthenticationRepositoryImpl extends BaseRepository
         refresh: model.refreshToken,
       );
 
-      if (data.shouldRemeber ?? false) await _saveSession();
+      if (data.shouldRemeber ?? false) {
+        try {
+          await _saveSession();
+        } catch (_) {
+          // WHY: a failed session write must not leave orphaned tokens in
+          // the keystore — clear them so the failed login is atomic.
+          await tokens.clear();
+          rethrow;
+        }
+      }
 
       return model;
     });
@@ -100,8 +109,12 @@ final class AuthenticationRepositoryImpl extends BaseRepository
   @override
   Future<Result<Unit, BusinessFailure>> logout() async {
     return asyncGuard(() async {
-      await tokens.clear();
+      // WHY: flag first, tokens second — if the second step fails, a
+      // cleared flag with orphaned tokens sends the user to the login
+      // screen (harmless); the reverse leaves a "signed in" flag with no
+      // tokens behind it.
       await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
+      await tokens.clear();
       return unit;
     });
   }

@@ -81,6 +81,12 @@ class RefreshRetryInterceptor extends Interceptor {
       handler.resolve(await _transport.fetch<dynamic>(options));
     } on DioException catch (retryError) {
       handler.next(retryError);
+    } catch (retryError) {
+      // WHY: a non-Dio failure (a throwing transformer or adapter) must
+      // still complete the handler chain — otherwise the caller's future
+      // never finishes. The original 401 propagates with the replay
+      // failure attached.
+      handler.next(err.copyWith(error: retryError));
     }
   }
 

@@ -76,6 +76,10 @@ dev_dependencies:
   # Testing
   http_mock_adapter: ^0.6.1
 
+# WHY: deliberate — analyzer 9.x forces disabling the custom_lint analyzer
+# plugin (riverpod_lint, flutter_guardian). pub get and build_runner are
+# verified green on this resolution; remove the override only together
+# with a custom_lint-compatible analyzer bump.
 dependency_overrides:
   analyzer: ^8.4.1
 

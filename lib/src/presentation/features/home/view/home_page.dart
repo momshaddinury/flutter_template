@@ -29,6 +29,12 @@ class _HomePageState extends ConsumerState<HomePage> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(failure.userMessage)));
+        // WHY: an error that is not a BusinessFailure must still produce
+        // feedback — a silent spinner reads as a dead button.
+        case AsyncError():
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Something went wrong.')),
+          );
         default:
       }
     });
