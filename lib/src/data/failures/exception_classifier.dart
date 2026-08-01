@@ -9,11 +9,14 @@ import 'infra_failure.dart';
 /// preserves it for logging. `DioException`s carry their own `stackTrace`,
 /// which takes precedence; the parameter covers every other thrown object.
 ///
-/// The default branches cover `DioException` (HTTP/network) and `TypeError`
-/// (JSON-decoding shape mismatches). Anything else is folded into
-/// `InfraFailure.unknown` with the original exception attached as `cause`.
-/// Extend this extension in consumer apps that throw their own structured
-/// exception types and want finer-grained classification.
+/// The default branches cover `DioException` (HTTP/network),
+/// `FormatException` (malformed data — the common `jsonDecode`,
+/// `int.parse`, `DateTime.parse` failures), and Dart `Error` (a programmer
+/// bug — null dereference, bad cast — classified as `defect`, never as a
+/// data problem). Anything else is folded into `InfraFailure.unknown` with
+/// the original exception attached as `cause`. Extend this extension in
+/// consumer apps that throw their own structured exception types and want
+/// finer-grained classification.
 extension ExceptionClassifier on Object {
   InfraFailure toInfraFailure([StackTrace? stackTrace]) {
     final self = this;
@@ -21,7 +24,12 @@ extension ExceptionClassifier on Object {
 
     return switch (self) {
       DioException() => _fromDioException(self),
-      TypeError() => .parsing(
+      FormatException() => .parsing(
+        message: self.message,
+        cause: self,
+        stackTrace: trace,
+      ),
+      Error() => .defect(
         message: self.toString(),
         cause: self,
         stackTrace: trace,

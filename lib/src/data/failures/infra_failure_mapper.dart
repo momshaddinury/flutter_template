@@ -53,5 +53,10 @@ extension InfraFailureToBusiness on InfraFailure {
       cause: cause,
       stackTrace: stackTrace,
     ),
+    DefectFailure() => .defect(
+      message: message,
+      cause: cause,
+      stackTrace: stackTrace,
+    ),
   };
 }

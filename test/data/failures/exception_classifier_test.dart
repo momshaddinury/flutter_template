@@ -149,8 +149,32 @@ void main() {
       );
     });
 
-    test('TypeError → parsing', () {
-      expect(_captureTypeError().toInfraFailure(), isA<ParsingFailure>());
+    test('TypeError (a Dart Error — a bug) → defect', () {
+      expect(_captureTypeError().toInfraFailure(), isA<DefectFailure>());
+    });
+
+    test('FormatException (malformed data) → parsing', () {
+      expect(
+        const FormatException('Unexpected character').toInfraFailure(),
+        isA<ParsingFailure>().having(
+          (f) => f.message,
+          'message',
+          'Unexpected character',
+        ),
+      );
+    });
+
+    test('StateError → defect with the passed stack trace preserved', () {
+      final trace = StackTrace.current;
+
+      expect(
+        StateError('impossible state').toInfraFailure(trace),
+        isA<DefectFailure>().having(
+          (f) => f.stackTrace,
+          'stackTrace',
+          same(trace),
+        ),
+      );
     });
 
     test('Generic Exception → unknown', () {

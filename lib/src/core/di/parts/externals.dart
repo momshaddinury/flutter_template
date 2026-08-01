@@ -4,6 +4,12 @@ part of '../dependency_injection.dart';
 Future<SharedPreferences> sharedPreferences(Ref ref) =>
     SharedPreferences.getInstance();
 
+/// The single sink for programmer bugs — the repository guards and the
+/// global error handlers both report here. Override with a Crashlytics- or
+/// Sentry-backed implementation to ship crash telemetry; the default logs.
+@Riverpod(keepAlive: true)
+CrashReporter crashReporter(Ref ref) => const LoggingCrashReporter();
+
 /// The single place to adapt the network stack. Every [DioBuilder]
 /// argument below is a deliberate seam; change it here, never in
 /// transport code:

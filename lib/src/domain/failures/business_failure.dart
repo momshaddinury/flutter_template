@@ -81,13 +81,22 @@ sealed class BusinessFailure with _$BusinessFailure {
     StackTrace? stackTrace,
   }) = Cancelled;
 
-  /// Catch-all: parsing errors, unexpected server shape, programmer bugs.
+  /// Catch-all: parsing errors, unexpected server shape.
   /// Presentation should log and show a generic message.
   const factory BusinessFailure.unexpected({
     String? message,
     Object? cause,
     StackTrace? stackTrace,
   }) = Unexpected;
+
+  /// A programmer bug, already reported to the crash reporter by
+  /// `BaseRepository`. Reaches presentation only in release builds (debug
+  /// rethrows); show generic copy — there is nothing the user can fix.
+  const factory BusinessFailure.defect({
+    String? message,
+    Object? cause,
+    StackTrace? stackTrace,
+  }) = Defect;
 
   /// Convenience message for simple UI paths that just show a string.
   /// Rich UI should pattern-match on the variant for nuanced handling.
@@ -103,5 +112,6 @@ sealed class BusinessFailure with _$BusinessFailure {
     Conflict() => message ?? 'This request conflicts with the current state.',
     Cancelled() => message ?? 'The operation was cancelled.',
     Unexpected() => message ?? 'Something went wrong.',
+    Defect() => 'Something went wrong.',
   };
 }
