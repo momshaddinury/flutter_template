@@ -31,7 +31,7 @@ class ResetPasswordPage extends StatelessWidget {
               Gap(context.spacing.s16),
               FilledButton(
                 onPressed: () {
-                  context.pushReplacementNamed(Routes.emailVerification);
+                  context.pushReplacementNamed(Routes.emailVerification.name);
                 },
                 child: Text(context.locale.continueAction),
               ),

@@ -10,7 +10,7 @@ class _FormFooter extends ConsumerWidget {
   }
 
   void _navigateToResetPassword(BuildContext context) {
-    context.pushNamed(Routes.resetPassword);
+    context.pushNamed(Routes.resetPassword.name);
   }
 
   @override

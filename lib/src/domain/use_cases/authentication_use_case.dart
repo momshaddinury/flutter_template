@@ -44,3 +44,13 @@ final class LogoutUseCase {
     return repository.logout();
   }
 }
+
+final class RestoreSessionUseCase {
+  RestoreSessionUseCase(this.repository);
+
+  final AuthenticationRepository repository;
+
+  Future<Result<Unit, BusinessFailure>> call() async {
+    return repository.restoreSession();
+  }
+}

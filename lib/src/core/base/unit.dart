@@ -26,7 +26,8 @@
 /// ```dart
 /// Future<Result<Unit, BusinessFailure>> logout() async {
 ///   return asyncGuard(() async {
-///     await local.remove([CacheKey.isLoggedIn]);
+///     await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
+///     await tokens.clear();
 ///     return Unit.value;
 ///   });
 /// }
@@ -39,7 +40,7 @@
 /// final result = await repo.logout();
 /// switch (result) {
 ///   case Success():
-///     navigateToLogin();
+///     ref.invalidate(sessionStatusProvider); // the gate navigates
 ///   case Error(:final error):
 ///     showError(error.userMessage);
 /// }
@@ -86,7 +87,7 @@
 ///
 /// ```dart
 /// // BAD — constructing Unit directly bypasses the canonical value.
-/// // Won't compile anyway (private constructor), but listed for clarity.
+/// // Will not compile anyway (private constructor), but listed for clarity.
 /// final myUnit = Unit();
 ///
 /// // BAD — using Unit on a plain non-Result function.

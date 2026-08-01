@@ -91,6 +91,8 @@ The project uses **go_router** for navigation, which provides:
 - Nested navigation
 - Route guards
 
+Gating is a single pure derivation: `routerStateProvider` folds startup, onboarding, and session status into one destination, and `RedirectGate.redirect` is the entire policy. Pages never navigate on auth changes; they invalidate a status provider and the gate follows. See `docs/router.md` for the gate model and the route-adding recipe.
+
 ## Key Dependencies
 
 - **State Management**: `flutter_riverpod`

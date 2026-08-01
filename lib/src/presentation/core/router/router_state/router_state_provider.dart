@@ -1,42 +1,35 @@
-import 'dart:async';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../core/di/dependency_injection.dart';
+import '../../application_state/onboarding_status_provider/onboarding_status_provider.dart';
+import '../../application_state/session_status_provider/session_status_provider.dart';
 import '../../application_state/startup_provider/app_startup_provider.dart';
 import '../routes.dart';
 
 part 'router_state_provider.g.dart';
 
+/// The gate destination the router enforces, derived from app startup,
+/// onboarding, and session status.
+///
+/// The router reacts to this alone — it never reads startup or session
+/// directly, and never sees a token. Splash while startup (or the session
+/// read) is pending or failed; onboarding until completed; then home or
+/// login by session. New inputs (a force-update flag, a maintenance mode)
+/// compose here without touching the router.
+///
+/// A pure derivation on purpose: no timers, no side effects, no
+/// imperative transitions. The pages that change the underlying state
+/// (login, logout, onboarding completion) invalidate the providers this
+/// one watches, and the gate follows.
 @Riverpod(keepAlive: true)
-class RouterState extends _$RouterState {
-  @override
-  String? build() {
-    ref.listen(appStartupProvider, (_, state) {
-      if (!(state.isLoading || state.hasError)) {
-        decideNextRoute();
-      }
-    });
-    return Routes.initial;
-  }
+Routes routerState(Ref ref) {
+  final startup = ref.watch(appStartupProvider);
+  if (startup.isLoading || startup.hasError) return .splash;
 
-  void decideNextRoute() {
-    final isOnboarded = ref.read(getOnboardingStatusUseCaseProvider).call();
-    final isLoggedIn = ref.read(getUserLoginStatusUseCaseProvider).call();
+  if (!ref.watch(onboardingStatusProvider)) return .onboarding;
 
-    if (state == Routes.initial) {
-      state = Routes.splash;
-      Timer(const Duration(milliseconds: 500), () => decideNextRoute());
-      return;
-    }
-
-    if (!isOnboarded) {
-      state = Routes.onboarding;
-      // Mark onboarding as completed
-      ref.read(markOnboardingCompletedUseCaseProvider).call();
-      return;
-    }
-
-    state = isLoggedIn ? Routes.home : Routes.login;
-  }
+  return switch (ref.watch(sessionStatusProvider)) {
+    AsyncData(value: .authenticated) => .home,
+    AsyncData() => .login,
+    _ => .splash,
+  };
 }

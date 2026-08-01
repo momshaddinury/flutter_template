@@ -119,7 +119,8 @@ flutter_template/
 ├── docs/                    # Project documentation
 │   ├── architecture.md         # Architecture documentation
 │   ├── dependency_injection.md # DI system documentation
-│   └── authentication_feature.md # Authentication feature docs
+│   ├── network.md              # Network layer guide
+│   └── router.md               # Routing and gate model guide
 ├── lib/
 │   ├── src/
 │   │   ├── core/               # Core utilities
@@ -184,14 +185,14 @@ flutter_template/
 - **Login**: Email/password authentication with validation
 - **Registration**: User signup with form validation
 - **Password Reset**: Complete forgot password flow
-- **Remember Me**: Persistent login state management
+- **Remember Me**: Opting in keeps the stored tokens across restarts; opting out clears them on the next launch
 - **Logout**: Secure session termination
 - **Token Management**: Automatic token refresh and storage
 
 ### Navigation & Routing
 - **Declarative Routing**: Type-safe navigation with go_router
 - **Nested Routes**: Complex navigation hierarchies
-- **Route Guards**: Authentication-based route protection
+- **Route Guards**: A single derived gate covering startup, onboarding, and authentication
 - **Deep Linking**: URL-based navigation support
 - **Shell Routes**: Persistent navigation elements
 
@@ -272,17 +273,7 @@ class UserState extends _$UserState {
 
 ### Adding New Routes
 
-```dart
-// 1. Define route in presentation/core/router/routes.dart
-static const String newFeature = '/new-feature';
-
-// 2. Add route in appropriate route file
-GoRoute(
-  path: Routes.newFeature,
-  name: Routes.newFeature,
-  builder: (context, state) => const NewFeaturePage(),
-),
-```
+Add a member to the `Routes` enum, register it in the matching `parts/<feature>_routes.dart` file, and decide how the gate treats it. The full recipe, the gate model, and the navigation rules are in [docs/router.md](docs/router.md).
 
 ## Configuration
 

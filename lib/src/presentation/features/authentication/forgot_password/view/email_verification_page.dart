@@ -43,7 +43,7 @@ class EmailVerificationPage extends StatelessWidget {
                   text: context.locale.didNotReceiveEmail,
                   linkText: context.locale.tryAnotherEmail,
                   onTap: () {
-                    context.pushReplacementNamed(Routes.resetPassword);
+                    context.pushReplacementNamed(Routes.resetPassword.name);
                   },
                 ),
               ],
@@ -86,7 +86,7 @@ class _OTPFieldState extends State<_OTPField> {
                   if (index == 3 && value.length == 1) {
                     FocusScope.of(context).unfocus();
                     //TODO: Callback function
-                    context.pushReplacementNamed(Routes.createNewPassword);
+                    context.pushReplacementNamed(Routes.createNewPassword.name);
                   } else if (value.length == 1) {
                     FocusScope.of(context).nextFocus();
                   }
