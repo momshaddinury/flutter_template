@@ -89,5 +89,15 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "failureUnauthenticated": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
+    "failurePermissionDenied": "ليس لديك إذن لتنفيذ هذا الإجراء.",
+    "failureUnreachable": "تعذر الوصول إلى الخادم. يرجى التحقق من اتصالك.",
+    "failureInvalidInput": "البيانات المُدخلة غير صالحة.",
+    "failureNotFound": "تعذر العثور على المورد المطلوب.",
+    "failureConflict": "يتعارض هذا الطلب مع الحالة الحالية.",
+    "failureCancelled": "تم إلغاء العملية.",
+    "failureUnexpected": "حدث خطأ ما.",
+    "retry": "إعادة المحاولة",
+    "signInAgain": "تسجيل الدخول مرة أخرى"
 }

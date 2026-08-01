@@ -22,6 +22,10 @@ part 'business_failure.freezed.dart';
 /// runtime type; that would re-introduce the infrastructure coupling the
 /// business failure exists to hide.
 ///
+/// No user-facing copy lives here. [message] carries the server-provided
+/// text when one exists; the localized copy a screen shows comes from
+/// `BusinessFailureUIMapper` at the presentation boundary.
+///
 /// Pattern-match exhaustively at the presentation layer — the Dart compiler
 /// will flag a missing case if you add a new variant.
 @freezed
@@ -97,21 +101,4 @@ sealed class BusinessFailure with _$BusinessFailure {
     Object? cause,
     StackTrace? stackTrace,
   }) = Defect;
-
-  /// Convenience message for simple UI paths that just show a string.
-  /// Rich UI should pattern-match on the variant for nuanced handling.
-  String get userMessage => switch (this) {
-    Unauthenticated() =>
-      message ?? 'Your session has expired. Please sign in again.',
-    PermissionDenied() =>
-      message ?? 'You do not have permission to perform this action.',
-    Unreachable() =>
-      message ?? 'Cannot reach the server. Please check your connection.',
-    InvalidInput() => message ?? 'The submitted data is invalid.',
-    NotFound() => message ?? 'The requested resource could not be found.',
-    Conflict() => message ?? 'This request conflicts with the current state.',
-    Cancelled() => message ?? 'The operation was cancelled.',
-    Unexpected() => message ?? 'Something went wrong.',
-    Defect() => 'Something went wrong.',
-  };
 }

@@ -89,5 +89,15 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "failureUnauthenticated": "Your session has expired. Please sign in again.",
+    "failurePermissionDenied": "You do not have permission to perform this action.",
+    "failureUnreachable": "Cannot reach the server. Please check your connection.",
+    "failureInvalidInput": "The submitted data is invalid.",
+    "failureNotFound": "The requested resource could not be found.",
+    "failureConflict": "This request conflicts with the current state.",
+    "failureCancelled": "The operation was cancelled.",
+    "failureUnexpected": "Something went wrong.",
+    "retry": "Try again",
+    "signInAgain": "Sign in again"
 }
