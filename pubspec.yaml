@@ -39,6 +39,7 @@ dependencies:
   go_router: ^17.0.1
   # Cache & Database
   shared_preferences: ^2.3.1
+  flutter_secure_storage: ^9.2.2
   # Generator and Annotations
   riverpod_annotation: ^4.0.0
   freezed_annotation: ^3.0.0
@@ -50,12 +51,12 @@ dependencies:
   # Serialization & Deserialization
   dart_mappable:
   # Networking
-  retrofit: ^4.4.0
+  retrofit: ^4.9.2
   dio: ^5.8.0+1
   # Localization
+  intl: ^0.20.2
   flutter_localizations:
     sdk: flutter
-  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -72,10 +73,19 @@ dev_dependencies:
   dart_mappable_builder:
   retrofit_generator: ^10.2.1
   freezed: ^3.0.6
+  # Testing
+  http_mock_adapter: ^0.6.1
+
+dependency_overrides:
+  analyzer: ^8.4.1
 
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
 
 
 flutter_gen:
