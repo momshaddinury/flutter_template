@@ -6,6 +6,7 @@ AuthenticationRepository authenticationRepository(Ref ref) {
     remote: ref.watch(restClientServiceProvider),
     local: ref.watch(cacheServiceProvider),
     tokens: ref.watch(tokenManagerProvider),
+    crashReporter: ref.watch(crashReporterProvider),
   );
 }
 

@@ -16,6 +16,7 @@ final class AuthenticationRepositoryImpl extends BaseRepository
     required this.remote,
     required this.local,
     required this.tokens,
+    required super.crashReporter,
   });
 
   final RestClient remote;

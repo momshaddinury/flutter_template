@@ -91,7 +91,9 @@ DioException (+attached ServerError)
   → Result<T, BusinessFailure>       // via BaseRepository.asyncGuard
 ```
 
-See `docs/CODING_GUIDELINES.md` ("Failures") for the repository-side rules.
+That chain is the recoverable path, and it only handles `Exception`s. A Dart `Error` (a programmer bug — null dereference, bad cast) takes a different path: `BaseRepository` reports it to `crashReporterProvider`, rethrows it with its original stack in debug builds, and folds it to `BusinessFailure.defect` in release. Uncaught errors outside repositories reach the same reporter through `installGlobalErrorHandlers`, wired in `lib/src/core/bootstrap.dart`. Swap `crashReporterProvider` for a Crashlytics- or Sentry-backed implementation to ship crash telemetry.
+
+Endpoints where a specific failure is a valid business outcome (a 404 that means "nothing set") use the guards' `recover` hook instead of hand-written `try`/`catch` — see `BaseRepository`'s doc comment for the contract.
 
 ## Cancellation
 

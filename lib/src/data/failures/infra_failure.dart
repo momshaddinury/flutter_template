@@ -122,8 +122,19 @@ sealed class InfraFailure with _$InfraFailure {
     StackTrace? stackTrace,
   }) = ParsingFailure;
 
-  /// Catch-all: programmer errors, unexpected exception types, anything
-  /// the classifier could not place.
+  /// A programmer bug reached the repository boundary — a Dart `Error`
+  /// (null dereference, bad cast, failed assertion) rather than a
+  /// recoverable `Exception`. `BaseRepository` reports it to the
+  /// `CrashReporter` and rethrows in debug; this variant is what release
+  /// builds fold it into.
+  const factory InfraFailure.defect({
+    String? message,
+    String? code,
+    Object? cause,
+    StackTrace? stackTrace,
+  }) = DefectFailure;
+
+  /// Catch-all: unexpected exception types the classifier could not place.
   const factory InfraFailure.unknown({
     String? message,
     String? code,
