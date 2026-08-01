@@ -1,6 +1,6 @@
 # Network layer
 
-How the template talks to a server: Retrofit call sites, a dio interceptor pipeline that handles auth invisibly, and five providers you override instead of editing transport code.
+How the template talks to a server: Retrofit call sites, a dio interceptor pipeline that handles auth invisibly, and a set of providers you override instead of editing transport code.
 
 ## The one rule at call sites
 
@@ -66,7 +66,7 @@ The default logger is `pretty_dio_logger`, gated to debug builds and configured 
 
 The pipeline itself guarantees nothing here: whatever interceptor you pass as `DioBuilder`'s `logger` sees the real request, bearer token included, and owns its release gate and redaction. Two alternatives ship with the template: `DebugLoggerInterceptor`, the strict option (no bodies, no header values, debug-only — for compliance-sensitive work or shared sinks), and `null`, which disables request logging entirely.
 
-## The five adaptation points
+## The adaptation points
 
 All are arguments to `DioBuilder` inside the `networkStack` provider in `lib/src/core/di/parts/externals.dart`; edit them there, never in transport code.
 
@@ -79,6 +79,8 @@ All are arguments to `DioBuilder` inside the `networkStack` provider in `lib/src
 | `logger` | Debug-gated `PrettyDioLogger` (no request headers) | Swap in `DebugLoggerInterceptor` (strict), another logger, or `null` to silence |
 
 (`store` is a sixth, rarely needed: swap secure storage for another `TokenStore`.)
+
+One override provider remains outside `DioBuilder`: `crashReporterProvider` (default `LoggingCrashReporter`) — override it to ship crash telemetry (Crashlytics, Sentry) for reported bugs.
 
 ## Error flow
 
