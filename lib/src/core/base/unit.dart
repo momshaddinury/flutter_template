@@ -42,7 +42,7 @@
 ///   case Success():
 ///     ref.invalidate(sessionStatusProvider); // the gate navigates
 ///   case Error(:final error):
-///     showError(error.userMessage);
+///     showError(error); // rendered via BusinessFailureUIMapper
 /// }
 /// ```
 ///

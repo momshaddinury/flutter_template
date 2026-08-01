@@ -89,5 +89,15 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "failureUnauthenticated": "আপনার সেশনের মেয়াদ শেষ হয়েছে। অনুগ্রহ করে আবার সাইন ইন করুন।",
+    "failurePermissionDenied": "এই কাজটি করার অনুমতি আপনার নেই।",
+    "failureUnreachable": "সার্ভারে পৌঁছানো যাচ্ছে না। অনুগ্রহ করে আপনার সংযোগ পরীক্ষা করুন।",
+    "failureInvalidInput": "প্রদত্ত তথ্য সঠিক নয়।",
+    "failureNotFound": "অনুরোধকৃত রিসোর্স খুঁজে পাওয়া যায়নি।",
+    "failureConflict": "এই অনুরোধটি বর্তমান অবস্থার সাথে সাংঘর্ষিক।",
+    "failureCancelled": "কাজটি বাতিল করা হয়েছে।",
+    "failureUnexpected": "কিছু একটা ভুল হয়েছে।",
+    "retry": "আবার চেষ্টা করুন",
+    "signInAgain": "আবার সাইন ইন করুন"
 }

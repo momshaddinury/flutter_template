@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import '../../../../core/extensions/app_localization.dart';
 import '../../../../domain/failures/business_failure.dart';
 import '../../../core/application_state/logout_provider/logout_provider.dart';
+import '../../../core/failure/business_failure_ui_mapper.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/widgets/loading_indicator.dart';
 
@@ -24,14 +25,22 @@ class _HomePageState extends ConsumerState<HomePage> {
     ref.listenManual(logoutProvider, (previous, next) {
       switch (next) {
         case AsyncError(error: final BusinessFailure failure):
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(failure.userMessage)));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                BusinessFailureUIMapper.map(failure, context.locale).message,
+              ),
+            ),
+          );
         // WHY: an error that is not a BusinessFailure must still produce
         // feedback — a silent spinner reads as a dead button.
         case AsyncError():
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Something went wrong.')),
+            SnackBar(
+              content: Text(
+                BusinessFailureUIMapper.unexpected(context.locale).message,
+              ),
+            ),
           );
         default:
       }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../application_state/startup_provider/app_startup_provider.dart';
-import 'startup_error_widget.dart';
+import '../failure_view.dart';
 
 class AppStartupWidget extends ConsumerWidget {
   const AppStartupWidget({
@@ -20,12 +20,12 @@ class AppStartupWidget extends ConsumerWidget {
 
     return appStartupState.when(
       loading: () => loading,
-      error: (error, stackTrace) {
-        return AppStartupErrorWidget(
-          errorMessage: error.toString(),
+      error: (error, stackTrace) => Scaffold(
+        body: FailureView(
+          error: error,
           onRetry: () => ref.invalidate(appStartupProvider),
-        );
-      },
+        ),
+      ),
       data: (_) => loaded,
     );
   }
