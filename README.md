@@ -158,24 +158,25 @@ flutter_template/
 |------------|----------|---------|
 | **Flutter** | >=3.38.4 | UI framework |
 | **Dart** | >=3.10.3 | Programming language |
-| **Riverpod** | ^2.5.1   | State management & DI |
-| **go_router** | ^14.2.8  | Navigation and routing |
+| **Riverpod** | ^3.1.0   | State management & DI |
+| **go_router** | ^17.0.1  | Navigation and routing |
 
 ### Network & Data
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | **Dio** | ^5.8.0+1 | HTTP client |
-| **Retrofit** | ^4.4.0 | REST API client generator |
+| **Retrofit** | ^4.9.2 | REST API client generator |
 | **SharedPreferences** | ^2.3.1 | Local storage |
+| **flutter_secure_storage** | ^9.2.2 | Token storage |
 | **dart_mappable** | latest | JSON serialization |
 
 ### Development Tools
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | **build_runner** | latest | Code generation |
-| **flutter_lints** | ^4.0.0 | Code analysis |
+| **flutter_lints** | ^6.0.0 | Code analysis |
 | **logger** | ^2.4.0 | Logging |
-| **pretty_dio_logger** | ^1.4.0 | Network logging |
+| **pretty_dio_logger** | ^1.4.0 | Network logging (debug builds) |
 
 ## Features Implementation
 
@@ -353,11 +354,15 @@ flutter_gen:
 ## Testing
 
 ### Test Structure
+
+`test/` mirrors `lib/src`:
+
 ```
 test/
-├── unit/           # Unit tests
-├── widget/         # Widget tests
-└── integration/    # Integration tests
+├── data/
+│   ├── failures/            # Exception classifier
+│   └── services/network/    # Transport, auth, interceptors (+ shared helpers.dart)
+└── integration/             # Live smoke runs, excluded from normal runs
 ```
 
 ### Running Tests
@@ -366,7 +371,10 @@ test/
 flutter test
 
 # Run specific test file
-flutter test test/widget_test.dart
+flutter test test/data/services/network/auth/token_manager_test.dart
+
+# Run the live smoke tests against the demo API (manual)
+flutter test test/integration/dummyjson_smoke.dart
 
 # Run with coverage
 flutter test --coverage

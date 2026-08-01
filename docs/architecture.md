@@ -99,7 +99,7 @@ The project uses **go_router** for navigation, which provides:
 - **Local Storage**: `shared_preferences`
 - **Code Generation**: `build_runner`, `riverpod_generator`
 - **Serialization**: `dart_mappable`
-- **Logging**: `logger`, `pretty_dio_logger`
+- **Logging**: `logger`; network requests via `pretty_dio_logger` (debug-gated default), with the redacting `DebugLoggerInterceptor` as the strict alternative — swap via `networkLoggerProvider`, see `docs/network.md`
 
 ## Code Generation
 
