@@ -27,7 +27,7 @@ Future<HttpResponse> currentUser();
 
 Three modes:
 
-- **`public`** (and every unmarked endpoint) — no Authorization header, ever. Login, signup, password reset, and the refresh call itself.
+- **`public`** (and every unmarked endpoint) — the interceptor never *attaches* a token, even when one exists. Login, signup, password reset, and the refresh call itself. A manually set `Authorization` header passes through untouched, so do not set one on public endpoints.
 - **`optional`** — attach the token when one exists, proceed anonymously otherwise. For endpoints that serve guests but personalize for signed-in users.
 - **`protected`** — attach the token; with no token available (and no recoverable refresh token), reject with `MissingAccessTokenException`, which the failure chain turns into `BusinessFailure.unauthenticated` — the session-expired UX path.
 

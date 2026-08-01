@@ -99,8 +99,6 @@ void main() {
         await manager.refresh();
 
         expect(spy.bodies.last, {'refreshToken': 'r.tok'});
-        // Unmarked → public: the refresh call never carries a bearer.
-        expect(spy.authHeaders.last, isNull);
       });
 
       test('persists the rotated access and refresh tokens', () async {

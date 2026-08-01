@@ -26,8 +26,10 @@ const authAttachedKey = 'auth.attached';
 /// a missing annotation fails visibly (a 401 on first use) rather than
 /// leaking a token.
 enum RequestAuth {
-  /// No Authorization header, ever — even when a token exists. Login,
-  /// signup, password reset, public catalogs, and the refresh call itself.
+  /// The interceptor never attaches an Authorization header, even when a
+  /// token exists. Login, signup, password reset, public catalogs, and
+  /// the refresh call itself. A header set manually on the request passes
+  /// through untouched — do not set one on public endpoints.
   public,
 
   /// Attach the token when one exists; proceed anonymously otherwise.

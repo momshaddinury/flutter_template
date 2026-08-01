@@ -359,6 +359,8 @@ flutter_gen:
 
 ```
 test/
+├── core/
+│   └── di/                  # Dependency-injection defaults
 ├── data/
 │   ├── failures/            # Exception classifier
 │   └── services/network/    # Transport, auth, interceptors (+ shared helpers.dart)

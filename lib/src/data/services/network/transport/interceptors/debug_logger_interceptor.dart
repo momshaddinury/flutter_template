@@ -12,14 +12,16 @@ import '../../../../../core/logger/log.dart';
 /// recordings, compliance-sensitive work).
 ///
 /// What it logs:
-/// - request: method + uri + a presence flag for the Authorization header
-/// - response: status + method + uri + latency
-/// - error: status (or '?') + method + uri + DioExceptionType
+/// - request: method + origin and path + a presence flag for the
+///   Authorization header
+/// - response: status + method + origin and path + latency
+/// - error: status (or '?') + method + origin and path + DioExceptionType
 ///
 /// What it intentionally does *not* log:
 /// - request body (may contain credentials, PII)
 /// - response body (may contain tokens, PII)
 /// - the value of the Authorization header (only whether one was set)
+/// - the query string (may carry tokens, reset codes, identifiers)
 ///
 /// In release builds [kDebugMode] is `false` and every callback is a
 /// no-op (`handler.next` only). The interceptor stays in the chain so
@@ -35,7 +37,7 @@ class DebugLoggerInterceptor extends Interceptor {
       options.extra[_startTimeKey] = DateTime.now();
       final hasAuth = options.headers.containsKey('Authorization');
       Log.debug(
-        '→ ${options.method} ${options.uri}'
+        '→ ${options.method} ${_safeTarget(options)}'
         '${hasAuth ? ' [auth: ✓]' : ''}',
       );
     }
@@ -51,7 +53,7 @@ class DebugLoggerInterceptor extends Interceptor {
       final elapsed = _elapsedFrom(response.requestOptions);
       Log.debug(
         '← ${response.statusCode} ${response.requestOptions.method} '
-        '${response.requestOptions.uri}'
+        '${_safeTarget(response.requestOptions)}'
         '${elapsed != null ? ' (${elapsed.inMilliseconds}ms)' : ''}',
       );
     }
@@ -64,13 +66,18 @@ class DebugLoggerInterceptor extends Interceptor {
       final elapsed = _elapsedFrom(err.requestOptions);
       Log.warning(
         '✗ ${err.response?.statusCode ?? '?'} '
-        '${err.requestOptions.method} ${err.requestOptions.uri} '
+        '${err.requestOptions.method} ${_safeTarget(err.requestOptions)} '
         '(${err.type})'
         '${elapsed != null ? ' (${elapsed.inMilliseconds}ms)' : ''}',
       );
     }
     handler.next(err);
   }
+
+  /// Origin and path only — the query string is dropped because it can
+  /// carry tokens, reset codes, or identifiers.
+  String _safeTarget(RequestOptions options) =>
+      '${options.uri.origin}${options.uri.path}';
 
   Duration? _elapsedFrom(RequestOptions options) {
     final start = options.extra[_startTimeKey];
