@@ -9,9 +9,22 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
-analyzer:
-  plugins:
-    - custom_lint
+# WHY: Dart's native analyzer plugin system (top-level `plugins:`), which
+# resolves each plugin's dependencies in its own context — the plugins do
+# not appear in pubspec.yaml on purpose, and the app's analyzer version
+# does not constrain them. The legacy `analyzer: plugins:` custom_lint
+# loader must stay absent: the two systems are mutually exclusive, and a
+# legacy entry silently disables every native plugin.
+plugins:
+  flutter_guardian:
+    path: packages/flutter_guardian
+  riverpod_lint:
+    diagnostics:
+      # WHY: the template's DI design reads auto-dispose use-case
+      # providers once inside keepAlive providers (see the DI table in
+      # the coding guidelines). This rule flags that pattern; whether to
+      # restructure is an open team decision — disabled until it is made.
+      only_use_keep_alive_inside_keep_alive: false
 
 linter:
   # The lint rules applied to this project can be customized in the
