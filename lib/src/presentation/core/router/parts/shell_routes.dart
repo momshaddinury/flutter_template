@@ -1,7 +1,5 @@
 part of '../router.dart';
 
-// WHY: route definitions are split per feature as parts of router.dart so
-// the route tree stays one navigable unit while each file stays small.
 StatefulShellRoute _shellRoutes(Ref ref) {
   return StatefulShellRoute.indexedStack(
     builder: (context, state, navigationShell) {
