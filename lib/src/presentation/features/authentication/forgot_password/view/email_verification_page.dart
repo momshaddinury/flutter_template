@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/extensions/app_localization.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
-import '../../../../core/widgets/link_text.dart';
+import '../../../../core/widgets/text/link_text.dart';
 import '../../../../core/widgets/text/typography.dart';
 
 class EmailVerificationPage extends StatelessWidget {

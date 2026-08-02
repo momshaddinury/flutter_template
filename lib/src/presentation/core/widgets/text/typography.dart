@@ -132,3 +132,54 @@ class BodySmallText extends _Typography {
     );
   }
 }
+
+enum _LabelTextVariant { regular, muted }
+
+/// A form label, tab, or chip: [TextStyleLabel.regular] weight, one line
+/// of intent.
+class LabelText extends _Typography {
+  const LabelText(
+    super.text, {
+    super.key,
+    super.textAlign,
+    super.maxLines,
+    super.overflow,
+    super.softWrap,
+    super.textDirection,
+    super.semanticsLabel,
+  }) : _variant = _LabelTextVariant.regular;
+
+  const LabelText.muted(
+    super.text, {
+    super.key,
+    super.textAlign,
+    super.maxLines,
+    super.overflow,
+    super.softWrap,
+    super.textDirection,
+    super.semanticsLabel,
+  }) : _variant = _LabelTextVariant.muted;
+
+  final _LabelTextVariant _variant;
+
+  @override
+  Widget build(BuildContext context) {
+    final style = switch (_variant) {
+      .regular => context.textStyle.label.regular,
+      .muted => context.textStyle.label.regular.copyWith(
+        color: context.color.text.muted,
+      ),
+    };
+
+    return Text(
+      text,
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow,
+      softWrap: softWrap,
+      textDirection: textDirection,
+      semanticsLabel: semanticsLabel,
+      style: style,
+    );
+  }
+}
