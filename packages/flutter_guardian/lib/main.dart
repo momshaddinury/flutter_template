@@ -1,7 +1,11 @@
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
+import 'rules/di_lifetime_rule.dart';
 import 'rules/di_naming_rule.dart';
+import 'rules/direct_dio_rule.dart';
+import 'rules/layer_import_rule.dart';
+import 'rules/route_literal_rule.dart';
 
 /// The entry point the Dart analysis server looks for: a top-level
 /// variable named [plugin].
@@ -20,5 +24,9 @@ class FlutterGuardianPlugin extends Plugin {
     registry.registerWarningRule(RepositoryNamingRule());
     registry.registerWarningRule(UseCaseNamingRule());
     registry.registerWarningRule(ServiceNamingRule());
+    registry.registerWarningRule(LayerImportRule());
+    registry.registerWarningRule(DiLifetimeRule());
+    registry.registerWarningRule(RouteLiteralRule());
+    registry.registerWarningRule(DirectDioRule());
   }
 }
