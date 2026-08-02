@@ -1,21 +1,18 @@
 import 'package:dart_mappable/dart_mappable.dart';
 
-import '../../domain/entities/login_entity.dart';
-
 part 'login_model.mapper.dart';
 
 @MappableClass(generateMethods: GenerateMethods.decode)
-class LoginResponseModel extends LoginResponseEntity
-    with LoginResponseModelMappable {
+class LoginResponseModel with LoginResponseModelMappable {
   LoginResponseModel({
     required this.id,
     required this.username,
     required this.email,
     required this.firstName,
     required this.lastName,
-    required this.image,
-    required super.accessToken,
     required this.gender,
+    required this.image,
+    required this.accessToken,
     required this.refreshToken,
   });
 
@@ -26,20 +23,16 @@ class LoginResponseModel extends LoginResponseEntity
   final String lastName;
   final String gender;
   final String image;
+  final String accessToken;
   final String refreshToken;
 
   static const fromJson = LoginResponseModelMapper.fromJson;
 }
 
-@MappableClass(generateMethods: GenerateMethods.copy | GenerateMethods.encode)
-class LoginRequestModel extends LoginRequestEntity
-    with LoginRequestModelMappable {
-  LoginRequestModel({required super.username, required super.password});
+@MappableClass(generateMethods: GenerateMethods.encode)
+class LoginRequestModel with LoginRequestModelMappable {
+  LoginRequestModel({required this.username, required this.password});
 
-  factory LoginRequestModel.fromEntity(LoginRequestEntity entity) {
-    return LoginRequestModel(
-      username: entity.username,
-      password: entity.password,
-    );
-  }
+  final String username;
+  final String password;
 }

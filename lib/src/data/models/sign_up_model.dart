@@ -1,20 +1,32 @@
-import '../../domain/entities/sign_up_entity.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-extension SignUpRequestModel on SignUpRequestEntity {
-  Map<String, dynamic> toJson() {
-    return {
-      'first_name': firstName,
-      'last_name': lastName,
-      'email': email,
-      'password': password,
-    };
-  }
+part 'sign_up_model.mapper.dart';
+
+@MappableClass(generateMethods: GenerateMethods.encode)
+class SignUpRequestModel with SignUpRequestModelMappable {
+  SignUpRequestModel({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.password,
+  });
+
+  @MappableField(key: 'first_name')
+  final String firstName;
+
+  @MappableField(key: 'last_name')
+  final String lastName;
+
+  final String email;
+  final String password;
 }
 
-class SignUpResponseModel extends SignUpResponseEntity {
-  SignUpResponseModel({required super.accessToken});
+@MappableClass(generateMethods: GenerateMethods.decode)
+class SignUpResponseModel with SignUpResponseModelMappable {
+  SignUpResponseModel({required this.accessToken});
 
-  factory SignUpResponseModel.fromJson(Map<String, dynamic> json) {
-    return SignUpResponseModel(accessToken: json['access_token']);
-  }
+  @MappableField(key: 'access_token')
+  final String accessToken;
+
+  static const fromJson = SignUpResponseModelMapper.fromJson;
 }

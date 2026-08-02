@@ -1,19 +1,35 @@
-interface class LoginEntity {}
-
-class LoginRequestEntity extends LoginEntity {
+class LoginRequestEntity {
   LoginRequestEntity({
     required this.username,
     required this.password,
-    this.shouldRemeber = false,
+    this.shouldRemember = false,
   });
 
   final String username;
   final String password;
-  final bool? shouldRemeber;
+  final bool? shouldRemember;
 }
 
-class LoginResponseEntity extends LoginEntity {
-  LoginResponseEntity({required this.accessToken});
+/// The signed-in user, as the domain sees it. Tokens never appear here:
+/// the data layer persists them through `TokenManager`, and the app
+/// reasons about the session through the session gate — never through
+/// token values.
+class LoginResponseEntity {
+  LoginResponseEntity({
+    required this.id,
+    required this.username,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
+    required this.gender,
+    required this.image,
+  });
 
-  final String accessToken;
+  final int id;
+  final String username;
+  final String email;
+  final String firstName;
+  final String lastName;
+  final String gender;
+  final String image;
 }

@@ -28,7 +28,7 @@ final class LoginUseCase {
     final request = LoginRequestEntity(
       username: email,
       password: password,
-      shouldRemeber: shouldRemember,
+      shouldRemember: shouldRemember,
     );
 
     return repository.login(request);
