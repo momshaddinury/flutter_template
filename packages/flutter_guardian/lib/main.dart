@@ -1,6 +1,7 @@
 import 'package:analysis_server_plugin/plugin.dart';
 import 'package:analysis_server_plugin/registry.dart';
 
+import 'rules/cross_feature_import_rule.dart';
 import 'rules/di_lifetime_rule.dart';
 import 'rules/di_naming_rule.dart';
 import 'rules/direct_dio_rule.dart';
@@ -34,5 +35,6 @@ class FlutterGuardianPlugin extends Plugin {
     registry.registerWarningRule(WidgetHelperRule());
     registry.registerWarningRule(HardcodedTextRule());
     registry.registerWarningRule(HardcodedDesignValueRule());
+    registry.registerWarningRule(CrossFeatureImportRule());
   }
 }
