@@ -10,6 +10,7 @@ import 'rules/hardcoded_design_value_rule.dart';
 import 'rules/hardcoded_text_rule.dart';
 import 'rules/layer_import_rule.dart';
 import 'rules/route_literal_rule.dart';
+import 'rules/svg_icon_rule.dart';
 import 'rules/widget_helper_rule.dart';
 
 /// The entry point the Dart analysis server looks for: a top-level
@@ -38,5 +39,6 @@ class FlutterGuardianPlugin extends Plugin {
     registry.registerWarningRule(HardcodedDesignValueRule());
     registry.registerWarningRule(CrossFeatureImportRule());
     registry.registerWarningRule(CrossServiceImportRule());
+    registry.registerWarningRule(SvgIconRule());
   }
 }
