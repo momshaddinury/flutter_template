@@ -64,11 +64,7 @@ dev_dependencies:
 
   flutter_lints: ^6.0.0
   build_runner:
-  custom_lint:
-  flutter_guardian:
-   path: packages/flutter_guardian/
   riverpod_generator:
-  riverpod_lint:
   flutter_gen_runner:
   dart_mappable_builder:
   retrofit_generator: ^10.2.1
@@ -76,10 +72,9 @@ dev_dependencies:
   # Testing
   http_mock_adapter: ^0.6.1
 
-# WHY: deliberate — analyzer 9.x forces disabling the custom_lint analyzer
-# plugin (riverpod_lint, flutter_guardian). pub get and build_runner are
-# verified green on this resolution; remove the override only together
-# with a custom_lint-compatible analyzer bump.
+# WHY: pins the main context's analyzer for codegen stability at this SDK
+# pin. The lint plugins no longer care — both run natively and resolve
+# their own analyzer. Remove with the Flutter 3.44 / Dart 3.12 upgrade.
 dependency_overrides:
   analyzer: ^8.4.1
 
