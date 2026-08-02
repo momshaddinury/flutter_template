@@ -1,33 +1,26 @@
 part of '../theme_data.dart';
 
-class _AppBarLightTheme with ThemeExtensions {
-  AppBarTheme call() {
-    return AppBarTheme(
-      elevation: 1,
-      titleSpacing: 0,
-      centerTitle: false,
-      backgroundColor: lightColor.appBar.background,
-      surfaceTintColor: lightColor.appBar.surfaceTint,
-      titleTextStyle: textStyle.headingSmall.copyWith(
-        color: lightColor.text.primary,
-      ),
-      iconTheme: IconThemeData(color: lightColor.appBar.icon),
-    );
-  }
-}
+class _AppBarThemeData with ThemeExtensions {
+  _AppBarThemeData(this.color);
 
-class _AppBarDarkTheme with ThemeExtensions {
+  final ColorExtension color;
+
   AppBarTheme call() {
     return AppBarTheme(
-      elevation: 1,
-      titleSpacing: 0,
+      elevation: dimensions.layout.none,
+      scrolledUnderElevation: dimensions.layout.none,
+      backgroundColor: color.background.canvas,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      titleSpacing: dimensions.space.s12,
       centerTitle: false,
-      backgroundColor: darkColor.appBar.background,
-      surfaceTintColor: darkColor.appBar.surfaceTint,
-      titleTextStyle: textStyle.headingSmall.copyWith(
-        color: darkColor.text.primary,
+      titleTextStyle: textStyle.heading.level3.copyWith(
+        color: color.text.defaultValue,
       ),
-      iconTheme: IconThemeData(color: darkColor.appBar.icon),
+      iconTheme: IconThemeData(
+        color: color.text.defaultValue,
+        size: dimensions.size.iconMedium,
+      ),
     );
   }
 }

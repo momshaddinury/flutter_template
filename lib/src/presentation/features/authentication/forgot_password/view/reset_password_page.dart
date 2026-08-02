@@ -13,22 +13,24 @@ class ResetPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: HeadingSmallText(context.locale.resetPassword)),
+      appBar: AppBar(title: HeadingLevel3Text(context.locale.resetPassword)),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
+          padding: EdgeInsets.symmetric(
+            horizontal: context.dimensions.space.s16,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(context.spacing.s16),
-              BodyMediumText.secondary(context.locale.enterAssociatedEmail),
-              Gap(context.spacing.s16),
-              BodyMediumText(context.locale.emailAddress),
-              Gap(context.spacing.s8),
+              Gap(context.dimensions.space.s16),
+              BodySmallText.muted(context.locale.enterAssociatedEmail),
+              Gap(context.dimensions.space.s16),
+              BodySmallText(context.locale.emailAddress),
+              Gap(context.dimensions.space.s8),
               TextFormField(
                 decoration: InputDecoration(hintText: context.locale.email),
               ),
-              Gap(context.spacing.s16),
+              Gap(context.dimensions.space.s16),
               FilledButton(
                 onPressed: () {
                   context.pushReplacementNamed(Routes.emailVerification.name);

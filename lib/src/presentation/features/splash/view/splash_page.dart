@@ -8,8 +8,8 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.color.onPrimary,
-      body: Center(child: FlutterLogo(size: context.spacing.s210)),
+      backgroundColor: context.color.background.surface,
+      body: Center(child: FlutterLogo(size: context.dimensions.layout.logo)),
     );
   }
 }

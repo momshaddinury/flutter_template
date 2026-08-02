@@ -13,7 +13,7 @@ class ResetPasswordSuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
+        padding: EdgeInsets.symmetric(horizontal: context.dimensions.space.s16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,28 +22,28 @@ class ResetPasswordSuccessPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(context.padding.p20),
+                  padding: EdgeInsets.all(context.dimensions.space.s20),
                   decoration: BoxDecoration(
-                    color: context.color.primary.withValues(alpha: .25),
+                    color: context.color.primary.tint,
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
                     Icons.check,
-                    size: context.spacing.s100,
-                    color: context.color.primary,
+                    size: context.dimensions.size.iconHero,
+                    color: context.color.primary.defaultValue,
                   ),
                 ),
-                Gap(context.spacing.s24),
-                HeadingLargeText(
+                Gap(context.dimensions.space.s24),
+                HeadingLevel1Text(
                   context.locale.passwordChangeSuccess,
                   textAlign: TextAlign.center,
                 ),
-                Gap(context.spacing.s8),
-                BodyMediumText.secondary(
+                Gap(context.dimensions.space.s8),
+                BodySmallText.muted(
                   context.locale.yourPasswordChanged,
                   textAlign: TextAlign.center,
                 ),
-                Gap(context.spacing.s32),
+                Gap(context.dimensions.space.s32),
                 FilledButton(
                   onPressed: () {
                     context.pop();

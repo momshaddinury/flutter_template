@@ -11,7 +11,7 @@ List<_OnboardingItem> _getOnboardingItems(BuildContext context) => [
   (
     index: 0,
     title: context.locale.learnFlutterTitle,
-    image: FlutterLogo(size: context.spacing.s200),
+    image: FlutterLogo(size: context.dimensions.layout.logo),
     features: [
       context.locale.learnFlutterSubtitle,
       context.locale.learnFlutterDescription,
@@ -20,7 +20,7 @@ List<_OnboardingItem> _getOnboardingItems(BuildContext context) => [
   (
     index: 1,
     title: context.locale.joinCommunityTitle,
-    image: FlutterLogo(size: context.spacing.s200),
+    image: FlutterLogo(size: context.dimensions.layout.logo),
     features: [
       context.locale.joinCommunitySubtitle,
       context.locale.joinCommunityDescription,
@@ -29,7 +29,7 @@ List<_OnboardingItem> _getOnboardingItems(BuildContext context) => [
   (
     index: 2,
     title: context.locale.buildDeployTitle,
-    image: FlutterLogo(size: context.spacing.s200),
+    image: FlutterLogo(size: context.dimensions.layout.logo),
     features: [
       context.locale.buildDeploySubtitle,
       context.locale.buildDeployDescription,

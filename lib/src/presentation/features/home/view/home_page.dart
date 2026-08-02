@@ -53,12 +53,12 @@ class _HomePageState extends ConsumerState<HomePage> {
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(context.padding.p16),
+        padding: EdgeInsets.all(context.dimensions.space.s16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(context.locale.home),
-            Gap(context.spacing.s16),
+            Gap(context.dimensions.space.s16),
             FilledButton(
               onPressed: () {
                 ref.read(logoutProvider.notifier).call();

@@ -13,18 +13,22 @@ class CreateNewPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: HeadingSmallText(context.locale.createNewPassword)),
+      appBar: AppBar(
+        title: HeadingLevel3Text(context.locale.createNewPassword),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
+          padding: EdgeInsets.symmetric(
+            horizontal: context.dimensions.space.s16,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gap(context.spacing.s16),
-              BodyMediumText.secondary(context.locale.createNewPasswordHint),
-              Gap(context.spacing.s16),
+              Gap(context.dimensions.space.s16),
+              BodySmallText.muted(context.locale.createNewPasswordHint),
+              Gap(context.dimensions.space.s16),
               const _Form(),
-              Gap(context.spacing.s32),
+              Gap(context.dimensions.space.s32),
               FilledButton(
                 onPressed: () {
                   context.pushReplacementNamed(
@@ -69,7 +73,7 @@ class _FormState extends State<_Form> {
             ),
           ),
         ),
-        Gap(context.spacing.s16),
+        Gap(context.dimensions.space.s16),
         TextFormField(
           decoration: InputDecoration(
             hintText: context.locale.confirmPassword,

@@ -14,23 +14,25 @@ class EmailVerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: HeadingSmallText(context.locale.checkYourMail)),
+      appBar: AppBar(title: HeadingLevel3Text(context.locale.checkYourMail)),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
+            padding: EdgeInsets.symmetric(
+              horizontal: context.dimensions.space.s16,
+            ),
             child: Column(
               children: [
-                Gap(context.spacing.s24),
-                FlutterLogo(size: context.spacing.s200),
-                Gap(context.spacing.s24),
-                HeadingLargeText(context.locale.checkYourMail),
-                Gap(context.spacing.s8),
-                BodyMediumText.secondary(
+                Gap(context.dimensions.space.s24),
+                FlutterLogo(size: context.dimensions.layout.logo),
+                Gap(context.dimensions.space.s24),
+                HeadingLevel1Text(context.locale.checkYourMail),
+                Gap(context.dimensions.space.s8),
+                BodySmallText.muted(
                   context.locale.enterVerificationCode,
                   textAlign: TextAlign.center,
                 ),
-                Gap(context.spacing.s32),
+                Gap(context.dimensions.space.s32),
                 const _OTPField(),
                 LinkText(
                   text: context.locale.didntGetCode,
@@ -66,7 +68,7 @@ class _OTPFieldState extends State<_OTPField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.spacing.s66,
+      height: context.dimensions.layout.field,
       width: MediaQuery.sizeOf(context).width - 26,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -74,12 +76,14 @@ class _OTPFieldState extends State<_OTPField> {
           4,
           (index) => Flexible(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: context.margin.m6),
+              margin: EdgeInsets.symmetric(
+                horizontal: context.dimensions.space.s8,
+              ),
               child: TextFormField(
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(
-                    vertical: context.padding.p20,
+                    vertical: context.dimensions.space.s20,
                   ),
                 ),
                 onChanged: (value) {

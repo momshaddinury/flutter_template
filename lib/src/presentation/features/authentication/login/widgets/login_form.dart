@@ -31,7 +31,7 @@ class _LoginFormState extends State<_LoginForm> {
           decoration: InputDecoration(hintText: context.locale.email),
           validator: context.validator.apply([RequiredValidation()]),
         ),
-        Gap(context.spacing.s16),
+        Gap(context.dimensions.space.s16),
         TextFormField(
           controller: widget.passwordController,
           obscureText: !_isPasswordVisible,

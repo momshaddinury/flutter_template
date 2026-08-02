@@ -20,9 +20,9 @@ class LanguageSwitcherWidget extends ConsumerWidget {
       icon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.language, color: context.color.primary),
-          Gap(context.spacing.s4),
-          BodyMediumText(context.locale.getLanguageName(state.languageCode)),
+          Icon(Icons.language, color: context.color.primary.defaultValue),
+          Gap(context.dimensions.space.s4),
+          BodySmallText(context.locale.getLanguageName(state.languageCode)),
           const Icon(Icons.arrow_drop_down),
         ],
       ),
@@ -39,7 +39,7 @@ class LanguageSwitcherWidget extends ConsumerWidget {
                   Icon(
                     Icons.check,
                     color: Theme.of(context).colorScheme.primary,
-                    size: context.spacing.s16,
+                    size: context.dimensions.space.s16,
                   ),
                 ],
               ],

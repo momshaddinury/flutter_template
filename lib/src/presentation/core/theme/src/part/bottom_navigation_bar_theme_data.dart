@@ -1,37 +1,23 @@
 part of '../theme_data.dart';
 
-class _BottomNavigationBarLightThemeData with ThemeExtensions {
-  BottomNavigationBarThemeData call() {
-    return BottomNavigationBarThemeData(
-      elevation: .5,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: lightColor.bottomNavBar.selectedItem,
-      unselectedItemColor: lightColor.bottomNavBar.unselectedItem,
-      selectedLabelStyle: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-      ),
-      unselectedLabelStyle: const TextStyle(fontSize: 12),
-    );
-  }
-}
+class _BottomNavigationBarThemeData with ThemeExtensions {
+  _BottomNavigationBarThemeData(this.color);
 
-class _BottomNavigationBarDarkThemeData with ThemeExtensions {
+  final ColorExtension color;
+
   BottomNavigationBarThemeData call() {
     return BottomNavigationBarThemeData(
-      elevation: .5,
+      elevation: dimensions.layout.none,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: darkColor.bottomNavBar.selectedItem,
-      unselectedItemColor: darkColor.bottomNavBar.unselectedItem,
-      selectedLabelStyle: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-      ),
-      unselectedLabelStyle: const TextStyle(fontSize: 12),
+      backgroundColor: color.background.surface,
+      selectedItemColor: color.primary.strong,
+      unselectedItemColor: color.text.muted,
+      selectedIconTheme: IconThemeData(size: dimensions.size.iconMedium),
+      unselectedIconTheme: IconThemeData(size: dimensions.size.iconMedium),
+      selectedLabelStyle: textStyle.label.caption,
+      unselectedLabelStyle: textStyle.label.caption,
     );
   }
 }

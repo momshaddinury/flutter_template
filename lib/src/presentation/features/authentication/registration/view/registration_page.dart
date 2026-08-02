@@ -47,32 +47,32 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: HeadingSmallText(context.locale.signUp)),
+      appBar: AppBar(title: HeadingLevel3Text(context.locale.signUp)),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: context.padding.p16),
+        padding: EdgeInsets.symmetric(horizontal: context.dimensions.space.s16),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Gap(context.spacing.s80),
-              FlutterLogo(size: context.spacing.s100),
-              Gap(context.spacing.s80),
+              Gap(context.dimensions.space.s80),
+              FlutterLogo(size: context.dimensions.layout.logoSmall),
+              Gap(context.dimensions.space.s80),
               TextFormField(
                 validator: context.validator.apply([RequiredValidation()]),
                 decoration: InputDecoration(hintText: context.locale.firstName),
               ),
-              Gap(context.spacing.s16),
+              Gap(context.dimensions.space.s16),
               TextFormField(
                 validator: context.validator.apply([RequiredValidation()]),
                 decoration: InputDecoration(hintText: context.locale.lastName),
               ),
-              Gap(context.spacing.s16),
+              Gap(context.dimensions.space.s16),
               TextFormField(
                 validator: context.validator.apply([RequiredValidation()]),
                 decoration: InputDecoration(hintText: context.locale.email),
               ),
-              Gap(context.spacing.s16),
+              Gap(context.dimensions.space.s16),
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: _passwordController,
@@ -93,7 +93,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   PasswordValidation(minLength: 6),
                 ]),
               ),
-              Gap(context.spacing.s16),
+              Gap(context.dimensions.space.s16),
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: _confirmPasswordController,
@@ -116,7 +116,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ]),
               ),
-              Gap(context.spacing.s32),
+              Gap(context.dimensions.space.s32),
               FilledButton(
                 onPressed: () {
                   if (!_formKey.currentState!.validate()) return;

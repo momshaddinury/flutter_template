@@ -26,8 +26,8 @@ abstract class _Typography extends StatelessWidget {
   Widget build(BuildContext context);
 }
 
-class HeadingLargeText extends _Typography {
-  const HeadingLargeText(
+class HeadingLevel1Text extends _Typography {
+  const HeadingLevel1Text(
     super.text, {
     super.key,
     super.textAlign,
@@ -48,15 +48,15 @@ class HeadingLargeText extends _Typography {
       softWrap: softWrap,
       textDirection: textDirection,
       semanticsLabel: semanticsLabel,
-      style: context.textStyle.headingLarge.copyWith(
-        color: context.color.text.primary,
+      style: context.textStyle.heading.level1.copyWith(
+        color: context.color.text.defaultValue,
       ),
     );
   }
 }
 
-class HeadingSmallText extends _Typography {
-  const HeadingSmallText(
+class HeadingLevel3Text extends _Typography {
+  const HeadingLevel3Text(
     super.text, {
     super.key,
     super.textAlign,
@@ -77,17 +77,17 @@ class HeadingSmallText extends _Typography {
       softWrap: softWrap,
       textDirection: textDirection,
       semanticsLabel: semanticsLabel,
-      style: context.textStyle.headingSmall.copyWith(
-        color: context.color.text.primary,
+      style: context.textStyle.heading.level3.copyWith(
+        color: context.color.text.defaultValue,
       ),
     );
   }
 }
 
-enum _BodyMediumTextVariant { primary, secondary }
+enum _BodySmallTextVariant { regular, muted }
 
-class BodyMediumText extends _Typography {
-  const BodyMediumText(
+class BodySmallText extends _Typography {
+  const BodySmallText(
     super.text, {
     super.key,
     super.textAlign,
@@ -96,9 +96,9 @@ class BodyMediumText extends _Typography {
     super.softWrap,
     super.textDirection,
     super.semanticsLabel,
-  }) : _variant = _BodyMediumTextVariant.primary;
+  }) : _variant = _BodySmallTextVariant.regular;
 
-  const BodyMediumText.secondary(
+  const BodySmallText.muted(
     super.text, {
     super.key,
     super.textAlign,
@@ -107,17 +107,16 @@ class BodyMediumText extends _Typography {
     super.softWrap,
     super.textDirection,
     super.semanticsLabel,
-  }) : _variant = _BodyMediumTextVariant.secondary;
+  }) : _variant = _BodySmallTextVariant.muted;
 
-  final _BodyMediumTextVariant _variant;
+  final _BodySmallTextVariant _variant;
 
   @override
   Widget build(BuildContext context) {
     final style = switch (_variant) {
-      .primary => context.textStyle.bodyMedium,
-      .secondary => context.textStyle.bodyMedium.copyWith(
-        color: context.color.text.secondary,
-        fontWeight: .w500,
+      .regular => context.textStyle.body.small,
+      .muted => context.textStyle.body.small.copyWith(
+        color: context.color.text.muted,
       ),
     };
 

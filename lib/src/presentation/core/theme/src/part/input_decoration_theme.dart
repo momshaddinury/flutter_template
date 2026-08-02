@@ -1,53 +1,40 @@
 part of '../theme_data.dart';
 
-class _InputDecorationLightTheme with ThemeExtensions {
+class _InputDecorationThemeData with ThemeExtensions {
+  _InputDecorationThemeData(this.color);
+
+  final ColorExtension color;
+
   InputDecorationTheme call() {
     final BorderRadius borderRadius = BorderRadius.circular(
-      dimensions.radius.r6,
+      dimensions.radius.medium,
     );
+
+    OutlineInputBorder border(Color borderColor, double width) {
+      return OutlineInputBorder(
+        borderRadius: borderRadius,
+        borderSide: BorderSide(color: borderColor, width: width),
+      );
+    }
 
     return InputDecorationTheme(
-      hintStyle: textStyle.bodyLarge.copyWith(color: lightColor.text.secondary),
+      filled: true,
+      fillColor: color.background.surface,
       contentPadding: EdgeInsets.symmetric(
-        vertical: dimensions.spacing.s12,
-        horizontal: dimensions.spacing.s16,
+        vertical: dimensions.space.s12,
+        horizontal: dimensions.space.s16,
       ),
-      border: OutlineInputBorder(borderRadius: borderRadius),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: borderRadius,
-        borderSide: BorderSide(
-          color: lightColor.border,
-          width: dimensions.spacing.s1,
-        ),
-      ),
-      suffixIconColor: lightColor.icon,
-      disabledBorder: OutlineInputBorder(borderRadius: borderRadius),
-    );
-  }
-}
-
-class _InputDecorationDarkTheme with ThemeExtensions {
-  InputDecorationTheme call() {
-    final BorderRadius borderRadius = BorderRadius.circular(
-      dimensions.radius.r6,
-    );
-
-    return InputDecorationTheme(
-      hintStyle: textStyle.bodyLarge.copyWith(color: darkColor.text.secondary),
-      contentPadding: EdgeInsets.symmetric(
-        vertical: dimensions.spacing.s12,
-        horizontal: dimensions.spacing.s16,
-      ),
-      border: OutlineInputBorder(borderRadius: borderRadius),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: borderRadius,
-        borderSide: BorderSide(
-          color: darkColor.border,
-          width: dimensions.spacing.s1,
-        ),
-      ),
-      suffixIconColor: darkColor.icon,
-      disabledBorder: OutlineInputBorder(borderRadius: borderRadius),
+      hintStyle: textStyle.body.regular.copyWith(color: color.text.muted),
+      labelStyle: textStyle.label.regular.copyWith(color: color.text.muted),
+      errorStyle: textStyle.label.caption.copyWith(color: color.status.danger),
+      suffixIconColor: color.text.muted,
+      prefixIconColor: color.text.muted,
+      border: border(color.border.defaultValue, dimensions.border.xs),
+      enabledBorder: border(color.border.defaultValue, dimensions.border.xs),
+      focusedBorder: border(color.primary.strong, dimensions.border.md),
+      disabledBorder: border(color.border.defaultValue, dimensions.border.xs),
+      errorBorder: border(color.status.danger, dimensions.border.xs),
+      focusedErrorBorder: border(color.status.danger, dimensions.border.md),
     );
   }
 }

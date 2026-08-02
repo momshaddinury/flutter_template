@@ -63,18 +63,18 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     children: _getOnboardingItems(context).map((item) {
                       return Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: context.padding.p24,
+                          horizontal: context.dimensions.space.s24,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            HeadingLargeText(
+                            HeadingLevel1Text(
                               item.title,
                               textAlign: TextAlign.center,
                             ),
-                            Gap(context.spacing.s24),
+                            Gap(context.dimensions.space.s24),
                             item.image,
-                            Gap(context.spacing.s24),
+                            Gap(context.dimensions.space.s24),
                             Column(
                               children: item.features.map((feature) {
                                 return _OnboardingListItem(title: feature);
@@ -86,28 +86,28 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
                     }).toList(),
                   ),
                 ),
-                Gap(context.spacing.s24),
+                Gap(context.dimensions.space.s24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: _getOnboardingItems(context).map((item) {
                     return Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: context.padding.p4,
+                        horizontal: context.dimensions.space.s4,
                       ),
                       child: Icon(
                         Icons.circle,
-                        size: context.spacing.s8,
+                        size: context.dimensions.layout.dot,
                         color: _currentPage == item.index
-                            ? context.color.pageView.active
-                            : context.color.pageView.inactive,
+                            ? context.color.primary.defaultValue
+                            : context.color.text.muted,
                       ),
                     );
                   }).toList(),
                 ),
-                Gap(context.spacing.s44),
+                Gap(context.dimensions.size.iconDisplay),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: context.padding.p24,
+                    horizontal: context.dimensions.space.s24,
                   ),
                   child: FilledButton(
                     onPressed: _onGetStarted,
@@ -131,22 +131,22 @@ class _OnboardingListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: context.padding.p16),
+      padding: EdgeInsets.only(bottom: context.dimensions.space.s16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Icon(
             Icons.circle,
-            size: context.spacing.s6,
-            color: context.color.text.tertiary,
+            size: context.dimensions.layout.bullet,
+            color: context.color.text.muted,
           ),
-          Gap(context.spacing.s8),
+          Gap(context.dimensions.space.s8),
           Expanded(
             child: Baseline(
-              baseline: context.spacing.s8,
+              baseline: context.dimensions.space.s8,
               baselineType: TextBaseline.alphabetic,
-              child: BodyMediumText(title),
+              child: BodySmallText(title),
             ),
           ),
         ],
