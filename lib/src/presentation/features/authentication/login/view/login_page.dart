@@ -10,8 +10,9 @@ import '../../../../../domain/failures/business_failure.dart';
 import '../../../../core/failure/business_failure_ui_mapper.dart';
 import '../../../../core/router/routes.dart';
 import '../../../../core/theme/theme.dart';
-import '../../../../core/widgets/link_text.dart';
 import '../../../../core/widgets/loading_indicator.dart';
+import '../../../../core/widgets/text/link_text.dart';
+import '../../../../core/widgets/text/typography.dart';
 import '../../../../features/authentication/login/riverpod/login_provider.dart';
 import '../widgets/language_switcher.dart';
 

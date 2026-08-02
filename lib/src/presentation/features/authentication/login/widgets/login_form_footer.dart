@@ -15,39 +15,34 @@ class _FormFooter extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return DefaultTextStyle(
-      style: context.textStyle.label.regular.copyWith(
-        color: context.color.text.muted,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Transform.translate(
-            offset: const Offset(-10, 0),
-            child: Row(
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: shouldRemember,
-                  builder: (context, value, _) {
-                    return Checkbox(value: value, onChanged: _toggleRememberMe);
-                  },
-                ),
-                Text(context.locale.rememberMe),
-              ],
-            ),
-          ),
-          Transform.translate(
-            offset: const Offset(10, 0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () => _navigateToResetPassword(context),
-                child: Text(context.locale.forgotPassword),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Transform.translate(
+          offset: const Offset(-10, 0),
+          child: Row(
+            children: [
+              ValueListenableBuilder(
+                valueListenable: shouldRemember,
+                builder: (context, value, _) {
+                  return Checkbox(value: value, onChanged: _toggleRememberMe);
+                },
               ),
+              LabelText.muted(context.locale.rememberMe),
+            ],
+          ),
+        ),
+        Transform.translate(
+          offset: const Offset(10, 0),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () => _navigateToResetPassword(context),
+              child: Text(context.locale.forgotPassword),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
