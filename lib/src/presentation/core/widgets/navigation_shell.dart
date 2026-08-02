@@ -19,7 +19,7 @@ class _NavigationShellState extends State<NavigationShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const HeadingLevel3Text('Flutter Template'),
+        title: HeadingLevel3Text(context.locale.appTitle),
         titleSpacing: context.dimensions.space.s16,
       ),
       body: widget.statefulNavigationShell,

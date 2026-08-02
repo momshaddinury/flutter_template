@@ -99,5 +99,7 @@
     "failureCancelled": "কাজটি বাতিল করা হয়েছে।",
     "failureUnexpected": "কিছু একটা ভুল হয়েছে।",
     "retry": "আবার চেষ্টা করুন",
-    "signInAgain": "আবার সাইন ইন করুন"
+    "signInAgain": "আবার সাইন ইন করুন",
+    "appTitle": "ফ্লাটার টেমপ্লেট",
+    "somethingWentWrong": "কিছু একটা ভুল হয়েছে।"
 }
