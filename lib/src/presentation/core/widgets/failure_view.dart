@@ -40,15 +40,17 @@ class FailureView extends ConsumerWidget {
         children: [
           Icon(
             Icons.error_outline,
-            size: context.spacing.s44,
-            color: context.color.text.secondary,
+            size: context.dimensions.size.iconDisplay,
+            color: context.color.text.muted,
           ),
-          Gap(context.spacing.s8),
+          Gap(context.dimensions.space.s8),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: context.padding.p24),
+            padding: EdgeInsets.symmetric(
+              horizontal: context.dimensions.space.s24,
+            ),
             child: Text(model.message, textAlign: TextAlign.center),
           ),
-          Gap(context.spacing.s24),
+          Gap(context.dimensions.space.s24),
           switch (model.action) {
             RecoveryAction.retry when onRetry != null => FilledButton(
               onPressed: onRetry,

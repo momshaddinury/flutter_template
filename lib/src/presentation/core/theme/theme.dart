@@ -1,66 +1,69 @@
-// ignore_for_file: strict_top_level_inference
-
 import 'package:flutter/material.dart';
 
 import 'src/theme_data.dart';
 import 'src/theme_extensions/extensions.dart';
 
-export 'src/theme_data.dart';
+export 'src/theme_extensions/extensions.dart';
 
-/// Extension on [BuildContext] to provide convenient access to theme-related
-/// properties and utilities.
+// WHY: private on purpose — themes and tokens are reached through
+// [BuildContextExtension] alone, so nothing outside the presentation layer
+// can touch them without a [BuildContext]. Built once and reused: assembly
+// walks every component theme, and the result never changes within a run.
+final ThemeData _appLightTheme = $ThemeData(const ColorExtension.light())();
+final ThemeData _appDarkTheme = $ThemeData(const ColorExtension.dark())();
+
+/// Reaches the design tokens from anywhere in the widget tree.
 ///
-/// This extension simplifies theme access by providing direct getters for
-/// commonly used theme elements like colors, text styles, and theme data
-/// for both light and dark modes.
+/// Tokens come in three sets, each a [ThemeExtension] registered on the
+/// theme:
+///
+/// * `context.color` — colours by role, not by shade, resolved for the
+///   active mode.
+/// * `context.textStyle` — the type scale.
+/// * `context.dimensions` — spacing, sizes, radii, strokes, elevations.
 ///
 /// Example usage:
 /// ```dart
 /// Widget build(BuildContext context) {
 ///   return Container(
-///     color: context.color.primary,
+///     padding: EdgeInsets.all(context.dimensions.space.s16),
+///     decoration: BoxDecoration(
+///       color: context.color.background.surface,
+///       borderRadius: BorderRadius.circular(context.dimensions.radius.large),
+///       boxShadow: context.dimensions.elevation.card,
+///     ),
 ///     child: Text(
 ///       'Hello World',
-///       style: context.textStyle.bodyLarge,
+///       style: context.textStyle.body.regular.copyWith(
+///         color: context.color.text.defaultValue,
+///       ),
 ///     ),
 ///   );
 /// }
 /// ```
 extension BuildContextExtension on BuildContext {
   /// Internal getter to access the current theme data.
-  ///
-  /// This is a private helper method used internally by other getters
-  /// in this extension to access the theme data from the widget tree.
   ThemeData get _theme => Theme.of(this);
 
-  /// Gets the appropriate color extension based on the current theme
-  /// brightness.
-  ///
-  /// Returns [LightColorExtension] for light themes and
-  /// [DarkColorExtension] for dark themes. This provides seamless
-  /// access to theme-appropriate colors throughout the application.
+  /// Gets the colour tokens from the active theme — light or dark bindings,
+  /// whichever the theme registered.
   ///
   /// Throws if the theme extension is not found.
   /// In debug, an assertion explains the missing registration.
   /// In release, a null-check error will be thrown if not registered.
   ColorExtension get color {
-    final ext = _theme.brightness == Brightness.light
-        ? _theme.extension<LightColorExtension>()
-        : _theme.extension<DarkColorExtension>();
+    final ext = _theme.extension<ColorExtension>();
 
     assert(
       ext != null,
-      'Ensure ColorExtension is added to ThemeData.extensions in src/theme_data.dart.',
+      'Ensure ColorExtension is added to ThemeData.extensions in '
+      'src/theme_data.dart.',
     );
 
     return ext!;
   }
 
   /// Gets the text style extension from the current theme.
-  ///
-  /// Provides access to all custom text styles defined in the theme.
-  /// This includes predefined text styles for different UI elements
-  /// such as headings, body text, captions, etc.
   ///
   /// Throws if the text style extension is not found.
   /// In debug mode, an assertion explains the missing registration.
@@ -70,7 +73,8 @@ extension BuildContextExtension on BuildContext {
 
     assert(
       ext != null,
-      'Ensure TextStyleExtension is added to ThemeData.extensions in src/theme_data.dart.',
+      'Ensure TextStyleExtension is added to ThemeData.extensions in '
+      'src/theme_data.dart.',
     );
 
     return ext!;
@@ -78,46 +82,24 @@ extension BuildContextExtension on BuildContext {
 
   /// Gets the dimensions extension from the current theme.
   ///
-  /// Provides access to all custom dimensions defined in the theme,
-  /// such as spacing, padding, margin, and border radius.
-  ///
   /// Throws if the dimensions extension is not found.
   /// In debug mode, an assertion explains the missing registration.
   /// In release mode, a null-check error will be thrown if not registered.
-  Dimensions get dimensions {
-    final ext = _theme.extension<Dimensions>();
+  DimensionsExtension get dimensions {
+    final ext = _theme.extension<DimensionsExtension>();
 
     assert(
       ext != null,
-      'Ensure Dimensions is added to ThemeData.extensions in src/theme_data.dart.',
+      'Ensure DimensionsExtension is added to ThemeData.extensions in '
+      'src/theme_data.dart.',
     );
 
     return ext!;
   }
 
-  /// Gets the spacing dimensions from the current theme.
-  get spacing => dimensions.spacing;
+  /// The light theme for [MaterialApp.theme].
+  ThemeData get lightTheme => _appLightTheme;
 
-  /// Gets the padding dimensions from the current theme.
-  get padding => dimensions.padding;
-
-  /// Gets the margin dimensions from the current theme.
-  get margin => dimensions.margin;
-
-  /// Gets the border radius dimensions from the current theme.
-  get radius => dimensions.radius;
-
-  /// Gets the light theme data configuration.
-  ///
-  /// Returns a [ThemeData] object configured for light mode appearance.
-  /// This can be used to explicitly apply light theme styling or for
-  /// theme switching functionality.
-  ThemeData get lightTheme => $LightThemeData()();
-
-  /// Gets the dark theme data configuration.
-  ///
-  /// Returns a [ThemeData] object configured for dark mode appearance.
-  /// This can be used to explicitly apply dark theme styling or for
-  /// theme switching functionality.
-  ThemeData get darkTheme => $DarkThemeData()();
+  /// The dark theme for [MaterialApp.darkTheme].
+  ThemeData get darkTheme => _appDarkTheme;
 }

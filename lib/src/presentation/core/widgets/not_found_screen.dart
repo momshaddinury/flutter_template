@@ -23,12 +23,12 @@ class NotFoundScreen extends StatelessWidget {
           children: [
             Icon(
               Icons.error_outline,
-              size: context.spacing.s44,
-              color: context.color.text.secondary,
+              size: context.dimensions.size.iconDisplay,
+              color: context.color.text.muted,
             ),
-            Gap(context.spacing.s8),
+            Gap(context.dimensions.space.s8),
             Text(context.locale.noRouteFor(uri.toString())),
-            Gap(context.spacing.s24),
+            Gap(context.dimensions.space.s24),
             FilledButton(
               onPressed: () => context.go(Routes.home.path),
               child: Text(context.locale.goHome),

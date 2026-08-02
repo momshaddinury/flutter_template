@@ -16,10 +16,8 @@ class _FormFooter extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTextStyle(
-      style: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: context.color.text.secondary,
+      style: context.textStyle.label.regular.copyWith(
+        color: context.color.text.muted,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

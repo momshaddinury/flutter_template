@@ -9,47 +9,56 @@ part 'part/checkbox_theme.dart';
 part 'part/dropdown_menu_theme_data.dart';
 part 'part/input_decoration_theme.dart';
 
-class $LightThemeData with ThemeExtensions {
-  ThemeData call() {
-    return ThemeData(
-      brightness: Brightness.light,
-      extensions: <ThemeExtension<dynamic>>[lightColor, textStyle, dimensions],
-      colorScheme: ColorScheme.light(primary: lightColor.primary),
-      appBarTheme: _AppBarLightTheme()(),
-      scaffoldBackgroundColor: lightColor.scaffoldBackground,
-      bottomNavigationBarTheme: _BottomNavigationBarLightThemeData()(),
-      elevatedButtonTheme: _ElevatedButtonLightThemeData()(),
-      filledButtonTheme: _FilledButtonLightThemeData()(),
-      textButtonTheme: _TextButtonLightThemeData()(),
-      iconTheme: IconThemeData(color: lightColor.border),
-      checkboxTheme: _CheckboxTheme()(),
-      inputDecorationTheme: _InputDecorationLightTheme()(),
-      dropdownMenuTheme: _DropdownMenuLightThemeData()(),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: lightColor.primary,
-      ),
-    );
-  }
-}
+/// Assembles a theme from one set of colour bindings.
+///
+/// The same builder produces both modes: hand it [ColorExtension.light] or
+/// [ColorExtension.dark] and every component theme follows, because they
+/// all read colour through the instance they are given.
+class $ThemeData with ThemeExtensions {
+  $ThemeData(this.color);
 
-class $DarkThemeData with ThemeExtensions {
+  final ColorExtension color;
+
   ThemeData call() {
     return ThemeData(
-      brightness: Brightness.dark,
-      extensions: <ThemeExtension<dynamic>>[darkColor, textStyle, dimensions],
-      colorScheme: ColorScheme.dark(primary: darkColor.primary),
-      appBarTheme: _AppBarDarkTheme()(),
-      scaffoldBackgroundColor: darkColor.scaffoldBackground,
-      bottomNavigationBarTheme: _BottomNavigationBarDarkThemeData()(),
-      elevatedButtonTheme: _ElevatedButtonDarkThemeData()(),
-      filledButtonTheme: _FilledButtonDarkThemeData()(),
-      textButtonTheme: _TextButtonDarkThemeData()(),
-      iconTheme: IconThemeData(color: darkColor.border),
-      checkboxTheme: _CheckboxTheme()(),
-      inputDecorationTheme: _InputDecorationDarkTheme()(),
-      dropdownMenuTheme: _DropdownMenuDarkThemeData()(),
+      brightness: color.brightness,
+      extensions: <ThemeExtension<dynamic>>[color, textStyle, dimensions],
+      colorScheme: ColorScheme(
+        brightness: color.brightness,
+        primary: color.primary.strong,
+        onPrimary: color.text.onPrimary,
+        secondary: color.primary.defaultValue,
+        onSecondary: color.text.onPrimary,
+        surface: color.background.surface,
+        onSurface: color.text.defaultValue,
+        error: color.status.danger,
+        onError: color.text.onPrimary,
+      ),
+      scaffoldBackgroundColor: color.background.canvas,
+      // Material's `textTheme` is left alone on purpose. Type comes from
+      // `context.textStyle` and the typography widgets, so a bare `Text`
+      // never looks right by accident — which is what keeps screens on the
+      // scale. Controls that carry their own label style set it below.
+      appBarTheme: _AppBarThemeData(color)(),
+      bottomNavigationBarTheme: _BottomNavigationBarThemeData(color)(),
+      elevatedButtonTheme: _ElevatedButtonThemeData(color)(),
+      filledButtonTheme: _FilledButtonThemeData(color)(),
+      outlinedButtonTheme: _OutlinedButtonThemeData(color)(),
+      textButtonTheme: _TextButtonThemeData(color)(),
+      checkboxTheme: _CheckboxThemeData(color)(),
+      inputDecorationTheme: _InputDecorationThemeData(color)(),
+      dropdownMenuTheme: _DropdownMenuThemeData(color)(),
+      iconTheme: IconThemeData(
+        color: color.text.muted,
+        size: dimensions.size.iconLarge,
+      ),
+      dividerTheme: DividerThemeData(
+        color: color.border.subtle,
+        space: dimensions.layout.hairline,
+        thickness: dimensions.border.xs,
+      ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: darkColor.onPrimary,
+        color: color.primary.strong,
       ),
     );
   }

@@ -8,11 +8,11 @@ class LoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.spacing.s30,
-      height: context.spacing.s30,
+      width: context.dimensions.size.iconLarge,
+      height: context.dimensions.size.iconLarge,
       child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(
-          context.color.onPrimary.withValues(alpha: 0.75),
+          context.color.text.onPrimary.withValues(alpha: 0.75),
         ),
       ),
     );
