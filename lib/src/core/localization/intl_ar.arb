@@ -99,5 +99,7 @@
     "failureCancelled": "تم إلغاء العملية.",
     "failureUnexpected": "حدث خطأ ما.",
     "retry": "إعادة المحاولة",
-    "signInAgain": "تسجيل الدخول مرة أخرى"
+    "signInAgain": "تسجيل الدخول مرة أخرى",
+    "appTitle": "قالب فلاتر",
+    "somethingWentWrong": "حدث خطأ ما."
 }

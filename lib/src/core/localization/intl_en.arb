@@ -99,5 +99,7 @@
     "failureCancelled": "The operation was cancelled.",
     "failureUnexpected": "Something went wrong.",
     "retry": "Try again",
-    "signInAgain": "Sign in again"
+    "signInAgain": "Sign in again",
+    "appTitle": "Flutter Template",
+    "somethingWentWrong": "Something went wrong."
 }
