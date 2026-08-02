@@ -5,6 +5,7 @@ import '../../domain/entities/sign_up_entity.dart';
 import '../../domain/failures/business_failure.dart';
 import '../../domain/repositories/authentication_repository.dart';
 import '../base/base_repository.dart';
+import '../mappers/login_mapper.dart';
 import '../models/login_model.dart';
 import '../services/cache/cache_service.dart';
 import '../services/network/auth/token_manager.dart';
@@ -23,6 +24,8 @@ final class AuthenticationRepositoryImpl extends BaseRepository
   final CacheService local;
   final TokenManager tokens;
 
+  static const _loginMapper = LoginMapper();
+
   @override
   Future<SignUpResponseEntity> register(SignUpRequestEntity data) async {
     // TODO: implement register
@@ -34,7 +37,7 @@ final class AuthenticationRepositoryImpl extends BaseRepository
     LoginRequestEntity data,
   ) async {
     return asyncGuard(() async {
-      final request = LoginRequestModel.fromEntity(data);
+      final request = _loginMapper.toRequestModel(data);
       final response = await remote.login(request.toJson());
 
       final model = LoginResponseModel.fromJson(response.data);
@@ -44,7 +47,7 @@ final class AuthenticationRepositoryImpl extends BaseRepository
         refresh: model.refreshToken,
       );
 
-      if (data.shouldRemeber ?? false) {
+      if (data.shouldRemember ?? false) {
         try {
           await _saveSession();
         } catch (_) {
@@ -55,7 +58,7 @@ final class AuthenticationRepositoryImpl extends BaseRepository
         }
       }
 
-      return model;
+      return _loginMapper.toEntity(model);
     });
   }
 

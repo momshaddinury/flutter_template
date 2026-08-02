@@ -1,6 +1,4 @@
-interface class SignUpEntity {}
-
-class SignUpRequestEntity extends SignUpEntity {
+class SignUpRequestEntity {
   SignUpRequestEntity({
     required this.firstName,
     required this.lastName,
@@ -14,7 +12,7 @@ class SignUpRequestEntity extends SignUpEntity {
   final String password;
 }
 
-class SignUpResponseEntity extends SignUpEntity {
+class SignUpResponseEntity {
   SignUpResponseEntity({required this.accessToken});
 
   final String accessToken;
