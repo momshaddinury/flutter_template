@@ -1,10 +1,10 @@
-/// A type with exactly one possible value: [unit].
+/// A type with exactly one possible value: [Unit.value].
 ///
 /// [Unit] is the "no payload" marker for [Result]-style return types. When
 /// a repository operation succeeds but has nothing meaningful to give back
 /// — e.g. `logout()`, `markAsRead()`, `delete()`, `register()` —
 /// its method signature is `Future<Result<Unit, BusinessFailure>>` and the
-/// success branch returns the canonical [unit] value.
+/// success branch returns the canonical [Unit.value].
 ///
 /// ## Why it exists
 ///
@@ -20,13 +20,14 @@
 ///
 /// ## How to use it
 ///
-/// Repository — return [unit] to signal "operation completed, no payload":
+/// Repository — return [Unit.value] to signal "operation completed, no
+/// payload":
 ///
 /// ```dart
 /// Future<Result<Unit, BusinessFailure>> logout() async {
 ///   return asyncGuard(() async {
 ///     await local.remove([CacheKey.isLoggedIn]);
-///     return unit;
+///     return Unit.value;
 ///   });
 /// }
 /// ```
@@ -44,8 +45,9 @@
 /// }
 /// ```
 ///
-/// The [unit] value itself is informationless. Its *presence* inside the
-/// `Success(unit)` constructor is the entire message ("operation completed
+/// The [Unit.value] constant itself is informationless. Its *presence*
+/// inside the `Success(Unit.value)` constructor is the entire message
+/// ("operation completed
 /// successfully"). The reason the type exists is so the [Result] type
 /// parameter has *something* to be — it is structural, not semantic.
 ///
@@ -68,7 +70,7 @@
 ///
 /// ## Conventions
 ///
-/// - **Always use the [unit] constant.** The constructor is private; you
+/// - **Always use the [Unit.value] constant.** The constructor is private; you
 ///   cannot (and should not) construct your own `Unit` instances. There
 ///   is only one canonical value.
 /// - **Do not inspect the value.** `success.data.toString()` will return
@@ -88,20 +90,21 @@
 /// final myUnit = Unit();
 ///
 /// // BAD — using Unit on a plain non-Result function.
-/// Unit doSomething() { ... return unit; }   // write `void` instead.
+/// Unit doSomething() { ... return Unit.value; }   // write `void` instead.
 ///
 /// // BAD — encoding meaning in the Unit value.
 /// // Unit carries no information; if you need a flag, use bool / enum.
-/// Result<Unit, E> op(bool succeed) => succeed ? Success(unit) : Error(...);
+/// Result<Unit, E> op(bool succeed) =>
+///     succeed ? Success(Unit.value) : Error(...);
 /// // The bool already encodes the choice; the Unit is redundant.
 /// ```
 class Unit {
   const Unit._();
 
+  /// The canonical (and only) [Unit] value. Use this anywhere a
+  /// `Result<Unit, _>.success(...)` needs a payload.
+  static const Unit value = Unit._();
+
   @override
   String toString() => 'unit';
 }
-
-/// The canonical (and only) [Unit] value. Use this anywhere a
-/// `Result<Unit, _>.success(...)` needs a payload.
-const unit = Unit._();
