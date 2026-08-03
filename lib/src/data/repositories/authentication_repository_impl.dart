@@ -115,7 +115,7 @@ final class AuthenticationRepositoryImpl extends BaseRepository
       // tokens behind it.
       await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
       await tokens.clear();
-      return unit;
+      return Unit.value;
     });
   }
 }
