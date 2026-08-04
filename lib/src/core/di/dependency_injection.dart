@@ -17,7 +17,6 @@ import '../../data/services/network/endpoints.dart';
 import '../../data/services/network/rest_client.dart';
 import '../../data/services/network/transport/dio_builder.dart';
 import '../../data/services/network/transport/interceptors/debug_logger_interceptor.dart';
-import '../../data/services/network/transport/interceptors/locale_header_interceptor.dart';
 import '../../domain/repositories/authentication_repository.dart';
 import '../../domain/repositories/locale_repository.dart';
 import '../../domain/repositories/router_repository.dart';

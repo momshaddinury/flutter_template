@@ -15,7 +15,8 @@ class ServerError {
 
 /// Strategy for extracting a [ServerError] from a failed HTTP response.
 ///
-/// Template consumers override `serverErrorParserProvider` when their backend
+/// Template consumers swap the `errorParser` argument of `DioBuilder` in
+/// `core/di/parts/externals.dart` when their backend
 /// uses a response shape that differs from the default
 /// `{message, statusCode | code}` envelope. The full response body is
 /// preserved in [ServerError.details].

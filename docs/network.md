@@ -37,11 +37,11 @@ Unmarked-means-public is deliberate: the refresh call runs on the same transport
 
 `DioBuilder` (in `lib/src/data/services/network/transport/dio_builder.dart`) assembles the transport. Interceptors run in this order:
 
-1. **`LocaleHeaderInterceptor`** — stamps `Accept-Language` from `localeResolverProvider`.
+1. **`LocaleHeaderInterceptor`** — stamps `Accept-Language` from the locale resolver wired in `externals.dart`.
 2. **`AuthHeaderInterceptor`** — reads the endpoint's `RequestAuth` mode and attaches `Authorization: Bearer <token>`. When the access token is missing but a refresh token exists, it first attempts a recovery refresh so a lost access token heals silently.
 3. **`ErrorAttachmentInterceptor`** — parses failing bodies via `ServerErrorParser` and attaches the structured `ServerError` to `DioException.error`, so nothing downstream reparses the body.
-4. **Your extras** (`extraNetworkInterceptorsProvider`) — the seam for telemetry (Sentry, Datadog, Firebase Performance) and any other cross-cutting concern. Positioned here so your interceptor sees the enriched request (bearer attached) and the parsed error.
-5. **Logger** (`networkLoggerProvider`) — see "Logging and redaction".
+4. **Your extras** (`DioBuilder`'s `extraInterceptors` argument) — the seam for telemetry (Sentry, Datadog, Firebase Performance) and any other cross-cutting concern. Positioned here so your interceptor sees the enriched request (bearer attached) and the parsed error.
+5. **Logger** (`DioBuilder`'s `logger` argument) — see "Logging and redaction".
 6. **`RefreshRetryInterceptor`** — last, so the logger has already recorded the failed attempt before the refresh + replay.
 
 ## The refresh contract
@@ -64,21 +64,21 @@ Session lifecycle from the app side: `tokens.persist(...)` after login, `tokens.
 
 The default logger is `pretty_dio_logger`, gated to debug builds and configured without request headers, so the bearer token never prints. Its package defaults do print response bodies — including the tokens in login and refresh responses — which suits local debugging but not a shared log sink.
 
-The pipeline itself guarantees nothing here: whatever interceptor `networkLoggerProvider` supplies sees the real request, bearer token included, and owns its release gate and redaction. Two alternatives ship with the template: `DebugLoggerInterceptor`, the strict option (no bodies, no header values, debug-only — for compliance-sensitive work or shared sinks), and `null`, which disables request logging entirely.
+The pipeline itself guarantees nothing here: whatever interceptor you pass as `DioBuilder`'s `logger` sees the real request, bearer token included, and owns its release gate and redaction. Two alternatives ship with the template: `DebugLoggerInterceptor`, the strict option (no bodies, no header values, debug-only — for compliance-sensitive work or shared sinks), and `null`, which disables request logging entirely.
 
-## The five override points
+## The five adaptation points
 
-All in `lib/src/core/di/parts/externals.dart`; override the provider, never edit transport code.
+All are arguments to `DioBuilder` inside the `networkStack` provider in `lib/src/core/di/parts/externals.dart`; edit them there, never in transport code.
 
-| Provider | Default | Override to |
+| Argument | Default | Change to |
 |---|---|---|
-| `networkConfigProvider` | `Endpoints.base`, 10 s timeouts | Switch base URL per flavor, tune timeouts, add default headers |
-| `serverErrorParserProvider` | `DefaultServerErrorParser` (`{message, statusCode | code}` envelope; whole body kept in `ServerError.details`) | Match your backend's error envelope |
-| `localeResolverProvider` | Reads `localeRepositoryProvider` | Source `Accept-Language` differently |
-| `extraNetworkInterceptorsProvider` | `[]` | Add telemetry or other cross-cutting interceptors |
-| `networkLoggerProvider` | Debug-gated `PrettyDioLogger` (no request headers) | Swap in `DebugLoggerInterceptor` (strict), another logger, or `null` to silence |
+| `config` | `Endpoints.base`, 10 s timeouts | Switch base URL per flavor, tune timeouts, add default headers |
+| `errorParser` | `DefaultServerErrorParser` (`{message, statusCode | code}` envelope; whole body kept in `ServerError.details`) | Match your backend's error envelope |
+| `localeResolver` | Reads the locale repository | Source `Accept-Language` differently |
+| `extraInterceptors` | `[]` | Add telemetry or other cross-cutting interceptors |
+| `logger` | Debug-gated `PrettyDioLogger` (no request headers) | Swap in `DebugLoggerInterceptor` (strict), another logger, or `null` to silence |
 
-(`tokenStoreProvider` is a sixth, rarely needed: swap secure storage for another `TokenStore`.)
+(`store` is a sixth, rarely needed: swap secure storage for another `TokenStore`.)
 
 ## Error flow
 
