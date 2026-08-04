@@ -4,7 +4,8 @@ enum TokenKey { access, refresh }
 ///
 /// Template consumers can swap the default `SecureTokenStore` for a custom
 /// implementation — biometric-gated storage, an encrypted database, a
-/// key-management service — by overriding the `tokenStoreProvider`.
+/// key-management service — by swapping the `store` argument of
+/// `DioBuilder` in `core/di/parts/externals.dart`.
 abstract class TokenStore {
   Future<String?> read(TokenKey key);
 

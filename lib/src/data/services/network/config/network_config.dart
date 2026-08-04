@@ -1,8 +1,9 @@
 import '../endpoints.dart';
 
-/// Runtime-tunable network settings. Consumers override `networkConfigProvider`
-/// to switch base URLs per flavor, tune timeouts, or inject default headers
-/// without touching `DioBuilder`.
+/// Runtime-tunable network settings. Consumers edit the `config` argument
+/// of `DioBuilder` in `core/di/parts/externals.dart` to switch base URLs
+/// per flavor, tune timeouts, or inject default headers without touching
+/// `DioBuilder` itself.
 class NetworkConfig {
   const NetworkConfig({
     this.baseUrl = Endpoints.base,

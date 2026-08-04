@@ -6,10 +6,11 @@ import '../../../../../core/logger/log.dart';
 /// Minimal request/response logger that fires only in debug builds and
 /// never logs the value of sensitive headers or request bodies.
 ///
-/// Not the default — `networkLoggerProvider` ships `PrettyDioLogger` for
-/// day-to-day debugging. Swap this in via that provider when logs must
-/// stay free of bodies and header values (shared log sinks, screen
-/// recordings, compliance-sensitive work).
+/// Not the default — the DI wiring in `core/di/parts/externals.dart`
+/// ships `PrettyDioLogger` for day-to-day debugging. Swap this in as the
+/// `logger` argument there when logs must stay free of bodies and header
+/// values (shared log sinks, screen recordings, compliance-sensitive
+/// work).
 ///
 /// What it logs:
 /// - request: method + origin and path + a presence flag for the

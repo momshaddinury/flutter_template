@@ -4,15 +4,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 void main() {
-  group('networkLoggerProvider', () {
+  group('networkStackProvider', () {
     // Test binaries run with asserts enabled, so kDebugMode is true here.
     // The release branch (null — logging disabled) cannot be exercised
     // from a test; this pins the debug-build default.
-    test('defaults to PrettyDioLogger in debug builds', () {
+    test('wires PrettyDioLogger as the debug logger', () {
       final container = ProviderContainer();
       addTearDown(container.dispose);
 
-      expect(container.read(networkLoggerProvider), isA<PrettyDioLogger>());
+      final stack = container.read(networkStackProvider);
+
+      expect(
+        stack.transport.interceptors.whereType<PrettyDioLogger>(),
+        hasLength(1),
+      );
     });
   });
 }

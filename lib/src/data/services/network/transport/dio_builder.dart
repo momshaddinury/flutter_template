@@ -37,7 +37,8 @@ typedef NetworkStack = ({Dio transport, TokenManager tokens});
 ///    (Sentry, Datadog, Firebase Performance): add the SDK's own
 ///    interceptor here rather than wrapping the transport.
 /// 5. [logger] (if non-null) — the single logging interceptor, supplied
-///    by `networkLoggerProvider`. The DI default is a debug-gated
+///    by the DI wiring in `core/di/parts/externals.dart`. The DI default
+///    is a debug-gated
 ///    `PrettyDioLogger`; this builder's own fallback is the stricter
 ///    [DebugLoggerInterceptor]. Whatever runs here sees the real request,
 ///    including the bearer token — release gating and redaction are the
