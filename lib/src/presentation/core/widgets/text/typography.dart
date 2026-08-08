@@ -96,7 +96,7 @@ class BodySmallText extends _Typography {
     super.softWrap,
     super.textDirection,
     super.semanticsLabel,
-  }) : _variant = _BodySmallTextVariant.regular;
+  }) : _variant = .regular;
 
   const BodySmallText.muted(
     super.text, {
@@ -107,7 +107,7 @@ class BodySmallText extends _Typography {
     super.softWrap,
     super.textDirection,
     super.semanticsLabel,
-  }) : _variant = _BodySmallTextVariant.muted;
+  }) : _variant = .muted;
 
   final _BodySmallTextVariant _variant;
 
@@ -147,7 +147,7 @@ class LabelText extends _Typography {
     super.softWrap,
     super.textDirection,
     super.semanticsLabel,
-  }) : _variant = _LabelTextVariant.regular;
+  }) : _variant = .regular;
 
   const LabelText.muted(
     super.text, {
@@ -158,7 +158,7 @@ class LabelText extends _Typography {
     super.softWrap,
     super.textDirection,
     super.semanticsLabel,
-  }) : _variant = _LabelTextVariant.muted;
+  }) : _variant = .muted;
 
   final _LabelTextVariant _variant;
 
