@@ -35,11 +35,7 @@ import '../../request_auth.dart';
 /// refresh instead — each caller shares one HTTP roundtrip, then replays
 /// its own request.
 class RefreshRetryInterceptor extends Interceptor {
-  RefreshRetryInterceptor({
-    required TokenManager tokens,
-    required Dio transport,
-  }) : _tokens = tokens,
-       _transport = transport;
+  RefreshRetryInterceptor({required this._tokens, required this._transport});
 
   final TokenManager _tokens;
   final Dio _transport;
