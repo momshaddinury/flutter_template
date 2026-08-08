@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template/src/presentation/core/application_state/onboarding_status_provider/onboarding_status_provider.dart';
 import 'package:flutter_template/src/presentation/core/application_state/session_status_provider/session_status_provider.dart';
-import 'package:flutter_template/src/presentation/core/application_state/startup_provider/app_startup_provider.dart';
+import 'package:flutter_template/src/presentation/core/application_state/startup_provider/startup_provider.dart';
 import 'package:flutter_template/src/presentation/core/router/router_state/router_state_provider.dart';
 import 'package:flutter_template/src/presentation/core/router/routes.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,7 +17,7 @@ void main() {
     final container = ProviderContainer(
       retry: (retryCount, error) => null,
       overrides: [
-        appStartupProvider.overrideWith(startup),
+        startupProvider.overrideWith(startup),
         onboardingStatusProvider.overrideWith((ref) => onboarded),
         if (session != null) sessionStatusProvider.overrideWith(session),
       ],
@@ -43,7 +43,7 @@ void main() {
         startup: (ref) async => throw Exception('startup failed'),
       );
       await expectLater(
-        container.read(appStartupProvider.future),
+        container.read(startupProvider.future),
         throwsException,
       );
 
@@ -52,7 +52,7 @@ void main() {
 
     test('onboarding before it is completed', () async {
       final container = containerWith(startup: startupDone, onboarded: false);
-      await container.read(appStartupProvider.future);
+      await container.read(startupProvider.future);
 
       expect(container.read(routerStateProvider), Routes.onboarding);
     });
@@ -62,7 +62,7 @@ void main() {
         startup: startupDone,
         session: (ref) => Completer<SessionStatus>().future,
       );
-      await container.read(appStartupProvider.future);
+      await container.read(startupProvider.future);
 
       expect(container.read(routerStateProvider), Routes.splash);
     });
@@ -72,7 +72,7 @@ void main() {
         startup: startupDone,
         session: (ref) async => SessionStatus.unauthenticated,
       );
-      await container.read(appStartupProvider.future);
+      await container.read(startupProvider.future);
       await container.read(sessionStatusProvider.future);
 
       expect(container.read(routerStateProvider), Routes.login);
@@ -83,7 +83,7 @@ void main() {
         startup: startupDone,
         session: (ref) async => SessionStatus.authenticated,
       );
-      await container.read(appStartupProvider.future);
+      await container.read(startupProvider.future);
       await container.read(sessionStatusProvider.future);
 
       expect(container.read(routerStateProvider), Routes.home);

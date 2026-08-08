@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-import '../../../core/extensions/app_localization.dart';
+import '../../../core/extensions/localization.dart';
 import '../../../domain/failures/business_failure.dart';
 import '../application_state/session_status_provider/session_status_provider.dart';
 import '../failure/business_failure_ui_mapper.dart';

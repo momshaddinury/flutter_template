@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../extensions/app_localization.dart';
+import '../../extensions/localization.dart';
 import 'validation.dart';
 
 class LengthValidation<T> extends Validation<T> {

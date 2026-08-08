@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/extensions/app_localization.dart';
+import '../../../../core/extensions/localization.dart';
 import '../../../core/application_state/onboarding_status_provider/onboarding_status_provider.dart';
 import '../../../core/theme/theme.dart';
 import '../../../core/widgets/text/typography.dart';

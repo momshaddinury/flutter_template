@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../core/extensions/app_localization.dart';
+import '../../../../../core/extensions/localization.dart';
 import '../../../../../core/extensions/go_router_extension.dart';
 import '../../../../../core/extensions/validation.dart';
 import '../../../../../core/utiliity/validation/validation.dart';

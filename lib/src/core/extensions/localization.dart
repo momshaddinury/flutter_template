@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../gen/l10n/app_localizations.dart';
 
-extension AppLocalizationExtension on AppLocalizations {
+extension LocalizationExtension on AppLocalizations {
   String getLanguageName(String languageCode) {
     return switch (languageCode) {
       'en' => english,
