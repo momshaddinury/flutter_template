@@ -6,7 +6,7 @@ part 'business_failure.freezed.dart';
 /// exposes to use cases and presentation. Each variant names a *business*
 /// condition, not an HTTP status or Dio exception type.
 ///
-/// Most repositories stop here: `BaseRepository`'s `asyncGuard` / `syncGuard`
+/// Most repositories stop here: `Repository`'s `asyncGuard` / `syncGuard`
 /// produce `Result<T, BusinessFailure>` directly — they classify the thrown
 /// object via `Object.toInfraFailure()` and translate the `InfraFailure` via
 /// `InfraFailure.toBusinessFailure()` internally. Use cases return
@@ -94,7 +94,7 @@ sealed class BusinessFailure with _$BusinessFailure {
   }) = Unexpected;
 
   /// A programmer bug, already reported to the crash reporter by
-  /// `BaseRepository`. Reaches presentation only in release builds (debug
+  /// `Repository`. Reaches presentation only in release builds (debug
   /// rethrows); show generic copy — there is nothing the user can fix.
   const factory BusinessFailure.defect({
     String? message,

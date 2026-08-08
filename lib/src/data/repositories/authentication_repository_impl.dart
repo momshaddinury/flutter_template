@@ -3,14 +3,14 @@ import '../../core/base/unit.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/failures/business_failure.dart';
 import '../../domain/repositories/authentication_repository.dart';
-import '../base/base_repository.dart';
+import '../base/repository.dart';
 import '../mappers/login_mapper.dart';
 import '../models/login_model.dart';
 import '../services/cache/cache_service.dart';
 import '../services/network/auth/token_manager.dart';
 import '../services/network/rest_client.dart';
 
-final class AuthenticationRepositoryImpl extends BaseRepository
+final class AuthenticationRepositoryImpl extends Repository
     implements AuthenticationRepository {
   AuthenticationRepositoryImpl({
     required this.remote,

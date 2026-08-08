@@ -46,8 +46,8 @@ import '../failures/infra_failure_mapper.dart';
 /// [BusinessFailure] vocabulary, skip the guard and write your own
 /// `try`/`catch` that classifies with `e.toInfraFailure(stackTrace)` and
 /// maps into your richer sealed hierarchy.
-abstract base class BaseRepository {
-  const BaseRepository({required this.crashReporter});
+abstract base class Repository {
+  const Repository({required this.crashReporter});
 
   @protected
   final CrashReporter crashReporter;

@@ -2,7 +2,7 @@ import '../../domain/failures/business_failure.dart';
 import 'infra_failure.dart';
 
 /// Default translation from infrastructure errors to business errors.
-/// `BaseRepository`'s guards apply this for you; call it directly only
+/// `Repository`'s guards apply this for you; call it directly only
 /// from repository methods whose business failures exceed the generic
 /// [BusinessFailure] vocabulary and need to wrap it inside a richer
 /// per-operation sealed type.

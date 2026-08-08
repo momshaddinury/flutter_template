@@ -5,7 +5,7 @@ import '../../config/server_error_parser.dart';
 /// Parses failing responses via [ServerErrorParser] and attaches the
 /// resulting [ServerError] to [DioException.error]. Downstream code reads
 /// the structured error without reparsing the body — the classifier
-/// invoked from `BaseRepository.asyncGuard` is the main consumer.
+/// invoked from `Repository.asyncGuard` is the main consumer.
 class ErrorAttachmentInterceptor extends Interceptor {
   const ErrorAttachmentInterceptor(this._parser);
 
