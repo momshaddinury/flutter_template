@@ -54,7 +54,10 @@ InfraFailure _fromDioException(DioException e) {
   final message = server?.message;
 
   return switch (e.type) {
-    .connectionTimeout || .sendTimeout || .receiveTimeout => .timeout(
+    .connectionTimeout ||
+    .sendTimeout ||
+    .receiveTimeout ||
+    .transformTimeout => .timeout(
       message: message,
       code: code,
       cause: e,

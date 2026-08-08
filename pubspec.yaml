@@ -31,28 +31,28 @@ dependencies:
   flutter:
     sdk: flutter
   # UI
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.9
   gap: ^3.0.1
   # State management
-  flutter_riverpod: ^3.1.0
+  flutter_riverpod: ^3.3.2
   # Navigation
-  go_router: ^17.0.1
+  go_router: ^17.4.0
   # Cache & Database
-  shared_preferences: ^2.3.1
-  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.5.5
+  flutter_secure_storage: ^11.0.0
   # Generator and Annotations
-  riverpod_annotation: ^4.0.0
-  freezed_annotation: ^3.0.0
+  riverpod_annotation: ^4.0.3
+  freezed_annotation: ^3.1.0
   # Media
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.3.0
   # Logging
-  logger: ^2.4.0
+  logger: ^2.7.0
   pretty_dio_logger: ^1.4.0
   # Serialization & Deserialization
-  dart_mappable:
+  dart_mappable: ^4.8.0
   # Networking
   retrofit: ^4.9.2
-  dio: ^5.8.0+1
+  dio: ^5.11.0
   # Localization
   intl: ^0.20.2
   flutter_localizations:
@@ -63,20 +63,18 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^6.0.0
-  build_runner:
-  riverpod_generator:
-  flutter_gen_runner:
-  dart_mappable_builder:
-  retrofit_generator: ^10.2.1
-  freezed: ^3.0.6
+  build_runner: ^2.15.1
+  riverpod_generator: ^4.0.4
+  flutter_gen_runner: ^5.15.0
+  dart_mappable_builder: ^4.8.0
+  retrofit_generator: ^10.2.8
+  # WHY: resolves to 3.2.6-dev.1 — the only freezed compatible with the
+  # analyzer 12 the rest of the codegen chain needs. freezed stable caps
+  # analyzer <11 and holds every builder back; revisit at freezed 4 stable,
+  # which also unlocks dart_mappable_builder 4.9+ and analyzer 13+.
+  freezed: ^3.2.6-dev.1
   # Testing
   http_mock_adapter: ^0.6.1
-
-# WHY: pins the main context's analyzer for codegen stability at this SDK
-# pin. The lint plugins no longer care — both run natively and resolve
-# their own analyzer. Remove with the Flutter 3.44 / Dart 3.12 upgrade.
-dependency_overrides:
-  analyzer: ^8.4.1
 
 flutter:
   uses-material-design: true

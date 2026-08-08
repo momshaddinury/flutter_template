@@ -157,26 +157,26 @@ flutter_template/
 ### Core Technologies
 | Technology | Version  | Purpose |
 |------------|----------|---------|
-| **Flutter** | >=3.38.4 | UI framework |
-| **Dart** | >=3.10.3 | Programming language |
-| **Riverpod** | ^3.1.0   | State management & DI |
-| **go_router** | ^17.0.1  | Navigation and routing |
+| **Flutter** | >=3.44.9 | UI framework |
+| **Dart** | >=3.12.0 | Programming language |
+| **Riverpod** | ^3.3.2   | State management & DI |
+| **go_router** | ^17.4.0  | Navigation and routing |
 
 ### Network & Data
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Dio** | ^5.8.0+1 | HTTP client |
+| **Dio** | ^5.11.0 | HTTP client |
 | **Retrofit** | ^4.9.2 | REST API client generator |
-| **SharedPreferences** | ^2.3.1 | Local storage |
-| **flutter_secure_storage** | ^9.2.2 | Token storage |
-| **dart_mappable** | latest | JSON serialization |
+| **SharedPreferences** | ^2.5.5 | Local storage |
+| **flutter_secure_storage** | ^11.0.0 | Token storage |
+| **dart_mappable** | ^4.8.0 | JSON serialization |
 
 ### Development Tools
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **build_runner** | latest | Code generation |
+| **build_runner** | ^2.15.1 | Code generation |
 | **flutter_lints** | ^6.0.0 | Code analysis |
-| **logger** | ^2.4.0 | Logging |
+| **logger** | ^2.7.0 | Logging |
 | **pretty_dio_logger** | ^1.4.0 | Network logging (debug builds) |
 
 ## Features Implementation

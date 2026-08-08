@@ -3,17 +3,22 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../../../core/logger/log.dart';
 import 'token_store.dart';
 
-/// Platform-backed [TokenStore]: encrypted SharedPreferences on Android,
-/// Keychain (first-unlock) on iOS. Reads that fail (locked keystore,
-/// corruption, platform error) return `null` instead of throwing — the
-/// caller treats it as "no token" rather than propagating an exception
-/// that could carry token fragments through stack traces.
+/// Platform-backed [TokenStore]: Keystore-encrypted storage (AES-GCM)
+/// on Android, Keychain (first-unlock) on iOS. Reads that fail (locked
+/// keystore, corruption, platform error) return `null` instead of
+/// throwing — the caller treats it as "no token" rather than propagating
+/// an exception that could carry token fragments through stack traces.
+///
+/// Consumers upgrading a shipped 9.x app: step through
+/// flutter_secure_storage 10 with `migrateOnAlgorithmChange` first —
+/// v11 removed the old ciphers, and tokens stored under them become
+/// unreadable on a direct jump.
 class SecureTokenStore implements TokenStore {
   SecureTokenStore([FlutterSecureStorage? storage])
     : _storage =
           storage ??
           const FlutterSecureStorage(
-            aOptions: AndroidOptions(encryptedSharedPreferences: true),
+            aOptions: AndroidOptions(),
             iOptions: IOSOptions(
               accessibility: KeychainAccessibility.first_unlock,
             ),

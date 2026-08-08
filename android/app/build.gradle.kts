@@ -6,7 +6,10 @@ plugins {
 
 android {
     namespace = "com.dinurymomshad.flutter_template"
-    compileSdk = flutter.compileSdkVersion
+    // WHY: flutter_secure_storage 11 ships an AAR built against API 37;
+    // the Flutter default (36) fails AAR metadata checks. AGP 9.0.1 allows
+    // 37 with an acknowledgment flag in gradle.properties.
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
