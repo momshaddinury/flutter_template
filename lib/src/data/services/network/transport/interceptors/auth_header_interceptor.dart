@@ -51,8 +51,6 @@ class AuthHeaderInterceptor extends Interceptor {
 
     if (token == null || token.isEmpty) {
       if (mode == .optional) return handler.next(options);
-      // WHY: `true` runs the following error interceptors — without it dio
-      // skips them and the logger/telemetry never see this failure class.
       return handler.reject(
         DioException(
           requestOptions: options,

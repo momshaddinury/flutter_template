@@ -1,7 +1,5 @@
 part of '../router.dart';
 
-// WHY: route definitions are split per feature as parts of router.dart so
-// the route tree stays one navigable unit while each file stays small.
 List<GoRoute> _authenticationRoutes(Ref ref) {
   return [
     GoRoute(

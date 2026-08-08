@@ -54,10 +54,6 @@ void main() {
     });
 
     test('401 on a token-carrying request: refreshes and replays', () async {
-      // Two stubs distinguished by Authorization header — the first hit
-      // carries `Bearer a.tok` (the seeded token) and gets 401; the replay
-      // re-enters AuthHeaderInterceptor, picks up `Bearer new.a`, and
-      // matches the 200 stub.
       adapter
         ..onGet(
           protectedPath,
@@ -107,12 +103,6 @@ void main() {
 
     test('late 401 after a completed refresh: replays without a second '
         'refresh', () async {
-      // The request goes out with the seeded `a.tok` and is held at the
-      // gate below; while it is in flight another caller's refresh
-      // completes (simulated by `persist`). The late 401 must not trigger
-      // a second rotation — no stub exists for the refresh endpoint, so
-      // any refresh POST fails the test loudly. The replay picks up
-      // `new.a` and succeeds.
       adapter
         ..onGet(
           protectedPath,
@@ -125,9 +115,6 @@ void main() {
           headers: {'Authorization': 'Bearer new.a'},
         );
 
-      // One-shot gate: holds the first protected request after its header
-      // is attached, so the token rotation deterministically lands while
-      // that request is in flight.
       final dispatched = Completer<void>();
       final released = Completer<void>();
       transport.interceptors.add(
@@ -184,7 +171,6 @@ void main() {
           ),
         );
 
-        // A refresh-endpoint outage must not log the user out.
         expect(await tokens.refreshToken, 'r.tok');
         expect(spy.callsTo(testRefreshPath), 1);
       },
@@ -256,8 +242,6 @@ void main() {
         ),
       );
 
-      // Exactly one refresh — the replay's 401 propagates instead of
-      // triggering a second refresh cycle.
       expect(spy.callsTo(testRefreshPath), 1);
     });
 

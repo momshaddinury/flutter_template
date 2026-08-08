@@ -29,9 +29,6 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Root');
 
 @Riverpod(keepAlive: true)
 GoRouter goRouter(Ref ref) {
-  // WHY: created once — calling `asListenable` inside `redirect` would
-  // allocate a fresh subscription per navigation that nothing disposes on
-  // this keepAlive provider.
   final refresh = ref.asListenable(routerStateProvider);
 
   return GoRouter(

@@ -14,8 +14,6 @@ void main() {
 
     setUp(() {
       reporter = FakeCrashReporter();
-      // flutter_test installs its own handlers; save and restore them so
-      // this test cannot break failure reporting for the rest of the run.
       previousOnError = FlutterError.onError;
       previousPlatformOnError = PlatformDispatcher.instance.onError;
       installGlobalErrorHandlers(reporter);

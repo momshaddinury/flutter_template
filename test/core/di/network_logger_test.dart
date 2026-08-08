@@ -5,9 +5,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 void main() {
   group('networkStackProvider', () {
-    // Test binaries run with asserts enabled, so kDebugMode is true here.
-    // The release branch (null — logging disabled) cannot be exercised
-    // from a test; this pins the debug-build default.
     test('wires PrettyDioLogger as the debug logger', () {
       final container = ProviderContainer();
       addTearDown(container.dispose);

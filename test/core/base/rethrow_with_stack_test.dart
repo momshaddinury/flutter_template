@@ -7,8 +7,6 @@ void main() {
       final original = StateError('boom');
       final trace = StackTrace.current;
 
-      // rethrowWithStack returns Never, so no fail() guard is needed —
-      // falling through the try is impossible by type.
       try {
         rethrowWithStack(original, trace);
       } on StateError catch (e, st) {

@@ -1,12 +1,3 @@
-// Manual smoke run against the live dummyjson.com API. Named without the
-// `_test` suffix so `flutter test` skips it by default — network calls do
-// not belong in the normal suite. Run explicitly:
-//
-//   flutter test test/integration/dummyjson_smoke.dart
-//
-// Exercises the real DioBuilder stack end to end: login via RestClient,
-// bearer attach on the protected currentUser(), and the refresh path.
-
 import 'package:dio/dio.dart';
 import 'package:flutter_template/src/data/services/network/config/network_config.dart';
 import 'package:flutter_template/src/data/services/network/config/server_error_parser.dart';
@@ -83,9 +74,6 @@ void main() {
     });
 
     test('expired access token heals via refresh + replay', () async {
-      // Corrupt the access token but keep the real refresh token: the
-      // first currentUser() 401s, RefreshRetryInterceptor refreshes and
-      // replays, and the call succeeds without the caller noticing.
       await loginAndPersist(overrideAccess: 'garbage.token');
 
       final me = await rest.currentUser();

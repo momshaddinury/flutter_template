@@ -47,9 +47,6 @@ class ColorExtension extends ThemeExtension<ColorExtension> {
 
   const ColorExtension.dark()
     : brightness = Brightness.dark,
-      // WHY: `strong` lightens rather than darkens here — emphasis must gain
-      // contrast against a dark surface, and a darker brand shade would lose
-      // it.
       primary = const ColorPrimary._(
         defaultValue: _Brand.s500,
         strong: _Brand.s400,

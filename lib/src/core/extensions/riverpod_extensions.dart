@@ -19,7 +19,6 @@ extension RefAsListenable on Ref {
     final valueNotifier = ValueNotifier(read(provider));
 
     final providerSubscription = listen<T>(provider, (_, next) {
-      // Only update if the value has actually changed
       if (valueNotifier.value != next) {
         valueNotifier.value = next;
       }
@@ -27,7 +26,6 @@ extension RefAsListenable on Ref {
 
     onResume(() {
       final latestValue = read(provider);
-      // Only update when the value changed
       if (valueNotifier.value != latestValue) {
         valueNotifier.value = latestValue;
       }

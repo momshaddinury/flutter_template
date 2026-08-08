@@ -36,8 +36,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   void initState() {
     super.initState();
 
-    // WHY: no navigation here — a successful login refreshes the session
-    // status and the router's gate moves the user to home.
     ref.listenManual(loginProvider, (previous, next) {
       switch (next) {
         case AsyncError(error: final BusinessFailure failure):
@@ -48,8 +46,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               ),
             ),
           );
-        // WHY: an error that is not a BusinessFailure must still produce
-        // feedback — a silent spinner reads as a dead button.
         case AsyncError():
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

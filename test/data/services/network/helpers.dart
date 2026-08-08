@@ -1,5 +1,3 @@
-// Shared test doubles and constants for the network-layer suite.
-
 import 'package:dio/dio.dart';
 import 'package:flutter_template/src/data/services/network/auth/token_store.dart';
 import 'package:flutter_template/src/data/services/network/request_auth.dart';

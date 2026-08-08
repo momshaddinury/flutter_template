@@ -11,8 +11,6 @@ void main() {
     late ErrorCallback? previousPlatformOnError;
 
     setUp(() {
-      // bootstrap installs process-wide handlers; save and restore
-      // flutter_test's own so failure reporting survives this file.
       previousOnError = FlutterError.onError;
       previousPlatformOnError = PlatformDispatcher.instance.onError;
     });
@@ -26,10 +24,7 @@ void main() {
       final container = bootstrap();
       addTearDown(container.dispose);
 
-      // The container resolves providers — the same instance main hands
-      // to UncontrolledProviderScope.
       expect(container.read(crashReporterProvider), isNotNull);
-      // Handlers were replaced with the bootstrap-installed ones.
       expect(FlutterError.onError, isNot(same(previousOnError)));
       expect(
         PlatformDispatcher.instance.onError,

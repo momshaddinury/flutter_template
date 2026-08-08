@@ -62,7 +62,6 @@ void main() {
       test('keeps in-app navigation free', () {
         expect(RedirectGate.redirect('/home', Routes.home), isNull);
         expect(RedirectGate.redirect('/profile', Routes.home), isNull);
-        // Unknown paths fall through to the router's errorBuilder.
         expect(RedirectGate.redirect('/unknown', Routes.home), isNull);
       });
 

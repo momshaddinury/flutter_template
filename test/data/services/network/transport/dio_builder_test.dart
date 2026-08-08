@@ -1,10 +1,3 @@
-// End-to-end tests through `DioBuilder.build()`: the assembled pipeline is
-// exercised by behavior (401 → refresh → replay, error attachment, locale
-// stamping, extra-interceptor placement), not by snapshotting interceptor
-// order. The documented order in DioBuilder's doc comment is what makes
-// these behaviors true; if a reorder breaks one, the failure names the
-// behavior that regressed instead of the list that changed.
-
 import 'package:dio/dio.dart';
 import 'package:flutter_template/src/data/services/network/auth/token_store.dart';
 import 'package:flutter_template/src/data/services/network/config/network_config.dart';
@@ -105,7 +98,6 @@ void main() {
 
       final response = await stack.transport.get<dynamic>('/public');
 
-      // The header-matched stub only replies when Accept-Language was set.
       expect(response.statusCode, 200);
     });
 
@@ -131,9 +123,7 @@ void main() {
           throwsA(isA<DioException>()),
         );
 
-        // Positioned after AuthHeaderInterceptor: the bearer is visible.
         expect(capturing.authHeaders, ['Bearer a.tok']);
-        // Positioned after ErrorAttachmentInterceptor: the error is parsed.
         expect(capturing.errors, hasLength(1));
         expect(capturing.errors.single, isA<ServerError>());
       },

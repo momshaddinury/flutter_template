@@ -1,17 +1,5 @@
 part of '../colors.dart';
 
-// The raw palette: every surface and text colour the app is allowed to
-// paint with. Drop shadows draw from their own ink primitive in the
-// dimensions layer.
-//
-// This is the file a project edits at kickoff. Swap these values for the
-// project palette and every screen re-skins through the semantic layer;
-// no widget changes. The palette that ships here is a deliberately plain
-// placeholder.
-//
-// Nothing outside the semantic layer reads these. Widgets ask for meaning
-// (`context.color.text.muted`), never for a swatch.
-
 /// The brand hue.
 abstract final class _Brand {
   static const Color s50 = Color(0xFFE7F0FE);
