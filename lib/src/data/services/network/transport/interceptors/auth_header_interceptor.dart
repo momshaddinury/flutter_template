@@ -42,7 +42,7 @@ class AuthHeaderInterceptor extends Interceptor {
   ) async {
     final raw = options.extra[requestAuthKey];
     final mode = raw is RequestAuth ? raw : RequestAuth.public;
-    if (mode == RequestAuth.public) return handler.next(options);
+    if (mode == .public) return handler.next(options);
 
     var token = await _tokens.accessToken;
     if (token == null || token.isEmpty) {
@@ -50,7 +50,7 @@ class AuthHeaderInterceptor extends Interceptor {
     }
 
     if (token == null || token.isEmpty) {
-      if (mode == RequestAuth.optional) return handler.next(options);
+      if (mode == .optional) return handler.next(options);
       // WHY: `true` runs the following error interceptors — without it dio
       // skips them and the logger/telemetry never see this failure class.
       return handler.reject(

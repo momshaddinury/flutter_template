@@ -24,7 +24,7 @@ class MyApp extends ConsumerWidget {
         locale: ref.watch(localizationProvider),
         theme: context.lightTheme,
         darkTheme: context.darkTheme,
-        themeMode: ThemeMode.system,
+        themeMode: .system,
         routerConfig: ref.read(goRouterProvider),
       ),
     );

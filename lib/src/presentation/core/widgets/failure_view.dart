@@ -52,11 +52,11 @@ class FailureView extends ConsumerWidget {
           ),
           Gap(context.dimensions.space.s24),
           switch (model.action) {
-            RecoveryAction.retry when onRetry != null => FilledButton(
+            .retry when onRetry != null => FilledButton(
               onPressed: onRetry,
               child: Text(context.locale.retry),
             ),
-            RecoveryAction.reauthenticate => FilledButton(
+            .reauthenticate => FilledButton(
               // WHY: the gate navigates, not the widget — refreshing the
               // session status sends an expired session to login.
               onPressed: () => ref.invalidate(sessionStatusProvider),

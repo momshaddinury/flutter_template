@@ -20,12 +20,10 @@ import 'token_store.dart';
 /// token itself (see [_performRefresh] for the backend contract).
 class TokenManager {
   TokenManager({
-    required TokenStore store,
-    required Dio transport,
-    required String refreshEndpoint,
-  }) : _store = store,
-       _transport = transport,
-       _refreshEndpoint = refreshEndpoint {
+    required this._store,
+    required this._transport,
+    required this._refreshEndpoint,
+  }) {
     _ready = _load();
   }
 
@@ -57,10 +55,10 @@ class TokenManager {
   /// of a session that silently disappears on the next launch.
   Future<void> persist({required String access, String? refresh}) async {
     await _ready;
-    await _store.write(TokenKey.access, access);
+    await _store.write(.access, access);
     _accessToken = access;
     if (refresh != null) {
-      await _store.write(TokenKey.refresh, refresh);
+      await _store.write(.refresh, refresh);
       _refreshToken = refresh;
     }
   }
@@ -138,8 +136,8 @@ class TokenManager {
 
   Future<void> _load() async {
     try {
-      _accessToken = await _store.read(TokenKey.access);
-      _refreshToken = await _store.read(TokenKey.refresh);
+      _accessToken = await _store.read(.access);
+      _refreshToken = await _store.read(.refresh);
     } catch (e, stackTrace) {
       Log.error('TokenManager._load failed: $e\n$stackTrace');
     }
@@ -171,12 +169,12 @@ class TokenManager {
       throw StateError('Refresh response missing accessToken');
     }
 
-    await _store.write(TokenKey.access, newAccess);
+    await _store.write(.access, newAccess);
     _accessToken = newAccess;
 
     final newRefresh = data['refreshToken'];
     if (newRefresh is String && newRefresh.isNotEmpty) {
-      await _store.write(TokenKey.refresh, newRefresh);
+      await _store.write(.refresh, newRefresh);
       _refreshToken = newRefresh;
     }
 
