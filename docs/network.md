@@ -90,15 +90,15 @@ The transport never surfaces raw exceptions to features. The chain is:
 DioException (+attached ServerError)
   → Object.toInfraFailure()        // data/failures/exception_classifier.dart
   → InfraFailure.toBusinessFailure() // data/failures/infra_failure_mapper.dart
-  → Result<T, BusinessFailure>       // via BaseRepository.asyncGuard
+  → Result<T, BusinessFailure>       // via Repository.asyncGuard
   → FailureUIModel                   // presentation/core/failure/, at render time
 ```
 
 The last arrow is the presentation boundary: `BusinessFailureUIMapper` turns the domain failure into finished, localized copy plus a recovery action, and `FailureView` renders it — degrading to a generic model for errors that are not a `BusinessFailure` at all. No user-facing copy lives on the domain type; a server-provided message still takes precedence over the generic localized text.
 
-That chain is the recoverable path, and it only handles `Exception`s. A Dart `Error` (a programmer bug — null dereference, bad cast) takes a different path: `BaseRepository` reports it to `crashReporterProvider`, rethrows it with its original stack in debug builds, and folds it to `BusinessFailure.defect` in release. Uncaught errors outside repositories reach the same reporter through `installGlobalErrorHandlers`, wired in `lib/src/core/bootstrap.dart`. Swap `crashReporterProvider` for a Crashlytics- or Sentry-backed implementation to ship crash telemetry.
+That chain is the recoverable path, and it only handles `Exception`s. A Dart `Error` (a programmer bug — null dereference, bad cast) takes a different path: `Repository` reports it to `crashReporterProvider`, rethrows it with its original stack in debug builds, and folds it to `BusinessFailure.defect` in release. Uncaught errors outside repositories reach the same reporter through `installGlobalErrorHandlers`, wired in `lib/src/core/bootstrap.dart`. Swap `crashReporterProvider` for a Crashlytics- or Sentry-backed implementation to ship crash telemetry.
 
-Endpoints where a specific failure is a valid business outcome (a 404 that means "nothing set") use the guards' `recover` hook instead of hand-written `try`/`catch` — see `BaseRepository`'s doc comment for the contract.
+Endpoints where a specific failure is a valid business outcome (a 404 that means "nothing set") use the guards' `recover` hook instead of hand-written `try`/`catch` — see `Repository`'s doc comment for the contract.
 
 ## Cancellation
 

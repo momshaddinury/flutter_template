@@ -1,5 +1,5 @@
 import 'package:flutter_template/src/core/base/result.dart';
-import 'package:flutter_template/src/data/base/base_repository.dart';
+import 'package:flutter_template/src/data/base/repository.dart';
 import 'package:flutter_template/src/data/failures/infra_failure.dart';
 import 'package:flutter_template/src/domain/failures/business_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../core/base/fake_crash_reporter.dart';
 
 /// Exposes the `@protected` guards for direct testing.
-final class _TestRepo extends BaseRepository {
+final class _TestRepo extends Repository {
   const _TestRepo({required super.crashReporter});
 
   Future<Result<T, BusinessFailure>> runAsync<T>(
@@ -30,7 +30,7 @@ void main() {
     repo = _TestRepo(crashReporter: reporter);
   });
 
-  group('BaseRepository', () {
+  group('Repository', () {
     group('success path', () {
       test('asyncGuard wraps the value in Success', () async {
         final result = await repo.runAsync(() async => 42);

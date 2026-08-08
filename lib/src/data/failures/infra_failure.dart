@@ -6,7 +6,7 @@ part 'infra_failure.freezed.dart';
 /// produce. Lives in the data layer; never surfaces to domain or
 /// presentation. Repositories translate to `BusinessFailure` via
 /// `InfraFailure.toBusinessFailure()` (see `infra_failure_mapper.dart`)
-/// before returning — `BaseRepository`'s `asyncGuard` / `syncGuard` does
+/// before returning — `Repository`'s `asyncGuard` / `syncGuard` does
 /// this automatically.
 ///
 /// No user-facing copy lives here. [message] carries the server-provided
@@ -124,7 +124,7 @@ sealed class InfraFailure with _$InfraFailure {
 
   /// A programmer bug reached the repository boundary — a Dart `Error`
   /// (null dereference, bad cast, failed assertion) rather than a
-  /// recoverable `Exception`. `BaseRepository` reports it to the
+  /// recoverable `Exception`. `Repository` reports it to the
   /// `CrashReporter` and rethrows in debug; this variant is what release
   /// builds fold it into.
   const factory InfraFailure.defect({
