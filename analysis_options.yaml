@@ -36,6 +36,10 @@ linter:
     - prefer_relative_imports
     - require_trailing_commas
     - lines_longer_than_80_chars
+    - max_file_lines:
+        max_lines: 150       # default: 150
+    - max_method_lines:
+        max_lines: 30        # default: 30
 
 formatter:
   page_width: 80
