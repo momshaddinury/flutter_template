@@ -1,7 +1,6 @@
 import '../../core/base/result.dart';
 import '../../core/base/unit.dart';
 import '../../domain/entities/login_entity.dart';
-import '../../domain/entities/sign_up_entity.dart';
 import '../../domain/failures/business_failure.dart';
 import '../../domain/repositories/authentication_repository.dart';
 import '../base/base_repository.dart';
@@ -25,12 +24,6 @@ final class AuthenticationRepositoryImpl extends BaseRepository
   final TokenManager tokens;
 
   static const _loginMapper = LoginMapper();
-
-  @override
-  Future<SignUpResponseEntity> register(SignUpRequestEntity data) async {
-    // TODO: implement register
-    throw UnimplementedError();
-  }
 
   @override
   Future<Result<LoginResponseEntity, BusinessFailure>> login(
@@ -85,30 +78,6 @@ final class AuthenticationRepositoryImpl extends BaseRepository
     } catch (e) {
       return false;
     }
-  }
-
-  @override
-  Future<String> forgotPassword(Map<String, dynamic> data) {
-    // TODO: implement forgotPassword
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> resetPassword(Map<String, dynamic> data) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> verifyOTP(Map<String, dynamic> data) {
-    // TODO: implement verifyOTP
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> resendOTP(Map<String, dynamic> data) {
-    // TODO: implement resendOTP
-    throw UnimplementedError();
   }
 
   @override

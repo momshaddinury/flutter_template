@@ -1,19 +1,8 @@
 import '../../core/base/result.dart';
 import '../../core/base/unit.dart';
 import '../entities/login_entity.dart';
-import '../entities/sign_up_entity.dart';
 import '../failures/business_failure.dart';
 import '../repositories/authentication_repository.dart';
-
-final class RegisterUseCase {
-  RegisterUseCase(this.repository);
-
-  final AuthenticationRepository repository;
-
-  Future<SignUpResponseEntity> call(SignUpRequestEntity request) async {
-    return repository.register(request);
-  }
-}
 
 final class LoginUseCase {
   LoginUseCase(this.repository);
