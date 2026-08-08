@@ -28,12 +28,7 @@ final ThemeData _appDarkTheme = $ThemeData(const ColorExtension.dark())();
 ///       borderRadius: BorderRadius.circular(context.dimensions.radius.large),
 ///       boxShadow: context.dimensions.elevation.card,
 ///     ),
-///     child: Text(
-///       'Hello World',
-///       style: context.textStyle.body.regular.copyWith(
-///         color: context.color.text.defaultValue,
-///       ),
-///     ),
+///     child: const BodySmallText('Hello World'),
 ///   );
 /// }
 /// ```
