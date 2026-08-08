@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/extensions/app_localization.dart';
+import '../../../core/extensions/localization.dart';
 import 'validation.dart';
 
 class ConfirmPasswordValidation extends Validation<String> {

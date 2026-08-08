@@ -2,7 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../application_state/onboarding_status_provider/onboarding_status_provider.dart';
 import '../../application_state/session_status_provider/session_status_provider.dart';
-import '../../application_state/startup_provider/app_startup_provider.dart';
+import '../../application_state/startup_provider/startup_provider.dart';
 import '../routes.dart';
 
 part 'router_state_provider.g.dart';
@@ -22,7 +22,7 @@ part 'router_state_provider.g.dart';
 /// one watches, and the gate follows.
 @Riverpod(keepAlive: true)
 Routes routerState(Ref ref) {
-  final startup = ref.watch(appStartupProvider);
+  final startup = ref.watch(startupProvider);
   if (startup.isLoading || startup.hasError) return .splash;
 
   if (!ref.watch(onboardingStatusProvider)) return .onboarding;

@@ -13,7 +13,7 @@ import '../../features/home/view/home_page.dart';
 import '../../features/onboarding/view/onboarding_page.dart';
 import '../../features/profile/view/profile_page.dart';
 import '../../features/splash/view/splash_page.dart';
-import '../widgets/app_startup/startup_widget.dart';
+import '../widgets/startup/startup_widget.dart';
 import '../widgets/navigation_shell.dart';
 import '../widgets/not_found_screen.dart';
 import 'redirect_gate.dart';

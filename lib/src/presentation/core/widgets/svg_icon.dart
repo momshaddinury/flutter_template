@@ -10,13 +10,13 @@ import '../gen/assets.gen.dart';
 /// the next build_runner pass, and renders here:
 ///
 /// ```dart
-/// AppIcon(Assets.icons.placeholder, size: context.dimensions.size.iconMedium)
+/// SvgIcon(Assets.icons.placeholder, size: context.dimensions.size.iconMedium)
 /// ```
 ///
-/// Size and colour fall back to the ambient [IconTheme], so an [AppIcon]
+/// Size and colour fall back to the ambient [IconTheme], so an [SvgIcon]
 /// drops into any slot a Material [Icon] fits and follows the same theme.
-class AppIcon extends StatelessWidget {
-  const AppIcon(
+class SvgIcon extends StatelessWidget {
+  const SvgIcon(
     this.icon, {
     this.size,
     this.color,

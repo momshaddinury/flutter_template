@@ -7,7 +7,7 @@ List<GoRoute> _onboardingRoutes(Ref ref) {
       name: Routes.splash.name,
       pageBuilder: (context, state) {
         return const NoTransitionPage(
-          child: AppStartupWidget(loading: SplashPage(), loaded: SplashPage()),
+          child: StartupWidget(loading: SplashPage(), loaded: SplashPage()),
         );
       },
     ),
