@@ -88,7 +88,7 @@ class DioBuilder {
       AuthHeaderInterceptor(tokens),
       ErrorAttachmentInterceptor(errorParser),
       ...extraInterceptors,
-      if (logger != null) logger!,
+      ?logger,
       RefreshRetryInterceptor(tokens: tokens, transport: dio),
     ]);
 

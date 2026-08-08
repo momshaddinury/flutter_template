@@ -22,11 +22,4 @@ class LoginMapper {
       image: model.image,
     );
   }
-
-  LoginRequestModel toRequestModel(LoginRequestEntity entity) {
-    return LoginRequestModel(
-      username: entity.username,
-      password: entity.password,
-    );
-  }
 }

@@ -14,13 +14,11 @@ final class LoginUseCase {
     required String password,
     bool? shouldRemember,
   }) async {
-    final request = LoginRequestEntity(
+    return repository.login(
       username: email,
       password: password,
-      shouldRemember: shouldRemember,
+      shouldRemember: shouldRemember ?? false,
     );
-
-    return repository.login(request);
   }
 }
 

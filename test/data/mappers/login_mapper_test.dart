@@ -30,17 +30,5 @@ void main() {
       expect(entity.gender, 'female');
       expect(entity.image, 'https://x/y.png');
     });
-
-    test('maps the request entity onto the wire model', () {
-      final entity = LoginRequestEntity(
-        username: 'alice',
-        password: 'pw',
-        shouldRemember: true,
-      );
-
-      final model = mapper.toRequestModel(entity);
-
-      expect(model.toJson(), {'username': 'alice', 'password': 'pw'});
-    });
   });
 }
