@@ -59,6 +59,11 @@ class _DeclarationNameVisitor extends SimpleAstVisitor<void> {
 
   @override
   void visitVariableDeclaration(VariableDeclaration node) {
+    // Only top-level `final xProvider = ...;` declarations — a local
+    // variable inside a provider body is not a DI declaration.
+    final list = node.parent;
+    if (list is! VariableDeclarationList) return;
+    if (list.parent is! TopLevelVariableDeclaration) return;
     _check(node.name.lexeme, node);
   }
 
@@ -69,6 +74,9 @@ class _DeclarationNameVisitor extends SimpleAstVisitor<void> {
 
   @override
   void visitFunctionDeclaration(FunctionDeclaration node) {
+    // Only top-level functions — helpers nested inside another body are
+    // not DI declarations.
+    if (node.parent is! CompilationUnit) return;
     _check(node.name.lexeme, node);
   }
 }

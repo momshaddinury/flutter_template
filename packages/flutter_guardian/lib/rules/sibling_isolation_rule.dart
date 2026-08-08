@@ -47,7 +47,11 @@ class SiblingIsolationVisitor extends SimpleAstVisitor<void> {
 
   @override
   void visitImportDirective(ImportDirective node) {
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    // WHY: the analyzer hands back native separators on Windows, while
+    // marker and _resolveRelative work in '/' — normalize once here so
+    // every downstream match sees posix form.
+    final path = (context.currentUnit ?? context.definingUnit).file.path
+        .replaceAll(r'\', '/');
     final current = rule.siblingOf(path);
     if (current == null) return;
 
