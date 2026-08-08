@@ -9,6 +9,7 @@ import '../../data/repositories/authentication_repository_impl.dart';
 import '../../data/repositories/locale_repository_impl.dart';
 import '../../data/repositories/router_repository_impl.dart';
 import '../../data/services/cache/cache_service.dart';
+import '../../data/services/cache/shared_preferences_service.dart';
 import '../../data/services/network/auth/secure_token_store.dart';
 import '../../data/services/network/auth/token_manager.dart';
 import '../../data/services/network/auth/token_store.dart';

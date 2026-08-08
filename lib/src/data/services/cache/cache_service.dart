@@ -1,7 +1,3 @@
-import 'package:shared_preferences/shared_preferences.dart';
-
-part 'shared_preference_service.dart';
-
 enum CacheKey {
   isOnBoardingCompleted,
 
@@ -16,6 +12,13 @@ enum CacheKey {
   language,
 }
 
+/// Key-value persistence for small app state, keyed by [CacheKey] so
+/// every stored name lives in one enum instead of scattered strings.
+///
+/// Values are primitives only ([String], [int], [bool], [double]);
+/// implementations throw [ArgumentError] on anything else rather than
+/// coercing. Anything richer belongs in a real store, not a preference
+/// cache.
 abstract class CacheService {
   Future<void> save<T>(CacheKey key, T value);
 
