@@ -47,8 +47,8 @@ linter:
     - prefer_const_constructors_in_immutables
     - prefer_single_quotes
     - prefer_relative_imports
-    - require_trailing_commas
     - lines_longer_than_80_chars
 
 formatter:
   page_width: 80
+  trailing_commas: automate
