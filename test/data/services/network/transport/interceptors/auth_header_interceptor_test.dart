@@ -213,7 +213,6 @@ void main() {
           dio.get<dynamic>('/me', options: authed(RequestAuth.protected)),
           throwsMissingAccessToken,
         );
-        // A 500 is transient — the refresh token survives for a later try.
         expect(await tokens.refreshToken, 'r.tok');
       });
 

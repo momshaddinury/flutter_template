@@ -50,8 +50,6 @@ abstract final class BusinessFailureUIMapper {
         message: failure.message ?? l10n.failureUnexpected,
         action: .retry,
       ),
-      // WHY: a defect is already reported to the crash reporter and a
-      // retry re-runs the same bug — offer nothing.
       Defect() => FailureUIModel(
         message: l10n.failureUnexpected,
         action: .none,

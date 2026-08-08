@@ -5,10 +5,6 @@ import 'src/theme_extensions/extensions.dart';
 
 export 'src/theme_extensions/extensions.dart';
 
-// WHY: private on purpose — themes and tokens are reached through
-// [BuildContextExtension] alone, so nothing outside the presentation layer
-// can touch them without a [BuildContext]. Built once and reused: assembly
-// walks every component theme, and the result never changes within a run.
 final ThemeData _appLightTheme = $ThemeData(const ColorExtension.light())();
 final ThemeData _appDarkTheme = $ThemeData(const ColorExtension.dark())();
 

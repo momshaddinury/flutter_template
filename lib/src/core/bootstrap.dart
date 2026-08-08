@@ -15,15 +15,16 @@ import 'logger/riverpod_log.dart';
 ///
 /// The container is never disposed: it lives for the process, matching
 /// the `keepAlive` providers it hosts.
+///
+/// Provider retry is disabled: Riverpod 3 retries failed providers with
+/// backoff by default, which breaks fail-fast semantics — the router gate
+/// shows splash with retry UI on a startup failure, and a silently
+/// retrying provider would never settle into that error state. Opt back
+/// in per provider where a retry is genuinely wanted.
 ProviderContainer bootstrap() {
   WidgetsFlutterBinding.ensureInitialized();
 
   final container = ProviderContainer(
-    // WHY: Riverpod 3 retries failed providers with backoff by default,
-    // which breaks fail-fast semantics — the router gate shows splash
-    // with retry UI on a startup failure, and a silently retrying
-    // provider would never settle into that error state. Opt back in
-    // per provider where a retry is genuinely wanted.
     retry: (retryCount, error) => null,
     observers: [RiverpodObserver()],
   );

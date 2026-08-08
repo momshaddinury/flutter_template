@@ -15,9 +15,5 @@ Future<void> appStartup(Ref ref) async {
 
   await ref.read(localizationProvider.notifier).setCurrentLocal();
 
-  // WHY: honors "remember me" before the session gate first reads the
-  // tokens — a previous run's session must not survive a restart the
-  // user opted out of. The Result is intentionally unobserved: a failed
-  // cleanup is logged by the guard and must not block startup.
   await ref.read(restoreSessionUseCaseProvider).call();
 }

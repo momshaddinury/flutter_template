@@ -1,9 +1,3 @@
-// DebugLoggerInterceptor is observably correct only via what it writes to
-// the logger, which is global state. The tests below verify the
-// non-blocking behavior (every callback forwards) and that no request body
-// or Authorization value is exposed by the interceptor's API — anything
-// stronger would require tapping into the logger singleton.
-
 import 'package:dio/dio.dart';
 import 'package:flutter_template/src/data/services/network/transport/interceptors/debug_logger_interceptor.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -37,9 +37,7 @@ class EmailVerificationPage extends StatelessWidget {
                 LinkText(
                   text: context.locale.didntGetCode,
                   linkText: context.locale.clickToResend,
-                  onTap: () {
-                    //TODO: Implement this
-                  },
+                  onTap: () {},
                 ),
                 LinkText(
                   text: context.locale.didNotReceiveEmail,
@@ -89,7 +87,6 @@ class _OTPFieldState extends State<_OTPField> {
                 onChanged: (value) {
                   if (index == 3 && value.length == 1) {
                     FocusScope.of(context).unfocus();
-                    //TODO: Callback function
                     context.pushReplacementNamed(Routes.createNewPassword.name);
                   } else if (value.length == 1) {
                     FocusScope.of(context).nextFocus();

@@ -40,7 +40,6 @@ void main() {
 
       final model = mapper.toRequestModel(entity);
 
-      // shouldRemember is client-side state; it never reaches the wire.
       expect(model.toJson(), {'username': 'alice', 'password': 'pw'});
     });
   });

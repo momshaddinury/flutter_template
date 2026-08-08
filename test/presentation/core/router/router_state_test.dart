@@ -15,9 +15,6 @@ void main() {
     Future<SessionStatus> Function(Ref ref)? session,
   }) {
     final container = ProviderContainer(
-      // WHY: matches the app's ProviderScope — auto-retry disabled so a
-      // failed startup settles into its error state instead of silently
-      // retrying past the assertion.
       retry: (retryCount, error) => null,
       overrides: [
         appStartupProvider.overrideWith(startup),

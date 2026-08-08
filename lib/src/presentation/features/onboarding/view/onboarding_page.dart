@@ -30,8 +30,6 @@ class _OnboardingPageState extends ConsumerState<OnboardingPage>
 
   void _onGetStarted() {
     ref.read(markOnboardingCompletedUseCaseProvider).call();
-    // WHY: the gate navigates, not the page — refreshing the onboarding
-    // status flips routerState past onboarding to login or home.
     ref.invalidate(onboardingStatusProvider);
   }
 

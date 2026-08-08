@@ -31,8 +31,6 @@ class Login extends _$Login {
       Error(:final error) => AsyncValue.error(error, StackTrace.current),
     };
 
-    // WHY: the session gate navigates, not the page. Refreshing the
-    // session status flips routerState to home, and the router redirects.
     if (state.hasValue && state.value != null) {
       ref.invalidate(sessionStatusProvider);
     }

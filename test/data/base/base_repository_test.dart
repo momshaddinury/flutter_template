@@ -54,7 +54,6 @@ void main() {
         );
 
         expect(result, isA<Error<int, BusinessFailure>>());
-        // An expected failure is not a bug: the crash reporter stays quiet.
         expect(reporter.reports, isEmpty);
       });
 
@@ -113,9 +112,6 @@ void main() {
     });
 
     group('bug path (Dart Error)', () {
-      // Test binaries run with asserts enabled (kDebugMode is true), so
-      // the guards rethrow bugs after reporting. The release fold to
-      // BusinessFailure.defect cannot be exercised from a test.
       test('reports and rethrows with the original stack', () async {
         final bug = StateError('impossible');
 

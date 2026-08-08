@@ -53,7 +53,6 @@ void main() {
         (request) => request.reply(500, {'message': 'server'}),
       );
 
-      // Passthrough intact: no parsed error attached, response untouched.
       await expectLater(
         dio.get<dynamic>('/x'),
         throwsA(

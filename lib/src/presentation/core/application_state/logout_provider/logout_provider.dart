@@ -18,7 +18,6 @@ class Logout extends _$Logout {
 
     state = const AsyncValue.loading();
 
-    // Intentional simulated delay to show loading indicator
     await Future.delayed(const Duration(seconds: 1));
 
     final result = await ref.read(logoutUseCaseProvider).call();
@@ -26,8 +25,6 @@ class Logout extends _$Logout {
     switch (result) {
       case Success():
         ref.read(resetRepositoryUseCaseProvider).call(ref);
-        // WHY: the session gate navigates, not the page. Refreshing the
-        // session status flips routerState to login.
         ref.invalidate(sessionStatusProvider);
         state = const AsyncValue.data(true);
       case Error(:final error):

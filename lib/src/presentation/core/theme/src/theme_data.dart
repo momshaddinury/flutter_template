@@ -35,10 +35,6 @@ class $ThemeData with ThemeExtensions {
         onError: color.text.onPrimary,
       ),
       scaffoldBackgroundColor: color.background.canvas,
-      // Material's `textTheme` is left alone on purpose. Type comes from
-      // `context.textStyle` and the typography widgets, so a bare `Text`
-      // never looks right by accident — which is what keeps screens on the
-      // scale. Controls that carry their own label style set it below.
       appBarTheme: _AppBarThemeData(color)(),
       bottomNavigationBarTheme: _BottomNavigationBarThemeData(color)(),
       elevatedButtonTheme: _ElevatedButtonThemeData(color)(),

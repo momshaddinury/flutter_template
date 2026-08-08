@@ -1,8 +1,3 @@
-// End-to-end test demonstrating how to swap the network layer for unit
-// tests. Override `networkStackProvider` with a stack that wraps a stubbed
-// Dio; `restClientServiceProvider` will pull the transport from the
-// override automatically.
-
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template/src/core/di/dependency_injection.dart';
@@ -88,8 +83,6 @@ void main() {
       final rest = container.read(restClientServiceProvider);
       await rest.currentUser();
 
-      // The @Extra annotation reaches the wire: this is what
-      // AuthHeaderInterceptor and RefreshRetryInterceptor key off.
       expect(seenMode, RequestAuth.protected);
     });
 

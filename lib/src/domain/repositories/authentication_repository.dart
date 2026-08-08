@@ -4,7 +4,6 @@ import '../entities/login_entity.dart';
 import '../failures/business_failure.dart';
 
 abstract interface class AuthenticationRepository {
-
   Future<Result<LoginResponseEntity, BusinessFailure>> login(
     LoginRequestEntity data,
   );

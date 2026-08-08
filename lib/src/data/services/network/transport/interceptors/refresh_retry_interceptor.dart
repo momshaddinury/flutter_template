@@ -49,10 +49,6 @@ class RefreshRetryInterceptor extends Interceptor {
   ) async {
     if (!_eligible(err)) return handler.next(err);
 
-    // WHY: a 401 that raced an already-completed refresh must not rotate
-    // again — on single-use refresh tokens a second rotation invalidates
-    // the session. Replay directly; AuthHeaderInterceptor attaches the
-    // current token.
     if (await _tokenIsStale(err.requestOptions)) return _replay(err, handler);
 
     final refreshed = await _refresh();
@@ -78,10 +74,6 @@ class RefreshRetryInterceptor extends Interceptor {
     } on DioException catch (retryError) {
       handler.next(retryError);
     } catch (retryError) {
-      // WHY: a non-Dio failure (a throwing transformer or adapter) must
-      // still complete the handler chain — otherwise the caller's future
-      // never finishes. The original 401 propagates with the replay
-      // failure attached.
       handler.next(err.copyWith(error: retryError));
     }
   }
@@ -100,8 +92,6 @@ class RefreshRetryInterceptor extends Interceptor {
 
       return true;
     } catch (_) {
-      // WHY: TokenManager owns what a failure means for the stored tokens;
-      // here it only means the original 401 propagates.
       return false;
     }
   }

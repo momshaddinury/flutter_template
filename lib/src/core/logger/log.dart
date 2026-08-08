@@ -5,16 +5,11 @@ class Log {
     _logger = Logger(
       printer: PrettyPrinter(
         methodCount: 2,
-        // number of method calls to be displayed
         errorMethodCount: 8,
-        // number of method calls if stacktrace is provided
         lineLength: lineLength,
-        // width of the output
         colors: true,
-        // Colorful log messages
         printEmojis: true,
-        // Print an emoji for each log message
-        dateTimeFormat: DateTimeFormat.none, // No timestamp in log messages
+        dateTimeFormat: DateTimeFormat.none,
       ),
     );
   }

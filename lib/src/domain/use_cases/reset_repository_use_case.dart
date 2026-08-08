@@ -19,7 +19,6 @@ class ResetRepositoryUseCase {
   /// data from the previous state since they are kept alive by the dependency
   /// injection container.
   void call(Ref ref) {
-    // Invalidate all repository providers
     ref.container.getAllProviderElements().forEach((element) {
       if (element.provider.name!.contains('Repository')) {
         ref.invalidate(element.provider);

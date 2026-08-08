@@ -25,6 +25,9 @@ final class AuthenticationRepositoryImpl extends BaseRepository
 
   static const _loginMapper = LoginMapper();
 
+  /// A failed session write clears the just-persisted tokens and
+  /// rethrows — orphaned tokens in the keystore must not outlive a login
+  /// the caller saw fail.
   @override
   Future<Result<LoginResponseEntity, BusinessFailure>> login(
     LoginRequestEntity data,
@@ -44,8 +47,6 @@ final class AuthenticationRepositoryImpl extends BaseRepository
         try {
           await _saveSession();
         } catch (_) {
-          // WHY: a failed session write must not leave orphaned tokens in
-          // the keystore — clear them so the failed login is atomic.
           await tokens.clear();
           rethrow;
         }
@@ -90,14 +91,14 @@ final class AuthenticationRepositoryImpl extends BaseRepository
     });
   }
 
+  /// Clears the flag first, tokens second — the session derives from the
+  /// stored tokens, so the token clear is the step that actually ends it.
+  /// In this order a failed token clear leaves the user signed in with a
+  /// surfaced error prompting a retry, instead of a cleared flag masking
+  /// tokens that still authenticate.
   @override
   Future<Result<Unit, BusinessFailure>> logout() async {
     return asyncGuard(() async {
-      // WHY: flag first, tokens second — the session derives from the
-      // stored tokens, so the token clear is the step that actually ends
-      // it. In this order a failed token clear leaves the user signed in
-      // with a surfaced error prompting a retry, instead of a cleared
-      // flag masking tokens that still authenticate.
       await local.remove([CacheKey.isLoggedIn, CacheKey.rememberMe]);
       await tokens.clear();
       return Unit.value;

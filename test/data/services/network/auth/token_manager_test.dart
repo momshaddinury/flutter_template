@@ -229,8 +229,6 @@ void main() {
             data: Matchers.any,
           );
 
-          // Must not hang; must surface the refresh error, not the clear
-          // error.
           await expectLater(manager.refresh(), throwsA(isA<DioException>()));
         },
       );
@@ -249,8 +247,6 @@ void main() {
           );
           await expectLater(manager.refresh(), throwsA(isA<DioException>()));
 
-          // The inflight slot is free again — after a re-login, refresh
-          // works.
           store.clearThrows = null;
           await manager.persist(access: 'a2', refresh: 'r2');
           adapter.onPost(

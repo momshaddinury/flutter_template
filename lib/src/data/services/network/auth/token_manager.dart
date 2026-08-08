@@ -95,8 +95,6 @@ class TokenManager {
       completer.complete(newAccess);
     } catch (e, stackTrace) {
       if (_isAuthDefinitive(e)) {
-        // WHY: a throwing store must not leave the completer pending —
-        // every request awaiting this refresh would hang forever.
         try {
           await clear();
         } catch (clearError, clearStack) {
@@ -143,11 +141,6 @@ class TokenManager {
     }
   }
 
-  // WHY: the request/response shape below is the one backend-specific part
-  // of this class — it matches the template's demo API (dummyjson.com:
-  // refresh token in the body, camelCase keys). Adapt it to your backend
-  // here; everything else (caching, single-flight, failure policy) is
-  // contract-agnostic.
   Future<String> _performRefresh() async {
     final refreshToken = _refreshToken;
     if (refreshToken == null || refreshToken.isEmpty) {
