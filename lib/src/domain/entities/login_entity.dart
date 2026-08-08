@@ -1,15 +1,3 @@
-class LoginRequestEntity {
-  LoginRequestEntity({
-    required this.username,
-    required this.password,
-    this.shouldRemember = false,
-  });
-
-  final String username;
-  final String password;
-  final bool? shouldRemember;
-}
-
 /// The signed-in user, as the domain sees it. Tokens never appear here:
 /// the data layer persists them through `TokenManager`, and the app
 /// reasons about the session through the session gate — never through

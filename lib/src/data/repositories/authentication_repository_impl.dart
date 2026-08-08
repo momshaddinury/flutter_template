@@ -29,11 +29,13 @@ final class AuthenticationRepositoryImpl extends BaseRepository
   /// rethrows — orphaned tokens in the keystore must not outlive a login
   /// the caller saw fail.
   @override
-  Future<Result<LoginResponseEntity, BusinessFailure>> login(
-    LoginRequestEntity data,
-  ) async {
+  Future<Result<LoginResponseEntity, BusinessFailure>> login({
+    required String username,
+    required String password,
+    bool shouldRemember = false,
+  }) async {
     return asyncGuard(() async {
-      final request = _loginMapper.toRequestModel(data);
+      final request = LoginRequestModel(username: username, password: password);
       final response = await remote.login(request.toJson());
 
       final model = LoginResponseModel.fromJson(response.data);
@@ -43,7 +45,7 @@ final class AuthenticationRepositoryImpl extends BaseRepository
         refresh: model.refreshToken,
       );
 
-      if (data.shouldRemember ?? false) {
+      if (shouldRemember) {
         try {
           await _saveSession();
         } catch (_) {

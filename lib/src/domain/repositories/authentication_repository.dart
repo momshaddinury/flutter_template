@@ -4,9 +4,11 @@ import '../entities/login_entity.dart';
 import '../failures/business_failure.dart';
 
 abstract interface class AuthenticationRepository {
-  Future<Result<LoginResponseEntity, BusinessFailure>> login(
-    LoginRequestEntity data,
-  );
+  Future<Result<LoginResponseEntity, BusinessFailure>> login({
+    required String username,
+    required String password,
+    bool shouldRemember = false,
+  });
 
   Future<bool> rememberMe({bool? rememberMe});
 
