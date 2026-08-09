@@ -31,6 +31,7 @@ class $ThemeData with ThemeExtensions {
         onSecondary: color.text.onPrimary,
         surface: color.background.surface,
         onSurface: color.text.defaultValue,
+        onSurfaceVariant: color.text.muted,
         error: color.status.danger,
         onError: color.text.onPrimary,
       ),
