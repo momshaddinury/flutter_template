@@ -26,6 +26,8 @@ class Login extends _$Login {
         .read(loginUseCaseProvider)
         .call(email: email, password: password, shouldRemember: shouldRemember);
 
+    if (!ref.mounted) return;
+
     state = switch (result) {
       Success() => AsyncValue.data(result),
       Error(:final error) => AsyncValue.error(error, StackTrace.current),

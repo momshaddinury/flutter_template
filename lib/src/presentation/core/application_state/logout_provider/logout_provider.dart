@@ -18,9 +18,9 @@ class Logout extends _$Logout {
 
     state = const AsyncValue.loading();
 
-    await Future.delayed(const Duration(seconds: 1));
-
     final result = await ref.read(logoutUseCaseProvider).call();
+
+    if (!ref.mounted) return;
 
     switch (result) {
       case Success():
