@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// Widget-building helper methods defeat the element tree's ability to
 /// cache and rebuild granularly. UI fragments are extracted to widget
 /// classes (`_PascalCase` part widgets), never to functions or methods
@@ -45,10 +47,8 @@ class _Visitor extends SimpleAstVisitor<void> {
   final WidgetHelperRule rule;
   final RuleContext context;
 
-  bool _inPresentation() => (context.currentUnit ?? context.definingUnit)
-      .file
-      .path
-      .contains('/lib/src/presentation/');
+  bool _inPresentation() =>
+      posixPath(context).contains('/lib/src/presentation/');
 
   bool _returnsWidget(TypeAnnotation? returnType) =>
       returnType is NamedType && returnType.name.lexeme == 'Widget';

@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// Enforces the Clean Architecture import directions: `domain/` imports
 /// neither `data/` nor `presentation/` nor Flutter; `presentation/` and
 /// `data/` never import each other. The domain layer is the center;
@@ -47,7 +49,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 
   @override
   void visitImportDirective(ImportDirective node) {
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
     final uri = node.uri.stringValue;
     if (uri == null) return;
 

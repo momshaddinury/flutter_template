@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// User-facing copy comes from the localization files, never from string
 /// literals in widgets. Flags a string literal as the first positional
 /// argument of `Text` or any `*Text` wrapper (the typography widgets).
@@ -44,7 +46,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
     if (!path.contains('/lib/src/presentation/')) return;
 
     final typeName = node.constructorName.type.name.lexeme;

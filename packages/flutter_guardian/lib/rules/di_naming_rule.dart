@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// Base for the DI naming conventions: every declaration in the given
 /// DI parts file must carry the layer's suffix in its name. The rules
 /// differ only in which file they scope to and which substring they
@@ -35,10 +37,7 @@ abstract class DiNamingRule extends AnalysisRule {
   }
 
   bool _applies(RuleContext context) {
-    // WHY: the DI files are `part` files — definingUnit resolves to the
-    // library (dependency_injection.dart), so the unit being visited is
-    // the one whose path identifies the layer.
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
 
     return path.endsWith(pathSuffix);
   }

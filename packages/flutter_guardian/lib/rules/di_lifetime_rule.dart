@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// Enforces the DI lifetime table: providers in `di/parts/use_cases.dart`
 /// are auto-disposed (`@riverpod`); providers in the repository, services,
 /// and externals parts are `@Riverpod(keepAlive: true)`.
@@ -53,7 +55,7 @@ class _Visitor extends SimpleAstVisitor<void> {
   final RuleContext context;
 
   void _checkMetadata(NodeList<Annotation> metadata) {
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
     final mustKeepAlive = DiLifetimeRule._keepAliveFiles.any(path.endsWith);
     final mustAutoDispose = path.endsWith('di/parts/use_cases.dart');
     if (!mustKeepAlive && !mustAutoDispose) return;
