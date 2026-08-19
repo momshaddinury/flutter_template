@@ -25,8 +25,7 @@ class TextStyleRule extends AnalysisRule {
 
   static const LintCode code = LintCode(
     'text_style_outside_typography',
-    'Text styles compose inside the typography widgets, never at a call '
-        'site.',
+    'Text styles compose inside the typography widgets, never at a call site.',
     correctionMessage:
         'Use a widget from core/widgets/text/ (HeadingLevel1Text, '
         'BodySmallText, LabelText, ...), or add the variant the screen '
