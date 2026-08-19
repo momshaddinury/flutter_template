@@ -40,7 +40,6 @@ linter:
   rules:
     - unawaited_futures
     - await_only_futures
-    - unnecessary_await_in_return
     - prefer_const_constructors
     - sort_unnamed_constructors_first
     - sort_constructors_first
@@ -52,3 +51,17 @@ linter:
 formatter:
   page_width: 80
   trailing_commas: automate
+
+# WHY: added by `flutter pub get` on Flutter 3.47 — the tool keeps this
+# exclude list in sync, so leave it alone. Only `analyzer: exclude:` is
+# safe here; an `analyzer: plugins:` key would disable the native
+# plugins declared above.
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
