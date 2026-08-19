@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.12.0
+  sdk: ^3.13.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -66,13 +66,14 @@ dev_dependencies:
   build_runner: ^2.15.1
   riverpod_generator: ^4.0.4
   flutter_gen_runner: ^5.15.0
-  dart_mappable_builder: ^4.8.0
+  dart_mappable_builder: ^4.9.0
   retrofit_generator: ^10.2.8
-  # WHY: resolves to 3.2.6-dev.1 — the only freezed compatible with the
-  # analyzer 12 the rest of the codegen chain needs. freezed stable caps
-  # analyzer <11 and holds every builder back; revisit at freezed 4 stable,
-  # which also unlocks dart_mappable_builder 4.9+ and analyzer 13+.
-  freezed: ^3.2.6-dev.1
+  # WHY: freezed 3 emits `final` on a generated constructor parameter, which
+  # Dart 3.13 rejects — the 4.0.0-dev line is the first that stops emitting it,
+  # so the pre-release pin is what makes the app compile at all. It carries the
+  # codegen chain to analyzer 13, which is why dart_mappable_builder is on 4.9.
+  # Move to a plain caret when freezed 4 ships stable.
+  freezed: ^4.0.0-dev.3
   # Testing
   http_mock_adapter: ^0.6.1
 
