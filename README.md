@@ -23,8 +23,9 @@ A comprehensive, scalable foundation for building maintainable Flutter applicati
 
 ### Prerequisites
 
-- **Flutter SDK**: >=3.38.4
-- **Dart SDK**: >=3.10.3  
+- **Flutter SDK**: >=3.47.0
+- **Dart SDK**: >=3.13.0
+- **iOS**: deployment target 15.0 or later
 - **Android Studio** or **VS Code** with Flutter extensions
 - **Git** for version control
 
@@ -158,8 +159,8 @@ flutter_template/
 
 | Technology | Version  | Purpose |
 |------------|----------|---------|
-| **Flutter** | >=3.44.9 | UI framework |
-| **Dart** | >=3.12.0 | Programming language |
+| **Flutter** | >=3.47.0 | UI framework |
+| **Dart** | >=3.13.0 | Programming language |
 | **Riverpod** | ^3.3.2   | State management & DI |
 | **go_router** | ^17.4.0  | Navigation and routing |
 
