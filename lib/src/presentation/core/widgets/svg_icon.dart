@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../gen/assets.gen.dart';
 
-/// The one door SVG icons enter through — the `svg_outside_app_icon` rule
+/// The one door SVG icons enter through — the `svg_outside_svg_icon` rule
 /// keeps `flutter_svg` and raw asset paths out of every other file.
 ///
 /// Standard glyphs stay Material `Icons.*`. An icon exported from the
