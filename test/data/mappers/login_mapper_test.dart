@@ -1,6 +1,5 @@
 import 'package:flutter_template/src/data/mappers/login_mapper.dart';
 import 'package:flutter_template/src/data/models/login_model.dart';
-import 'package:flutter_template/src/domain/entities/login_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
