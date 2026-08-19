@@ -155,6 +155,7 @@ flutter_template/
 ## Technology Stack
 
 ### Core Technologies
+
 | Technology | Version  | Purpose |
 |------------|----------|---------|
 | **Flutter** | >=3.44.9 | UI framework |
@@ -163,6 +164,7 @@ flutter_template/
 | **go_router** | ^17.4.0  | Navigation and routing |
 
 ### Network & Data
+
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | **Dio** | ^5.11.0 | HTTP client |
@@ -172,6 +174,7 @@ flutter_template/
 | **dart_mappable** | ^4.8.0 | JSON serialization |
 
 ### Development Tools
+
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | **build_runner** | ^2.15.1 | Code generation |
