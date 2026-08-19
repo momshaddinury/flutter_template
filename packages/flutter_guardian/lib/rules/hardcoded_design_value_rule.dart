@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// Design values come from the theme tokens (`context.color`,
 /// `context.textStyle`, `context.dimensions`), never from numeric
 /// literals. Flags `Color`, `EdgeInsets`, and `TextStyle` constructors
@@ -50,7 +52,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 
   @override
   void visitInstanceCreationExpression(InstanceCreationExpression node) {
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
     if (!path.contains('/lib/src/presentation/')) return;
     if (path.contains('/presentation/core/theme/')) return;
 

@@ -4,6 +4,8 @@ import 'package:analyzer/analysis_rule/rule_visitor_registry.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 
+import '../src/paths.dart';
+
 /// Base for isolation rules over sibling directories: a file inside
 /// `<marker><x>/` must not import from `<marker><y>/`. Features and
 /// services share this shape; the concrete rules supply the marker and
@@ -47,11 +49,7 @@ class SiblingIsolationVisitor extends SimpleAstVisitor<void> {
 
   @override
   void visitImportDirective(ImportDirective node) {
-    // WHY: the analyzer hands back native separators on Windows, while
-    // marker and _resolveRelative work in '/' — normalize once here so
-    // every downstream match sees posix form.
-    final path = (context.currentUnit ?? context.definingUnit).file.path
-        .replaceAll(r'\', '/');
+    final path = posixPath(context);
     final current = rule.siblingOf(path);
     if (current == null) return;
 

@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// Icons have one door. Standard glyphs stay Material `Icons.*`; an icon
 /// exported from the design file lands in `assets/icons/`, becomes a
 /// generated `Assets.icons` entry, and renders through the `SvgIcon`
@@ -56,12 +58,17 @@ class _Visitor extends SimpleAstVisitor<void> {
   final SvgIconRule rule;
   final RuleContext context;
 
-  String get _path => (context.currentUnit ?? context.definingUnit).file.path;
+  String get _path => posixPath(context);
+
+  /// True only for the package itself, never for a package whose name
+  /// merely starts the same way (`flutter_svg_provider`).
+  bool _isFlutterSvg(String uri) =>
+      uri == 'package:flutter_svg' || uri.startsWith('package:flutter_svg/');
 
   @override
   void visitImportDirective(ImportDirective node) {
     final uri = node.uri.stringValue;
-    if (uri == null || !uri.startsWith('package:flutter_svg')) return;
+    if (uri == null || !_isFlutterSvg(uri)) return;
     if (_path.endsWith(SvgIconRule._sanctionedFile)) return;
     // WHY: the generated assets file wraps flutter_svg on SvgIcon's
     // behalf; flagging it would flag every build_runner pass.

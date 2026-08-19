@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// HTTP goes through Retrofit's `RestClient`; calling `Dio` methods
 /// directly bypasses the interceptor pipeline (auth, refresh, error
 /// attachment). Only the network layer itself may touch the transport.
@@ -56,7 +58,7 @@ class _Visitor extends SimpleAstVisitor<void> {
 
   @override
   void visitMethodInvocation(MethodInvocation node) {
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
     // The network layer owns the transport; everything in it may call Dio.
     if (path.contains('/data/services/network/')) return;
     if (!DirectDioRule._httpMethods.contains(node.methodName.name)) return;

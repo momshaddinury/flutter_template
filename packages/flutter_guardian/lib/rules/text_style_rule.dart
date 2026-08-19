@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:analyzer/error/error.dart';
 
+import '../src/paths.dart';
+
 /// The type scale reads in one place. Screens never compose text styles —
 /// no `context.textStyle...copyWith(...)` at a call site; they say what a
 /// line of text *is* with a typography widget, and the widget carries the
@@ -58,7 +60,7 @@ class _Visitor extends SimpleAstVisitor<void> {
     if (node.prefix.name != 'context') return;
     if (node.identifier.name != 'textStyle') return;
 
-    final path = (context.currentUnit ?? context.definingUnit).file.path;
+    final path = posixPath(context);
     if (!path.contains('/lib/src/presentation/')) return;
     if (path.contains('/presentation/core/theme/')) return;
     if (path.contains('/presentation/core/widgets/text/')) return;
