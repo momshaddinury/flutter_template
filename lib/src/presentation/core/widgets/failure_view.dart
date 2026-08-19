@@ -6,7 +6,6 @@ import '../../../core/extensions/localization.dart';
 import '../../../domain/failures/business_failure.dart';
 import '../application_state/session_status_provider/session_status_provider.dart';
 import '../failure/business_failure_ui_mapper.dart';
-import '../failure/failure_ui_model.dart';
 import '../theme/theme.dart';
 
 /// The standard full-body failure state. Hand it the raw error from an
