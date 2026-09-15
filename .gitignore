@@ -148,3 +148,8 @@ app.*.symbols
 
 # Localization Generated Files
 /lib/src/core/gen/
+
+# Shared agent entry points and the pinned toolchain belong in the repository.
+!AGENTS.md
+!CLAUDE.md
+!.fvmrc

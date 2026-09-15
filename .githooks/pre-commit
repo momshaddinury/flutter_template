@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Runs the quick gate on the index. agent/gate binds this path on first run.
+exec "$(git rev-parse --show-toplevel)/agent/gate" --quick --staged

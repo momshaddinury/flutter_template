@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+# The one check every agent runs before reporting a task done.
+#
+# Usage:
+#   agent/gate            format, analyze, text, state, tests
+#   agent/gate --quick    format, analyze, text
+#   agent/gate --staged   the state check reads the index (the pre-commit hook)
+#
+# Exit 0 on pass. The last line is the summary an agent pastes in its report.
+set -u
+
+quick=0
+staged=0
+for arg in "$@"; do
+  case "$arg" in
+    --quick) quick=1 ;;
+    --staged) staged=1 ;;
+    *) echo "gate: unknown flag $arg"; exit 2 ;;
+  esac
+done
+
+cd "$(git rev-parse --show-toplevel)" || exit 2
+
+fail() { echo "gate: FAIL $1"; exit 1; }
+step() { echo "gate: $1"; }
+
+# Bind the hook once, for every clone and every agent.
+if [ "$(git config core.hooksPath)" != ".githooks" ]; then
+  git config core.hooksPath .githooks
+fi
+
+# 1. Toolchain -------------------------------------------------------------
+step "toolchain"
+command -v fvm >/dev/null 2>&1 || fail "toolchain: fvm is not installed"
+[ -f .fvmrc ] || fail "toolchain: .fvmrc is missing"
+fvm flutter --version >/dev/null 2>&1 \
+  || fail "toolchain: fvm flutter does not resolve; run fvm install"
+
+# 2. Format ----------------------------------------------------------------
+step "format"
+fvm dart format --output=none --set-exit-if-changed \
+  lib test packages/flutter_guardian/lib packages/flutter_guardian/test \
+  >/dev/null 2>&1 || fail "format: run fvm dart format ."
+
+# 3. Analyze ---------------------------------------------------------------
+# A rebuilt guardian binary can trip macOS code signing and kill the
+# analysis server. Swapping the file onto a fresh inode clears it.
+step "analyze"
+swap_plugin_binaries() {
+  for aot in "$HOME"/.dartServer/.plugin_manager/*/bin/plugin.aot; do
+    [ -f "$aot" ] || continue
+    cp "$aot" "$aot.tmp" && mv "$aot.tmp" "$aot"
+  done
+}
+analyze_out=$(fvm dart analyze 2>&1)
+analyze_code=$?
+if [ $analyze_code -ne 0 ] \
+  && echo "$analyze_out" | grep -qE "crashed unexpectedly|exited with code -9"; then
+  step "analyze: server crashed, swapping plugin binaries and retrying"
+  swap_plugin_binaries
+  analyze_out=$(fvm dart analyze 2>&1)
+  analyze_code=$?
+fi
+if [ $analyze_code -ne 0 ]; then
+  echo "$analyze_out"
+  fail "analyze"
+fi
+
+# 4. Text checks -----------------------------------------------------------
+# Rules that need no AST. Each function prints offenders and returns 1.
+step "text"
+# Generated code is not ours to fix.
+GREP="grep -rn --exclude-dir=gen --exclude=*.g.dart --exclude=*.freezed.dart"
+check_todo_form() {
+  local hits
+  hits=$($GREP -E '\b(TODO|FIXME|HACK)\b' lib test \
+    | grep -vE '(TODO|FIXME|HACK)\(#[0-9]+\)')
+  [ -z "$hits" ] || { echo "$hits"; return 1; }
+}
+check_node_ids() {
+  # Figma node ids such as 456:2707 belong on a Design: link line only.
+  local hits
+  hits=$($GREP -E '///.*[0-9]{2,4}:[0-9]{3,5}' lib | grep -v 'Design:')
+  [ -z "$hits" ] || { echo "$hits"; return 1; }
+}
+check_em_dash() {
+  # Literal UI text inside quotes may carry one; a dash aside may not.
+  local hits
+  hits=$($GREP '///.*—' lib | grep -vE '"[^"]*—[^"]*"')
+  [ -z "$hits" ] || { echo "$hits"; return 1; }
+}
+check_todo_form || fail "text: TODO without an issue number"
+check_node_ids || fail "text: Figma node id outside a Design: line"
+check_em_dash || fail "text: em dash in a doc comment"
+
+if [ $quick -eq 1 ] && [ $staged -eq 0 ]; then
+  echo "gate: PASS quick"
+  exit 0
+fi
+
+# 5. State -----------------------------------------------------------------
+# A change under lib/ ships with a handoff.
+step "state"
+if [ $staged -eq 1 ]; then
+  changed=$(git diff --cached --name-only)
+else
+  changed=$(git status --porcelain | awk '{print $2}')
+fi
+if echo "$changed" | grep -q '^lib/' \
+  && ! echo "$changed" | grep -q '^agent/state/handoff.md$'; then
+  fail "state: lib/ changed but agent/state/handoff.md did not"
+fi
+
+if [ $quick -eq 1 ]; then
+  echo "gate: PASS quick"
+  exit 0
+fi
+
+# 6. Tests -----------------------------------------------------------------
+step "tests"
+fvm flutter test >/dev/null 2>&1 || fail "tests: fvm flutter test"
+(cd packages/flutter_guardian && fvm dart test >/dev/null 2>&1) \
+  || fail "tests: guardian tests"
+
+echo "gate: PASS full"

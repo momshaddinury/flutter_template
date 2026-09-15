@@ -1,55 +1,47 @@
 # flutter_guardian
 
-A collection of custom lint rules to help enforce best practices and code consistency in your Flutter and Dart projects.
+The template's native Dart analyzer plugin enforces the machine-checkable rules in [agent/](../../agent/README.md).
 
-## Requirements
+## Enable and run
 
-- **Flutter**: >=3.38.4
-- **Dart**: ^3.10.3
-
-## Features
-
-- Enforce repository naming conventions
-- Enforce service naming conventions
-- Additional customizable lint rules for your codebase
-
-## Getting Started
-
-Add `flutter_guardian` to your `dev_dependencies` in `pubspec.yaml`:
+The root `analysis_options.yaml` already loads the plugin:
 
 ```yaml
-dev_dependencies:
+plugins:
   flutter_guardian:
     path: packages/flutter_guardian
 ```
 
-Then, include the lints in your project's `analysis_options.yaml`:
+Run `fvm dart analyze` or `agent/gate` from the repository root.
+The plugin stays pure Dart and is resolved by the analysis server; it is not an app dependency.
 
-```yaml
-include: package:flutter_guardian/analysis_options.yaml
+## Rules
+
+| Rule | Checks |
+|---|---|
+| `invalid_layer_import` | Layer boundaries |
+| `cross_feature_import` | Feature isolation |
+| `cross_service_import` | Service isolation |
+| `invalid_di_lifetime` | DI provider lifetime |
+| `invalid_repository_name`, `invalid_service_name`, `invalid_use_case_name` | DI provider names |
+| `hardcoded_route` | Route enum use |
+| `direct_dio_call` | Direct Dio calls outside network services |
+| `widget_returning_helper` | Widget-producing helper functions |
+| `hardcoded_text` | Literal user-facing text |
+| `hardcoded_design_value` | Inline colors and geometry |
+| `svg_outside_app_icon` | SVG access outside the icon wrapper |
+| `text_style_outside_typography` | Text styles outside `core/widgets/text/` and theme |
+| `layout_named_widget` | Layout suffixes in presentation class names |
+| `unwrapped_collection_branch` | List branches without a spread list |
+| `top_level_presenter` | Top-level sheet or dialog presenters |
+
+## Tests
+
+```bash
+cd packages/flutter_guardian
+fvm dart pub get
+fvm dart test
 ```
 
-## Usage
-
-Once added, your IDE and `dart analyze` will automatically use the custom lint rules provided by flutter_guardian.  
-To run the linter manually:
-
-```sh
-dart analyze
-```
-
-## Example
-
-Suppose you have a repository class named `userRepo.dart`. The linter will flag this as a violation and suggest renaming it to `user_repository.dart` to follow the enforced naming convention.
-
-## Customization
-
-You can extend or override the provided rules by editing your project's `analysis_options.yaml` after the `include` line.
-
-## Contributing
-
-Contributions are welcome! Please open issues or pull requests for new rules, bug fixes, or improvements.
-
-## License
-
-This project is licensed under the MIT License.
+Tests resolve source fixtures with the existing analyzer harness. Each test checks expected diagnostics and accepted code.
+When adding a rule, register it in `lib/main.dart`, add tests under `test/rules/`, and update this table.
