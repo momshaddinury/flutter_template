@@ -1,8 +1,13 @@
 // ignore: implementation_imports, depend_on_referenced_packages
 import 'package:riverpod/src/framework.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class ResetRepositoryUseCase {
-  const ResetRepositoryUseCase();
+part 'reset_repositories_provider.g.dart';
+
+@Riverpod(keepAlive: true)
+class ResetRepositories extends _$ResetRepositories {
+  @override
+  void build() {}
 
   /// Invalidates all repository dependencies in the dependency injection
   /// container.
@@ -18,7 +23,7 @@ class ResetRepositoryUseCase {
   /// the previous context. Without invalidation, repositories would retain
   /// data from the previous state since they are kept alive by the dependency
   /// injection container.
-  void call(Ref ref) {
+  void call() {
     ref.container.getAllProviderElements().forEach((element) {
       if (element.provider.name!.contains('Repository')) {
         ref.invalidate(element.provider);
